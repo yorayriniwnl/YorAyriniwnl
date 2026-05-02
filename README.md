@@ -1,6 +1,14 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=240&section=header&text=Ayush%20Roy&fontSize=88&fontColor=f4a7c3&fontAlignY=55&animation=twinkling" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=270&section=header&text=Ayush%20Roy&fontSize=96&fontColor=f4a7c3&fontAlignY=52&animation=twinkling&desc=systems%20engineer%20%C2%B7%20product%20builder%20%C2%B7%20rust%20in%20progress&descSize=15&descAlignY=70&descColor=7a4d66" width="100%"/>
+
+</div>
+
+<br/>
+
+<div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=15&duration=3500&pause=900&color=f4a7c3&center=true&vCenter=true&width=720&lines=Building+the+software+layer+for+the+physical+world.;Geospatial+%C2%B7+Realtime+%C2%B7+Computer+Vision+%C2%B7+Systems;The+domain+changes%3B+the+standard+doesn%27t.;Currently+going+deep+on+Rust.)](https://git.io/typing-svg)
 
 </div>
 
@@ -12,7 +20,7 @@
 
 <br/>
 
-![Profile Views](https://komarev.com/ghpvc/?username=yorayriniwnl&label=profile+views&color=2a0640&style=flat-square&labelColor=0d0018)&ensp;[![wakatime](https://wakatime.com/badge/user/yorayriniwnl.svg?style=flat-square&labelColor=0d0018&color=2a0640)](https://wakatime.com/@yorayriniwnl)
+![Profile Views](https://komarev.com/ghpvc/?username=yorayriniwnl&label=profile+views&color=2a0640&style=flat-square&labelColor=0d0018)&ensp;[![wakatime](https://wakatime.com/badge/user/yorayriniwnl.svg?style=flat-square&labelColor=0d0018&color=2a0640)](https://wakatime.com/@yorayriniwnl)&ensp;![GitHub followers](https://img.shields.io/github/followers/yorayriniwnl?style=flat-square&labelColor=0d0018&color=2a0640&label=followers)
 
 </div>
 
@@ -22,17 +30,26 @@
 
 <br/>
 
-Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. I build domain-specific systems — geospatial solar simulation, realtime energy telemetry, computer vision pipelines, browser-native 3D. The domain changes; the standard doesn't. Currently deepening in **Rust**. Open to the right full-time or contract role, remote.
+Full-stack developer and systems engineer based in **India (IST · UTC+5:30)**. I build infrastructure where physical-world constraints meet software architecture — geospatial solar simulation, realtime energy telemetry, computer vision pipelines, browser-native 3D. The domain changes; the standard doesn't. Currently going deep on **Rust**. Open to the right full-time or contract role, remote.
 
 <br/>
 
 <div align="center">
 
 ```
- Shipping  ⟶  Yor Helios  —  realtime energy monitoring  (FastAPI · WebSocket · Next.js)
- Learning  ⟶  Rust  —  ownership model, async runtimes, systems internals
-  Reading  ⟶  Distributed systems + geospatial engineering
-   Status  ⟶  🟢  Available  ·  Full-time  ·  Contract  ·  Remote
+ ╔══════════════════════════════════════════════════════════════════╗
+ ║  ayush@yor: ~                                          [live]   ║
+ ╠══════════════════════════════════════════════════════════════════╣
+ ║                                                                  ║
+ ║  shipping  →  Yor Helios · realtime energy monitoring            ║
+ ║               FastAPI · WebSocket · Next.js · Docker             ║
+ ║                                                                  ║
+ ║  learning  →  Rust — ownership, async runtimes, FFI              ║
+ ║  reading   →  Distributed systems · geospatial engineering       ║
+ ║  next      →  [CLASSIFIED] — a systems project in Rust           ║
+ ║                                                                  ║
+ ║  status    →  🟢  Open · Full-time · Contract · Remote           ║
+ ╚══════════════════════════════════════════════════════════════════╝
 ```
 
 </div>
@@ -61,7 +78,7 @@ Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. 
 
 **`☀` &ensp;[Yor Zenith](https://www.yorayriniwnl.in/projects/zenith)** &ensp;·&ensp; Solar Planning System
 
-<sub>Rooftop feasibility scoring, yield simulation, and spatial decision-making — unified into one engine. Geospatial queries run through PostGIS; 3D roof modelling is browser-native via Three.js with no plugin dependency. A hard domain made navigable.</sub>
+<sub>Rooftop feasibility at full precision. PostGIS queries rank parcels by irradiance; Three.js renders 3D roof geometry in-browser with zero plugin dependency. Yield simulation runs per-azimuth across a full annual cycle. Hard physical domain — made navigable from a single browser tab.</sub>
 
 <br/>
 
@@ -84,7 +101,7 @@ Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. 
 
 **`⚡` &ensp;[Yor Helios](https://www.yorayriniwnl.in/projects/yor-helios)** &ensp;·&ensp; Energy Monitoring Platform
 
-<sub>FastAPI ingestion with anomaly detection and WebSocket-pushed alerts. The Next.js dashboard reflects system state before a manual refresh would complete. Containerised end-to-end. Built for infrastructure that cannot afford to miss a reading.</sub>
+<sub>FastAPI ingestion with statistical anomaly detection; WebSocket push means the Next.js dashboard reflects system state before a manual refresh would complete. Containerised end-to-end. Built for infrastructure where missing a single reading is a failure — not an inconvenience.</sub>
 
 <br/>
 
@@ -109,7 +126,7 @@ Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. 
 
 **`🤖` &ensp;[Yor AI vs Real](https://www.yorayriniwnl.in/projects/ai-detector)** &ensp;·&ensp; Image Classifier
 
-<sub>Synthetic vs real image classification using LBP and GLCM texture features with a calibrated SVM. The confidence score reflects actual calibration — not softmax overconfidence. Containerised and production-ready.</sub>
+<sub>Synthetic vs real classification using LBP and GLCM texture features with a Platt-calibrated SVM. Confidence scores reflect actual probability — not softmax overconfidence. Containerised and production-ready. The kind of precision that matters when the decision matters.</sub>
 
 <br/>
 
@@ -129,15 +146,26 @@ Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. 
 
 <br/>
 
-**`🦀` &ensp;Next** &ensp;·&ensp; *In development*
+**`🦀` &ensp;Next** &ensp;·&ensp; Unnamed &ensp;·&ensp; *In development*
 
-<sub>The next system — in Rust. Details when it's worth showing. The standard doesn't change between projects.</sub>
+<sub>A systems-level project, written in Rust. The constraint: something that can't be built with acceptable performance in anything else. Domain adjacent to everything above — physical-world data, zero-tolerance precision, no GC pauses allowed.</sub>
 
 <br/>
 
 ![Rust](https://img.shields.io/badge/Rust-0d0018?style=flat-square&logo=rust&logoColor=c9a0b4)
 
-<br/><br/>
+<br/>
+
+<sub>
+
+```
+  codename  :  [CLASSIFIED]
+  stack     :  Rust · [TBD]
+  status    :  building
+  reveal    :  when it ships
+```
+
+</sub>
 
 </td>
 </tr>
@@ -208,9 +236,25 @@ Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. 
 
 <div align="center">
 
+### `— trophies —`
+
+<br/>
+
+[![trophy](https://github-profile-trophy.vercel.app/?username=yorayriniwnl&no-frame=true&no-bg=true&margin-w=4&theme=darkhub&column=6&row=1)](https://github.com/ryo-ma/github-profile-trophy)
+
+</div>
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
+
+<br/>
+
+<div align="center">
+
 ### `— this week —`
 
-<sub>Auto-updated daily via GitHub Actions · <a href="https://wakatime.com/@yorayriniwnl">wakatime.com/@yorayriniwnl</a></sub>
+<sub>Auto-updated daily via GitHub Actions &nbsp;·&nbsp; <a href="https://wakatime.com/@yorayriniwnl">wakatime.com/@yorayriniwnl</a></sub>
 
 </div>
 
@@ -251,9 +295,17 @@ Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. 
 
 <br/>
 
-<img src="https://github-readme-stats.vercel.app/api?username=yorayriniwnl&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&icon_color=c9607a&ring_color=3d0a50&border_radius=6" height="150"/>
+<img src="https://github-readme-stats.vercel.app/api?username=yorayriniwnl&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&icon_color=c9607a&ring_color=3d0a50&border_radius=6" height="160"/>
 &ensp;
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yorayriniwnl&layout=compact&hide_border=true&langs_count=6&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&border_radius=6" height="150"/>
+<img src="https://streak-stats.demolab.com/?user=yorayriniwnl&background=02000a&border=2a0640&stroke=2a0640&ring=c9607a&fire=f4a7c3&currStreakNum=f4a7c3&sideNums=7a4d66&currStreakLabel=f4a7c3&sideLabels=7a4d66&dates=7a4d66&hide_border=true&border_radius=6" height="160"/>
+
+<br/><br/>
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yorayriniwnl&layout=compact&hide_border=true&langs_count=6&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&border_radius=6" height="140"/>
+
+<br/><br/>
+
+[![activity graph](https://github-readme-activity-graph.vercel.app/graph?username=yorayriniwnl&bg_color=02000a&color=f4a7c3&line=2a0640&point=c9607a&area=true&area_color=1a0025&hide_border=true&custom_title=contribution%20activity)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 <br/><br/>
 
