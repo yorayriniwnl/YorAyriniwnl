@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=320&section=header&text=Ayush%20Roy&fontSize=92&fontColor=f4a7c3&fontAlignY=50&desc=Systems%20Builder%20%E2%80%A2%20Product%20Engineer%20%E2%80%A2%20Full-Stack%20Developer&descAlignY=67&descSize=17&descColor=7a4d66&animation=twinkling" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=280&section=header&text=Ayush%20Roy&fontSize=92&fontColor=f4a7c3&fontAlignY=50&desc=Systems%20Builder%20%E2%80%A2%20Product%20Engineer%20%E2%80%A2%20Full-Stack%20Developer&descAlignY=67&descSize=17&descColor=7a4d66&animation=twinkling" width="100%"/>
 
 </div>
 
-<div align="center">
-
 <br/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Cormorant+Garamond&weight=400&size=25&duration=3500&pause=2200&color=c9a0b4&center=true&vCenter=true&width=760&lines=I+build+things+that+feel+alive.;Systems+with+soul.+Surfaces+with+intent.;Every+decision+made+on+purpose.;Permanently+dissatisfied+with+good+enough.;Open+to+the+right+problem.)](https://www.yorayriniwnl.in)
+<div align="center">
+
+[![Portfolio](https://img.shields.io/badge/◈%20Portfolio-02000a?style=for-the-badge&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://www.yorayriniwnl.in)&ensp;[![LinkedIn](https://img.shields.io/badge/◈%20LinkedIn-02000a?style=for-the-badge&logo=linkedin&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://linkedin.com/in/yorayriniwnl)&ensp;[![Resume](https://img.shields.io/badge/◈%20Résumé-02000a?style=for-the-badge&logo=adobeacrobatreader&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://www.yorayriniwnl.in/resume.pdf)&ensp;[![Email](https://img.shields.io/badge/◈%20Hire%20Me-02000a?style=for-the-badge&logo=gmail&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](mailto:yorayriniwnl@gmail.com)
 
 <br/>
 
@@ -16,43 +16,17 @@
 &ensp;
 [![wakatime](https://wakatime.com/badge/user/yorayriniwnl.svg?style=flat-square&labelColor=0d0018&color=3d0a50)](https://wakatime.com/@yorayriniwnl)
 
-<br/>
-
-[![Portfolio](https://img.shields.io/badge/◈%20Portfolio-02000a?style=for-the-badge&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://www.yorayriniwnl.in)&ensp;[![LinkedIn](https://img.shields.io/badge/◈%20LinkedIn-02000a?style=for-the-badge&logo=linkedin&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://linkedin.com/in/yorayriniwnl)&ensp;[![Resume](https://img.shields.io/badge/◈%20Résumé-02000a?style=for-the-badge&logo=adobeacrobatreader&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://www.yorayriniwnl.in/resume.pdf)&ensp;[![Hire Me](https://img.shields.io/badge/◈%20Hire%20Me-02000a?style=for-the-badge&logo=gmail&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](mailto:yorayriniwnl@gmail.com)
-
 </div>
+
+<br/>
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=2" width="100%"/>
 
 <br/>
 
-<div align="center">
+Full-stack developer and product engineer based in **India (IST · UTC +5:30)**. I build systems where correctness and craft aren't in tension — solar planning platforms, computer vision pipelines, realtime energy dashboards, 3D browser experiences. The domain changes; the standard doesn't.
 
-```
-  Some people write to be understood.
-  I build that way —
-        with structure that holds,
-              surfaces that breathe,
-                    and systems that don't ask to be forgiven.
-```
-
-</div>
-
-<br/>
-
-I'm **Ayush Roy** — full-stack developer, product engineer, permanently dissatisfied with *good enough.*
-&ensp;Solar simulation platforms.&ensp;Computer vision pipelines.&ensp;Realtime dashboards.&ensp;3D browser experiences.
-Whatever the domain — the standard doesn't change.
-
-<br/>
-
-<div align="center">
-
-![](https://img.shields.io/badge/⚡%20Building-Yor%20Helios-f4a7c3?style=flat-square&labelColor=1a0025&color=2a0640)&ensp;
-![](https://img.shields.io/badge/◈%20Deepening-Rust%20%26%20Systems-c9a0b4?style=flat-square&labelColor=1a0025&color=2a0640)&ensp;
-![](https://img.shields.io/badge/🟢%20Available-Full--time%20·%20Contract%20·%20Remote-9b6a82?style=flat-square&labelColor=1a0025&color=2a0640)
-
-</div>
+Currently deepening in **Rust and systems programming** while actively looking for the right full-time or contract role.
 
 <br/>
 
@@ -78,7 +52,7 @@ Whatever the domain — the standard doesn't change.
 
 **`☀` &ensp;[Yor Zenith](https://www.yorayriniwnl.in/projects/zenith)** &ensp;·&ensp; *Solar Planning System*
 
-<sub>A complex domain made navigable. Rooftop feasibility, yield simulation, spatial queries, and full reporting — unified into something a person can actually reason with. Not a dashboard. A decision engine.</sub>
+<sub>Rooftop feasibility, yield simulation, spatial queries, and full reporting — unified into a single decision engine. Handles complex geospatial queries via PostGIS; 3D roof modelling runs in-browser via Three.js with no plugin dependency.</sub>
 
 <br/>
 
@@ -101,7 +75,7 @@ Whatever the domain — the standard doesn't change.
 
 **`⚡` &ensp;[Yor Helios](https://www.yorayriniwnl.in/projects/yor-helios)** &ensp;·&ensp; *Energy Monitoring Platform*
 
-<sub>FastAPI ingestion, anomaly detection, WebSocket alerts, and a Next.js dashboard that updates before you think to refresh. Built for systems that cannot afford to miss a signal.</sub>
+<sub>FastAPI ingestion layer with anomaly detection and WebSocket-pushed alerts. The Next.js dashboard reflects signal state before a manual refresh would complete. Built for systems that cannot afford to miss a reading.</sub>
 
 <br/>
 
@@ -124,9 +98,9 @@ Whatever the domain — the standard doesn't change.
 
 <br/>
 
-**`🧠` &ensp;[Yor Smriti](https://www.yorayriniwnl.in/projects/yor-smriti)** &ensp;·&ensp; *Knowledge System*
+**`🧠` &ensp;[Yor Smriti](https://www.yorayriniwnl.in/projects/yor-smriti)** &ensp;·&ensp; *Knowledge & Memory System*
 
-<sub>Built to remember things the way memory should. Narrative-first web experience for timelines and private storytelling — backed by an engine that doesn't apologise for being precise.</sub>
+<sub>Narrative-first interface for personal timelines and private storytelling. Framer Motion handles transitions that feel intentional rather than decorative; the underlying engine is precise about what it stores and why.</sub>
 
 <br/>
 
@@ -148,7 +122,7 @@ Whatever the domain — the standard doesn't change.
 
 **`🤖` &ensp;[Yor AI vs Real](https://www.yorayriniwnl.in/projects/ai-detector)** &ensp;·&ensp; *Image Classifier*
 
-<sub>A moderation pipeline that knows what it's looking at. Synthetic or real — classified with LBP/GLCM texture features and an SVM that earns its confidence score. Containerised. Production-ready.</sub>
+<sub>Synthetic vs real image classification using LBP/GLCM texture features and a calibrated SVM. Containerised and production-ready — the confidence score is earned, not assumed.</sub>
 
 <br/>
 
@@ -239,23 +213,7 @@ Whatever the domain — the standard doesn't change.
 
 <br/><br/>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=yorayriniwnl&hide_border=true&background=02000a&ring=c9607a&fire=f4a7c3&currStreakLabel=f4a7c3&sideLabels=7a4d66&dates=3d1a2e&stroke=150025&currStreakNum=f4a7c3&sideNums=c9a0b4&border_radius=8" height="145"/>
-
-<br/><br/>
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=yorayriniwnl&theme=radical&no-frame=true&no-bg=true&margin-w=8&column=6)](https://github.com/ryo-ma/github-profile-trophy)
-
-<br/><br/>
-
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=yorayriniwnl&bg_color=02000a&color=c9a0b4&line=3d0a50&point=f4a7c3&area=true&area_color=1a0025&hide_border=true&custom_title=contribution+activity&radius=6" width="100%"/>
-
-<br/><br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yorayriniwnl/yorayriniwnl/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yorayriniwnl/yorayriniwnl/output/github-contribution-grid-snake.svg">
-  <img alt="contribution snake" src="https://raw.githubusercontent.com/yorayriniwnl/yorayriniwnl/output/github-contribution-grid-snake-dark.svg" width="100%"/>
-</picture>
 
 </div>
 
@@ -271,56 +229,14 @@ Whatever the domain — the standard doesn't change.
 
 <br/>
 
-*The right problem. The right team. The right moment.*
+*Full-time · Contract · Remote — open to the right problem.*
 
 <br/>
 
-| &nbsp; | &nbsp; |
-|:--|:--|
-| **Open to** | Full-time &ensp;·&ensp; Contract &ensp;·&ensp; Remote |
-| **Timezone** | IST — UTC +5:30 &ensp;·&ensp; flexible overlap |
-| **Portfolio** | [www.yorayriniwnl.in](https://www.yorayriniwnl.in) |
-| **Resume** | [view / download](https://www.yorayriniwnl.in/resume.pdf) |
-| **Write me** | [yorayriniwnl@gmail.com](mailto:yorayriniwnl@gmail.com) &ensp;·&ensp; [linkedin](https://linkedin.com/in/yorayriniwnl) |
+[**yorayriniwnl@gmail.com**](mailto:yorayriniwnl@gmail.com) &ensp;·&ensp; [**LinkedIn**](https://linkedin.com/in/yorayriniwnl) &ensp;·&ensp; [**Portfolio**](https://www.yorayriniwnl.in) &ensp;·&ensp; [**Résumé**](https://www.yorayriniwnl.in/resume.pdf)
 
 </div>
 
 <br/><br/>
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=200&section=footer&reversal=true" width="100%"/>
-
----
-
-<details>
-<summary><sub>⚙ &nbsp;<b>enable the contribution snake</b> — create <code>.github/workflows/snake.yml</code></sub></summary>
-
-<br/>
-
-```yaml
-name: Generate Snake
-
-on:
-  schedule:
-    - cron: "0 */12 * * *"
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-      - uses: crazy-max/ghaction-github-pages@v3
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-</details>
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=160&section=footer&reversal=true" width="100%"/>
