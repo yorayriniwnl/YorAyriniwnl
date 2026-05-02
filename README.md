@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=280&section=header&text=Ayush%20Roy&fontSize=92&fontColor=f4a7c3&fontAlignY=50&desc=Systems%20Builder%20%E2%80%A2%20Product%20Engineer%20%E2%80%A2%20Full-Stack%20Developer&descAlignY=67&descSize=17&descColor=7a4d66&animation=twinkling" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=240&section=header&text=Ayush%20Roy&fontSize=88&fontColor=f4a7c3&fontAlignY=55&animation=twinkling" width="100%"/>
 
 </div>
 
@@ -8,35 +8,44 @@
 
 <div align="center">
 
-[![Portfolio](https://img.shields.io/badge/◈%20Portfolio-02000a?style=for-the-badge&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://www.yorayriniwnl.in)&ensp;[![LinkedIn](https://img.shields.io/badge/◈%20LinkedIn-02000a?style=for-the-badge&logo=linkedin&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://linkedin.com/in/yorayriniwnl)&ensp;[![Resume](https://img.shields.io/badge/◈%20Résumé-02000a?style=for-the-badge&logo=adobeacrobatreader&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](https://www.yorayriniwnl.in/resume.pdf)&ensp;[![Email](https://img.shields.io/badge/◈%20Hire%20Me-02000a?style=for-the-badge&logo=gmail&logoColor=f4a7c3&labelColor=02000a&color=1a0025)](mailto:yorayriniwnl@gmail.com)
+[![Portfolio](https://img.shields.io/badge/◈_Portfolio-1a0025?style=flat-square&logoColor=f4a7c3&color=1a0025)](https://www.yorayriniwnl.in)&ensp;[![Resume](https://img.shields.io/badge/◈_Résumé-1a0025?style=flat-square&logo=adobeacrobatreader&logoColor=f4a7c3&color=1a0025)](https://www.yorayriniwnl.in/resume.pdf)&ensp;[![LinkedIn](https://img.shields.io/badge/◈_LinkedIn-1a0025?style=flat-square&logo=linkedin&logoColor=f4a7c3&color=1a0025)](https://linkedin.com/in/yorayriniwnl)&ensp;[![Email](https://img.shields.io/badge/◈_Hire_Me-1a0025?style=flat-square&logo=gmail&logoColor=f4a7c3&color=1a0025)](mailto:yorayriniwnl@gmail.com)
 
 <br/>
 
-![Profile Views](https://komarev.com/ghpvc/?username=yorayriniwnl&label=profile+views&color=3d0a50&style=flat-square&labelColor=0d0018)
-&ensp;
-[![wakatime](https://wakatime.com/badge/user/yorayriniwnl.svg?style=flat-square&labelColor=0d0018&color=3d0a50)](https://wakatime.com/@yorayriniwnl)
+![Profile Views](https://komarev.com/ghpvc/?username=yorayriniwnl&label=profile+views&color=2a0640&style=flat-square&labelColor=0d0018)&ensp;[![wakatime](https://wakatime.com/badge/user/yorayriniwnl.svg?style=flat-square&labelColor=0d0018&color=2a0640)](https://wakatime.com/@yorayriniwnl)
 
 </div>
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=2" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
 
 <br/>
 
-Full-stack developer and product engineer based in **India (IST · UTC +5:30)**. I build systems where correctness and craft aren't in tension — solar planning platforms, computer vision pipelines, realtime energy dashboards, 3D browser experiences. The domain changes; the standard doesn't.
-
-Currently deepening in **Rust and systems programming** while actively looking for the right full-time or contract role.
-
-<br/>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=2" width="100%"/>
+Full-stack developer and product engineer based in **India (IST · UTC+5:30)**. I build domain-specific systems — geospatial solar simulation, realtime energy telemetry, computer vision pipelines, browser-native 3D. The domain changes; the standard doesn't. Currently deepening in **Rust**. Open to the right full-time or contract role, remote.
 
 <br/>
 
 <div align="center">
 
-### `✦ — selected work — ✦`
+```
+ Shipping  ⟶  Yor Helios  —  realtime energy monitoring  (FastAPI · WebSocket · Next.js)
+ Learning  ⟶  Rust  —  ownership model, async runtimes, systems internals
+  Reading  ⟶  Distributed systems + geospatial engineering
+   Status  ⟶  🟢  Available  ·  Full-time  ·  Contract  ·  Remote
+```
+
+</div>
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
+
+<br/>
+
+<div align="center">
+
+### `— work —`
 
 </div>
 
@@ -46,13 +55,13 @@ Currently deepening in **Rust and systems programming** while actively looking f
 <tr>
 <td width="50%" valign="top">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=f4a7c3&height=2" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=f4a7c3&height=1" width="100%"/>
 
 <br/>
 
-**`☀` &ensp;[Yor Zenith](https://www.yorayriniwnl.in/projects/zenith)** &ensp;·&ensp; *Solar Planning System*
+**`☀` &ensp;[Yor Zenith](https://www.yorayriniwnl.in/projects/zenith)** &ensp;·&ensp; Solar Planning System
 
-<sub>Rooftop feasibility, yield simulation, spatial queries, and full reporting — unified into a single decision engine. Handles complex geospatial queries via PostGIS; 3D roof modelling runs in-browser via Three.js with no plugin dependency.</sub>
+<sub>Rooftop feasibility scoring, yield simulation, and spatial decision-making — unified into one engine. Geospatial queries run through PostGIS; 3D roof modelling is browser-native via Three.js with no plugin dependency. A hard domain made navigable.</sub>
 
 <br/>
 
@@ -69,13 +78,13 @@ Currently deepening in **Rust and systems programming** while actively looking f
 </td>
 <td width="50%" valign="top">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=e8c96a&height=2" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=e8c96a&height=1" width="100%"/>
 
 <br/>
 
-**`⚡` &ensp;[Yor Helios](https://www.yorayriniwnl.in/projects/yor-helios)** &ensp;·&ensp; *Energy Monitoring Platform*
+**`⚡` &ensp;[Yor Helios](https://www.yorayriniwnl.in/projects/yor-helios)** &ensp;·&ensp; Energy Monitoring Platform
 
-<sub>FastAPI ingestion layer with anomaly detection and WebSocket-pushed alerts. The Next.js dashboard reflects signal state before a manual refresh would complete. Built for systems that cannot afford to miss a reading.</sub>
+<sub>FastAPI ingestion with anomaly detection and WebSocket-pushed alerts. The Next.js dashboard reflects system state before a manual refresh would complete. Containerised end-to-end. Built for infrastructure that cannot afford to miss a reading.</sub>
 
 <br/>
 
@@ -94,35 +103,13 @@ Currently deepening in **Rust and systems programming** while actively looking f
 <tr>
 <td width="50%" valign="top">
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=c9a0b4&height=2" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c9607a&height=1" width="100%"/>
 
 <br/>
 
-**`🧠` &ensp;[Yor Smriti](https://www.yorayriniwnl.in/projects/yor-smriti)** &ensp;·&ensp; *Knowledge & Memory System*
+**`🤖` &ensp;[Yor AI vs Real](https://www.yorayriniwnl.in/projects/ai-detector)** &ensp;·&ensp; Image Classifier
 
-<sub>Narrative-first interface for personal timelines and private storytelling. Framer Motion handles transitions that feel intentional rather than decorative; the underlying engine is precise about what it stores and why.</sub>
-
-<br/>
-
-![TypeScript](https://img.shields.io/badge/TypeScript-0d0018?style=flat-square&logo=typescript&logoColor=c9a0b4)
-![JavaScript](https://img.shields.io/badge/JavaScript-0d0018?style=flat-square&logo=javascript&logoColor=c9a0b4)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0d0018?style=flat-square&logo=framer&logoColor=c9a0b4)
-![Vercel](https://img.shields.io/badge/Vercel-0d0018?style=flat-square&logo=vercel&logoColor=c9a0b4)
-
-[**→ case study**](https://www.yorayriniwnl.in/projects/yor-smriti) &ensp; [**→ repo**](https://github.com/yorayriniwnl/Yor-Smriti)
-
-<br/>
-
-</td>
-<td width="50%" valign="top">
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=c9607a&height=2" width="100%"/>
-
-<br/>
-
-**`🤖` &ensp;[Yor AI vs Real](https://www.yorayriniwnl.in/projects/ai-detector)** &ensp;·&ensp; *Image Classifier*
-
-<sub>Synthetic vs real image classification using LBP/GLCM texture features and a calibrated SVM. Containerised and production-ready — the confidence score is earned, not assumed.</sub>
+<sub>Synthetic vs real image classification using LBP and GLCM texture features with a calibrated SVM. The confidence score reflects actual calibration — not softmax overconfidence. Containerised and production-ready.</sub>
 
 <br/>
 
@@ -136,36 +123,52 @@ Currently deepening in **Rust and systems programming** while actively looking f
 <br/>
 
 </td>
+<td width="50%" valign="top">
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=7a4d88&height=1" width="100%"/>
+
+<br/>
+
+**`🦀` &ensp;Next** &ensp;·&ensp; *In development*
+
+<sub>The next system — in Rust. Details when it's worth showing. The standard doesn't change between projects.</sub>
+
+<br/>
+
+![Rust](https://img.shields.io/badge/Rust-0d0018?style=flat-square&logo=rust&logoColor=c9a0b4)
+
+<br/><br/>
+
+</td>
 </tr>
 </table>
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=2" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
 
 <br/>
 
 <div align="center">
 
-### `✦ — the stack — ✦`
+### `— stack —`
 
 <br/>
 
-[![My Skills](https://skillicons.dev/icons?i=ts,react,nextjs,tailwind,threejs,nodejs&theme=dark&perline=6)](https://skillicons.dev)
+[![](https://skillicons.dev/icons?i=ts,react,nextjs,tailwind,threejs,nodejs&theme=dark&perline=6)](https://skillicons.dev)
 
 <br/>
 
-[![My Skills](https://skillicons.dev/icons?i=python,fastapi,rust,postgres,docker,git&theme=dark&perline=6)](https://skillicons.dev)
+[![](https://skillicons.dev/icons?i=python,fastapi,rust,postgres,docker,redis&theme=dark&perline=6)](https://skillicons.dev)
 
 <br/><br/>
 
 <details>
-<summary><sub>⟡ &nbsp;<b>full toolbox</b></sub></summary>
+<summary><sub>⟡ &nbsp;full toolbox</sub></summary>
 
 <br/>
 
-**Languages**
-
+**Languages** &ensp;
 ![TypeScript](https://img.shields.io/badge/TypeScript-0d0018?style=flat-square&logo=typescript&logoColor=f4a7c3)
 ![Python](https://img.shields.io/badge/Python-0d0018?style=flat-square&logo=python&logoColor=f4a7c3)
 ![Rust](https://img.shields.io/badge/Rust-0d0018?style=flat-square&logo=rust&logoColor=f4a7c3)
@@ -173,8 +176,9 @@ Currently deepening in **Rust and systems programming** while actively looking f
 ![C++](https://img.shields.io/badge/C++-0d0018?style=flat-square&logo=cplusplus&logoColor=f4a7c3)
 ![SQL](https://img.shields.io/badge/SQL-0d0018?style=flat-square&logo=postgresql&logoColor=f4a7c3)
 
-**Frontend**
+<br/>
 
+**Frontend** &ensp;
 ![React](https://img.shields.io/badge/React-0d0018?style=flat-square&logo=react&logoColor=f4a7c3)
 ![Next.js](https://img.shields.io/badge/Next.js-0d0018?style=flat-square&logo=nextdotjs&logoColor=f4a7c3)
 ![Three.js](https://img.shields.io/badge/Three.js-0d0018?style=flat-square&logo=threedotjs&logoColor=f4a7c3)
@@ -182,8 +186,9 @@ Currently deepening in **Rust and systems programming** while actively looking f
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0d0018?style=flat-square&logo=framer&logoColor=f4a7c3)
 ![Zustand](https://img.shields.io/badge/Zustand-0d0018?style=flat-square&logo=react&logoColor=f4a7c3)
 
-**Backend & Infra**
+<br/>
 
+**Backend & Infra** &ensp;
 ![FastAPI](https://img.shields.io/badge/FastAPI-0d0018?style=flat-square&logo=fastapi&logoColor=f4a7c3)
 ![Node.js](https://img.shields.io/badge/Node.js-0d0018?style=flat-square&logo=nodedotjs&logoColor=f4a7c3)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-0d0018?style=flat-square&logo=postgresql&logoColor=f4a7c3)
@@ -197,46 +202,81 @@ Currently deepening in **Rust and systems programming** while actively looking f
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=2" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
 
 <br/>
 
 <div align="center">
 
-### `✦ — on record — ✦`
+### `— this week —`
+
+<sub>Auto-updated daily via GitHub Actions · <a href="https://wakatime.com/@yorayriniwnl">wakatime.com/@yorayriniwnl</a></sub>
+
+</div>
 
 <br/>
 
-<img src="https://github-readme-stats.vercel.app/api?username=yorayriniwnl&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&icon_color=c9607a&ring_color=3d0a50&border_radius=8" height="155"/>
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
+
+<br/>
+
+<div align="center">
+
+### `— recent —`
+
+<sub>Auto-updated via GitHub Actions</sub>
+
+</div>
+
+<br/>
+
+<!--START_SECTION:activity-->
+1. Pushed commits to [yorayriniwnl/yorayriniwnl](https://github.com/yorayriniwnl/yorayriniwnl)
+<!--END_SECTION:activity-->
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
+
+<br/>
+
+<div align="center">
+
+### `— on record —`
+
+<br/>
+
+<img src="https://github-readme-stats.vercel.app/api?username=yorayriniwnl&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&icon_color=c9607a&ring_color=3d0a50&border_radius=6" height="150"/>
 &ensp;
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yorayriniwnl&layout=compact&hide_border=true&langs_count=6&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&border_radius=8" height="155"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yorayriniwnl&layout=compact&hide_border=true&langs_count=6&bg_color=02000a&title_color=f4a7c3&text_color=7a4d66&border_radius=6" height="150"/>
 
 <br/><br/>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=yorayriniwnl&bg_color=02000a&color=c9a0b4&line=3d0a50&point=f4a7c3&area=true&area_color=1a0025&hide_border=true&custom_title=contribution+activity&radius=6" width="100%"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yorayriniwnl/yorayriniwnl/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yorayriniwnl/yorayriniwnl/output/github-contribution-grid-snake.svg">
+  <img alt="contribution snake" src="https://raw.githubusercontent.com/yorayriniwnl/yorayriniwnl/output/github-contribution-grid-snake-dark.svg" width="100%"/>
+</picture>
 
 </div>
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=2" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:02000a,50:2a0640,100:02000a&height=1" width="100%"/>
 
 <br/>
 
 <div align="center">
 
-### `✦ — let's connect — ✦`
-
-<br/>
-
-*Full-time · Contract · Remote — open to the right problem.*
-
-<br/>
-
-[**yorayriniwnl@gmail.com**](mailto:yorayriniwnl@gmail.com) &ensp;·&ensp; [**LinkedIn**](https://linkedin.com/in/yorayriniwnl) &ensp;·&ensp; [**Portfolio**](https://www.yorayriniwnl.in) &ensp;·&ensp; [**Résumé**](https://www.yorayriniwnl.in/resume.pdf)
+[yorayriniwnl@gmail.com](mailto:yorayriniwnl@gmail.com) &ensp;·&ensp; [LinkedIn](https://linkedin.com/in/yorayriniwnl) &ensp;·&ensp; [Portfolio](https://www.yorayriniwnl.in) &ensp;·&ensp; [Résumé](https://www.yorayriniwnl.in/resume.pdf)
 
 </div>
 
-<br/><br/>
+<br/>
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=160&section=footer&reversal=true" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:02000a,20:0d0018,50:2a0640,80:0d0018,100:02000a&height=140&section=footer&reversal=true" width="100%"/>
