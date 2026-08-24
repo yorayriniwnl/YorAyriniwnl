@@ -1,0 +1,44 @@
+name: Build generated assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/generate_assets.py"
+      - "scripts/fonts/**"
+      - ".github/workflows/build-assets.yml"
+  schedule:
+    - cron: "0 6 * * 1"   # weekly Monday 06:00 UTC — cheap insurance against silent drift
+  workflow_dispatch: {}    # manual "run now" button in the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main (source)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Generate hero, dividers, waves + tagline
+        run: python3 main/scripts/generate_assets.py
+
+      - name: Checkout output (generated artifacts)
+        uses: actions/checkout@v4
+        with:
+          ref: output
+          path: output
+
+      - name: Copy generated files into output branch
+        run: cp main/generated/hero.svg main/generated/divider-primary.svg main/generated/divider-secondary.svg main/generated/wave-header.svg main/generated/wave-footer.svg main/generated/wave-final.svg main/generated/tagline.svg main/generated/seal-portfolio.svg main/generated/seal-helios.svg main/generated/seal-zenith.svg main/generated/seal-ai-vs-real.svg main/generated/seal-talks.svg output/
+
+      - name: Commit if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: output
+          commit_message: "chore: regenerate hero, divider, wave + tagline assets"
+          branch: output
