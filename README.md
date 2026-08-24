@@ -16,7 +16,7 @@
 
 <div align="center">
 
-<a href="https://www.yorayriniwnl.in"><img src="https://img.shields.io/badge/-Portfolio-2e0010?style=for-the-badge&logoColor=e8434a&labelColor=180008" height="30" alt="Portfolio"/></a>&ensp;<a href="https://www.yorayriniwnl.in/resume.pdf"><img src="https://img.shields.io/badge/-Résumé-2e0010?style=for-the-badge&logo=adobeacrobatreader&logoColor=e8434a&labelColor=180008" height="30" alt="Résumé"/></a>&ensp;<a href="https://linkedin.com/in/yorayriniwnl"><img src="https://img.shields.io/badge/-LinkedIn-2e0010?style=for-the-badge&logo=linkedin&logoColor=e8434a&labelColor=180008" height="30" alt="LinkedIn"/></a>&ensp;<a href="[DEVPOST_URL]"><img src="https://img.shields.io/badge/-Devpost-2e0010?style=for-the-badge&logo=devpost&logoColor=e8434a&labelColor=180008" height="30" alt="Devpost"/></a>&ensp;<a href="mailto:yorayriniwnl@gmail.com"><img src="https://img.shields.io/badge/-Hire%20Me-c85850?style=for-the-badge&logo=gmail&logoColor=fff&labelColor=8a2040" height="30" alt="Hire Me"/></a>
+<a href="https://www.yorayriniwnl.in"><img src="https://img.shields.io/badge/-Portfolio-2e0010?style=for-the-badge&logoColor=e8434a&labelColor=180008" height="30" alt="Portfolio"/></a>&ensp;<a href="https://www.yorayriniwnl.in/resume.pdf"><img src="https://img.shields.io/badge/-Résumé-2e0010?style=for-the-badge&logo=adobeacrobatreader&logoColor=e8434a&labelColor=180008" height="30" alt="Résumé"/></a>&ensp;<a href="https://linkedin.com/in/yorayriniwnl"><img src="https://img.shields.io/badge/-LinkedIn-2e0010?style=for-the-badge&logo=linkedin&logoColor=e8434a&labelColor=180008" height="30" alt="LinkedIn"/></a>&ensp;<a href="https://devpost.com/yorayriniwnl"><img src="https://img.shields.io/badge/-Devpost-2e0010?style=for-the-badge&logo=devpost&logoColor=e8434a&labelColor=180008" height="30" alt="Devpost"/></a>&ensp;<a href="mailto:yorayriniwnl@gmail.com"><img src="https://img.shields.io/badge/-Hire%20Me-c85850?style=for-the-badge&logo=gmail&logoColor=fff&labelColor=8a2040" height="30" alt="Hire Me"/></a>
 
 <br/><br/>
 
@@ -35,7 +35,7 @@ Full-stack developer and systems engineer based in **India (IST · UTC+5:30)**. 
 <br/>
 
 <div align="center">
-<sub><b>TELECOM ENGINEERING INTERN</b> &ensp;·&ensp; BSNL &ensp;·&ensp; [DATES] &ensp;·&ensp; [one line on what you actually did — network ops, provisioning, field work, etc.]</sub>
+<sub><b>TELECOM ENGINEERING INTERN</b> &ensp;·&ensp; BSNL &ensp;·&ensp; Jun 2026 &ensp;·&ensp; Trained in telecom & data-network systems and infrastructure during a 4-week hybrid program.</sub>
 </div>
 
 <br/>
