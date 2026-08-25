@@ -128,7 +128,7 @@ def fetch_languages(non_fork_repos, token):
     for r in non_fork_repos:
         try:
             langs = gh_rest(f"/repos/{USERNAME}/{r['name']}/languages", token)
-        except urllib.error.HTTPError as e:
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
             print(f"[stats] languages fetch failed for {r['name']}: {e}", file=sys.stderr)
             continue
         for lang, n in langs.items():
@@ -136,6 +136,17 @@ def fetch_languages(non_fork_repos, token):
     ranked = sorted(totals.items(), key=lambda kv: -kv[1])
     print(f"[stats] language totals across {len(non_fork_repos)} repos: {ranked[:8]}")
     return ranked
+
+
+def language_percentages(ranked_langs):
+    """Return display rows whose percentages use the complete language total.
+
+    Only the first six rows are rendered, but languages outside that slice
+    must still contribute to the denominator or the chart overstates the
+    visible languages.
+    """
+    total = sum(n for _, n in ranked_langs) or 1
+    return [(lang, n, n / total * 100) for lang, n in ranked_langs[:6]]
 
 
 CONTRIB_QUERY = """
@@ -156,7 +167,11 @@ def fetch_streak(stats_token):
     if not stats_token:
         print("[stats] STATS_TOKEN not set — skipping streak card")
         return None
-    data = gh_graphql(CONTRIB_QUERY, {"login": USERNAME}, stats_token)
+    try:
+        data = gh_graphql(CONTRIB_QUERY, {"login": USERNAME}, stats_token)
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError) as e:
+        print(f"[stats] contribution fetch failed, skipping streak card: {e}", file=sys.stderr)
+        return None
     if "errors" in data:
         print(f"[stats] GraphQL errors, skipping streak card: {data['errors']}", file=sys.stderr)
         return None
@@ -263,18 +278,16 @@ def build_streak_panel(streak):
 def build_languages_panel(ranked_langs):
     w, h = 380, 170
     shell = card_shell(w, h, "TOP LANGUAGES")
-    top = ranked_langs[:6]
+    top = language_percentages(ranked_langs)
     if not top:
         msg = (f'<text x="{w/2}" y="95" text-anchor="middle" class="stat-lbl" font-size="11" opacity="0.7">'
                f'no data yet</text>'
                f'<text x="{w/2}" y="114" text-anchor="middle" class="stat-lbl" font-size="10" opacity="0.5">'
                f'populates on first Action run</text>')
         return shell + msg
-    total = sum(n for _, n in top) or 1
     rows = []
     y = 56
-    for i, (lang, n) in enumerate(top):
-        pct = n / total * 100
+    for i, (lang, n, pct) in enumerate(top):
         color = LANG_COLORS[i % len(LANG_COLORS)]
         bar_max = w - 56 - 70
         bar_w = max(bar_max * pct / 100, 3)

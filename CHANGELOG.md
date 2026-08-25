@@ -1,5 +1,11 @@
 # What moved, and why
 
+## Pass 7: reduce the surface area
+
+The profile was visually overbuilt and operationally too dependent on generated widgets. This pass keeps the strong hero but removes the animated banners, badge walls, vanity stats, and broken case-study embeds from the README. Work is now presented as short, direct project summaries with repository links where the link is real.
+
+The output workflows now serialize writes to the `output` branch, have explicit time limits, and the snake workflow has the write permission it needs. The stats renderer now calculates language percentages against the complete language set, handles contribution-fetch failures without failing the whole build, and has a small committed test suite.
+
 ## Pass 6 — the parts that were still restrained ("Both")
 Pass 5 named two things it had deliberately not touched — the work
 section (never had a custom visual pass at all) and the tagline/
