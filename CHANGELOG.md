@@ -1,5 +1,11 @@
 # What moved, and why
 
+## Pass 9: operator interface
+
+Pass 8 restored the profile's identity, but its middle still read like a decorated document: large spacer runs, text-first project cards, and motion confined to ornamental SVGs. This pass rebuilds the README as a continuous GitHub-safe interface. Original black-and-crimson key art generated from Ayush's project-owned portrait now anchors a 620px animated title sequence with scan passes, embers, HUD rings, telemetry, and a personal systems lockup.
+
+The rest of the profile now uses a matching visual system: four clickable command-deck controls, a scrolling signal strip, an animated identity topology, a flagship particle-field showcase, six illustrated project consoles, an orbiting technical arsenal, denser record panels, and a cinematic finale. Project and loadout details moved into native `<details>` controls, adding real interaction without relying on JavaScript that GitHub would strip. All raster artwork is embedded into self-contained generated SVGs, and every remote third-party visual dependency was removed after live QA found the activity-graph deployment paused.
+
 ## Pass 8: Steam profile synthesis
 
 The stripped-back Pass 7 removed too much of the profile's identity. This pass restores the cinematic hero, animated tagline, project showcase grid, seals, technical loadout, and custom stats while rebuilding their visual language from the live Steam profile: pure black foundations, translucent panels, pale type, and crimson showcase headers running from `#671515` to `#8c1616`.

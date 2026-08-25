@@ -6,6 +6,8 @@ on:
     paths:
       - "scripts/generate_assets.py"
       - "scripts/fonts/**"
+      - "assets/**"
+      - "tests/test_generate_assets.py"
       - ".github/workflows/build-assets.yml"
   schedule:
     - cron: "0 6 * * 1"   # weekly Monday 06:00 UTC — cheap insurance against silent drift
@@ -29,8 +31,11 @@ jobs:
           ref: main
           path: main
 
-      - name: Generate hero, dividers, waves + tagline
+      - name: Generate cinematic profile experience
         run: python3 main/scripts/generate_assets.py
+
+      - name: Validate generated assets
+        run: python3 -m unittest discover -s main/tests -v
 
       - name: Checkout output (generated artifacts)
         uses: actions/checkout@v4
