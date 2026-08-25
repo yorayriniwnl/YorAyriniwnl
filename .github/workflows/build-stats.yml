@@ -34,10 +34,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Optional: a classic PAT with the `read:user` scope, added under
           # Settings -> Secrets and variables -> Actions -> New repository
-          # secret, named STATS_TOKEN. Without it, the streak card renders
-          # a "not configured" placeholder instead of failing the build —
-          # see scripts/generate_stats.py's docstring for why this needs a
-          # separate token from the default GITHUB_TOKEN.
+          # secret, named STATS_TOKEN. Without it, the middle card renders
+          # a system-status panel instead of exposing configuration text.
           STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
         run: python3 main/scripts/generate_stats.py
 

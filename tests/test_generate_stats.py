@@ -32,6 +32,13 @@ class GenerateStatsTests(unittest.TestCase):
         root = ET.fromstring(svg)
         self.assertTrue(root.tag.endswith("svg"))
 
+    def test_missing_streak_token_renders_system_status(self):
+        panel = generate_stats.build_streak_panel(None)
+
+        self.assertIn("SYSTEM STATUS", panel)
+        self.assertIn("TIMEZONE", panel)
+        self.assertNotIn("STATS_TOKEN", panel)
+
 
 if __name__ == "__main__":
     unittest.main()

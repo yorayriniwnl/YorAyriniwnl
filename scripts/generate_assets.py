@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Regenerates everything under generated/ — hero.svg and the two ornamental
-section dividers — from the two vendored fonts + the config below.
+Regenerates the profile's visual system under generated/ from the two
+vendored fonts and the config below.
 
 Run locally with `python3 scripts/generate_assets.py`, or let
 .github/workflows/build-assets.yml run it on push / weekly cron.
@@ -23,18 +23,19 @@ CONFIG = {
     "role": "SYSTEMS ENGINEER  ·  PRODUCT BUILDER",
     "width": 1500,
     "height": 300,
-    # Void-to-crimson gradient — same 6-stop shape/lightness curve as the
-    # original purple palette, hue-rotated to a red/wine family to match
-    # the Steam profile's red theme (see CHANGELOG "Pass 4").
+    # Steam-profile palette: a pure-black canvas, translucent black panels,
+    # and the #671515 -> #8c1616 crimson header gradient used by the live
+    # profile's showcase bars.
     "bg_stops": [
-        (0, "#0a0002"), (15, "#180008"), (45, "#2e0010"),
-        (65, "#4a0d1a"), (85, "#180008"), (100, "#0a0002"),
+        (0, "#000000"), (18, "#050101"), (42, "#1f0404"),
+        (64, "#671515"), (82, "#180303"), (100, "#000000"),
     ],
-    "primary": "#e8434a",    # primary accent (was "gold" #e8c96a)
-    "secondary": "#c85850",  # secondary accent (was "rose" #c9607a)
-    "sparkle": "#ff9d94",    # detail/sparkle accent (was #f4a7c3)
-    "muted": "#cf9a95",      # role text (was #c9a0b4)
-    "shimmer": "#fff2f0",    # text shimmer highlight (was #fff8e6)
+    "primary": "#e84b4b",
+    "secondary": "#b92b2b",
+    "sparkle": "#ff8a7f",
+    "muted": "#c4c4c4",
+    "shimmer": "#ffffff",
+    "name_color": "#f5eaea",
     "seed": 42,
     "star_counts": {"far": 34, "mid": 24, "near": 13},
     "sparkle_count": 6,
@@ -57,8 +58,8 @@ CONFIG = {
             ("The domain changes; the standard doesn't.", 364.9),
         ],
     },
-    "wave_header_stops": [(0, "#0a0002"), (60, "#2e0010"), (100, "#180008")],
-    "wave_footer_stops": [(0, "#180008"), (60, "#2e0010"), (100, "#0a0002")],
+    "wave_header_stops": [(0, "#000000"), (60, "#671515"), (100, "#160303")],
+    "wave_footer_stops": [(0, "#160303"), (60, "#671515"), (100, "#000000")],
     # (output filename, glyph, config color key) — one small seal per work-
     # section project, in the same primary/secondary alternation the
     # badges under each project already use.
@@ -455,8 +456,8 @@ def build_hero_svg(cfg):
 {embers}
 {"".join(comet_bodies)}
 {ornament}
-<text x="50%" y="150" text-anchor="middle" class="name" fill="{cfg["primary"]}" filter="url(#nameGlow)" opacity="0.55">{esc(cfg["name"])}</text>
-<text x="50%" y="150" text-anchor="middle" class="name" fill="{cfg["primary"]}">{esc(cfg["name"])}</text>
+<text x="50%" y="150" text-anchor="middle" class="name" fill="{cfg["primary"]}" filter="url(#nameGlow)" opacity="0.68">{esc(cfg["name"])}</text>
+<text x="50%" y="150" text-anchor="middle" class="name" fill="{cfg["name_color"]}">{esc(cfg["name"])}</text>
 <text x="50%" y="150" text-anchor="middle" class="name" fill="url(#shimmerGrad)">{esc(cfg["name"])}</text>
 <text x="50%" y="206" text-anchor="middle" class="role">{esc(cfg["role"])}</text>
 <rect width="{W}" height="{H}" filter="url(#heroGrain)" opacity="0.05"/>
@@ -662,6 +663,37 @@ def build_divider_svg(color):
 </svg>'''
 
 
+# ------------------------------------------------------------- panel headers
+
+def build_panel_header_svg(title, subtitle, cfg):
+    """A Steam-profile-style showcase header on a pure-black canvas."""
+    W, H = 1500, 56
+    primary = cfg["primary"]
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="panelBg" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#671515"/><stop offset="90%" stop-color="#8c1616"/><stop offset="100%" stop-color="#2a0505"/>
+</linearGradient>
+<linearGradient id="panelEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="{primary}" stop-opacity="0.9"/><stop offset="72%" stop-color="{primary}" stop-opacity="0.24"/><stop offset="100%" stop-color="{primary}" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="panelSweep" gradientUnits="userSpaceOnUse" x1="-260" y1="0" x2="0" y2="0">
+<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="50%" stop-color="#ffffff" stop-opacity="0.16"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+<animate attributeName="x1" values="-260;1500" dur="8s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="0;1760" dur="8s" repeatCount="indefinite"/>
+</linearGradient>
+</defs>
+<rect width="{W}" height="{H}" fill="#000000"/>
+<rect x="14" y="7" width="1472" height="42" rx="5" fill="#000000" opacity="0.78"/>
+<rect x="18" y="9" width="1464" height="38" rx="4" fill="url(#panelBg)" opacity="0.94"/>
+<rect x="18" y="9" width="5" height="38" rx="2" fill="{primary}"/>
+<rect x="18" y="9" width="1464" height="38" rx="4" fill="url(#panelSweep)"/>
+<rect x="18" y="46" width="1464" height="1" fill="url(#panelEdge)"/>
+<text x="44" y="34" fill="#ffffff" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="300" letter-spacing="3">{esc(title)}</text>
+<text x="1456" y="33" text-anchor="end" fill="#c4c4c4" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="2">{esc(subtitle)}</text>
+</svg>'''
+
+
 # ------------------------------------------------------------------ tagline
 
 def build_tagline_svg(cfg):
@@ -769,14 +801,14 @@ if __name__ == "__main__":
 
     hero = build_hero_svg(CONFIG)
     hero_path = os.path.join(OUT_DIR, "hero.svg")
-    with open(hero_path, "w") as f:
+    with open(hero_path, "w", encoding="utf-8") as f:
         f.write(hero)
     print(f"wrote {hero_path} ({len(hero)/1024:.1f} KB)")
 
     for label, color in [("primary", CONFIG["primary"]), ("secondary", CONFIG["secondary"])]:
         div = build_divider_svg(color)
         div_path = os.path.join(OUT_DIR, f"divider-{label}.svg")
-        with open(div_path, "w") as f:
+        with open(div_path, "w", encoding="utf-8") as f:
             f.write(div)
         print(f"wrote {div_path} ({len(div)/1024:.1f} KB)")
 
@@ -787,25 +819,38 @@ if __name__ == "__main__":
     for name, stops, crest_up, star_count, seed in wave_specs:
         svg = build_wave_banner_svg(1500, 40, stops, crest_up, star_count, CONFIG["primary"], seed)
         path = os.path.join(OUT_DIR, f"{name}.svg")
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write(svg)
         print(f"wrote {path} ({len(svg)/1024:.1f} KB)")
 
     wave_final = build_wave_final_svg(CONFIG)
     wave_final_path = os.path.join(OUT_DIR, "wave-final.svg")
-    with open(wave_final_path, "w") as f:
+    with open(wave_final_path, "w", encoding="utf-8") as f:
         f.write(wave_final)
     print(f"wrote {wave_final_path} ({len(wave_final)/1024:.1f} KB)")
 
     tagline = build_tagline_svg(CONFIG)
     tagline_path = os.path.join(OUT_DIR, "tagline.svg")
-    with open(tagline_path, "w") as f:
+    with open(tagline_path, "w", encoding="utf-8") as f:
         f.write(tagline)
     print(f"wrote {tagline_path} ({len(tagline)/1024:.1f} KB)")
 
     for i, (name, glyph, color_key) in enumerate(CONFIG["seals"]):
         seal = build_seal_svg(glyph, CONFIG[color_key], CONFIG["seed"] + 100 + i)
         seal_path = os.path.join(OUT_DIR, f"{name}.svg")
-        with open(seal_path, "w") as f:
+        with open(seal_path, "w", encoding="utf-8") as f:
             f.write(seal)
         print(f"wrote {seal_path} ({len(seal)/1024:.1f} KB)")
+
+    panel_headers = [
+        ("panel-profile", "SYSTEM PROFILE", "STATUS // BUILDING"),
+        ("panel-showcase", "PROJECT SHOWCASE", "05 SYSTEMS // 01 ACTIVE BUILD"),
+        ("panel-loadout", "TECHNICAL LOADOUT", "PRODUCT // SYSTEMS // INFRA"),
+        ("panel-record", "SYSTEM RECORD", "PUBLIC BUILD LOG"),
+    ]
+    for filename, title, subtitle in panel_headers:
+        panel = build_panel_header_svg(title, subtitle, CONFIG)
+        panel_path = os.path.join(OUT_DIR, f"{filename}.svg")
+        with open(panel_path, "w", encoding="utf-8") as f:
+            f.write(panel)
+        print(f"wrote {panel_path} ({len(panel)/1024:.1f} KB)")

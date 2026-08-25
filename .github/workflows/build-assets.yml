@@ -39,11 +39,11 @@ jobs:
           path: output
 
       - name: Copy generated files into output branch
-        run: cp main/generated/hero.svg main/generated/divider-primary.svg main/generated/divider-secondary.svg main/generated/wave-header.svg main/generated/wave-footer.svg main/generated/wave-final.svg main/generated/tagline.svg main/generated/seal-portfolio.svg main/generated/seal-helios.svg main/generated/seal-zenith.svg main/generated/seal-ai-vs-real.svg main/generated/seal-talks.svg output/
+        run: cp main/generated/*.svg output/
 
       - name: Commit if changed
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           repository: output
-          commit_message: "chore: regenerate hero, divider, wave + tagline assets"
+          commit_message: "chore: regenerate profile visual assets"
           branch: output

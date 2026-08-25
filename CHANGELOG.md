@@ -1,5 +1,11 @@
 # What moved, and why
 
+## Pass 8: Steam profile synthesis
+
+The stripped-back Pass 7 removed too much of the profile's identity. This pass restores the cinematic hero, animated tagline, project showcase grid, seals, technical loadout, and custom stats while rebuilding their visual language from the live Steam profile: pure black foundations, translucent panels, pale type, and crimson showcase headers running from `#671515` to `#8c1616`.
+
+Four generated panel headers now give the README the same showcase structure as Steam without copying its layout literally. Dead resume and case-study links remain removed, the missing contribution snake remains out, and the no-token stats state now renders a deliberate system-status card instead of a configuration warning. Asset generation also writes UTF-8 explicitly so project seal glyphs work on Windows as well as Linux.
+
 ## Pass 7: reduce the surface area
 
 The profile was visually overbuilt and operationally too dependent on generated widgets. This pass keeps the strong hero but removes the animated banners, badge walls, vanity stats, and broken case-study embeds from the README. Work is now presented as short, direct project summaries with repository links where the link is real.

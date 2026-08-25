@@ -9,13 +9,9 @@ Actions (.github/workflows/build-stats.yml) on a daily cron:
     only raises the rate limit from 60/hr to 5000/hr, no special scope
     required.
   - STATS_TOKEN (a classic Personal Access Token with the `read:user`
-    scope, added as a repo secret) is needed for the GraphQL contribution
-    -calendar query specifically. The default GITHUB_TOKEN is scoped to
-    the repo it runs in and does not reliably carry `read:user` — this is
-    a well-known gap, not an oversight, and it's why the other self-hosted
-    "streak stats" projects all ask for a separate PAT too. Without
-    STATS_TOKEN, the streak card is skipped with a visible placeholder
-    instead of failing the whole workflow.
+    scope, added as a repo secret) enables the GraphQL contribution
+    calendar. Without it, the middle card becomes a deliberate system
+    status panel, so the public profile never exposes setup instructions.
 
 Local usage:
     python3 scripts/generate_stats.py --sample     # design iteration,
@@ -54,13 +50,13 @@ GQL = "https://api.github.com/graphql"
 # second copy rather than a shared import so this script still runs
 # standalone in Actions; if the palette moves again, update both files
 # (see CHANGELOG "Pass 4" for the rationale and a note on this duplication).
-PRIMARY = "#e8434a"     # was GOLD "#e8c96a"
-SECONDARY = "#c85850"   # was ROSE "#c9607a"
-SPARKLE = "#ff9d94"     # was "#f4a7c3"
-MUTED = "#cf9a95"       # was "#c9a0b4"
-VOID = "#0a0002"        # was "#02000a"
-PANEL = "#180008"       # was "#0d0018"
-BORDER = "#5c1220"      # card stroke, was "#3d0a50"
+PRIMARY = "#e84b4b"
+SECONDARY = "#b92b2b"
+SPARKLE = "#ff8a7f"
+MUTED = "#c4c4c4"
+VOID = "#000000"
+PANEL = "#050505"
+BORDER = "#671515"
 
 LANG_COLORS = [PRIMARY, SECONDARY, SPARKLE, "#b0685a", MUTED, "#6b1420"]
 
@@ -246,14 +242,18 @@ def build_overview_panel(overview):
 
 def build_streak_panel(streak):
     w, h = 380, 170
-    shell = card_shell(w, h, "CONTRIBUTION STREAK")
     if streak is None:
-        msg = (f'<text x="{w/2}" y="95" text-anchor="middle" class="stat-lbl" font-size="11" opacity="0.7">'
-               f'STATS_TOKEN not configured</text>'
-               f'<text x="{w/2}" y="114" text-anchor="middle" class="stat-lbl" font-size="10" opacity="0.5">'
-               f'add a PAT with read:user to enable</text>')
-        return shell + msg
+        shell = card_shell(w, h, "SYSTEM STATUS")
+        status = [("IST", "TIMEZONE"), ("RUST", "SYSTEMS"), ("OPEN", "COLLAB")]
+        col_w = (w - 56) / 3
+        cells = []
+        for i, (value, label) in enumerate(status):
+            cx = 28 + col_w * i + col_w / 2
+            cells.append(f'<text x="{cx:.1f}" y="104" text-anchor="middle" class="stat-num" font-size="30">{value}</text>')
+            cells.append(f'<text x="{cx:.1f}" y="130" text-anchor="middle" class="stat-lbl" font-size="9">{label}</text>')
+        return shell + "".join(cells)
 
+    shell = card_shell(w, h, "CONTRIBUTION STREAK")
     stats = [("CURRENT", streak["current"]), ("LONGEST", streak["longest"]), ("TOTAL (1Y)", streak["total"])]
     col_w = (w - 56) / 3
     cells = []
@@ -359,7 +359,7 @@ def main():
 
     svg = build_stats_combined_svg(overview, ranked_langs, streak, dmmono_b64, cormorant_b64)
     path = os.path.join(OUT_DIR, "stats.svg")
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(svg)
     print(f"wrote {path} ({len(svg)/1024:.1f} KB)")
 

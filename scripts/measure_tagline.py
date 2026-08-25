@@ -45,7 +45,7 @@ def main():
         f"<body><svg xmlns='http://www.w3.org/2000/svg'>{body}</svg></body></html>"
     )
     tmp = os.path.join(HERE, "..", "_measure_tmp.html")
-    with open(tmp, "w") as f:
+    with open(tmp, "w", encoding="utf-8") as f:
         f.write(html)
 
     with sync_playwright() as p:
