@@ -185,7 +185,7 @@ I build infrastructure where physical-world constraints meet software: geospatia
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-000000?style=flat-square&logo=postgresql&logoColor=e84b4b)
 ![Redis](https://img.shields.io/badge/Redis-000000?style=flat-square&logo=redis&logoColor=e84b4b)
 
-<sub>PRIVATE BUILD // PUBLIC RELEASE WHEN THE CURRENT VERSION IS READY</sub>
+[SOURCE](https://github.com/yorayriniwnl/Yor-Talks)&ensp;·&ensp;<sub>PUBLIC BUILD // ACTIVE DEVELOPMENT</sub>
 
 <br/>
 
