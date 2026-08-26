@@ -19,10 +19,10 @@ OPERATOR MANIFEST
 <text x="34" y="132" class="serif" font-size="35" fill="#f5eaea">software meets reality.</text>
 <rect x="34" y="154" width="440" height="1" fill="#671515"/>
 <text x="34" y="188" class="mono" font-size="13" fill="#a99494">
-<tspan x="34" dy="0">Geospatial solar simulation.</tspan>
-<tspan x="34" dy="25">Realtime energy telemetry.</tspan>
-<tspan x="34" dy="25">Computer vision pipelines.</tspan>
-<tspan x="34" dy="25">Browser-native 3D products.</tspan>
+<tspan x="34" dy="0">4,000 GPU particle interfaces.</tspan>
+<tspan x="34" dy="25">Real-time energy monitoring.</tspan>
+<tspan x="34" dy="25">SVM + texture computer vision.</tspan>
+<tspan x="34" dy="25">BSNL telecom systems grounding.</tspan>
 </text>
 <text x="34" y="319" class="mono" font-size="10" fill="#e84b4b" letter-spacing="2">
 THE DOMAIN CHANGES. THE STANDARD DOESN'T.
@@ -46,11 +46,11 @@ THE DOMAIN CHANGES. THE STANDARD DOESN'T.
 CURRENT STATE
 </text>
 <text x="1118" y="93" class="mono" font-size="13" fill="#8d7777">ROLE</text>
-<text x="1118" y="116" class="mono" font-size="17" fill="#f5eaea">FULL-STACK / SYSTEMS</text>
+<text x="1118" y="116" class="mono" font-size="17" fill="#f5eaea">FULL-STACK / ML</text>
 <text x="1118" y="158" class="mono" font-size="13" fill="#8d7777">LOCATION</text>
-<text x="1118" y="181" class="mono" font-size="17" fill="#f5eaea">INDIA · IST</text>
+<text x="1118" y="181" class="mono" font-size="17" fill="#f5eaea">BHUBANESWAR · INDIA</text>
 <text x="1118" y="223" class="mono" font-size="13" fill="#8d7777">SIGNAL</text>
-<text x="1118" y="246" class="mono" font-size="17" fill="#f5eaea">OPEN TO BUILD</text>
+<text x="1118" y="246" class="mono" font-size="17" fill="#f5eaea">OPEN TO INTERNSHIPS</text>
 <rect x="1118" y="274" width="310" height="42" rx="3" fill="#130303" stroke="#671515"/>
 <circle cx="1140" cy="295" r="5" fill="#e84b4b">
 <animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite"/>
