@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 12: project key art suite
+
+The project cards now carry four generated visual systems instead of relying on schematic placeholders: a solar digital twin for Yor Zenith, a live power-grid anomaly scene for Yor Helios, a human-versus-synthetic vision study for AI vs Real, and a crimson realtime network for Yor Talks V2. Each scene is embedded into its card as self-contained raster art, then layered with the existing SVG traces, pulse nodes, confidence telemetry, and sweep motion.
+
 ## Pass 11: resume sync + key art
 
 The profile now speaks from the current resume: full-stack development, applied machine learning, React/Next.js, Python/FastAPI, WebSockets, computer vision, GenAI, AWS, and the BSNL telecom internship. Yor Zenith and Yor Talks V2 now point to the current stack and repository, while the loadout and operator console use the updated location and internship signal.

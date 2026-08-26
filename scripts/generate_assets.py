@@ -1572,13 +1572,18 @@ PORTFOLIO
 
 def project_visual_svg(kind, cfg):
     if kind == "helios":
-        return '''
+        art = asset_data_uri("project-helios-keyart-v2.png", "image/png")
+        return f'''
+<clipPath id="heliosClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
+<g clip-path="url(#heliosClip)">
+<image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
+<rect x="28" y="82" width="664" height="224" fill="#060000" opacity=".24"/>
 <path d="M50 252 L130 205 L210 225 L292 152 L374 177 L458 98 L540 130 L640 62"
- fill="none" stroke="#e84b4b" stroke-width="4" stroke-linecap="round"
+ fill="none" stroke="#ff8a7f" stroke-width="2" stroke-linecap="round"
  stroke-dasharray="900" stroke-dashoffset="900">
 <animate attributeName="stroke-dashoffset" values="900;0;0" keyTimes="0;.55;1"
  dur="5s" repeatCount="indefinite"/></path>
-<path d="M50 282H640M50 220H640M50 158H640M50 96H640" stroke="#671515" opacity=".25"/>
+</g>
 <g transform="translate(440,182)">
 <rect width="190" height="80" rx="5" fill="#180303" stroke="#e84b4b"/>
 <circle cx="22" cy="22" r="5" fill="#ff8a7f"><animate attributeName="opacity"
@@ -1587,12 +1592,12 @@ def project_visual_svg(kind, cfg):
 <text x="20" y="56" class="mono" font-size="20" fill="#e84b4b">+18.4%</text>
 </g>'''
     if kind == "zenith":
-        art = asset_data_uri("zenith-solar-reference.png", "image/png")
+        art = asset_data_uri("project-zenith-keyart-v2.png", "image/png")
         return f'''
 <clipPath id="zenithClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
 <g clip-path="url(#zenithClip)">
 <image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
-<rect x="28" y="82" width="664" height="224" fill="#170000" opacity=".48"/>
+<rect x="28" y="82" width="664" height="224" fill="#170000" opacity=".24"/>
 <path d="M34 265 Q210 60 440 120 T686 88" fill="none" stroke="#ff8a7f"
  stroke-width="2" stroke-dasharray="8 10">
 <animate attributeName="stroke-dashoffset" values="0;-72" dur="5s"
@@ -1606,40 +1611,30 @@ def project_visual_svg(kind, cfg):
 <text y="5" text-anchor="middle" class="mono" font-size="14" fill="#f5eaea">ROI</text>
 </g>'''
     if kind == "vision":
-        pixels = []
-        for row in range(7):
-            for col in range(11):
-                op = .12 + ((row * 11 + col) % 9) * .07
-                pixels.append(
-                    f'<rect x="{48+col*24}" y="{102+row*24}" width="18" height="18" rx="2" '
-                    f'fill="#e84b4b" opacity="{op:.2f}"/>'
-                )
+        art = asset_data_uri("project-vision-keyart-v2.png", "image/png")
         return f'''
-<rect x="32" y="86" width="306" height="210" rx="5" fill="#080202" stroke="#310808"/>
-{"".join(pixels)}
-<path d="M382 115H656M382 168H620M382 221H580" stroke="#671515" stroke-width="18"
- stroke-linecap="round"/>
-<path d="M382 115H614M382 168H548M382 221H494" stroke="#e84b4b" stroke-width="18"
- stroke-linecap="round">
-<animate attributeName="opacity" values=".55;1;.55" dur="2.2s" repeatCount="indefinite"/>
-</path>
-<text x="382" y="277" class="mono" font-size="27" fill="#f5eaea">78% / REAL</text>'''
+<clipPath id="visionClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
+<g clip-path="url(#visionClip)">
+<image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
+<rect x="28" y="82" width="664" height="224" fill="#050000" opacity=".18"/>
+<path d="M40 104H680M40 158H680M40 212H680M40 266H680" stroke="#e84b4b" opacity=".24"
+ stroke-dasharray="4 14"><animate attributeName="stroke-dashoffset" values="0;-72"
+ dur="4s" repeatCount="indefinite"/></path>
+<rect x="480" y="102" width="170" height="58" rx="4" fill="#080202" opacity=".84" stroke="#e84b4b"/>
+<text x="500" y="127" class="mono" font-size="10" fill="#8d7777" letter-spacing="1.5">HELD-OUT SIGNAL</text>
+<text x="500" y="148" class="mono" font-size="20" fill="#f5eaea">78% / REAL</text>
+</g>'''
     if kind == "talks":
-        return '''
-<path d="M118 142 C220 80 298 248 406 156 S570 102 628 180" fill="none"
- stroke="#671515" stroke-width="2" stroke-dasharray="6 9">
+        art = asset_data_uri("project-talks-keyart-v2.png", "image/png")
+        return f'''
+<clipPath id="talksClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
+<g clip-path="url(#talksClip)">
+<image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
+<rect x="28" y="82" width="664" height="224" fill="#050000" opacity=".2"/>
+<path d="M54 250 C180 116 284 272 398 148 S548 116 676 196" fill="none"
+ stroke="#ff8a7f" stroke-width="2" stroke-dasharray="6 9">
 <animate attributeName="stroke-dashoffset" values="0;-60" dur="4s"
  repeatCount="indefinite"/></path>
-<g fill="#090202" stroke="#e84b4b">
-<rect x="52" y="102" width="190" height="76" rx="12"/>
-<rect x="292" y="192" width="210" height="76" rx="12"/>
-<rect x="466" y="82" width="190" height="76" rx="12"/>
-</g>
-<g class="mono" font-size="11" fill="#c4c4c4">
-<text x="74" y="132">CHANNEL ONLINE</text><text x="74" y="153">latency 42ms</text>
-<text x="314" y="222">EVENT DELIVERED</text><text x="314" y="243">socket / room-07</text>
-<text x="488" y="112">AUTH VERIFIED</text><text x="488" y="133">token refreshed</text>
-</g>
 <g fill="#ff8a7f">
 <circle cx="118" cy="142" r="5"><animate attributeName="r" values="3;8;3"
  dur="2s" repeatCount="indefinite"/></circle>
@@ -1647,6 +1642,7 @@ def project_visual_svg(kind, cfg):
  dur="2s" begin="-.7s" repeatCount="indefinite"/></circle>
 <circle cx="628" cy="180" r="5"><animate attributeName="r" values="3;8;3"
  dur="2s" begin="-1.3s" repeatCount="indefinite"/></circle>
+</g>
 </g>'''
     if kind == "next":
         return '''
