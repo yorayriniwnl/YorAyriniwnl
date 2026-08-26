@@ -21,7 +21,7 @@
 </div>
 
 <details>
-<summary><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/operator-gateway.svg" width="100%" alt="Click to initiate Ayush Roy's operator mode"/></summary>
+<summary><code>◈ ACCESS GATE // CLICK HERE TO INITIATE OPERATOR MODE</code><br/><a id="operator-mode"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/operator-gateway.svg" width="100%" alt="Ayush Roy operator mode access gateway"/></a></summary>
 
 <div align="center">
 
