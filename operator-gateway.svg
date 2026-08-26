@@ -44,7 +44,7 @@
 <text x="750" y="83" text-anchor="middle" class="serif" font-size="45" fill="#f5eaea"
  letter-spacing="2">INITIATE OPERATOR MODE</text>
 <text x="750" y="116" text-anchor="middle" class="mono" font-size="11" fill="#c4b4b4"
- letter-spacing="2.4">CLICK THE FRAME · CHOOSE A PROTOCOL · DECODE THE BUILD</text>
+ letter-spacing="2.4">ACTIVATE ACCESS CONTROL ABOVE · CHOOSE A PROTOCOL · DECODE THE BUILD</text>
 <rect x="570" y="134" width="360" height="2" fill="#310808"/>
 <rect x="570" y="134" width="86" height="2" fill="#ff8a7f">
 <animate attributeName="x" values="570;844;570" dur="3.8s" repeatCount="indefinite"/>
