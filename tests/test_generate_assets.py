@@ -18,6 +18,7 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertTrue(root.tag.endswith("svg"))
         self.assertIn("data:image/png;base64,", svg)
         self.assertIn("AYR // OPERATOR ONLINE", svg)
+        self.assertIn('values="1492;1516;1492"', svg)
 
     def test_interactive_console_assets_render_valid_svg(self):
         nav = generate_assets.build_nav_button_svg(
@@ -38,6 +39,25 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertTrue(ET.fromstring(nav).tag.endswith("svg"))
         self.assertTrue(ET.fromstring(card).tag.endswith("svg"))
         self.assertIn("AWAITING THE NEXT HARD PROBLEM", card)
+
+    def test_operator_mode_assets_are_valid_and_complete(self):
+        assets = {
+            "gateway": generate_assets.build_operator_gateway_svg(generate_assets.CONFIG),
+            "rack": generate_assets.build_achievement_rack_svg(generate_assets.CONFIG),
+            "trace": generate_assets.build_protocol_engineer_svg(generate_assets.CONFIG),
+            "forge": generate_assets.build_protocol_product_svg(generate_assets.CONFIG),
+            "archive": generate_assets.build_protocol_human_svg(generate_assets.CONFIG),
+        }
+
+        for name, svg in assets.items():
+            with self.subTest(asset=name):
+                self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
+
+        self.assertIn("INITIATE OPERATOR MODE", assets["gateway"])
+        self.assertIn("ACHIEVEMENTS UNLOCKED", assets["rack"])
+        self.assertIn("Architecture starts at the constraint", assets["trace"])
+        self.assertIn("Make the difficult", assets["forge"])
+        self.assertIn("GRIND. BUILD. REPEAT.", assets["archive"])
 
 
 if __name__ == "__main__":

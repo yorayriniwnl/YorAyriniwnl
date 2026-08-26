@@ -914,7 +914,12 @@ def build_cinematic_hero_svg(cfg):
 </defs>
 <rect width="{W}" height="{H}" rx="10" fill="#000"/>
 <g clip-path="url(#heroClip)">
-<image href="{art}" x="10" y="10" width="1480" height="600" preserveAspectRatio="xMidYMid slice"/>
+<image href="{art}" x="4" y="4" width="1492" height="612" preserveAspectRatio="xMidYMid slice">
+<animate attributeName="x" values="4;-8;4" dur="26s" repeatCount="indefinite"/>
+<animate attributeName="y" values="4;-3;4" dur="26s" repeatCount="indefinite"/>
+<animate attributeName="width" values="1492;1516;1492" dur="26s" repeatCount="indefinite"/>
+<animate attributeName="height" values="612;626;612" dur="26s" repeatCount="indefinite"/>
+</image>
 <rect x="10" y="10" width="1480" height="600" fill="url(#heroShade)"/>
 <rect x="10" y="10" width="1480" height="600" fill="url(#heroBottom)"/>
 <rect x="10" y="10" width="1480" height="600" fill="url(#microgrid)"/>
@@ -1176,6 +1181,301 @@ CURRENT STATE
 <text x="1156" y="300" class="mono" font-size="11" fill="#d7caca" letter-spacing="1.5">
 BUILDING / LEARNING / SHIPPING
 </text>
+</svg>'''
+
+
+def build_operator_gateway_svg(cfg):
+    """A full-width `<summary>` surface for the profile's optional deep layer.
+
+    GitHub strips JavaScript but preserves native details/summary controls and
+    SMIL inside SVG images, so the entire gateway remains interactive there.
+    """
+    W, H = 1500, 196
+    chevrons = "".join(
+        f'<path d="M{x} 82l18 16-18 16" fill="none" stroke="#e84b4b" '
+        f'stroke-width="2" opacity="{.22 + i * .08:.2f}">'
+        f'<animate attributeName="opacity" values=".12;.9;.12" dur="2.4s" '
+        f'begin="-{i * .22:.2f}s" repeatCount="indefinite"/></path>'
+        for i, x in enumerate(range(1000, 1136, 34))
+    )
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+{experience_font_defs()}
+<linearGradient id="gatewayBg" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0" stop-color="#020202"/><stop offset=".5" stop-color="#100202"/>
+<stop offset="1" stop-color="#020202"/>
+</linearGradient>
+<linearGradient id="gatewayRail" x1="0%" x2="100%">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".18" stop-color="#671515"/>
+<stop offset=".5" stop-color="#ff8a7f"/><stop offset=".82" stop-color="#671515"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="gatewaySweep" gradientUnits="userSpaceOnUse" x1="-260" x2="0">
+<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ff8a7f"
+ stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+<animate attributeName="x1" values="-260;1500" dur="7s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="0;1760" dur="7s" repeatCount="indefinite"/>
+</linearGradient>
+<pattern id="gatewayGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+<path d="M26 0H0V26" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".1"/>
+</pattern>
+<filter id="gatewayGlow" x="-40%" y="-80%" width="180%" height="260%">
+<feGaussianBlur stdDeviation="8"/>
+</filter>
+</defs>
+<rect x="1" y="1" width="1498" height="194" rx="7" fill="url(#gatewayBg)" stroke="#4b0e0e"/>
+<rect x="1" y="1" width="1498" height="194" rx="7" fill="url(#gatewayGrid)"/>
+<rect x="1" y="1" width="1498" height="194" rx="7" fill="url(#gatewaySweep)"/>
+<path d="M20 22H214L238 46H1262L1286 22H1480" fill="none" stroke="#671515"/>
+<path d="M20 174H214L238 150H1262L1286 174H1480" fill="none" stroke="#671515"/>
+<rect x="258" y="30" width="984" height="136" rx="4" fill="#030303" opacity=".72" stroke="#310808"/>
+<rect x="258" y="30" width="6" height="136" rx="3" fill="#e84b4b"/>
+<rect x="258" y="30" width="984" height="1.5" fill="url(#gatewayRail)"/>
+<rect x="258" y="164" width="984" height="1.5" fill="url(#gatewayRail)"/>
+<text x="42" y="55" class="mono" font-size="9" fill="#8d7777" letter-spacing="2.5">LAYER // 00</text>
+<text x="42" y="86" class="mono" font-size="13" fill="#e84b4b" letter-spacing="2">RESTRICTED</text>
+<text x="42" y="110" class="mono" font-size="13" fill="#e84b4b" letter-spacing="2">SIGNAL</text>
+<circle cx="44" cy="143" r="5" fill="#e84b4b">
+<animate attributeName="opacity" values=".2;1;.2" dur="1.1s" repeatCount="indefinite"/>
+</circle>
+<text x="60" y="147" class="mono" font-size="9" fill="#a99494" letter-spacing="1.4">READY TO BREACH</text>
+<text x="750" y="83" text-anchor="middle" class="serif" font-size="45" fill="#e84b4b"
+ opacity=".38" filter="url(#gatewayGlow)">INITIATE OPERATOR MODE</text>
+<text x="750" y="83" text-anchor="middle" class="serif" font-size="45" fill="#f5eaea"
+ letter-spacing="2">INITIATE OPERATOR MODE</text>
+<text x="750" y="116" text-anchor="middle" class="mono" font-size="11" fill="#c4b4b4"
+ letter-spacing="2.4">CLICK THE FRAME · CHOOSE A PROTOCOL · DECODE THE BUILD</text>
+<rect x="570" y="134" width="360" height="2" fill="#310808"/>
+<rect x="570" y="134" width="86" height="2" fill="#ff8a7f">
+<animate attributeName="x" values="570;844;570" dur="3.8s" repeatCount="indefinite"/>
+</rect>
+{chevrons}
+<g transform="translate(1378,98)">
+<circle r="58" fill="#050101" stroke="#671515"/>
+<circle r="46" fill="none" stroke="#e84b4b" opacity=".58" stroke-dasharray="8 12">
+<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="9s" repeatCount="indefinite"/>
+</circle>
+<circle r="32" fill="none" stroke="#ff8a7f" opacity=".38" stroke-dasharray="3 7">
+<animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="5s" repeatCount="indefinite"/>
+</circle>
+<path d="M-9 -5L0 5 14-12" fill="none" stroke="#f5eaea" stroke-width="3" stroke-linecap="round"/>
+<text y="78" text-anchor="middle" class="mono" font-size="8" fill="#e84b4b" letter-spacing="2">ENTER</text>
+</g>
+</svg>'''
+
+
+def build_achievement_rack_svg(cfg):
+    W, H = 1500, 286
+    achievements = [
+        ("GPU", "4,000", "PARTICLES", "ONE DRAW CALL", .92),
+        ("QA", "24", "TESTS", "FIVE SUITES", .84),
+        ("CV", "78%", "ACCURACY", "CALIBRATED", .78),
+        ("XP", "125", "STEAM LEVEL", "LONG GAME", .88),
+        ("OSS", "25+", "PUBLIC REPOS", "BUILD LOG", .74),
+    ]
+    cards = []
+    circumference = 251.3
+    for i, (code, value, label, note, progress) in enumerate(achievements):
+        x = 24 + i * 291
+        end_offset = circumference * (1 - progress)
+        cards.append(f'''
+<g transform="translate({x},72)">
+<rect width="276" height="188" rx="6" fill="#050101" stroke="#3d0b0b"/>
+<rect width="5" height="188" rx="2" fill="#671515"/>
+<circle cx="63" cy="78" r="48" fill="#0b0202" stroke="#310808"/>
+<circle cx="63" cy="78" r="40" fill="none" stroke="#260606" stroke-width="5"/>
+<circle cx="63" cy="78" r="40" fill="none" stroke="#e84b4b" stroke-width="5"
+ stroke-linecap="round" stroke-dasharray="{circumference:.1f}" stroke-dashoffset="{circumference:.1f}"
+ transform="rotate(-90 63 78)">
+<animate attributeName="stroke-dashoffset" values="{circumference:.1f};{end_offset:.1f}"
+ dur="{1.5 + i * .18:.2f}s" begin="{i * .12:.2f}s" fill="freeze"/>
+</circle>
+<circle cx="63" cy="78" r="4" fill="#ff8a7f">
+<animate attributeName="opacity" values=".25;1;.25" dur="{1.3 + i * .17:.2f}s" repeatCount="indefinite"/>
+</circle>
+<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#f5eaea" letter-spacing="1">{code}</text>
+<text x="132" y="72" class="serif" font-size="37" fill="#f5eaea">{value}</text>
+<text x="132" y="96" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">{label}</text>
+<path d="M22 142H254" stroke="#310808"/>
+<text x="22" y="166" class="mono" font-size="9" fill="#8d7777" letter-spacing="1.8">{note}</text>
+<rect x="226" y="154" width="28" height="3" fill="#671515"/>
+<rect x="226" y="154" width="9" height="3" fill="#ff8a7f">
+<animate attributeName="x" values="226;245;226" dur="2.6s" begin="-{i * .31:.2f}s" repeatCount="indefinite"/>
+</rect>
+</g>''')
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+{experience_font_defs()}
+<linearGradient id="rackBg" x1="0%" x2="100%">
+<stop offset="0" stop-color="#020202"/><stop offset=".5" stop-color="#0d0202"/><stop offset="1" stop-color="#020202"/>
+</linearGradient>
+<pattern id="rackGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+<path d="M32 0H0V32" fill="none" stroke="#671515" stroke-width=".4" opacity=".08"/>
+</pattern>
+</defs>
+<rect x="1" y="1" width="1498" height="284" rx="7" fill="url(#rackBg)" stroke="#310808"/>
+<rect x="1" y="1" width="1498" height="284" rx="7" fill="url(#rackGrid)"/>
+<text x="24" y="38" class="mono" font-size="11" fill="#e84b4b" letter-spacing="3">PROOF OF WORK // ACHIEVEMENTS UNLOCKED</text>
+<text x="1476" y="38" text-anchor="end" class="mono" font-size="9" fill="#806d6d" letter-spacing="2">SIGNAL VERIFIED · 05 RECORDS</text>
+<path d="M24 52H1476" stroke="#310808"/>
+{"".join(cards)}
+</svg>'''
+
+
+def build_protocol_engineer_svg(cfg):
+    W, H = 1500, 338
+    stages = [
+        ("01", "REALITY", "OBSERVE CONSTRAINTS"),
+        ("02", "MODEL", "REMOVE AMBIGUITY"),
+        ("03", "SYSTEM", "ENCODE BEHAVIOR"),
+        ("04", "INTERFACE", "MAKE IT LEGIBLE"),
+        ("05", "FEEDBACK", "CLOSE THE LOOP"),
+    ]
+    stage_svg = []
+    for i, (code, title, subtitle) in enumerate(stages):
+        x = 38 + i * 291
+        stage_svg.append(f'''
+<g transform="translate({x},104)">
+<rect width="252" height="128" rx="5" fill="#050101" stroke="#3d0b0b"/>
+<rect width="252" height="5" rx="2" fill="{"#e84b4b" if i in (0, 4) else "#671515"}"/>
+<text x="18" y="35" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">NODE // {code}</text>
+<text x="18" y="75" class="serif" font-size="29" fill="#f5eaea">{title}</text>
+<text x="18" y="102" class="mono" font-size="8" fill="#e84b4b" letter-spacing="1.3">{subtitle}</text>
+<circle cx="232" cy="22" r="5" fill="#e84b4b">
+<animate attributeName="opacity" values=".2;1;.2" dur="{1.2 + i * .18:.2f}s" begin="-{i * .21:.2f}s" repeatCount="indefinite"/>
+</circle>
+</g>''')
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+{experience_font_defs()}
+<linearGradient id="traceBg" x1="0%" x2="100%"><stop offset="0" stop-color="#020202"/><stop offset="1" stop-color="#100202"/></linearGradient>
+<pattern id="traceGrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#671515" stroke-width=".45" opacity=".09"/></pattern>
+<filter id="traceGlow"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect x="1" y="1" width="1498" height="336" rx="7" fill="url(#traceBg)" stroke="#310808"/>
+<rect x="1" y="1" width="1498" height="336" rx="7" fill="url(#traceGrid)"/>
+<text x="38" y="44" class="mono" font-size="10" fill="#e84b4b" letter-spacing="3">PROTOCOL 01 // TRACE</text>
+<text x="38" y="78" class="serif" font-size="31" fill="#f5eaea">Architecture starts at the constraint.</text>
+<text x="1462" y="48" text-anchor="end" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">INPUT: REALITY // OUTPUT: LEVERAGE</text>
+<path d="M164 168H1336" stroke="#671515" stroke-width="2" stroke-dasharray="8 12">
+<animate attributeName="stroke-dashoffset" values="0;-80" dur="5s" repeatCount="indefinite"/>
+</path>
+<circle r="8" fill="#ff8a7f" filter="url(#traceGlow)" opacity=".8">
+<animateMotion path="M164 168H1336" dur="5s" repeatCount="indefinite"/>
+</circle>
+<circle r="4" fill="#fff"><animateMotion path="M164 168H1336" dur="5s" repeatCount="indefinite"/></circle>
+{"".join(stage_svg)}
+<text x="38" y="307" class="mono" font-size="10" fill="#9b8585" letter-spacing="2">THE DOMAIN CHANGES · THE STANDARD DOESN'T · OBSERVABILITY IS PART OF THE PRODUCT</text>
+</svg>'''
+
+
+def build_protocol_product_svg(cfg):
+    W, H = 1500, 360
+    nodes = [
+        (1035, 58, "OBSERVE"), (1222, 126, "MODEL"), (1212, 274, "BUILD"),
+        (1035, 320, "MEASURE"), (846, 226, "REPEAT"),
+    ]
+    spokes = []
+    node_svg = []
+    for i, (x, y, label) in enumerate(nodes):
+        spokes.append(f'<path d="M1035 190L{x} {y}" stroke="#671515" stroke-dasharray="4 9"/>')
+        node_svg.append(f'''
+<g>
+<circle cx="{x}" cy="{y}" r="35" fill="#060101" stroke="#671515"/>
+<circle cx="{x}" cy="{y}" r="27" fill="none" stroke="#e84b4b" opacity=".35" stroke-dasharray="3 6">
+<animateTransform attributeName="transform" type="rotate" from="0 {x} {y}" to="360 {x} {y}" dur="{7 + i}s" repeatCount="indefinite"/>
+</circle>
+<text x="{x}" y="{y + 4}" text-anchor="middle" class="mono" font-size="8" fill="#f5eaea" letter-spacing="1">{label}</text>
+</g>''')
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+{experience_font_defs()}
+<linearGradient id="forgeBg" x1="0%" x2="100%"><stop offset="0" stop-color="#020202"/><stop offset=".6" stop-color="#080101"/><stop offset="1" stop-color="#1b0303"/></linearGradient>
+<radialGradient id="forgeGlow"><stop offset="0" stop-color="#e84b4b" stop-opacity=".25"/><stop offset="1" stop-color="#e84b4b" stop-opacity="0"/></radialGradient>
+<pattern id="forgeGrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#671515" stroke-width=".45" opacity=".09"/></pattern>
+</defs>
+<rect x="1" y="1" width="1498" height="358" rx="7" fill="url(#forgeBg)" stroke="#310808"/>
+<rect x="1" y="1" width="1498" height="358" rx="7" fill="url(#forgeGrid)"/>
+<text x="42" y="48" class="mono" font-size="10" fill="#e84b4b" letter-spacing="3">PROTOCOL 02 // FORGE</text>
+<text x="42" y="112" class="serif" font-size="52" fill="#f5eaea">Make the difficult</text>
+<text x="42" y="164" class="serif" font-size="52" fill="#f5eaea">feel inevitable.</text>
+<rect x="42" y="190" width="480" height="1" fill="#671515"/>
+<text x="42" y="226" class="mono" font-size="11" fill="#a99494" letter-spacing="1.2">
+<tspan x="42" dy="0">SCOPE HARD · SHIP SMALL · MEASURE HONESTLY</tspan>
+<tspan x="42" dy="25">KEEP THE INTERFACE SIMPLE AND THE SYSTEM EXPLICIT</tspan>
+<tspan x="42" dy="25">EARN COMPLEXITY ONLY WHEN REALITY DEMANDS IT</tspan>
+</text>
+<text x="42" y="328" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">PRODUCT DOCTRINE // BUILD → LEARN → COMPOUND</text>
+<circle cx="1035" cy="190" r="178" fill="url(#forgeGlow)"/>
+<circle cx="1035" cy="190" r="132" fill="none" stroke="#671515" stroke-dasharray="9 14">
+<animateTransform attributeName="transform" type="rotate" from="0 1035 190" to="360 1035 190" dur="24s" repeatCount="indefinite"/>
+</circle>
+<circle cx="1035" cy="190" r="92" fill="none" stroke="#e84b4b" opacity=".3" stroke-dasharray="3 10">
+<animateTransform attributeName="transform" type="rotate" from="360 1035 190" to="0 1035 190" dur="14s" repeatCount="indefinite"/>
+</circle>
+{"".join(spokes)}
+{"".join(node_svg)}
+<circle cx="1035" cy="190" r="66" fill="#050101" stroke="#e84b4b"/>
+<circle cx="1035" cy="190" r="50" fill="none" stroke="#ff8a7f" opacity=".42" stroke-dasharray="5 8">
+<animateTransform attributeName="transform" type="rotate" from="0 1035 190" to="-360 1035 190" dur="8s" repeatCount="indefinite"/>
+</circle>
+<text x="1035" y="185" text-anchor="middle" class="mono" font-size="11" fill="#f5eaea" letter-spacing="2">SHIP</text>
+<text x="1035" y="205" text-anchor="middle" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1">LEARN</text>
+<text x="1452" y="334" text-anchor="end" class="mono" font-size="8" fill="#806d6d" letter-spacing="2">SYSTEM LOOP // CONTINUOUS</text>
+</svg>'''
+
+
+def build_protocol_human_svg(cfg):
+    W, H = 1500, 350
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+{experience_font_defs()}
+<linearGradient id="archiveBg" x1="0%" x2="100%"><stop offset="0" stop-color="#030303"/><stop offset=".55" stop-color="#100202"/><stop offset="1" stop-color="#030303"/></linearGradient>
+<radialGradient id="levelGlow"><stop offset="0" stop-color="#e84b4b" stop-opacity=".32"/><stop offset="1" stop-color="#e84b4b" stop-opacity="0"/></radialGradient>
+<pattern id="archiveGrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#671515" stroke-width=".45" opacity=".09"/></pattern>
+<linearGradient id="archiveScan" gradientUnits="userSpaceOnUse" x1="-180" x2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ff8a7f" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity="0"/><animate attributeName="x1" values="-180;1500" dur="10s" repeatCount="indefinite"/><animate attributeName="x2" values="0;1680" dur="10s" repeatCount="indefinite"/></linearGradient>
+</defs>
+<rect x="1" y="1" width="1498" height="348" rx="7" fill="url(#archiveBg)" stroke="#310808"/>
+<rect x="1" y="1" width="1498" height="348" rx="7" fill="url(#archiveGrid)"/>
+<rect x="1" y="1" width="1498" height="348" rx="7" fill="url(#archiveScan)"/>
+<text x="36" y="42" class="mono" font-size="10" fill="#e84b4b" letter-spacing="3">PROTOCOL 03 // ARCHIVE</text>
+<text x="1464" y="42" text-anchor="end" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">STEAM DNA · HUMAN SIGNAL</text>
+<circle cx="190" cy="185" r="148" fill="url(#levelGlow)"/>
+<circle cx="190" cy="185" r="108" fill="#050101" stroke="#671515" stroke-width="2"/>
+<circle cx="190" cy="185" r="90" fill="none" stroke="#e84b4b" stroke-width="2" stroke-dasharray="11 15">
+<animateTransform attributeName="transform" type="rotate" from="0 190 185" to="360 190 185" dur="18s" repeatCount="indefinite"/>
+</circle>
+<circle cx="190" cy="185" r="74" fill="none" stroke="#ff8a7f" opacity=".45" stroke-dasharray="3 8">
+<animateTransform attributeName="transform" type="rotate" from="360 190 185" to="0 190 185" dur="10s" repeatCount="indefinite"/>
+</circle>
+<text x="190" y="151" text-anchor="middle" class="mono" font-size="10" fill="#8d7777" letter-spacing="2">STEAM LEVEL</text>
+<text x="190" y="211" text-anchor="middle" class="serif" font-size="70" fill="#f5eaea">125</text>
+<text x="190" y="236" text-anchor="middle" class="mono" font-size="8" fill="#e84b4b" letter-spacing="2">THE LONG GAME</text>
+<path d="M382 70V304" stroke="#310808"/>
+<text x="426" y="126" class="serif" font-size="54" fill="#f5eaea" letter-spacing="2">GRIND. BUILD. REPEAT.</text>
+<text x="426" y="163" class="mono" font-size="12" fill="#e84b4b" letter-spacing="3">NO NOISE · NO SHORTCUTS · STAY CURIOUS</text>
+<rect x="426" y="188" width="620" height="1" fill="#671515"/>
+<g class="mono" font-size="10" letter-spacing="1.4">
+<rect x="426" y="218" width="190" height="54" rx="4" fill="#080202" stroke="#3d0b0b"/>
+<text x="448" y="240" fill="#8d7777">SIGNAL // 01</text><text x="448" y="259" fill="#f5eaea">DIGITAL WORLDS</text>
+<rect x="630" y="218" width="190" height="54" rx="4" fill="#080202" stroke="#3d0b0b"/>
+<text x="652" y="240" fill="#8d7777">SIGNAL // 02</text><text x="652" y="259" fill="#f5eaea">HARD PROBLEMS</text>
+<rect x="834" y="218" width="190" height="54" rx="4" fill="#080202" stroke="#3d0b0b"/>
+<text x="856" y="240" fill="#8d7777">SIGNAL // 03</text><text x="856" y="259" fill="#f5eaea">OBSESSIVE CRAFT</text>
+</g>
+<g transform="translate(1120,82)">
+<rect width="326" height="220" rx="6" fill="#050101" stroke="#671515"/>
+<rect width="326" height="48" rx="6" fill="#671515"/>
+<rect y="42" width="326" height="6" fill="#671515"/>
+<circle cx="24" cy="24" r="5" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="1.3s" repeatCount="indefinite"/></circle>
+<text x="42" y="29" class="mono" font-size="10" fill="#fff" letter-spacing="2">OPERATOR PROFILE</text>
+<text x="24" y="84" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">STATUS</text>
+<text x="24" y="111" class="mono" font-size="17" fill="#f5eaea">ONLINE / BUILDING</text>
+<text x="24" y="145" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">PHILOSOPHY</text>
+<text x="24" y="172" class="mono" font-size="13" fill="#f5eaea">PLAY THE LONG GAME.</text>
+<rect x="24" y="190" width="278" height="1" fill="#310808"/>
+<text x="24" y="211" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">OPEN STEAM PROFILE ↗</text>
+</g>
 </svg>'''
 
 
@@ -1606,6 +1906,11 @@ if __name__ == "__main__":
     experience_assets = {
         "signal-strip": build_signal_strip_svg(CONFIG),
         "identity-console": build_identity_console_svg(CONFIG),
+        "operator-gateway": build_operator_gateway_svg(CONFIG),
+        "achievement-rack": build_achievement_rack_svg(CONFIG),
+        "protocol-engineer": build_protocol_engineer_svg(CONFIG),
+        "protocol-product": build_protocol_product_svg(CONFIG),
+        "protocol-human": build_protocol_human_svg(CONFIG),
         "project-portfolio": build_featured_project_svg(CONFIG),
         "arsenal": build_arsenal_svg(CONFIG),
         "finale": build_finale_svg(CONFIG),

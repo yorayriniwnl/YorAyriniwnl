@@ -1,5 +1,11 @@
 # What moved, and why
 
+## Pass 10: breach the interface
+
+The operator interface now has a second, optional depth layer instead of adding more permanent noise to the page. A full-width animated access gateway opens through GitHub's native `<details>` control, revealing a proof-of-work achievement rack and three nested visual paths: engineering DNA, product doctrine, and the Steam-inspired human archive. Each path is a self-contained animated SVG, so the experience remains alive on GitHub without scripts, embeds, or fragile third-party renderers.
+
+The cinematic portrait also gained a restrained 26-second camera drift. It adds depth to the hero while preserving legibility and the existing HUD composition. The new layer stays collapsed by default, keeping the main profile fast to scan while rewarding visitors who choose to explore.
+
 ## Pass 9: operator interface
 
 Pass 8 restored the profile's identity, but its middle still read like a decorated document: large spacer runs, text-first project cards, and motion confined to ornamental SVGs. This pass rebuilds the README as a continuous GitHub-safe interface. Original black-and-crimson key art generated from Ayush's project-owned portrait now anchors a 620px animated title sequence with scan passes, embers, HUD rings, telemetry, and a personal systems lockup.

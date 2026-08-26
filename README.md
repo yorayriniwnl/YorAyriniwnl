@@ -18,6 +18,56 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-identity.svg" width="100%" alt="Operator identity"/>
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg" width="100%" alt="Ayush Roy operator manifest and systems map"/>
 
+</div>
+
+<details>
+<summary><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/operator-gateway.svg" width="100%" alt="Click to initiate Ayush Roy's operator mode"/></summary>
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/achievement-rack.svg" width="100%" alt="Proof of work achievement rack"/>
+
+</div>
+
+<details>
+<summary><code>01 // TRACE THE ENGINEERING DNA</code></summary>
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/protocol-engineer.svg" width="100%" alt="Engineering protocol from reality through feedback"/>
+
+</div>
+
+</details>
+
+<details>
+<summary><code>02 // FORGE THE PRODUCT DOCTRINE</code></summary>
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/protocol-product.svg" width="100%" alt="Product doctrine build and learning loop"/>
+
+</div>
+
+</details>
+
+<details>
+<summary><code>03 // OPEN THE HUMAN ARCHIVE</code></summary>
+
+<div align="center">
+
+<a href="https://steamcommunity.com/id/yorayriniwnl/">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/protocol-human.svg" width="100%" alt="Steam-inspired human signal and long-game philosophy"/>
+</a>
+
+</div>
+
+</details>
+
+</details>
+
+<div align="center">
+
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects.svg" width="100%" alt="Selected systems"/>
 
 <a href="https://www.yorayriniwnl.in">
