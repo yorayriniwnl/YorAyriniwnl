@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://www.yorayriniwnl.in">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg" width="100%" alt="Ayush Roy — systems engineer and product builder"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg" width="100%" alt="Ayush Roy — full-stack developer and applied ML builder"/>
 </a>
 
 <a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg" width="24%" alt="Open portfolio"/></a>
@@ -77,7 +77,7 @@
 <a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg" width="49%" alt="Yor Helios — realtime telemetry and alerting"/></a>
 <a href="https://github.com/yorayriniwnl/Yor-Zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg" width="49%" alt="Yor Zenith — geospatial solar planning"/></a>
 <a href="https://github.com/yorayriniwnl/Yor-Ai-vs-real-image"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg" width="49%" alt="AI vs Real — calibrated computer vision"/></a>
-<a href="https://github.com/yorayriniwnl/Yor-Talks"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg" width="49%" alt="Yor Talks — realtime communication"/></a>
+<a href="https://github.com/yorayriniwnl/yor-talksv2"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg" width="49%" alt="Yor Talks V2 — realtime communication"/></a>
 <a href="https://github.com/yorayriniwnl/Yor-Feelings"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-feelings.svg" width="49%" alt="Yor Feelings — mood intelligence"/></a>
 <a href="mailto:yorayriniwnl@gmail.com?subject=Next%20Transmission"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-next.svg" width="49%" alt="Next transmission — open a collaboration channel"/></a>
 
@@ -100,7 +100,7 @@ FastAPI and WebSockets stream threshold and anomaly events into channel-specific
 
 ### <code>SYS-03</code> · Yor Zenith
 
-Ranks parcels by irradiance with PostGIS, renders roof geometry in 3D, and simulates panel placement across a full annual cycle with ROI and payback analysis.
+Combines React, Three.js, Python, and FastAPI to model solar potential, render panel placement, and turn feasibility inputs into ROI and payback analysis.
 
 [SOURCE](https://github.com/yorayriniwnl/Yor-Zenith)
 
@@ -112,9 +112,9 @@ LBP and GLCM texture features feed a Platt-calibrated SVM, producing probability
 
 ### <code>SYS-05</code> · Yor Talks
 
-Socket.IO over Express for bidirectional delivery, React 19 and Vite on the frontend, Postgres through Drizzle, Redis queueing, JWT rotation, and Zod validation.
+Yor Talks V2 combines React, Next.js, FastAPI, WebSockets, and Tailwind for messaging, authentication, conversation flows, and message REST APIs.
 
-[SOURCE](https://github.com/yorayriniwnl/Yor-Talks)
+[SOURCE](https://github.com/yorayriniwnl/yor-talksv2)
 
 ### <code>SYS-06</code> · Yor Feelings
 
@@ -132,11 +132,12 @@ An expressive Next.js system translating sentiment and mood signals into respons
 <details>
 <summary><code>◉ EXPAND COMPLETE LOADOUT</code></summary>
 
-[![Complete technical loadout](https://skillicons.dev/icons?i=rust,ts,react,nextjs,vite,tailwind,threejs,python,fastapi,express,postgres,redis,docker,aws,git,github,linux&theme=dark&perline=9)](https://skillicons.dev)
+[![Complete technical loadout](https://skillicons.dev/icons?i=js,ts,react,nextjs,vite,tailwind,threejs,python,fastapi,nodejs,docker,aws,git,github,linux&theme=dark&perline=9)](https://skillicons.dev)
 
-<code>SYSTEMS</code> Rust · Python · FastAPI · PostgreSQL · Redis<br/>
-<code>PRODUCT</code> TypeScript · React · Next.js · Three.js · Vite<br/>
-<code>INFRA</code> Docker · AWS · Linux · GitHub Actions
+<code>PRODUCT</code> TypeScript · React · Next.js · Three.js · Tailwind CSS · Framer Motion<br/>
+<code>BACKEND</code> Python · FastAPI · Node.js · REST · WebSocket<br/>
+<code>ML</code> OpenCV · Scikit-Learn · SVM · Streamlit · Vitest<br/>
+<code>INFRA</code> Docker · AWS · Vercel · Linux · GitHub Actions
 
 </details>
 

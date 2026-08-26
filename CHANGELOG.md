@@ -1,5 +1,11 @@
 # What moved, and why
 
+## Pass 11: resume sync + key art
+
+The profile now speaks from the current resume: full-stack development, applied machine learning, React/Next.js, Python/FastAPI, WebSockets, computer vision, GenAI, AWS, and the BSNL telecom internship. Yor Zenith and Yor Talks V2 now point to the current stack and repository, while the loadout and operator console use the updated location and internship signal.
+
+The hero art was rebuilt as a custom cinematic black-and-crimson control-room portrait using Ayush's resume photo as an identity reference. It gives the left side deliberate negative space for the lockup, while the right side carries the human subject, red orbital light, and restrained technical atmosphere. The generated asset is versioned as `hero-keyart-v3.png` and remains wrapped by the existing GitHub-safe animated HUD.
+
 ## Pass 10: breach the interface
 
 The operator interface now has a second, optional depth layer instead of adding more permanent noise to the page. A full-width animated access gateway opens through GitHub's native `<details>` control, revealing a proof-of-work achievement rack and three nested visual paths: engineering DNA, product doctrine, and the Steam-inspired human archive. Each path is a self-contained animated SVG, so the experience remains alive on GitHub without scripts, embeds, or fragile third-party renderers.

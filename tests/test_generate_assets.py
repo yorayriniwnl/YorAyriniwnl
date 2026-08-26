@@ -18,6 +18,7 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertTrue(root.tag.endswith("svg"))
         self.assertIn("data:image/png;base64,", svg)
         self.assertIn("AYR // OPERATOR ONLINE", svg)
+        self.assertIn("FULL-STACK DEVELOPER", svg)
         self.assertIn('values="1492;1516;1492"', svg)
 
     def test_interactive_console_assets_render_valid_svg(self):

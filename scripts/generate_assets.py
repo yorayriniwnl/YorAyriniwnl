@@ -21,7 +21,7 @@ ASSET_DIR = os.path.join(HERE, "..", "assets")
 
 CONFIG = {
     "name": "Ayush Roy",
-    "role": "SYSTEMS ENGINEER  ·  PRODUCT BUILDER",
+    "role": "FULL-STACK DEVELOPER  ·  APPLIED ML BUILDER",
     "width": 1500,
     "height": 300,
     # Steam-profile palette: a pure-black canvas, translucent black panels,
@@ -55,7 +55,7 @@ CONFIG = {
         "lines": [
             ("Building the software layer for the physical world.", 453.9),
             ("Geospatial \u00b7 Realtime \u00b7 Computer Vision \u00b7 Systems Engineering", 542.9),
-            ("Rust for the systems layer, GenAI + AWS for the applied one.", 534.0),
+            ("TypeScript + React for product, Python + ML for the intelligence layer.", 534.0),
             ("The domain changes; the standard doesn't.", 364.9),
         ],
     },
@@ -827,7 +827,7 @@ def build_cinematic_hero_svg(cfg):
     """A self-contained title sequence: original raster key art plus a
     GitHub-safe animated HUD, scan pass, signal traces, and identity lockup."""
     W, H = 1500, 620
-    art = asset_data_uri("hero-keyart-v2.png", "image/png")
+    art = asset_data_uri("hero-keyart-v3.png", "image/png")
     fonts = experience_font_defs()
     rng = random.Random(cfg["seed"] + 900)
 
@@ -861,9 +861,9 @@ def build_cinematic_hero_svg(cfg):
         )
 
     chips = [
-        (74, "SYSTEMS", "RUST"),
-        (250, "PRODUCT", "TYPESCRIPT"),
-        (482, "APPLIED", "GENAI + AWS"),
+        (74, "PRODUCT", "REACT + NEXT"),
+        (250, "APPLIED", "PYTHON + ML"),
+        (482, "NEXT", "GENAI + AWS"),
     ]
     chip_svg = []
     for x, label, value in chips:
@@ -952,7 +952,7 @@ AYR // OPERATOR ONLINE
 <text x="1426" y="43" text-anchor="end" class="mono" font-size="10" fill="#8d7777"
  letter-spacing="2">INDIA · UTC+05:30 · BUILD 2026</text>
 <text x="72" y="154" class="mono" font-size="12" fill="#e84b4b" letter-spacing="4">
-SYSTEMS ENGINEER / PRODUCT BUILDER
+FULL-STACK DEVELOPER / ML BUILDER
 </text>
 <text x="68" y="270" class="serif" font-size="116" fill="#e84b4b" opacity=".55"
  filter="url(#heroGlow)">AYUSH</text>
@@ -1142,10 +1142,10 @@ OPERATOR MANIFEST
 <text x="34" y="132" class="serif" font-size="35" fill="#f5eaea">software meets reality.</text>
 <rect x="34" y="154" width="440" height="1" fill="#671515"/>
 <text x="34" y="188" class="mono" font-size="13" fill="#a99494">
-<tspan x="34" dy="0">Geospatial solar simulation.</tspan>
-<tspan x="34" dy="25">Realtime energy telemetry.</tspan>
-<tspan x="34" dy="25">Computer vision pipelines.</tspan>
-<tspan x="34" dy="25">Browser-native 3D products.</tspan>
+<tspan x="34" dy="0">4,000 GPU particle interfaces.</tspan>
+<tspan x="34" dy="25">Real-time energy monitoring.</tspan>
+<tspan x="34" dy="25">SVM + texture computer vision.</tspan>
+<tspan x="34" dy="25">BSNL telecom systems grounding.</tspan>
 </text>
 <text x="34" y="319" class="mono" font-size="10" fill="#e84b4b" letter-spacing="2">
 THE DOMAIN CHANGES. THE STANDARD DOESN'T.
@@ -1169,11 +1169,11 @@ THE DOMAIN CHANGES. THE STANDARD DOESN'T.
 CURRENT STATE
 </text>
 <text x="1118" y="93" class="mono" font-size="13" fill="#8d7777">ROLE</text>
-<text x="1118" y="116" class="mono" font-size="17" fill="#f5eaea">FULL-STACK / SYSTEMS</text>
+<text x="1118" y="116" class="mono" font-size="17" fill="#f5eaea">FULL-STACK / ML</text>
 <text x="1118" y="158" class="mono" font-size="13" fill="#8d7777">LOCATION</text>
-<text x="1118" y="181" class="mono" font-size="17" fill="#f5eaea">INDIA · IST</text>
+<text x="1118" y="181" class="mono" font-size="17" fill="#f5eaea">BHUBANESWAR · INDIA</text>
 <text x="1118" y="223" class="mono" font-size="13" fill="#8d7777">SIGNAL</text>
-<text x="1118" y="246" class="mono" font-size="17" fill="#f5eaea">OPEN TO BUILD</text>
+<text x="1118" y="246" class="mono" font-size="17" fill="#f5eaea">OPEN TO INTERNSHIPS</text>
 <rect x="1118" y="274" width="310" height="42" rx="3" fill="#130303" stroke="#671515"/>
 <circle cx="1140" cy="295" r="5" fill="#e84b4b">
 <animate attributeName="opacity" values=".2;1;.2" dur="1.2s" repeatCount="indefinite"/>
@@ -1733,9 +1733,9 @@ def build_project_card_svg(project, cfg):
 def build_arsenal_svg(cfg):
     W, H = 1500, 540
     tech = [
-        (750, 76, "RUST"), (1000, 116, "TYPESCRIPT"), (1182, 264, "REACT / NEXT"),
-        (1030, 424, "THREE.JS"), (750, 474, "PYTHON"), (470, 424, "FASTAPI"),
-        (318, 264, "POSTGRES / REDIS"), (500, 116, "DOCKER / AWS"),
+        (750, 76, "TYPESCRIPT"), (1000, 116, "REACT / NEXT"), (1182, 264, "THREE.JS / R3F"),
+        (1030, 424, "PYTHON / ML"), (750, 474, "FASTAPI"), (470, 424, "NODE / REST"),
+        (318, 264, "DOCKER / AWS"), (500, 116, "VITEST / CI"),
     ]
     spokes = []
     labels = []
@@ -1957,7 +1957,7 @@ if __name__ == "__main__":
         {
             "filename": "project-zenith", "kind": "zenith", "code": "SYS-03",
             "domain": "GEOSPATIAL SOLAR", "title": "YOR ZENITH",
-            "stack": "TYPESCRIPT · NEXT.JS · POSTGIS · THREE.JS",
+            "stack": "REACT · TYPESCRIPT · THREE.JS · PYTHON",
             "summary": "Roof geometry, irradiance, placement, ROI, and payback.",
         },
         {
@@ -1969,7 +1969,7 @@ if __name__ == "__main__":
         {
             "filename": "project-talks", "kind": "talks", "code": "SYS-05",
             "domain": "REALTIME COMMS", "title": "YOR TALKS",
-            "stack": "TYPESCRIPT · REACT · SOCKET.IO · REDIS",
+            "stack": "REACT · NEXT.JS · FASTAPI · WEBSOCKET",
             "summary": "Bidirectional rooms, delivery, auth, and presence.",
         },
         {
