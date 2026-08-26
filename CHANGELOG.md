@@ -8,7 +8,7 @@ The project cards now carry four generated visual systems instead of relying on 
 
 The profile now speaks from the current resume: full-stack development, applied machine learning, React/Next.js, Python/FastAPI, WebSockets, computer vision, GenAI, AWS, and the BSNL telecom internship. Yor Zenith and Yor Talks V2 now point to the current stack and repository, while the loadout and operator console use the updated location and internship signal.
 
-The hero art was rebuilt as a custom cinematic black-and-crimson control-room portrait using Ayush's resume photo as an identity reference. It gives the left side deliberate negative space for the lockup, while the right side carries the human subject, red orbital light, and restrained technical atmosphere. The generated asset is versioned as `hero-keyart-v3.png` and remains wrapped by the existing GitHub-safe animated HUD.
+The existing hero/profile image remains intentionally unchanged: `hero-keyart-v2.png` is still the active source and remains wrapped by the existing GitHub-safe animated HUD.
 
 ## Pass 10: breach the interface
 

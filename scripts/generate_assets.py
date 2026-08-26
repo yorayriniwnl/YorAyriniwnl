@@ -827,7 +827,7 @@ def build_cinematic_hero_svg(cfg):
     """A self-contained title sequence: original raster key art plus a
     GitHub-safe animated HUD, scan pass, signal traces, and identity lockup."""
     W, H = 1500, 620
-    art = asset_data_uri("hero-keyart-v3.png", "image/png")
+    art = asset_data_uri("hero-keyart-v2.png", "image/png")
     fonts = experience_font_defs()
     rng = random.Random(cfg["seed"] + 900)
 
