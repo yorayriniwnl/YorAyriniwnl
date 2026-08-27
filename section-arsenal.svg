@@ -13,12 +13,12 @@
 </linearGradient>
 </defs>
 <rect width="1500" height="96" fill="#000"/>
-<text x="20" y="78" class="serif" font-size="86" fill="#671515" opacity=".34">03</text>
+<text x="20" y="78" class="serif" font-size="86" fill="#671515" opacity=".34">02</text>
 <rect x="112" y="16" width="1370" height="64" rx="4" fill="#080202" stroke="#310808"/>
 <rect x="112" y="16" width="8" height="64" rx="2" fill="#e84b4b"/>
 <rect x="120" y="16" width="1362" height="64" fill="url(#sectionSweep)"/>
-<text x="148" y="49" class="mono" font-size="18" fill="#f5eaea" letter-spacing="4">TECHNICAL / ARSENAL</text>
-<text x="148" y="67" class="mono" font-size="9" fill="#9b8585" letter-spacing="2.2">PRODUCT · SYSTEMS · INFRASTRUCTURE</text>
+<text x="148" y="49" class="mono" font-size="18" fill="#f5eaea" letter-spacing="4">TECHNICAL / RANGE</text>
+<text x="148" y="67" class="mono" font-size="9" fill="#9b8585" letter-spacing="2.2">PRODUCT · BACKEND · APPLIED ML</text>
 <rect x="112" y="79" width="1370" height="1" fill="url(#sectionRail)"/>
 <circle cx="1442" cy="48" r="15" fill="none" stroke="#e84b4b" opacity=".42"
  stroke-dasharray="3 6">

@@ -13,7 +13,7 @@
 </linearGradient>
 </defs>
 <rect width="1500" height="96" fill="#000"/>
-<text x="20" y="78" class="serif" font-size="86" fill="#671515" opacity=".34">04</text>
+<text x="20" y="78" class="serif" font-size="86" fill="#671515" opacity=".34">03</text>
 <rect x="112" y="16" width="1370" height="64" rx="4" fill="#080202" stroke="#310808"/>
 <rect x="112" y="16" width="8" height="64" rx="2" fill="#e84b4b"/>
 <rect x="120" y="16" width="1362" height="64" fill="url(#sectionSweep)"/>
