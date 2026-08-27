@@ -22,9 +22,9 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/signal-strip.svg" width="100%" alt="Product engineering, realtime systems, computer vision, 3D interfaces, and applied AI"/>
 
 <p>
-<code>05 · END-TO-END APPS</code> 
-<code>24 · TESTS / 5 SUITES</code> 
-<code>78% · HELD-OUT ACCURACY</code> 
+<code>05 · END-TO-END APPS</code>
+<code>24 · TESTS / 5 SUITES</code>
+<code>78% · HELD-OUT ACCURACY</code>
 <code>03 · DEVPOST PROTOTYPES</code>
 </p>
 
