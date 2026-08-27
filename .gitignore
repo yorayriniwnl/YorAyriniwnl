@@ -1,5 +1,6 @@
 __pycache__/
 *.py[cod]
 generated/
+tmp/
 _measure_tmp.html
 runs.json

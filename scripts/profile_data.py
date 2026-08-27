@@ -92,6 +92,8 @@ def validate_profile(profile: dict[str, Any]) -> None:
             "proof",
             "experience",
             "education",
+            "certifications",
+            "achievements",
             "skills",
             "projects",
             "visual_contract",

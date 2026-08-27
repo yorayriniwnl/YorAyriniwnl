@@ -63,8 +63,41 @@
       "degree": "B.Tech in Computer Science and Communication Engineering",
       "period": "2023-2027 (Expected)",
       "location": "Bhubaneswar, Odisha",
-      "cgpa": "7.00/10"
+      "cgpa": "7.00/10",
+      "coursework": [
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Database Management Systems",
+        "Computer Networks",
+        "Object-Oriented Programming"
+      ]
     }
+  ],
+  "certifications": [
+    {
+      "name": "Python (Basic)",
+      "issuer": "HackerRank",
+      "date": "July 2026"
+    },
+    {
+      "name": "Corporate Governance",
+      "issuer": "Coursera",
+      "date": "March 2026"
+    },
+    {
+      "name": "Business for Good: Fundamentals of Corporate Responsibility",
+      "issuer": "London Business School",
+      "date": "March 2026"
+    },
+    {
+      "name": "Ethical Decision Making for Success in the Tech Industry",
+      "issuer": "University of Colorado Boulder",
+      "date": "March 2026"
+    }
+  ],
+  "achievements": [
+    "Shipped three full-stack Devpost prototypes under competitive hackathon deadlines.",
+    "Earned Pratham, Dwitiya, and Tritiya Sopan through Bharat Scouts & Guides."
   ],
   "skills": {
     "product": [
