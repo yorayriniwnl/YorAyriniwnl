@@ -38,25 +38,32 @@ import os
 import sys
 import urllib.error
 import urllib.request
+from pathlib import Path
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.path.join(HERE, "..", "generated")
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 
-USERNAME = "yorayriniwnl"
+from profile_data import load_profile
+
+
+HERE = str(SCRIPT_DIR)
+OUT_DIR = str(SCRIPT_DIR.parent / "generated")
+PROFILE = load_profile()
+PALETTE = PROFILE["visual_contract"]["palette"]
+
+USERNAME = PROFILE["identity"]["handle"]
 API = "https://api.github.com"
 GQL = "https://api.github.com/graphql"
 
-# Same red palette as scripts/generate_assets.py's CONFIG — kept as a
-# second copy rather than a shared import so this script still runs
-# standalone in Actions; if the palette moves again, update both files
-# (see CHANGELOG "Pass 4" for the rationale and a note on this duplication).
-PRIMARY = "#e84b4b"
+# Same canonical palette as the README asset generator.
+PRIMARY = PALETTE["crimson"]
 SECONDARY = "#b92b2b"
-SPARKLE = "#ff8a7f"
-MUTED = "#c4c4c4"
-VOID = "#000000"
-PANEL = "#050505"
-BORDER = "#671515"
+SPARKLE = PALETTE["signal"]
+MUTED = PALETTE["muted"]
+VOID = PALETTE["void"]
+PANEL = PALETTE["panel"]
+BORDER = PALETTE["deep_crimson"]
 
 LANG_COLORS = [PRIMARY, SECONDARY, SPARKLE, "#b0685a", MUTED, "#6b1420"]
 
@@ -244,7 +251,7 @@ def build_streak_panel(streak):
     w, h = 380, 170
     if streak is None:
         shell = card_shell(w, h, "SYSTEM STATUS")
-        status = [("IST", "TIMEZONE"), ("RUST", "SYSTEMS"), ("OPEN", "COLLAB")]
+        status = [("IST", "TIMEZONE"), ("TS+PY", "CORE"), ("OPEN", "INTERNSHIPS")]
         col_w = (w - 56) / 3
         cells = []
         for i, (value, label) in enumerate(status):

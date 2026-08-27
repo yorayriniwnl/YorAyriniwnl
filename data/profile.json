@@ -294,6 +294,13 @@
   "visual_contract": {
     "approved_hero": "assets/hero-keyart-v2.png",
     "approved_hero_sha256": "fe1bc51570f6e90292de0b1aea65f8a04ec59f98ace361ab104352a21508078d",
+    "optimized_hero": "assets/hero-keyart-v2-optimized.jpg",
+    "project_art": {
+      "helios": "assets/project-helios-keyart-v2-optimized.jpg",
+      "zenith": "assets/project-zenith-keyart-v2-optimized.jpg",
+      "vision": "assets/project-vision-keyart-v2-optimized.jpg",
+      "talks": "assets/project-talks-keyart-v2-optimized.jpg"
+    },
     "palette": {
       "void": "#000000",
       "panel": "#050505",

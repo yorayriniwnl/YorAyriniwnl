@@ -73,12 +73,21 @@ def _validate_projects(projects: list[dict[str, Any]]) -> None:
 
 def _validate_hero(profile: dict[str, Any]) -> None:
     contract = profile["visual_contract"]
+    _require(contract, {"approved_hero", "approved_hero_sha256", "optimized_hero", "project_art", "palette"}, "visual contract")
     hero_path = ROOT / contract["approved_hero"]
     if not hero_path.is_file():
         raise ProfileDataError(f"approved hero is missing: {hero_path}")
     actual = hashlib.sha256(hero_path.read_bytes()).hexdigest()
     if actual != contract["approved_hero_sha256"]:
         raise ProfileDataError("approved hero changed; restore the previous profile portrait")
+
+    derivative_paths = [contract["optimized_hero"], *contract["project_art"].values()]
+    if set(contract["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+        raise ProfileDataError("project artwork must match the selected visual project set")
+    for relative_path in derivative_paths:
+        asset_path = ROOT / relative_path
+        if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():
+            raise ProfileDataError(f"optimized visual asset is missing: {relative_path}")
 
 
 def validate_profile(profile: dict[str, Any]) -> None:

@@ -1,27 +1,36 @@
 #!/usr/bin/env python3
-"""
-Regenerates the profile's visual system under generated/ from the two
-vendored fonts and the config below.
+"""Generate the public README visual system from the verified profile data.
 
-Run locally with `python3 scripts/generate_assets.py`, or let
-.github/workflows/build-assets.yml run it on push / weekly cron.
-
-Edit CONFIG to change name/role/colors/motif density — never hand-edit
-anything under generated/, it's all generated. Positions are seeded
-(CONFIG["seed"]) so output is reproducible between runs.
+Identity, palette, project copy, and artwork paths come from data/profile.json.
+Never hand-edit files under generated/. Positions are seeded so repeated runs
+remain deterministic, and stale generated SVGs are removed automatically.
 """
 import base64
 import math
 import os
 import random
+import sys
+from pathlib import Path
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.path.join(HERE, "..", "generated")
-ASSET_DIR = os.path.join(HERE, "..", "assets")
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from profile_data import load_profile
+
+
+ROOT = SCRIPT_DIR.parent
+HERE = str(SCRIPT_DIR)
+OUT_DIR = ROOT / "generated"
+ASSET_DIR = ROOT / "assets"
+PROFILE = load_profile()
+IDENTITY = PROFILE["identity"]
+VISUAL_CONTRACT = PROFILE["visual_contract"]
+PALETTE = VISUAL_CONTRACT["palette"]
 
 CONFIG = {
-    "name": "Ayush Roy",
-    "role": "FULL-STACK DEVELOPER  ·  APPLIED ML BUILDER",
+    "name": IDENTITY["name"],
+    "role": f'{IDENTITY["role"].upper()}  ·  {IDENTITY["specialty"].upper()}',
     "width": 1500,
     "height": 300,
     # Steam-profile palette: a pure-black canvas, translucent black panels,
@@ -31,12 +40,12 @@ CONFIG = {
         (0, "#000000"), (18, "#050101"), (42, "#1f0404"),
         (64, "#671515"), (82, "#180303"), (100, "#000000"),
     ],
-    "primary": "#e84b4b",
+    "primary": PALETTE["crimson"],
     "secondary": "#b92b2b",
-    "sparkle": "#ff8a7f",
-    "muted": "#c4c4c4",
+    "sparkle": PALETTE["signal"],
+    "muted": PALETTE["muted"],
     "shimmer": "#ffffff",
-    "name_color": "#f5eaea",
+    "name_color": PALETTE["paper"],
     "seed": 42,
     "star_counts": {"far": 34, "mid": 24, "near": 13},
     "sparkle_count": 6,
@@ -90,11 +99,20 @@ def b64_font(filename):
         return base64.b64encode(f.read()).decode("ascii")
 
 
-def asset_data_uri(filename, mime_type):
+def asset_data_uri(filename, mime_type=None):
     """Embed a project-owned raster inside an SVG so GitHub never has to
     resolve a nested remote image request. The generated SVGs stay fully
     self-contained and continue to animate when rendered through raw GitHub."""
-    with open(os.path.join(ASSET_DIR, filename), "rb") as f:
+    asset_path = ASSET_DIR / Path(filename).name
+    if mime_type is None:
+        mime_type = {
+            ".jpg": "image/jpeg",
+            ".jpeg": "image/jpeg",
+            ".png": "image/png",
+        }.get(asset_path.suffix.lower())
+    if mime_type is None:
+        raise ValueError(f"unsupported embedded asset type: {asset_path.suffix}")
+    with asset_path.open("rb") as f:
         encoded = base64.b64encode(f.read()).decode("ascii")
     return f"data:{mime_type};base64,{encoded}"
 
@@ -827,7 +845,7 @@ def build_cinematic_hero_svg(cfg):
     """A self-contained title sequence: original raster key art plus a
     GitHub-safe animated HUD, scan pass, signal traces, and identity lockup."""
     W, H = 1500, 620
-    art = asset_data_uri("hero-keyart-v2.png", "image/png")
+    art = asset_data_uri(VISUAL_CONTRACT["optimized_hero"])
     fonts = experience_font_defs()
     rng = random.Random(cfg["seed"] + 900)
 
@@ -1481,6 +1499,9 @@ def build_protocol_human_svg(cfg):
 
 def build_featured_project_svg(cfg):
     W, H = 1500, 520
+    project = next(item for item in PROFILE["projects"] if item["id"] == "portfolio")
+    proof = project["proof"]
+    stack = " · ".join(project["stack"][:5]).upper()
     rng = random.Random(cfg["seed"] + 1200)
     particles = []
     for i in range(92):
@@ -1519,16 +1540,16 @@ def build_featured_project_svg(cfg):
 <text x="52" y="62" class="mono" font-size="10" fill="#e84b4b" letter-spacing="3">
 FLAGSHIP // 01
 </text>
-<text x="52" y="128" class="serif" font-size="62" fill="#f5eaea">Personal Portfolio</text>
+<text x="52" y="128" class="serif" font-size="62" fill="#f5eaea">{esc(project["name"])}</text>
 <text x="52" y="164" class="mono" font-size="15" fill="#bdaaaa" letter-spacing="1.5">
-AN INTERACTIVE 3D PRODUCT UNIVERSE
+{esc(project["codename"])}
 </text>
 <rect x="52" y="190" width="520" height="1" fill="#671515"/>
 <text x="52" y="232" class="mono" font-size="13" fill="#a99494">
-<tspan x="52" dy="0">4,000 GPU-driven particles.</tspan>
-<tspan x="52" dy="27">Lazy-loaded case-study systems.</tspan>
-<tspan x="52" dy="27">Automated GitHub data synchronization.</tspan>
-<tspan x="52" dy="27">24 tests across five Vitest suites.</tspan>
+<tspan x="52" dy="0">{esc(proof[0])}.</tspan>
+<tspan x="52" dy="27">{esc(proof[1])}.</tspan>
+<tspan x="52" dy="27">{esc(proof[2])}.</tspan>
+<tspan x="52" dy="27">STATUS // {esc(project["status"].upper())}</tspan>
 </text>
 <g transform="translate(52,354)">
 <rect width="172" height="50" rx="3" fill="#671515"/>
@@ -1541,7 +1562,7 @@ AN INTERACTIVE 3D PRODUCT UNIVERSE
  letter-spacing="2">SOURCE</text>
 </g>
 <text x="52" y="470" class="mono" font-size="10" fill="#806d6d" letter-spacing="2">
-TYPESCRIPT · REACT · THREE.JS · VITE · VITEST
+{esc(stack)}
 </text>
 <circle cx="1110" cy="258" r="245" fill="url(#particleGlow)"/>
 <ellipse cx="1110" cy="258" rx="300" ry="202" fill="none" stroke="#671515" opacity=".55"/>
@@ -1572,7 +1593,7 @@ PORTFOLIO
 
 def project_visual_svg(kind, cfg):
     if kind == "helios":
-        art = asset_data_uri("project-helios-keyart-v2.png", "image/png")
+        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["helios"])
         return f'''
 <clipPath id="heliosClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
 <g clip-path="url(#heliosClip)">
@@ -1588,11 +1609,11 @@ def project_visual_svg(kind, cfg):
 <rect width="190" height="80" rx="5" fill="#180303" stroke="#e84b4b"/>
 <circle cx="22" cy="22" r="5" fill="#ff8a7f"><animate attributeName="opacity"
  values=".2;1;.2" dur="1s" repeatCount="indefinite"/></circle>
-<text x="38" y="27" class="mono" font-size="10" fill="#f5eaea">SPIKE DETECTED</text>
-<text x="20" y="56" class="mono" font-size="20" fill="#e84b4b">+18.4%</text>
+<text x="38" y="27" class="mono" font-size="10" fill="#f5eaea">EVENT STREAM</text>
+<text x="20" y="56" class="mono" font-size="18" fill="#e84b4b">LIVE / ALERTS</text>
 </g>'''
     if kind == "zenith":
-        art = asset_data_uri("project-zenith-keyart-v2.png", "image/png")
+        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["zenith"])
         return f'''
 <clipPath id="zenithClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
 <g clip-path="url(#zenithClip)">
@@ -1611,7 +1632,7 @@ def project_visual_svg(kind, cfg):
 <text y="5" text-anchor="middle" class="mono" font-size="14" fill="#f5eaea">ROI</text>
 </g>'''
     if kind == "vision":
-        art = asset_data_uri("project-vision-keyart-v2.png", "image/png")
+        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["vision"])
         return f'''
 <clipPath id="visionClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
 <g clip-path="url(#visionClip)">
@@ -1625,7 +1646,7 @@ def project_visual_svg(kind, cfg):
 <text x="500" y="148" class="mono" font-size="20" fill="#f5eaea">78% / REAL</text>
 </g>'''
     if kind == "talks":
-        art = asset_data_uri("project-talks-keyart-v2.png", "image/png")
+        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["talks"])
         return f'''
 <clipPath id="talksClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
 <g clip-path="url(#talksClip)">
@@ -1708,18 +1729,18 @@ def build_project_card_svg(project, cfg):
 <rect x="1" y="1" width="718" height="428" rx="7" fill="url(#cardGrid)"/>
 <rect x="1" y="1" width="718" height="428" rx="7" fill="url(#cardSweep)"/>
 <rect x="18" y="18" width="5" height="45" rx="2" fill="#e84b4b"/>
-<text x="38" y="37" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">
+<text x="38" y="37" class="mono" font-size="11" fill="#a99494" letter-spacing="1.6">
 {esc(project["code"])} // {esc(project["domain"])}
 </text>
-<text x="38" y="60" class="mono" font-size="18" fill="#f5eaea" letter-spacing="1.4">
+<text x="38" y="62" class="mono" font-size="26" fill="#f5eaea" letter-spacing="1.1">
 {esc(project["title"])}
 </text>
 <g>{visual}</g>
 <rect x="28" y="326" width="664" height="1" fill="#310808"/>
-<text x="28" y="359" class="mono" font-size="10" fill="#e84b4b" letter-spacing="1.8">
+<text x="28" y="359" class="mono" font-size="12" fill="#e84b4b" letter-spacing="1.2">
 {esc(project["stack"])}
 </text>
-<text x="28" y="392" class="mono" font-size="11" fill="#a99494">
+<text x="28" y="392" class="mono" font-size="13" fill="#c4c4c4">
 {esc(project["summary"])}
 </text>
 <text x="684" y="404" text-anchor="end" class="mono" font-size="12" fill="#e84b4b">OPEN ↗</text>
@@ -1840,7 +1861,7 @@ def build_finale_svg(cfg):
 </svg>'''
 
 
-if __name__ == "__main__":
+def generate_legacy_asset_set():
     os.makedirs(OUT_DIR, exist_ok=True)
 
     hero = build_cinematic_hero_svg(CONFIG)
@@ -1987,3 +2008,84 @@ if __name__ == "__main__":
         with open(path, "w", encoding="utf-8") as f:
             f.write(svg)
         print(f"wrote {path} ({len(svg)/1024:.1f} KB)")
+
+
+def canonical_project_card_spec(project):
+    return {
+        "kind": project["id"],
+        "code": f'SYS-{project["order"]:02d}',
+        "domain": project["codename"],
+        "title": project["name"].upper(),
+        "stack": " · ".join(project["stack"][:4]).upper(),
+        "summary": project["proof"][0].rstrip(".") + ".",
+    }
+
+
+def build_asset_manifest():
+    """Build only assets used by the public README."""
+    manifest = {
+        "hero.svg": build_cinematic_hero_svg(CONFIG),
+        "signal-strip.svg": build_signal_strip_svg(CONFIG),
+        "operator-gateway.svg": build_operator_gateway_svg(CONFIG),
+        "achievement-rack.svg": build_achievement_rack_svg(CONFIG),
+        "protocol-engineer.svg": build_protocol_engineer_svg(CONFIG),
+        "protocol-product.svg": build_protocol_product_svg(CONFIG),
+        "protocol-human.svg": build_protocol_human_svg(CONFIG),
+        "project-portfolio.svg": build_featured_project_svg(CONFIG),
+        "arsenal.svg": build_arsenal_svg(CONFIG),
+        "finale.svg": build_finale_svg(CONFIG),
+    }
+
+    nav_specs = (
+        ("nav-portfolio.svg", "PORTFOLIO", "ENTER THE SYSTEM", "◢"),
+        ("nav-projects.svg", "PROJECTS", "EXPLORE THE BUILDS", "⌁"),
+        ("nav-resume.svg", "RÉSUMÉ", "VIEW PUBLIC RECORD", "▤"),
+        ("nav-linkedin.svg", "LINKEDIN", "OPEN PROFESSIONAL LINK", "◇"),
+    )
+    for index, (filename, label, code, glyph) in enumerate(nav_specs):
+        manifest[filename] = build_nav_button_svg(
+            label, code, glyph, CONFIG, CONFIG["seed"] + 1500 + index
+        )
+
+    section_specs = (
+        ("section-projects.svg", "01", "SELECTED / SYSTEMS", "PROOF BEFORE PROMISE"),
+        ("section-arsenal.svg", "02", "TECHNICAL / RANGE", "PRODUCT · BACKEND · APPLIED ML"),
+        ("section-record.svg", "03", "PUBLIC / RECORD", "REPOSITORIES · LANGUAGES · SIGNAL"),
+    )
+    for filename, index, title, subtitle in section_specs:
+        manifest[filename] = build_section_header_svg(index, title, subtitle, CONFIG)
+
+    projects = {project["id"]: project for project in PROFILE["projects"]}
+    for project_id in ("helios", "zenith", "vision", "talks"):
+        manifest[f"project-{project_id}.svg"] = build_project_card_svg(
+            canonical_project_card_spec(projects[project_id]), CONFIG
+        )
+
+    return manifest
+
+
+def main():
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    manifest = build_asset_manifest()
+    expected = set(manifest)
+    preserved = {"stats.svg"}
+
+    for stale_path in OUT_DIR.glob("*.svg"):
+        if stale_path.name not in expected | preserved:
+            stale_path.unlink()
+            print(f"removed stale generated asset {stale_path}")
+
+    total_bytes = 0
+    for filename, svg in manifest.items():
+        path = OUT_DIR / filename
+        path.write_text(svg, encoding="utf-8")
+        size = path.stat().st_size
+        total_bytes += size
+        print(f"wrote {path} ({size / 1024:.1f} KB)")
+
+    print(f"generated {len(manifest)} README assets ({total_bytes / 1024:.1f} KB total)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

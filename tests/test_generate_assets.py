@@ -16,30 +16,60 @@ class GenerateAssetsTests(unittest.TestCase):
 
         root = ET.fromstring(svg)
         self.assertTrue(root.tag.endswith("svg"))
-        self.assertIn("data:image/png;base64,", svg)
+        self.assertIn("data:image/jpeg;base64,", svg)
         self.assertIn("AYR // OPERATOR ONLINE", svg)
         self.assertIn("FULL-STACK DEVELOPER", svg)
         self.assertIn('values="1492;1516;1492"', svg)
 
-    def test_interactive_console_assets_render_valid_svg(self):
+    def test_navigation_and_canonical_project_card_render_valid_svg(self):
         nav = generate_assets.build_nav_button_svg(
-            "PORTFOLIO", "ENTER THE SYSTEM", "◢", generate_assets.CONFIG, 42
+            "RÉSUMÉ", "VIEW PUBLIC RECORD", "▤", generate_assets.CONFIG, 42
+        )
+        project = next(
+            item for item in generate_assets.PROFILE["projects"] if item["id"] == "vision"
         )
         card = generate_assets.build_project_card_svg(
-            {
-                "kind": "next",
-                "code": "SYS-07",
-                "domain": "OPEN CHANNEL",
-                "title": "NEXT TRANSMISSION",
-                "stack": "COLLABORATION · RESEARCH · OPEN SOURCE",
-                "summary": "Bring the difficult problem. We'll build the system.",
-            },
+            generate_assets.canonical_project_card_spec(project),
             generate_assets.CONFIG,
         )
 
         self.assertTrue(ET.fromstring(nav).tag.endswith("svg"))
         self.assertTrue(ET.fromstring(card).tag.endswith("svg"))
-        self.assertIn("AWAITING THE NEXT HARD PROBLEM", card)
+        self.assertIn("AI VS. REAL IMAGE DETECTOR", card)
+        self.assertIn("78% HELD-OUT TEST ACCURACY", card.upper())
+        self.assertIn("data:image/jpeg;base64,", card)
+
+    def test_manifest_contains_only_public_readme_assets(self):
+        manifest = generate_assets.build_asset_manifest()
+        expected = {
+            "hero.svg",
+            "signal-strip.svg",
+            "operator-gateway.svg",
+            "achievement-rack.svg",
+            "protocol-engineer.svg",
+            "protocol-product.svg",
+            "protocol-human.svg",
+            "project-portfolio.svg",
+            "project-helios.svg",
+            "project-zenith.svg",
+            "project-vision.svg",
+            "project-talks.svg",
+            "arsenal.svg",
+            "finale.svg",
+            "nav-portfolio.svg",
+            "nav-projects.svg",
+            "nav-resume.svg",
+            "nav-linkedin.svg",
+            "section-projects.svg",
+            "section-arsenal.svg",
+            "section-record.svg",
+        }
+
+        self.assertEqual(set(manifest), expected)
+        self.assertLess(sum(len(svg.encode("utf-8")) for svg in manifest.values()), 2_500_000)
+        self.assertNotIn("nav-steam.svg", manifest)
+        self.assertNotIn("project-next.svg", manifest)
+        self.assertNotIn("+18.4%", "".join(manifest.values()))
 
     def test_operator_mode_assets_are_valid_and_complete(self):
         assets = {

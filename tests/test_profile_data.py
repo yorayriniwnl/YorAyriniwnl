@@ -40,6 +40,17 @@ class ProfileDataTests(unittest.TestCase):
 
         self.assertEqual(digest, contract["approved_hero_sha256"])
 
+    def test_optimized_visual_contract_is_complete(self):
+        contract = self.profile["visual_contract"]
+        derivatives = [contract["optimized_hero"], *contract["project_art"].values()]
+
+        self.assertEqual(set(contract["project_art"]), {"helios", "zenith", "vision", "talks"})
+        for relative_path in derivatives:
+            with self.subTest(asset=relative_path):
+                path = ROOT / relative_path
+                self.assertTrue(path.is_file())
+                self.assertEqual(path.suffix, ".jpg")
+
 
 if __name__ == "__main__":
     unittest.main()

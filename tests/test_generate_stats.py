@@ -37,6 +37,9 @@ class GenerateStatsTests(unittest.TestCase):
 
         self.assertIn("SYSTEM STATUS", panel)
         self.assertIn("TIMEZONE", panel)
+        self.assertIn("TS+PY", panel)
+        self.assertIn("INTERNSHIPS", panel)
+        self.assertNotIn("RUST", panel)
         self.assertNotIn("STATS_TOKEN", panel)
 
 
