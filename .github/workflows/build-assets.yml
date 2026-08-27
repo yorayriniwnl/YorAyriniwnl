@@ -4,14 +4,27 @@ on:
   push:
     branches: [main]
     paths:
+      - "README.md"
+      - "data/profile.json"
       - "scripts/generate_assets.py"
+      - "scripts/generate_readme.py"
+      - "scripts/optimize_assets.py"
+      - "scripts/profile_data.py"
       - "scripts/fonts/**"
       - "assets/**"
-      - "tests/test_generate_assets.py"
+      - "tests/**"
+      - "requirements-profile.txt"
       - ".github/workflows/build-assets.yml"
-  schedule:
-    - cron: "0 6 * * 1"   # weekly Monday 06:00 UTC — cheap insurance against silent drift
-  workflow_dispatch: {}    # manual "run now" button in the Actions tab
+  pull_request:
+    paths:
+      - "README.md"
+      - "data/profile.json"
+      - "scripts/**"
+      - "assets/**"
+      - "tests/**"
+      - "requirements-profile.txt"
+      - ".github/workflows/build-assets.yml"
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -28,25 +41,54 @@ jobs:
       - name: Checkout main (source)
         uses: actions/checkout@v4
         with:
-          ref: main
           path: main
 
-      - name: Generate cinematic profile experience
-        run: python3 main/scripts/generate_assets.py
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: main/requirements-profile.txt
 
-      - name: Validate generated assets
-        run: python3 -m unittest discover -s main/tests -v
+      - name: Install profile build dependencies
+        run: python -m pip install -r main/requirements-profile.txt
+
+      - name: Validate canonical data and optimized artwork
+        working-directory: main
+        run: |
+          python scripts/profile_data.py
+          python scripts/optimize_assets.py
+          git diff --exit-code -- assets
+
+      - name: Generate profile visuals
+        run: python main/scripts/generate_assets.py
+
+      - name: Verify README and all profile contracts
+        working-directory: main
+        run: |
+          python scripts/generate_readme.py --check
+          python -m unittest discover -s tests -v
 
       - name: Checkout output (generated artifacts)
+        if: github.event_name != 'pull_request'
         uses: actions/checkout@v4
         with:
           ref: output
           path: output
 
-      - name: Copy generated files into output branch
-        run: cp main/generated/*.svg output/
+      - name: Sync generated files into output branch
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          find output -maxdepth 1 -type f -name '*.svg' \
+            ! -name 'stats.svg' \
+            ! -name 'github-contribution-grid-snake.svg' \
+            ! -name 'github-contribution-grid-snake-dark.svg' \
+            -delete
+          cp main/generated/*.svg output/
 
       - name: Commit if changed
+        if: github.event_name != 'pull_request'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           repository: output

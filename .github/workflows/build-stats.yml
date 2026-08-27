@@ -2,13 +2,14 @@ name: Build stats cards
 
 on:
   schedule:
-    - cron: "17 6 * * *"   # daily 06:17 UTC — offset from build-assets' Monday
-                            # cron so the two workflows don't queue together
+    - cron: "17 6 * * *"   # daily 06:17 UTC
   workflow_dispatch: {}     # manual "run now" button in the Actions tab
   push:
     branches: [main]
     paths:
+      - "data/profile.json"
       - "scripts/generate_stats.py"
+      - "scripts/profile_data.py"
       - ".github/workflows/build-stats.yml"
 
 permissions:
@@ -29,6 +30,11 @@ jobs:
           ref: main
           path: main
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Fetch live data + render stat cards
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,7 +43,7 @@ jobs:
           # secret, named STATS_TOKEN. Without it, the middle card renders
           # a system-status panel instead of exposing configuration text.
           STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
-        run: python3 main/scripts/generate_stats.py
+        run: python main/scripts/generate_stats.py
 
       - name: Checkout output (generated artifacts)
         uses: actions/checkout@v4
