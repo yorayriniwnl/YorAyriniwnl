@@ -274,7 +274,11 @@ def render_readme(profile: dict | None = None) -> str:
             image("section-operator.svg", "Section 05: interactive operator mode and protocol archive", handle),
             "",
             "<details>",
-            f'<summary>{image("operator-gateway.svg", "Initiate the Steam-inspired operator mode", handle)}</summary>',
+            (
+                '<summary><picture>'
+                f'{image("operator-gateway.svg", "Initiate the Steam-inspired operator mode", handle)}'
+                '</picture></summary>'
+            ),
             "",
             image("achievement-rack.svg", "Proof-of-work achievement rack", handle),
             "",

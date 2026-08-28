@@ -126,7 +126,7 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-operator.svg" width="100%" alt="Section 05: interactive operator mode and protocol archive"/>
 
 <details>
-<summary><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/operator-gateway.svg" width="100%" alt="Initiate the Steam-inspired operator mode"/></summary>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/operator-gateway.svg" width="100%" alt="Initiate the Steam-inspired operator mode"/></picture></summary>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/achievement-rack.svg" width="100%" alt="Proof-of-work achievement rack"/>
 

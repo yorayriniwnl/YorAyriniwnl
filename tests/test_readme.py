@@ -51,7 +51,10 @@ class ReadmeTests(unittest.TestCase):
         self.assertNotIn("<h1", self.readme)
         self.assertNotRegex(self.readme, r"(?m)^#{1,6}\s")
         self.assertNotRegex(self.readme, r"(?m)^\s*[-*+]\s+")
-        self.assertRegex(self.readme, r"<summary><img\b[^>]+></summary>")
+        self.assertRegex(
+            self.readme,
+            r"<summary><picture><img\b[^>]+></picture></summary>",
+        )
 
     def test_layout_is_mobile_safe_and_images_are_accessible(self):
         image_tags = re.findall(r"<img\b[^>]*?/>", self.readme)
