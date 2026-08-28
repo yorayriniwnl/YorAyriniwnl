@@ -52,8 +52,11 @@ def linked_button(href: str, filename: str, alt: str, handle: str) -> str:
 def project_block(project: dict, handle: str) -> list[str]:
     code = f'SYS-{project["order"]:02d}'
     target = project.get("live") or project["repo"]
-    status = f'{project["status"]} · {project["period"]}'
-    stack = " · ".join(project["stack"])
+    dossier_alt = (
+        f'{code}: {project["name"]}. {project["status"]}, {project["period"]}. '
+        f'{project["summary"]} Proof: {"; ".join(project["proof"])}. '
+        f'Stack: {"; ".join(project["stack"])}.'
+    )
     links = []
     if project.get("live"):
         links.append(
@@ -74,10 +77,6 @@ def project_block(project: dict, handle: str) -> list[str]:
     )
 
     lines = [
-        f'### `{code}` · {project["name"]}',
-        "",
-        f'**{status}**',
-        "",
         *linked_image(
             target,
             PROJECT_VISUALS[project["id"]],
@@ -85,13 +84,18 @@ def project_block(project: dict, handle: str) -> list[str]:
             handle,
         ),
         "",
-        project["summary"],
+        *linked_image(
+            target,
+            f'project-dossier-{project["id"]}.svg',
+            dossier_alt,
+            handle,
+        ),
         "",
-        "Proof:",
+        '<p align="center">',
+        *links,
+        "</p>",
         "",
     ]
-    lines.extend(f'- {proof}' for proof in project["proof"])
-    lines.extend(["", f'**Stack:** {stack}', "", "<p>", *links, "</p>", ""])
     return lines
 
 
@@ -102,7 +106,6 @@ def render_readme(profile: dict | None = None) -> str:
     availability = profile["availability"]
     handle = identity["handle"]
     projects = {project["id"]: project for project in profile["projects"]}
-    proof = {item["id"]: item for item in profile["proof"]}
     experience = profile["experience"][0]
     education = profile["education"][0]
     skills = profile["skills"]
@@ -123,12 +126,14 @@ def render_readme(profile: dict | None = None) -> str:
             handle,
         ),
         "",
-        f'<h1>{html.escape(identity["name"])}</h1>',
-        f'<p><strong>{html.escape(identity["role"])} · {html.escape(identity["specialty"])}</strong></p>',
-        f'<p>{html.escape(identity["positioning"])}</p>',
-        (
-            f'<p><strong>{html.escape(availability["status"])} · '
-            f'B.Tech {availability["graduating"]} · {html.escape(identity["location"])}</strong></p>'
+        image(
+            "identity-console.svg",
+            (
+                f'{identity["name"]}. {identity["role"]} and {identity["specialty"]}. '
+                f'{identity["positioning"]} {availability["status"]}. '
+                f'B.Tech {availability["graduating"]}. {identity["location"]}.'
+            ),
+            handle,
         ),
         "",
         '<p>',
@@ -146,22 +151,39 @@ def render_readme(profile: dict | None = None) -> str:
         ),
         "",
         '<p>',
-        f'<code>{int(proof["apps"]["value"]):02d} · {proof["apps"]["label"]}</code>',
-        f'<code>{proof["tests"]["value"]} · TESTS / 5 SUITES</code>',
-        f'<code>{proof["accuracy"]["value"]} · HELD-OUT ACCURACY</code>',
-        f'<code>{int(proof["prototypes"]["value"]):02d} · {proof["prototypes"]["label"]}</code>',
+        image(
+            f'proof-{profile["proof"][0]["id"]}.svg',
+            f'{profile["proof"][0]["value"]} {profile["proof"][0]["label"]}. {profile["proof"][0]["detail"]}',
+            handle,
+            "350",
+        ),
+        image(
+            f'proof-{profile["proof"][1]["id"]}.svg',
+            f'{profile["proof"][1]["value"]} {profile["proof"][1]["label"]}. {profile["proof"][1]["detail"]}',
+            handle,
+            "350",
+        ),
+        '<br/>',
+        image(
+            f'proof-{profile["proof"][2]["id"]}.svg',
+            f'{profile["proof"][2]["value"]} {profile["proof"][2]["label"]}. {profile["proof"][2]["detail"]}',
+            handle,
+            "350",
+        ),
+        image(
+            f'proof-{profile["proof"][3]["id"]}.svg',
+            f'{profile["proof"][3]["value"]} {profile["proof"][3]["label"]}. {profile["proof"][3]["detail"]}',
+            handle,
+            "350",
+        ),
         "</p>",
         "",
         "</div>",
         "",
-        image("section-projects.svg", "Section 01: selected systems, proof before promise", handle),
-        "",
-        "## Selected systems",
-        "",
-        (
-            "Five end-to-end builds across product engineering, realtime infrastructure, "
-            "applied machine learning, and 3D decision tools. Every metric below is backed "
-            "by the public project or verified résumé data."
+        image(
+            "section-projects.svg",
+            "Section 01: selected systems. Five end-to-end builds with public proof and verified data.",
+            handle,
         ),
         "",
     ]
@@ -170,16 +192,21 @@ def render_readme(profile: dict | None = None) -> str:
         lines.extend(project_block(projects[project_id], handle))
 
     feelings = projects["feelings"]
+    feelings_alt = (
+        f'LAB-01: {feelings["name"]}. {feelings["status"]}, {feelings["period"]}. '
+        f'{feelings["summary"]} Proof: {"; ".join(feelings["proof"])}. '
+        f'Stack: {"; ".join(feelings["stack"])}.'
+    )
     lines.extend(
         [
-            "<details>",
-            f'<summary><strong>LAB-01 // {feelings["name"]} — {feelings["codename"].lower()}</strong></summary>',
+            *linked_image(
+                feelings["live"],
+                "project-dossier-feelings.svg",
+                feelings_alt,
+                handle,
+            ),
             "",
-            feelings["summary"],
-            "",
-            f'**Stack:** {" · ".join(feelings["stack"])}',
-            "",
-            "<p>",
+            '<p align="center">',
             linked_button(
                 feelings["live"],
                 "nav-experiment.svg",
@@ -194,22 +221,23 @@ def render_readme(profile: dict | None = None) -> str:
             ),
             "</p>",
             "",
-            "</details>",
-            "",
-            "## Field notes",
-            "",
-            f'**{experience["role"]} · {experience["organization"]}** — {experience["period"]}',
-            "",
-            experience["summary"],
-            "",
-            f'**{education["degree"]} · {education["institution"]}** — expected {availability["graduating"]}',
-            "",
-            (
-                "Grounded in data structures, operating systems, databases, computer networks, "
-                "and object-oriented programming."
+            image(
+                "section-field.svg",
+                "Section 02: field notes covering verified experience, education, and trajectory.",
+                handle,
             ),
             "",
-            "<p>",
+            image(
+                "field-notes.svg",
+                (
+                    f'{experience["role"]} at {experience["organization"]}, {experience["period"]}. '
+                    f'{experience["summary"]} {education["degree"]} at {education["institution"]}, '
+                    f'{education["period"]}. Coursework: {"; ".join(education["coursework"])}.'
+                ),
+                handle,
+            ),
+            "",
+            '<p align="center">',
             linked_button(
                 resume_url,
                 "nav-resume.svg",
@@ -218,25 +246,23 @@ def render_readme(profile: dict | None = None) -> str:
             ),
             "</p>",
             "",
-            image("section-arsenal.svg", "Section 02: technical range", handle),
-            "",
-            "## Technical range",
+            image("section-arsenal.svg", "Section 03: complete technical range", handle),
             "",
             image("arsenal.svg", "Ayush Roy technical range across product, backend, machine learning, and platform engineering", handle),
             "",
-            f'**Product:** {" · ".join(skills["product"])}',
+            image(
+                "skills-matrix.svg",
+                (
+                    f'Product: {"; ".join(skills["product"])}. '
+                    f'Backend: {"; ".join(skills["backend"])}. '
+                    f'Applied ML: {"; ".join(skills["ml"])}. '
+                    f'Platform: {"; ".join(skills["platform"])}. '
+                    f'Currently expanding: {"; ".join(skills["expanding"])}.'
+                ),
+                handle,
+            ),
             "",
-            f'**Backend:** {" · ".join(skills["backend"])}',
-            "",
-            f'**Applied ML:** {" · ".join(skills["ml"])}',
-            "",
-            f'**Platform:** {" · ".join(skills["platform"])}',
-            "",
-            f'**Currently expanding:** {" · ".join(skills["expanding"])}',
-            "",
-            image("section-record.svg", "Section 03: public GitHub record", handle),
-            "",
-            "## Public record",
+            image("section-record.svg", "Section 04: live public GitHub record with verified fallback data", handle),
             "",
             *linked_image(
                 contact["github"],
@@ -245,33 +271,16 @@ def render_readme(profile: dict | None = None) -> str:
                 handle,
             ),
             "",
-            "The live card is generated from public GitHub data; its fallback contains only verified profile facts.",
-            "",
-            "## Operator mode",
+            image("section-operator.svg", "Section 05: interactive operator mode and protocol archive", handle),
             "",
             "<details>",
-            '<summary><strong>◈ INITIATE OPERATOR MODE // STEAM-INSPIRED PERSONAL LAYER</strong></summary>',
-            "",
-            image("operator-gateway.svg", "Operator mode access gateway", handle),
+            f'<summary>{image("operator-gateway.svg", "Initiate the Steam-inspired operator mode", handle)}</summary>',
             "",
             image("achievement-rack.svg", "Proof-of-work achievement rack", handle),
             "",
-            "<details>",
-            '<summary><strong>01 // TRACE THE ENGINEERING DNA</strong></summary>',
-            "",
             image("protocol-engineer.svg", "Engineering protocol from constraints through feedback", handle),
             "",
-            "</details>",
-            "",
-            "<details>",
-            '<summary><strong>02 // FORGE THE PRODUCT DOCTRINE</strong></summary>',
-            "",
             image("protocol-product.svg", "Product doctrine and learning loop", handle),
-            "",
-            "</details>",
-            "",
-            "<details>",
-            '<summary><strong>03 // OPEN THE HUMAN ARCHIVE</strong></summary>',
             "",
             *linked_image(
                 contact["steam"],
@@ -282,16 +291,13 @@ def render_readme(profile: dict | None = None) -> str:
             "",
             "</details>",
             "",
-            "</details>",
-            "",
-            "## Open channel",
-            "",
-            (
-                "I’m open to software engineering internships, ambitious product work, and "
-                "collaborations where interface craft meets real systems."
+            image(
+                "section-channel.svg",
+                "Section 06: open channel for software engineering internships, ambitious products, and collaboration",
+                handle,
             ),
             "",
-            "<p>",
+            '<p align="center">',
             linked_button(
                 f'mailto:{contact["email"]}?subject=Next%20Transmission',
                 "nav-email.svg",

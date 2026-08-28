@@ -21,30 +21,43 @@ class ReadmeTests(unittest.TestCase):
     def test_readme_matches_canonical_generator(self):
         self.assertEqual(self.readme, generate_readme.render_readme(self.profile))
 
-    def test_primary_narrative_is_semantic_and_proof_first(self):
-        headings = [
-            "## Selected systems",
-            "## Field notes",
-            "## Technical range",
-            "## Public record",
-            "## Operator mode",
-            "## Open channel",
+    def test_primary_narrative_is_visual_and_proof_first(self):
+        section_assets = [
+            "section-projects.svg",
+            "section-field.svg",
+            "section-arsenal.svg",
+            "section-record.svg",
+            "section-operator.svg",
+            "section-channel.svg",
         ]
-        positions = [self.readme.index(heading) for heading in headings]
+        positions = [self.readme.index(asset) for asset in section_assets]
 
         self.assertEqual(positions, sorted(positions))
-        self.assertLess(self.readme.index("## Selected systems"), self.readme.index("## Operator mode"))
+        self.assertLess(
+            self.readme.index("section-projects.svg"),
+            self.readme.index("section-operator.svg"),
+        )
         for project_id in generate_readme.SELECTED_PROJECT_IDS:
             project = next(item for item in self.profile["projects"] if item["id"] == project_id)
             self.assertIn(project["name"], self.readme)
             for proof in project["proof"]:
                 self.assertIn(proof, self.readme)
 
+    def test_every_visible_authored_block_is_visual(self):
+        without_comments = re.sub(r"<!--.*?-->", "", self.readme, flags=re.DOTALL)
+        visible_text = re.sub(r"<[^>]+>", "", without_comments).strip()
+
+        self.assertEqual(visible_text, "")
+        self.assertNotIn("<h1", self.readme)
+        self.assertNotRegex(self.readme, r"(?m)^#{1,6}\s")
+        self.assertNotRegex(self.readme, r"(?m)^\s*[-*+]\s+")
+        self.assertRegex(self.readme, r"<summary><img\b[^>]+></summary>")
+
     def test_layout_is_mobile_safe_and_images_are_accessible(self):
         image_tags = re.findall(r"<img\b[^>]*?/>", self.readme)
         widths = re.findall(r'width="([^"]+)"', self.readme)
 
-        self.assertGreaterEqual(len(image_tags), 35)
+        self.assertGreaterEqual(len(image_tags), 55)
         self.assertTrue(all(re.search(r'alt="[^"]+"', tag) for tag in image_tags))
         self.assertTrue(all(width in {"100%", "350"} for width in widths))
         self.assertNotIn('width="24%"', self.readme)
@@ -85,6 +98,11 @@ class ReadmeTests(unittest.TestCase):
         referenced = set(re.findall(r"/output/([a-z0-9-]+\.svg)", self.readme))
         expected = {
             "hero.svg",
+            "identity-console.svg",
+            "proof-apps.svg",
+            "proof-tests.svg",
+            "proof-accuracy.svg",
+            "proof-prototypes.svg",
             "nav-portfolio.svg",
             "nav-projects.svg",
             "nav-resume.svg",
@@ -98,6 +116,13 @@ class ReadmeTests(unittest.TestCase):
             "nav-steam.svg",
             "signal-strip.svg",
             "section-projects.svg",
+            "section-field.svg",
+            "project-dossier-portfolio.svg",
+            "project-dossier-helios.svg",
+            "project-dossier-zenith.svg",
+            "project-dossier-vision.svg",
+            "project-dossier-talks.svg",
+            "project-dossier-feelings.svg",
             "project-portfolio.svg",
             "project-helios.svg",
             "project-zenith.svg",
@@ -105,13 +130,17 @@ class ReadmeTests(unittest.TestCase):
             "project-talks.svg",
             "section-arsenal.svg",
             "arsenal.svg",
+            "skills-matrix.svg",
+            "field-notes.svg",
             "section-record.svg",
             "stats.svg",
+            "section-operator.svg",
             "operator-gateway.svg",
             "achievement-rack.svg",
             "protocol-engineer.svg",
             "protocol-product.svg",
             "protocol-human.svg",
+            "section-channel.svg",
             "finale.svg",
         }
 

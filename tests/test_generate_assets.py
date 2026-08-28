@@ -43,7 +43,14 @@ class GenerateAssetsTests(unittest.TestCase):
         manifest = generate_assets.build_asset_manifest()
         expected = {
             "hero.svg",
+            "identity-console.svg",
             "signal-strip.svg",
+            "field-notes.svg",
+            "skills-matrix.svg",
+            "proof-apps.svg",
+            "proof-tests.svg",
+            "proof-accuracy.svg",
+            "proof-prototypes.svg",
             "operator-gateway.svg",
             "achievement-rack.svg",
             "protocol-engineer.svg",
@@ -54,6 +61,12 @@ class GenerateAssetsTests(unittest.TestCase):
             "project-zenith.svg",
             "project-vision.svg",
             "project-talks.svg",
+            "project-dossier-portfolio.svg",
+            "project-dossier-helios.svg",
+            "project-dossier-zenith.svg",
+            "project-dossier-vision.svg",
+            "project-dossier-talks.svg",
+            "project-dossier-feelings.svg",
             "arsenal.svg",
             "finale.svg",
             "nav-portfolio.svg",
@@ -68,14 +81,46 @@ class GenerateAssetsTests(unittest.TestCase):
             "nav-devpost.svg",
             "nav-steam.svg",
             "section-projects.svg",
+            "section-field.svg",
             "section-arsenal.svg",
             "section-record.svg",
+            "section-operator.svg",
+            "section-channel.svg",
         }
 
         self.assertEqual(set(manifest), expected)
         self.assertLess(sum(len(svg.encode("utf-8")) for svg in manifest.values()), 2_500_000)
         self.assertNotIn("project-next.svg", manifest)
         self.assertNotIn("+18.4%", "".join(manifest.values()))
+
+    def test_visual_content_panels_are_valid_and_data_complete(self):
+        manifest = generate_assets.build_asset_manifest()
+        profile = generate_assets.PROFILE
+
+        for filename in (
+            "identity-console.svg",
+            "field-notes.svg",
+            "skills-matrix.svg",
+            "project-dossier-portfolio.svg",
+            "project-dossier-feelings.svg",
+        ):
+            with self.subTest(asset=filename):
+                root = ET.fromstring(manifest[filename])
+                self.assertTrue(root.tag.endswith("svg"))
+                self.assertIn("<title>", manifest[filename])
+
+        for proof in profile["proof"]:
+            card = manifest[f'proof-{proof["id"]}.svg']
+            self.assertIn(proof["value"], card)
+            self.assertIn(proof["label"], card)
+            self.assertIn(proof["detail"].upper().split()[0], card)
+
+        for project in profile["projects"]:
+            dossier = manifest[f'project-dossier-{project["id"]}.svg']
+            self.assertIn(project["name"].upper(), dossier)
+            self.assertIn(project["status"].upper(), dossier)
+            for proof in project["proof"]:
+                self.assertIn(proof, dossier)
 
     def test_operator_mode_assets_are_valid_and_complete(self):
         assets = {

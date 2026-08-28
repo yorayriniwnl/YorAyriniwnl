@@ -10,6 +10,7 @@ import math
 import os
 import random
 import sys
+import textwrap
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -92,6 +93,16 @@ TEXT_ZONE = {"x0": 330, "x1": 1170, "y0": 92, "y1": 228}
 
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def wrap_lines(text, width):
+    """Wrap profile copy predictably for deterministic SVG text layouts."""
+    return textwrap.wrap(
+        text,
+        width=width,
+        break_long_words=False,
+        break_on_hyphens=False,
+    )
 
 
 def b64_font(filename):
@@ -826,6 +837,18 @@ def build_tagline_svg(cfg):
 
 # ======================================================= cinematic experience
 
+def mono_font_defs():
+    """Embed only DM Mono for compact controls and information panels."""
+    dmmono = b64_font("dm-mono-500.woff2")
+    return (
+        "<style>"
+        f"@font-face {{ font-family:'DM Mono'; font-weight:500; "
+        f"src:url(data:font/woff2;base64,{dmmono}) format('woff2'); }}"
+        ".mono{font-family:'DM Mono','Courier New',monospace;font-weight:500}"
+        "</style>"
+    )
+
+
 def experience_font_defs():
     cormorant = b64_font("cormorant-garamond-600.woff2")
     dmmono = b64_font("dm-mono-500.woff2")
@@ -1017,8 +1040,9 @@ def build_nav_button_svg(label, code, glyph, cfg, seed):
         for i in range(18)
     )
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>{esc(label)} — {esc(code)}</title>
 <defs>
-{experience_font_defs()}
+{mono_font_defs()}
 <linearGradient id="navBg" x1="0%" y1="0%" x2="100%" y2="0%">
 <stop offset="0%" stop-color="#050505"/><stop offset="72%" stop-color="#130303"/>
 <stop offset="100%" stop-color="#300707"/>
@@ -1045,8 +1069,9 @@ def build_signal_strip_svg(cfg):
     W, H = 1500, 52
     phrase = "GEOSPATIAL  ·  REALTIME  ·  COMPUTER VISION  ·  SYSTEMS  ·  3D  ·  APPLIED AI  ·  "
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>Live capability signal</title>
 <defs>
-{experience_font_defs()}
+{mono_font_defs()}
 <linearGradient id="signalFade" x1="0%" x2="100%">
 <stop offset="0%" stop-color="#000"/><stop offset="8%" stop-color="#000" stop-opacity="0"/>
 <stop offset="92%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000"/>
@@ -1075,8 +1100,9 @@ def build_signal_strip_svg(cfg):
 def build_section_header_svg(index, title, subtitle, cfg):
     W, H = 1500, 96
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>Section {esc(index)} — {esc(title)}</title>
 <defs>
-{experience_font_defs()}
+{mono_font_defs()}
 <linearGradient id="sectionRail" x1="0%" x2="100%">
 <stop offset="0%" stop-color="#e84b4b"/><stop offset="58%" stop-color="#671515"/>
 <stop offset="100%" stop-color="#000" stop-opacity="0"/>
@@ -1089,7 +1115,7 @@ def build_section_header_svg(index, title, subtitle, cfg):
 </linearGradient>
 </defs>
 <rect width="{W}" height="{H}" fill="#000"/>
-<text x="20" y="78" class="serif" font-size="86" fill="#671515" opacity=".34">{esc(index)}</text>
+<text x="20" y="78" font-family="Georgia,serif" font-weight="700" font-size="86" fill="#671515" opacity=".34">{esc(index)}</text>
 <rect x="112" y="16" width="1370" height="64" rx="4" fill="#080202" stroke="#310808"/>
 <rect x="112" y="16" width="8" height="64" rx="2" fill="#e84b4b"/>
 <rect x="120" y="16" width="1362" height="64" fill="url(#sectionSweep)"/>
@@ -1104,6 +1130,208 @@ def build_section_header_svg(index, title, subtitle, cfg):
 <circle cx="1442" cy="48" r="3" fill="#ff8a7f">
 <animate attributeName="opacity" values=".2;1;.2" dur="1.4s" repeatCount="indefinite"/>
 </circle>
+</svg>'''
+
+
+def build_proof_card_svg(item, index, cfg):
+    """A compact metric card that remains readable beside the nav controls."""
+    W, H = 350, 138
+    detail_lines = wrap_lines(item["detail"].upper(), 43)[:2]
+    detail_svg = "".join(
+        f'<tspan x="24" dy="{0 if line_index == 0 else 15}">{esc(line)}</tspan>'
+        for line_index, line in enumerate(detail_lines)
+    )
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>{esc(item["value"])} {esc(item["label"])}</title>
+<desc>{esc(item["detail"])}</desc>
+<defs>
+{mono_font_defs()}
+<linearGradient id="proofBg" x1="0%" x2="100%">
+<stop offset="0" stop-color="#030303"/><stop offset="72%" stop-color="#110202"/>
+<stop offset="1" stop-color="#2b0606"/>
+</linearGradient>
+<linearGradient id="proofSweep" gradientUnits="userSpaceOnUse" x1="-120" x2="0">
+<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ff8a7f" stop-opacity=".16"/>
+<stop offset="1" stop-color="#fff" stop-opacity="0"/>
+<animate attributeName="x1" values="-120;350" dur="7s" begin="-{index * .7:.1f}s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="0;470" dur="7s" begin="-{index * .7:.1f}s" repeatCount="indefinite"/>
+</linearGradient>
+</defs>
+<rect x="1" y="1" width="348" height="136" rx="5" fill="url(#proofBg)" stroke="#4b0e0e"/>
+<rect x="1" y="1" width="5" height="136" rx="2" fill="#e84b4b"/>
+<rect x="1" y="1" width="348" height="136" rx="5" fill="url(#proofSweep)"/>
+<text x="24" y="26" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">VERIFIED // {index + 1:02d}</text>
+<text x="24" y="67" class="mono" font-size="32" fill="#f5eaea">{esc(item["value"])}</text>
+<text x="118" y="62" class="mono" font-size="10" fill="#e84b4b" letter-spacing="1.4">{esc(item["label"])}</text>
+<rect x="24" y="82" width="302" height="1" fill="#310808"/>
+<text x="24" y="105" class="mono" font-size="8" fill="#a99494" letter-spacing=".6">{detail_svg}</text>
+<circle cx="324" cy="22" r="4" fill="#ff8a7f">
+<animate attributeName="opacity" values=".2;1;.2" dur="{1.2 + index * .18:.2f}s" repeatCount="indefinite"/>
+</circle>
+</svg>'''
+
+
+def build_project_dossier_svg(project, cfg):
+    """Render all project copy as one cinematic, data-complete dossier."""
+    W, H = 720, 380
+    code = "LAB-01" if project["id"] == "feelings" else f'SYS-{project["order"]:02d}'
+    summary_lines = wrap_lines(project["summary"], 72)[:3]
+    summary_svg = "".join(
+        f'<tspan x="30" dy="{0 if index == 0 else 23}">{esc(line)}</tspan>'
+        for index, line in enumerate(summary_lines)
+    )
+    proof_svg = "".join(
+        f'<g transform="translate(30,{218 + index * 27})">'
+        f'<circle cx="5" cy="-5" r="4" fill="#e84b4b"><animate attributeName="opacity" '
+        f'values=".25;1;.25" dur="{1.2 + index * .23:.2f}s" repeatCount="indefinite"/></circle>'
+        f'<text x="20" class="mono" font-size="15" fill="#d7caca">{esc(item)}</text></g>'
+        for index, item in enumerate(project["proof"])
+    )
+    stack_lines = wrap_lines(" · ".join(project["stack"]), 88)[:2]
+    stack_svg = "".join(
+        f'<tspan x="30" dy="{0 if index == 0 else 18}">{esc(line)}</tspan>'
+        for index, line in enumerate(stack_lines)
+    )
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>{esc(code)} — {esc(project["name"])}</title>
+<desc>{esc(project["summary"])} Proof: {esc("; ".join(project["proof"]))}. Stack: {esc("; ".join(project["stack"]))}.</desc>
+<defs>
+{mono_font_defs()}
+<linearGradient id="dossierBg" x1="0%" x2="100%">
+<stop offset="0" stop-color="#020202"/><stop offset="62%" stop-color="#090101"/>
+<stop offset="100%" stop-color="#240505"/>
+</linearGradient>
+<linearGradient id="dossierSweep" gradientUnits="userSpaceOnUse" x1="-180" x2="0">
+<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ff8a7f" stop-opacity=".11"/>
+<stop offset="1" stop-color="#fff" stop-opacity="0"/>
+<animate attributeName="x1" values="-180;720" dur="9s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="0;900" dur="9s" repeatCount="indefinite"/>
+</linearGradient>
+<pattern id="dossierGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+<path d="M24 0H0V24" fill="none" stroke="#671515" stroke-width=".4" opacity=".09"/>
+</pattern>
+</defs>
+<rect x="1" y="1" width="718" height="378" rx="7" fill="url(#dossierBg)" stroke="#4b0e0e"/>
+<rect x="1" y="1" width="718" height="378" rx="7" fill="url(#dossierGrid)"/>
+<rect x="1" y="1" width="718" height="378" rx="7" fill="url(#dossierSweep)"/>
+<rect x="20" y="18" width="6" height="58" rx="2" fill="#e84b4b"/>
+<text x="42" y="38" class="mono" font-size="10" fill="#8d7777" letter-spacing="2.2">{esc(code)} // {esc(project["codename"])}</text>
+<text x="42" y="68" class="mono" font-size="25" fill="#f5eaea" letter-spacing=".8">{esc(project["name"].upper())}</text>
+<text x="690" y="37" text-anchor="end" class="mono" font-size="10" fill="#e84b4b" letter-spacing="1.4">{esc(project["status"].upper())}</text>
+<text x="690" y="59" text-anchor="end" class="mono" font-size="10" fill="#a99494">{esc(project["period"].upper())}</text>
+<path d="M20 88H700" stroke="#310808"/>
+<text x="30" y="111" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">MISSION</text>
+<text x="30" y="137" class="mono" font-size="16" fill="#d7caca">{summary_svg}</text>
+<text x="30" y="194" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">VERIFIED PROOF</text>
+{proof_svg}
+<path d="M20 301H700" stroke="#310808"/>
+<text x="30" y="324" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">STACK / LOADOUT</text>
+<text x="30" y="350" class="mono" font-size="12" fill="#a99494">{stack_svg}</text>
+<text x="690" y="355" text-anchor="end" class="mono" font-size="10" fill="#e84b4b">OPEN SIGNAL ↗</text>
+</svg>'''
+
+
+def build_field_notes_svg(cfg):
+    """Render verified experience and education as a two-record trajectory."""
+    W, H = 720, 500
+    experience = PROFILE["experience"][0]
+    education = PROFILE["education"][0]
+    experience_summary = wrap_lines(experience["summary"], 67)[:3]
+    experience_svg = "".join(
+        f'<tspan x="34" dy="{0 if index == 0 else 22}">{esc(line)}</tspan>'
+        for index, line in enumerate(experience_summary)
+    )
+    degree_lines = wrap_lines(education["degree"], 49)[:2]
+    degree_svg = "".join(
+        f'<tspan x="34" dy="{0 if index == 0 else 24}">{esc(line)}</tspan>'
+        for index, line in enumerate(degree_lines)
+    )
+    coursework = " · ".join(education["coursework"])
+    coursework_lines = wrap_lines(coursework, 79)[:2]
+    coursework_svg = "".join(
+        f'<tspan x="34" dy="{0 if index == 0 else 18}">{esc(line)}</tspan>'
+        for index, line in enumerate(coursework_lines)
+    )
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>Field notes — experience and education</title>
+<desc>{esc(experience["role"])} at {esc(experience["organization"])}. {esc(education["degree"])} at {esc(education["institution"])}.</desc>
+<defs>
+{mono_font_defs()}
+<linearGradient id="fieldBg" x1="0%" x2="100%"><stop offset="0" stop-color="#020202"/><stop offset="1" stop-color="#190303"/></linearGradient>
+<pattern id="fieldGrid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#671515" stroke-width=".4" opacity=".09"/></pattern>
+<linearGradient id="fieldSweep" gradientUnits="userSpaceOnUse" x1="-160" x2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ff8a7f" stop-opacity=".1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/><animate attributeName="x1" values="-160;720" dur="10s" repeatCount="indefinite"/><animate attributeName="x2" values="0;880" dur="10s" repeatCount="indefinite"/></linearGradient>
+</defs>
+<rect x="1" y="1" width="718" height="498" rx="7" fill="url(#fieldBg)" stroke="#4b0e0e"/>
+<rect x="1" y="1" width="718" height="498" rx="7" fill="url(#fieldGrid)"/>
+<rect x="1" y="1" width="718" height="498" rx="7" fill="url(#fieldSweep)"/>
+<text x="24" y="36" class="mono" font-size="10" fill="#e84b4b" letter-spacing="2.5">VERIFIED TRAJECTORY // 02 RECORDS</text>
+<text x="696" y="36" text-anchor="end" class="mono" font-size="9" fill="#8d7777">FIELD LOG / PUBLIC</text>
+<g transform="translate(18,56)">
+<rect width="684" height="196" rx="5" fill="#050101" stroke="#3d0b0b"/>
+<rect width="6" height="196" rx="2" fill="#e84b4b"/>
+<text x="22" y="31" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">EXP-01 // {esc(experience["period"].upper())}</text>
+<text x="22" y="65" class="mono" font-size="22" fill="#f5eaea">{esc(experience["role"].upper())}</text>
+<text x="22" y="91" class="mono" font-size="13" fill="#e84b4b">{esc(experience["organization"].upper())}</text>
+<text x="22" y="119" class="mono" font-size="10" fill="#8d7777">{esc(experience["location"].upper())}</text>
+<path d="M22 132H660" stroke="#310808"/>
+<text x="34" y="156" class="mono" font-size="14" fill="#cfc1c1">{experience_svg}</text>
+</g>
+<g transform="translate(18,266)">
+<rect width="684" height="214" rx="5" fill="#050101" stroke="#3d0b0b"/>
+<rect width="6" height="214" rx="2" fill="#671515"/>
+<text x="22" y="31" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">EDU-01 // {esc(education["period"].upper())}</text>
+<text x="22" y="63" class="mono" font-size="19" fill="#f5eaea">{degree_svg}</text>
+<text x="22" y="116" class="mono" font-size="13" fill="#e84b4b">{esc(education["institution"].upper())}</text>
+<text x="22" y="141" class="mono" font-size="10" fill="#8d7777">{esc(education["location"].upper())} · CGPA {esc(education["cgpa"])}</text>
+<path d="M22 154H660" stroke="#310808"/>
+<text x="34" y="178" class="mono" font-size="11" fill="#b7a6a6">{coursework_svg}</text>
+</g>
+</svg>'''
+
+
+def build_skills_matrix_svg(cfg):
+    """Render the complete canonical skill inventory without Markdown prose."""
+    W = 720
+    rows = (
+        ("01", "PRODUCT", PROFILE["skills"]["product"]),
+        ("02", "BACKEND", PROFILE["skills"]["backend"]),
+        ("03", "APPLIED ML", PROFILE["skills"]["ml"]),
+        ("04", "PLATFORM", PROFILE["skills"]["platform"]),
+        ("05", "EXPANDING", PROFILE["skills"]["expanding"]),
+    )
+    row_height = 108
+    H = 70 + len(rows) * row_height
+    row_svg = []
+    for index, (code, label, values) in enumerate(rows):
+        y = 58 + index * row_height
+        value_lines = wrap_lines(" · ".join(values), 58)[:3]
+        values_svg = "".join(
+            f'<tspan x="146" dy="{0 if line_index == 0 else 21}">{esc(line)}</tspan>'
+            for line_index, line in enumerate(value_lines)
+        )
+        row_svg.append(f'''
+<g transform="translate(18,{y})">
+<rect width="684" height="94" rx="5" fill="#050101" stroke="#3d0b0b"/>
+<rect width="5" height="94" rx="2" fill="{"#e84b4b" if index in (0, 4) else "#671515"}"/>
+<text x="22" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // {code}</text>
+<text x="22" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">{esc(label)}</text>
+<path d="M124 15V79" stroke="#310808"/>
+<text x="146" y="34" class="mono" font-size="13" fill="#d7caca">{values_svg}</text>
+<circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="{1.2 + index * .17:.2f}s" repeatCount="indefinite"/></circle>
+</g>''')
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>Complete technical loadout</title>
+<desc>Product, backend, applied machine learning, platform, and currently expanding skills.</desc>
+<defs>
+{mono_font_defs()}
+<linearGradient id="skillsBg" x1="0%" x2="100%"><stop offset="0" stop-color="#020202"/><stop offset="1" stop-color="#160303"/></linearGradient>
+<pattern id="skillsGrid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#671515" stroke-width=".4" opacity=".08"/></pattern>
+</defs>
+<rect x="1" y="1" width="718" height="{H-2}" rx="7" fill="url(#skillsBg)" stroke="#310808"/>
+<rect x="1" y="1" width="718" height="{H-2}" rx="7" fill="url(#skillsGrid)"/>
+<text x="24" y="37" class="mono" font-size="10" fill="#e84b4b" letter-spacing="2.5">COMPLETE LOADOUT // TOOLS FOLLOW THE SYSTEM</text>
+<text x="696" y="37" text-anchor="end" class="mono" font-size="9" fill="#8d7777">05 CHANNELS / LIVE</text>
+{"".join(row_svg)}
 </svg>'''
 
 
@@ -1140,6 +1368,8 @@ def build_identity_console_svg(cfg):
         )
 
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+<title>Ayush Roy operator manifest</title>
+<desc>Full-stack developer and applied machine learning builder in Bhubaneswar, open to software engineering internships.</desc>
 <defs>
 {experience_font_defs()}
 <pattern id="consoleGrid" width="28" height="28" patternUnits="userSpaceOnUse">
@@ -2025,7 +2255,10 @@ def build_asset_manifest():
     """Build only assets used by the public README."""
     manifest = {
         "hero.svg": build_cinematic_hero_svg(CONFIG),
+        "identity-console.svg": build_identity_console_svg(CONFIG),
         "signal-strip.svg": build_signal_strip_svg(CONFIG),
+        "field-notes.svg": build_field_notes_svg(CONFIG),
+        "skills-matrix.svg": build_skills_matrix_svg(CONFIG),
         "operator-gateway.svg": build_operator_gateway_svg(CONFIG),
         "achievement-rack.svg": build_achievement_rack_svg(CONFIG),
         "protocol-engineer.svg": build_protocol_engineer_svg(CONFIG),
@@ -2035,6 +2268,11 @@ def build_asset_manifest():
         "arsenal.svg": build_arsenal_svg(CONFIG),
         "finale.svg": build_finale_svg(CONFIG),
     }
+
+    for index, proof_item in enumerate(PROFILE["proof"]):
+        manifest[f'proof-{proof_item["id"]}.svg'] = build_proof_card_svg(
+            proof_item, index, CONFIG
+        )
 
     nav_specs = (
         ("nav-portfolio.svg", "PORTFOLIO", "ENTER THE SYSTEM", "◢"),
@@ -2055,9 +2293,12 @@ def build_asset_manifest():
         )
 
     section_specs = (
-        ("section-projects.svg", "01", "SELECTED / SYSTEMS", "PROOF BEFORE PROMISE"),
-        ("section-arsenal.svg", "02", "TECHNICAL / RANGE", "PRODUCT · BACKEND · APPLIED ML"),
-        ("section-record.svg", "03", "PUBLIC / RECORD", "REPOSITORIES · LANGUAGES · SIGNAL"),
+        ("section-projects.svg", "01", "SELECTED / SYSTEMS", "FIVE BUILDS · PUBLIC PROOF · VERIFIED DATA"),
+        ("section-field.svg", "02", "FIELD / NOTES", "EXPERIENCE · EDUCATION · TRAJECTORY"),
+        ("section-arsenal.svg", "03", "TECHNICAL / RANGE", "PRODUCT · BACKEND · APPLIED ML"),
+        ("section-record.svg", "04", "PUBLIC / RECORD", "LIVE GITHUB TELEMETRY · VERIFIED FALLBACK"),
+        ("section-operator.svg", "05", "OPERATOR / MODE", "INTERACTIVE PROTOCOL ARCHIVE"),
+        ("section-channel.svg", "06", "OPEN / CHANNEL", "INTERNSHIPS · PRODUCTS · COLLABORATION"),
     )
     for filename, index, title, subtitle in section_specs:
         manifest[filename] = build_section_header_svg(index, title, subtitle, CONFIG)
@@ -2066,6 +2307,11 @@ def build_asset_manifest():
     for project_id in ("helios", "zenith", "vision", "talks"):
         manifest[f"project-{project_id}.svg"] = build_project_card_svg(
             canonical_project_card_spec(projects[project_id]), CONFIG
+        )
+
+    for project in PROFILE["projects"]:
+        manifest[f'project-dossier-{project["id"]}.svg'] = build_project_dossier_svg(
+            project, CONFIG
         )
 
     return manifest

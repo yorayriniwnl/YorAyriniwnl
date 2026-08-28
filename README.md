@@ -6,10 +6,7 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg" width="100%" alt="Ayush Roy, full-stack developer and applied ml builder"/>
 </a>
 
-<h1>Ayush Roy</h1>
-<p><strong>Full-Stack Developer · Applied ML Builder</strong></p>
-<p>I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world.</p>
-<p><strong>Open to software engineering internships · B.Tech 2027 · Bhubaneswar, Odisha, India</strong></p>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg" width="100%" alt="Ayush Roy. Full-Stack Developer and Applied ML Builder. I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world. Open to software engineering internships. B.Tech 2027. Bhubaneswar, Odisha, India."/>
 
 <p>
 <a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg" width="350" alt="Open Ayush Roy portfolio"/></a>
@@ -22,213 +19,120 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/signal-strip.svg" width="100%" alt="Product engineering, realtime systems, computer vision, 3D interfaces, and applied AI"/>
 
 <p>
-<code>05 · END-TO-END APPS</code>
-<code>24 · TESTS / 5 SUITES</code>
-<code>78% · HELD-OUT ACCURACY</code>
-<code>03 · DEVPOST PROTOTYPES</code>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-apps.svg" width="350" alt="5 END-TO-END APPS. Designed and built across product, backend, realtime, and ML layers"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-tests.svg" width="350" alt="24 AUTOMATED TESTS. Across five Vitest suites in the portfolio"/>
+<br/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-accuracy.svg" width="350" alt="78% HELD-OUT ACCURACY. LBP and GLCM features with a calibrated SVM"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-prototypes.svg" width="350" alt="3 DEVPOST PROTOTYPES. Shipped under competitive hackathon deadlines"/>
 </p>
 
 </div>
 
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects.svg" width="100%" alt="Section 01: selected systems, proof before promise"/>
-
-## Selected systems
-
-Five end-to-end builds across product engineering, realtime infrastructure, applied machine learning, and 3D decision tools. Every metric below is backed by the public project or verified résumé data.
-
-### `SYS-01` · Personal Developer Portfolio
-
-**Live · March-April 2026**
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects.svg" width="100%" alt="Section 01: selected systems. Five end-to-end builds with public proof and verified data."/>
 
 <a href="https://www.yorayriniwnl.in">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio.svg" width="100%" alt="Personal Developer Portfolio: the product universe"/>
 </a>
 
-A production-grade portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface.
+<a href="https://www.yorayriniwnl.in">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-portfolio.svg" width="100%" alt="SYS-01: Personal Developer Portfolio. Live, March-April 2026. A production-grade portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface. Proof: 4,000 GPU-driven particles; 24 tests across five Vitest suites; Automated GitHub content synchronization. Stack: Next.js 16; TypeScript; Three.js; React Three Fiber; Framer Motion; Vitest."/>
+</a>
 
-Proof:
-
-- 4,000 GPU-driven particles
-- 24 tests across five Vitest suites
-- Automated GitHub content synchronization
-
-**Stack:** Next.js 16 · TypeScript · Three.js · React Three Fiber · Framer Motion · Vitest
-
-<p>
+<p align="center">
 <a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Personal Developer Portfolio live system"/></a>
 <a href="https://github.com/yorayriniwnl/Yor-Ayrin-iwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Personal Developer Portfolio source repository"/></a>
 </p>
-
-### `SYS-02` · Yor Helios
-
-**In development · January 2026-Present**
 
 <a href="https://github.com/yorayriniwnl/Yor-Helios">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg" width="100%" alt="Yor Helios: realtime energy intelligence"/>
 </a>
 
-An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards.
+<a href="https://github.com/yorayriniwnl/Yor-Helios">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-helios.svg" width="100%" alt="SYS-02: Yor Helios. In development, January 2026-Present. An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards. Proof: Bidirectional realtime alert streaming; Continuous anomaly and threshold engine; One-command Docker Compose environment. Stack: Python; FastAPI; TypeScript; Docker; WebSocket."/>
+</a>
 
-Proof:
-
-- Bidirectional realtime alert streaming
-- Continuous anomaly and threshold engine
-- One-command Docker Compose environment
-
-**Stack:** Python · FastAPI · TypeScript · Docker · WebSocket
-
-<p>
+<p align="center">
 <a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Helios source repository"/></a>
 </p>
-
-### `SYS-03` · Yor Zenith
-
-**Live · January-December 2025**
 
 <a href="https://zenith-xi-snowy.vercel.app">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg" width="100%" alt="Yor Zenith: solar decision support"/>
 </a>
 
-A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis.
+<a href="https://zenith-xi-snowy.vercel.app">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-zenith.svg" width="100%" alt="SYS-03: Yor Zenith. Live, January-December 2025. A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis. Proof: Interactive panel-placement simulation; Energy-output modeling across roof configurations; Subsidy, ROI, and payback analysis. Stack: React; TypeScript; Three.js; Python; FastAPI."/>
+</a>
 
-Proof:
-
-- Interactive panel-placement simulation
-- Energy-output modeling across roof configurations
-- Subsidy, ROI, and payback analysis
-
-**Stack:** React · TypeScript · Three.js · Python · FastAPI
-
-<p>
+<p align="center">
 <a href="https://zenith-xi-snowy.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Yor Zenith live system"/></a>
 <a href="https://github.com/yorayriniwnl/Yor-Zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Zenith source repository"/></a>
 </p>
-
-### `SYS-04` · AI vs. Real Image Detector
-
-**Live · December 2025-April 2026**
 
 <a href="https://yor-ai-vs-real-image.vercel.app">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
 
-A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.
+<a href="https://yor-ai-vs-real-image.vercel.app">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision.svg" width="100%" alt="SYS-04: AI vs. Real Image Detector. Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Proof: 78% held-out test accuracy; Sub-two-second local inference; Lighting-invariant preprocessing. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit."/>
+</a>
 
-Proof:
-
-- 78% held-out test accuracy
-- Sub-two-second local inference
-- Lighting-invariant preprocessing
-
-**Stack:** Python · OpenCV · Scikit-Learn · LBP · GLCM · SVM · Streamlit
-
-<p>
+<p align="center">
 <a href="https://yor-ai-vs-real-image.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch AI vs. Real Image Detector live system"/></a>
 <a href="https://github.com/yorayriniwnl/Yor-Ai-vs-real-image"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect AI vs. Real Image Detector source repository"/></a>
 </p>
-
-### `SYS-05` · Yor Talks V2
-
-**Live · April 2026**
 
 <a href="https://yor-talks.vercel.app">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg" width="100%" alt="Yor Talks V2: realtime communication"/>
 </a>
 
-A full-stack communication platform with realtime messaging, typed interface components, and scalable conversation APIs.
+<a href="https://yor-talks.vercel.app">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks.svg" width="100%" alt="SYS-05: Yor Talks V2. Live, April 2026. A full-stack communication platform with realtime messaging, typed interface components, and scalable conversation APIs. Proof: Low-latency bidirectional messaging; Authentication, conversation, and message APIs; Responsive reusable interface system. Stack: React; Next.js; TypeScript; FastAPI; WebSocket; Tailwind CSS."/>
+</a>
 
-Proof:
-
-- Low-latency bidirectional messaging
-- Authentication, conversation, and message APIs
-- Responsive reusable interface system
-
-**Stack:** React · Next.js · TypeScript · FastAPI · WebSocket · Tailwind CSS
-
-<p>
+<p align="center">
 <a href="https://yor-talks.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Yor Talks V2 live system"/></a>
 <a href="https://github.com/yorayriniwnl/yor-talksv2"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Talks V2 source repository"/></a>
 </p>
 
-<details>
-<summary><strong>LAB-01 // Yor Feelings — emotional interface</strong></summary>
+<a href="https://yor-feelings.vercel.app">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-feelings.svg" width="100%" alt="LAB-01: Yor Feelings. Experimental, 2026. An expressive web experience translating sentiment and mood signals into responsive interface state. Proof: Mood-responsive visual state; Experimental interaction design. Stack: Next.js; TypeScript."/>
+</a>
 
-An expressive web experience translating sentiment and mood signals into responsive interface state.
-
-**Stack:** Next.js · TypeScript
-
-<p>
+<p align="center">
 <a href="https://yor-feelings.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-experiment.svg" width="350" alt="Launch Yor Feelings live experiment"/></a>
 <a href="https://github.com/yorayriniwnl/Yor-Feelings"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Feelings source repository"/></a>
 </p>
 
-</details>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-field.svg" width="100%" alt="Section 02: field notes covering verified experience, education, and trajectory."/>
 
-## Field notes
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/field-notes.svg" width="100%" alt="Telecom &amp; Data Network Intern at Bharat Sanchar Nigam Limited (BSNL), June 2026. Completed an RGMTTC-certified four-week program in telecom, data-network systems, and infrastructure. B.Tech in Computer Science and Communication Engineering at KIIT Deemed University, 2023-2027 (Expected). Coursework: Data Structures &amp; Algorithms; Operating Systems; Database Management Systems; Computer Networks; Object-Oriented Programming."/>
 
-**Telecom & Data Network Intern · Bharat Sanchar Nigam Limited (BSNL)** — June 2026
-
-Completed an RGMTTC-certified four-week program in telecom, data-network systems, and infrastructure.
-
-**B.Tech in Computer Science and Communication Engineering · KIIT Deemed University** — expected 2027
-
-Grounded in data structures, operating systems, databases, computer networks, and object-oriented programming.
-
-<p>
+<p align="center">
 <a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg" width="350" alt="View Ayush Roy privacy-safe public resume"/></a>
 </p>
 
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-arsenal.svg" width="100%" alt="Section 02: technical range"/>
-
-## Technical range
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-arsenal.svg" width="100%" alt="Section 03: complete technical range"/>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/arsenal.svg" width="100%" alt="Ayush Roy technical range across product, backend, machine learning, and platform engineering"/>
 
-**Product:** TypeScript · JavaScript · React · Next.js · Tailwind CSS · Three.js · React Three Fiber · Framer Motion
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/skills-matrix.svg" width="100%" alt="Product: TypeScript; JavaScript; React; Next.js; Tailwind CSS; Three.js; React Three Fiber; Framer Motion. Backend: Python; FastAPI; Flask; Node.js; REST APIs; WebSocket; SQL; SQLite. Applied ML: OpenCV; Scikit-Learn; SVM; LBP; GLCM; Feature Engineering; Model Evaluation; Streamlit. Platform: Docker; Docker Compose; Git; GitHub Actions; Vercel; Linux; Vitest. Currently expanding: Generative AI; LLMs; Prompt Engineering; RAG; AI Agents; LangChain; AWS S3; AWS Lambda; Vector Databases."/>
 
-**Backend:** Python · FastAPI · Flask · Node.js · REST APIs · WebSocket · SQL · SQLite
-
-**Applied ML:** OpenCV · Scikit-Learn · SVM · LBP · GLCM · Feature Engineering · Model Evaluation · Streamlit
-
-**Platform:** Docker · Docker Compose · Git · GitHub Actions · Vercel · Linux · Vitest
-
-**Currently expanding:** Generative AI · LLMs · Prompt Engineering · RAG · AI Agents · LangChain · AWS S3 · AWS Lambda · Vector Databases
-
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-record.svg" width="100%" alt="Section 03: public GitHub record"/>
-
-## Public record
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-record.svg" width="100%" alt="Section 04: live public GitHub record with verified fallback data"/>
 
 <a href="https://github.com/yorayriniwnl">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/stats.svg" width="100%" alt="Ayush Roy GitHub repositories, languages, and current system status"/>
 </a>
 
-The live card is generated from public GitHub data; its fallback contains only verified profile facts.
-
-## Operator mode
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-operator.svg" width="100%" alt="Section 05: interactive operator mode and protocol archive"/>
 
 <details>
-<summary><strong>◈ INITIATE OPERATOR MODE // STEAM-INSPIRED PERSONAL LAYER</strong></summary>
-
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/operator-gateway.svg" width="100%" alt="Operator mode access gateway"/>
+<summary><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/operator-gateway.svg" width="100%" alt="Initiate the Steam-inspired operator mode"/></summary>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/achievement-rack.svg" width="100%" alt="Proof-of-work achievement rack"/>
 
-<details>
-<summary><strong>01 // TRACE THE ENGINEERING DNA</strong></summary>
-
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/protocol-engineer.svg" width="100%" alt="Engineering protocol from constraints through feedback"/>
 
-</details>
-
-<details>
-<summary><strong>02 // FORGE THE PRODUCT DOCTRINE</strong></summary>
-
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/protocol-product.svg" width="100%" alt="Product doctrine and learning loop"/>
-
-</details>
-
-<details>
-<summary><strong>03 // OPEN THE HUMAN ARCHIVE</strong></summary>
 
 <a href="https://steamcommunity.com/id/yorayriniwnl/">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/protocol-human.svg" width="100%" alt="Steam-inspired human signal and long-game philosophy"/>
@@ -236,13 +140,9 @@ The live card is generated from public GitHub data; its fallback contains only v
 
 </details>
 
-</details>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-channel.svg" width="100%" alt="Section 06: open channel for software engineering internships, ambitious products, and collaboration"/>
 
-## Open channel
-
-I’m open to software engineering internships, ambitious product work, and collaborations where interface craft meets real systems.
-
-<p>
+<p align="center">
 <a href="mailto:ayushroy.dev@gmail.com?subject=Next%20Transmission"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-email.svg" width="350" alt="Email Ayush Roy"/></a>
 <a href="https://www.linkedin.com/in/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-linkedin.svg" width="350" alt="Open Ayush Roy LinkedIn profile"/></a>
 <br/>
