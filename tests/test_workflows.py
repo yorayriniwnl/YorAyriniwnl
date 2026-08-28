@@ -25,10 +25,10 @@ class WorkflowTests(unittest.TestCase):
 
         for filename in (
             "stats.svg",
-            "github-contribution-grid-snake.svg",
-            "github-contribution-grid-snake-dark.svg",
+            "contribution-stream.svg",
         ):
             self.assertIn(f"! -name '{filename}'", workflow)
+        self.assertNotIn("github-contribution-grid-snake", workflow)
 
     def test_stats_workflow_tracks_its_canonical_dependencies(self):
         workflow = (WORKFLOWS / "build-stats.yml").read_text(encoding="utf-8")
@@ -37,6 +37,13 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn('"scripts/profile_data.py"', workflow)
         self.assertIn("actions/setup-python@v5", workflow)
         self.assertIn("python main/scripts/generate_stats.py", workflow)
+
+    def test_contribution_workflow_generates_owned_stream(self):
+        workflow = (WORKFLOWS / "contribution-stream.yml").read_text(encoding="utf-8")
+
+        self.assertIn("python main/scripts/generate_contributions.py", workflow)
+        self.assertIn("contribution-stream.svg", workflow)
+        self.assertNotIn("Platane/snk", workflow)
 
 
 if __name__ == "__main__":

@@ -2296,7 +2296,7 @@ def build_asset_manifest():
         ("section-projects.svg", "01", "SELECTED / SYSTEMS", "FIVE BUILDS · PUBLIC PROOF · VERIFIED DATA"),
         ("section-field.svg", "02", "FIELD / NOTES", "EXPERIENCE · EDUCATION · TRAJECTORY"),
         ("section-arsenal.svg", "03", "TECHNICAL / RANGE", "PRODUCT · BACKEND · APPLIED ML"),
-        ("section-record.svg", "04", "PUBLIC / RECORD", "LIVE GITHUB TELEMETRY · VERIFIED FALLBACK"),
+        ("section-record.svg", "04", "LIVE / TELEMETRY", "TOTAL VIEWS · 365-DAY STREAM · PUBLIC SIGNALS"),
         ("section-operator.svg", "05", "OPERATOR / MODE", "INTERACTIVE PROTOCOL ARCHIVE"),
         ("section-channel.svg", "06", "OPEN / CHANNEL", "INTERNSHIPS · PRODUCTS · COLLABORATION"),
     )
@@ -2321,7 +2321,7 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest = build_asset_manifest()
     expected = set(manifest)
-    preserved = {"stats.svg"}
+    preserved = {"stats.svg", "contribution-stream.svg"}
 
     for stale_path in OUT_DIR.glob("*.svg"):
         if stale_path.name not in expected | preserved:

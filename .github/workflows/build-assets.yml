@@ -82,8 +82,7 @@ jobs:
         run: |
           find output -maxdepth 1 -type f -name '*.svg' \
             ! -name 'stats.svg' \
-            ! -name 'github-contribution-grid-snake.svg' \
-            ! -name 'github-contribution-grid-snake-dark.svg' \
+            ! -name 'contribution-stream.svg' \
             -delete
           cp main/generated/*.svg output/
 

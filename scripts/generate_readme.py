@@ -33,6 +33,14 @@ def raw_asset_url(handle: str, filename: str) -> str:
     return f"https://raw.githubusercontent.com/{handle}/{PROFILE_REPOSITORY}/output/{filename}"
 
 
+def profile_views_url(handle: str) -> str:
+    return (
+        "https://komarev.com/ghpvc/?"
+        f"username={handle}&amp;label=TOTAL+PROFILE+VIEWS&amp;color=ff335f&amp;"
+        "style=for-the-badge&amp;abbreviated=false"
+    )
+
+
 def image(filename: str, alt: str, handle: str, width: str = "100%") -> str:
     return (
         f'<img src="{raw_asset_url(handle, filename)}" width="{width}" '
@@ -264,10 +272,24 @@ def render_readme(profile: dict | None = None) -> str:
             "",
             image("section-record.svg", "Section 04: live public GitHub record with verified fallback data", handle),
             "",
+            '<p align="center">',
+            (
+                f'<img src="{profile_views_url(handle)}" width="350" '
+                'alt="Live total profile views counter"/>'
+            ),
+            "</p>",
+            "",
             *linked_image(
                 contact["github"],
                 "stats.svg",
-                "Ayush Roy GitHub repositories, languages, and current system status",
+                "Ayush Roy live profile views, GitHub repositories, stars, followers, languages, and system status",
+                handle,
+            ),
+            "",
+            *linked_image(
+                contact["github"],
+                "contribution-stream.svg",
+                "Animated 365-day GitHub contribution signal for Ayush Roy",
                 handle,
             ),
             "",

@@ -60,11 +60,14 @@ class ReadmeTests(unittest.TestCase):
         image_tags = re.findall(r"<img\b[^>]*?/>", self.readme)
         widths = re.findall(r'width="([^"]+)"', self.readme)
 
-        self.assertGreaterEqual(len(image_tags), 55)
+        self.assertGreaterEqual(len(image_tags), 57)
         self.assertTrue(all(re.search(r'alt="[^"]+"', tag) for tag in image_tags))
         self.assertTrue(all(width in {"100%", "350"} for width in widths))
         self.assertNotIn('width="24%"', self.readme)
         self.assertNotIn('width="49%"', self.readme)
+        self.assertIn("https://komarev.com/ghpvc/?", self.readme)
+        self.assertIn("label=TOTAL+PROFILE+VIEWS", self.readme)
+        self.assertNotIn("github-readme-activity-graph", self.readme)
         for filename in generate_readme.PROJECT_VISUALS.values():
             self.assertIn(f'output/{filename}" width="100%"', self.readme)
 
@@ -137,6 +140,7 @@ class ReadmeTests(unittest.TestCase):
             "field-notes.svg",
             "section-record.svg",
             "stats.svg",
+            "contribution-stream.svg",
             "section-operator.svg",
             "operator-gateway.svg",
             "achievement-rack.svg",

@@ -1,0 +1,56 @@
+name: Refresh contribution stream
+
+on:
+  schedule:
+    - cron: "31 0 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "scripts/generate_contributions.py"
+      - "scripts/profile_data.py"
+      - "scripts/fonts/dm-mono-500.woff2"
+      - "data/profile.json"
+      - ".github/workflows/contribution-stream.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-output
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout main (source)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch public contribution calendar and render owned animation
+        run: python main/scripts/generate_contributions.py
+
+      - name: Checkout output (generated artifacts)
+        uses: actions/checkout@v4
+        with:
+          ref: output
+          path: output
+
+      - name: Publish contribution stream
+        run: cp main/generated/contribution-stream.svg output/
+
+      - name: Commit if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: output
+          commit_message: "chore: refresh contribution stream"
+          branch: output

@@ -119,8 +119,16 @@
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-record.svg" width="100%" alt="Section 04: live public GitHub record with verified fallback data"/>
 
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=yorayriniwnl&amp;label=TOTAL+PROFILE+VIEWS&amp;color=ff335f&amp;style=for-the-badge&amp;abbreviated=false" width="350" alt="Live total profile views counter"/>
+</p>
+
 <a href="https://github.com/yorayriniwnl">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/stats.svg" width="100%" alt="Ayush Roy GitHub repositories, languages, and current system status"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/stats.svg" width="100%" alt="Ayush Roy live profile views, GitHub repositories, stars, followers, languages, and system status"/>
+</a>
+
+<a href="https://github.com/yorayriniwnl">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/contribution-stream.svg" width="100%" alt="Animated 365-day GitHub contribution signal for Ayush Roy"/>
 </a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-operator.svg" width="100%" alt="Section 05: interactive operator mode and protocol archive"/>
