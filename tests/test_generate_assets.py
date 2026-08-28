@@ -60,6 +60,13 @@ class GenerateAssetsTests(unittest.TestCase):
             "nav-projects.svg",
             "nav-resume.svg",
             "nav-linkedin.svg",
+            "nav-live.svg",
+            "nav-source.svg",
+            "nav-experiment.svg",
+            "nav-email.svg",
+            "nav-github.svg",
+            "nav-devpost.svg",
+            "nav-steam.svg",
             "section-projects.svg",
             "section-arsenal.svg",
             "section-record.svg",
@@ -67,7 +74,6 @@ class GenerateAssetsTests(unittest.TestCase):
 
         self.assertEqual(set(manifest), expected)
         self.assertLess(sum(len(svg.encode("utf-8")) for svg in manifest.values()), 2_500_000)
-        self.assertNotIn("nav-steam.svg", manifest)
         self.assertNotIn("project-next.svg", manifest)
         self.assertNotIn("+18.4%", "".join(manifest.values()))
 

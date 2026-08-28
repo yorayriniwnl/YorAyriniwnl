@@ -54,7 +54,10 @@ Proof:
 
 **Stack:** Next.js 16 · TypeScript · Three.js · React Three Fiber · Framer Motion · Vitest
 
-[Live system ↗](https://www.yorayriniwnl.in) · [Source ↗](https://github.com/yorayriniwnl/Yor-Ayrin-iwnl)
+<p>
+<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Personal Developer Portfolio live system"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Ayrin-iwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Personal Developer Portfolio source repository"/></a>
+</p>
 
 ### `SYS-02` · Yor Helios
 
@@ -74,7 +77,9 @@ Proof:
 
 **Stack:** Python · FastAPI · TypeScript · Docker · WebSocket
 
-[Source ↗](https://github.com/yorayriniwnl/Yor-Helios)
+<p>
+<a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Helios source repository"/></a>
+</p>
 
 ### `SYS-03` · Yor Zenith
 
@@ -94,7 +99,10 @@ Proof:
 
 **Stack:** React · TypeScript · Three.js · Python · FastAPI
 
-[Live system ↗](https://zenith-xi-snowy.vercel.app) · [Source ↗](https://github.com/yorayriniwnl/Yor-Zenith)
+<p>
+<a href="https://zenith-xi-snowy.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Yor Zenith live system"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Zenith source repository"/></a>
+</p>
 
 ### `SYS-04` · AI vs. Real Image Detector
 
@@ -114,7 +122,10 @@ Proof:
 
 **Stack:** Python · OpenCV · Scikit-Learn · LBP · GLCM · SVM · Streamlit
 
-[Live system ↗](https://yor-ai-vs-real-image.vercel.app) · [Source ↗](https://github.com/yorayriniwnl/Yor-Ai-vs-real-image)
+<p>
+<a href="https://yor-ai-vs-real-image.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch AI vs. Real Image Detector live system"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Ai-vs-real-image"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect AI vs. Real Image Detector source repository"/></a>
+</p>
 
 ### `SYS-05` · Yor Talks V2
 
@@ -134,7 +145,10 @@ Proof:
 
 **Stack:** React · Next.js · TypeScript · FastAPI · WebSocket · Tailwind CSS
 
-[Live system ↗](https://yor-talks.vercel.app) · [Source ↗](https://github.com/yorayriniwnl/yor-talksv2)
+<p>
+<a href="https://yor-talks.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Yor Talks V2 live system"/></a>
+<a href="https://github.com/yorayriniwnl/yor-talksv2"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Talks V2 source repository"/></a>
+</p>
 
 <details>
 <summary><strong>LAB-01 // Yor Feelings — emotional interface</strong></summary>
@@ -143,7 +157,10 @@ An expressive web experience translating sentiment and mood signals into respons
 
 **Stack:** Next.js · TypeScript
 
-[Live experiment ↗](https://yor-feelings.vercel.app) · [Source ↗](https://github.com/yorayriniwnl/Yor-Feelings)
+<p>
+<a href="https://yor-feelings.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-experiment.svg" width="350" alt="Launch Yor Feelings live experiment"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Feelings"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Feelings source repository"/></a>
+</p>
 
 </details>
 
@@ -157,7 +174,9 @@ Completed an RGMTTC-certified four-week program in telecom, data-network systems
 
 Grounded in data structures, operating systems, databases, computer networks, and object-oriented programming.
 
-[View privacy-safe public résumé ↗](https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf)
+<p>
+<a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg" width="350" alt="View Ayush Roy privacy-safe public resume"/></a>
+</p>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-arsenal.svg" width="100%" alt="Section 02: technical range"/>
 
@@ -223,7 +242,16 @@ The live card is generated from public GitHub data; its fallback contains only v
 
 I’m open to software engineering internships, ambitious product work, and collaborations where interface craft meets real systems.
 
-[Email](mailto:ayushroy.dev@gmail.com) · [LinkedIn](https://www.linkedin.com/in/yorayriniwnl) · [Portfolio](https://www.yorayriniwnl.in) · [GitHub](https://github.com/yorayriniwnl) · [Devpost](https://devpost.com/yorayriniwnl) · [Steam](https://steamcommunity.com/id/yorayriniwnl/)
+<p>
+<a href="mailto:ayushroy.dev@gmail.com?subject=Next%20Transmission"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-email.svg" width="350" alt="Email Ayush Roy"/></a>
+<a href="https://www.linkedin.com/in/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-linkedin.svg" width="350" alt="Open Ayush Roy LinkedIn profile"/></a>
+<br/>
+<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg" width="350" alt="Open Ayush Roy portfolio"/></a>
+<a href="https://github.com/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-github.svg" width="350" alt="Open Ayush Roy GitHub profile"/></a>
+<br/>
+<a href="https://devpost.com/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-devpost.svg" width="350" alt="Open Ayush Roy Devpost profile"/></a>
+<a href="https://steamcommunity.com/id/yorayriniwnl/"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-steam.svg" width="350" alt="Open Ayush Roy Steam profile"/></a>
+</p>
 
 <div align="center">
 

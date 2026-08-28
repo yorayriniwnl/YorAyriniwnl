@@ -44,6 +44,11 @@ def linked_image(href: str, filename: str, alt: str, handle: str, width: str = "
     return [f'<a href="{href}">', image(filename, alt, handle, width), "</a>"]
 
 
+def linked_button(href: str, filename: str, alt: str, handle: str) -> str:
+    """Render a compact animated SVG control instead of a plain text link."""
+    return f'<a href="{href}">{image(filename, alt, handle, "350")}</a>'
+
+
 def project_block(project: dict, handle: str) -> list[str]:
     code = f'SYS-{project["order"]:02d}'
     target = project.get("live") or project["repo"]
@@ -51,8 +56,22 @@ def project_block(project: dict, handle: str) -> list[str]:
     stack = " · ".join(project["stack"])
     links = []
     if project.get("live"):
-        links.append(f'[Live system ↗]({project["live"]})')
-    links.append(f'[Source ↗]({project["repo"]})')
+        links.append(
+            linked_button(
+                project["live"],
+                "nav-live.svg",
+                f'Launch {project["name"]} live system',
+                handle,
+            )
+        )
+    links.append(
+        linked_button(
+            project["repo"],
+            "nav-source.svg",
+            f'Inspect {project["name"]} source repository',
+            handle,
+        )
+    )
 
     lines = [
         f'### `{code}` · {project["name"]}',
@@ -72,7 +91,7 @@ def project_block(project: dict, handle: str) -> list[str]:
         "",
     ]
     lines.extend(f'- {proof}' for proof in project["proof"])
-    lines.extend(["", f'**Stack:** {stack}', "", " · ".join(links), ""])
+    lines.extend(["", f'**Stack:** {stack}', "", "<p>", *links, "</p>", ""])
     return lines
 
 
@@ -160,7 +179,20 @@ def render_readme(profile: dict | None = None) -> str:
             "",
             f'**Stack:** {" · ".join(feelings["stack"])}',
             "",
-            f'[Live experiment ↗]({feelings["live"]}) · [Source ↗]({feelings["repo"]})',
+            "<p>",
+            linked_button(
+                feelings["live"],
+                "nav-experiment.svg",
+                f'Launch {feelings["name"]} live experiment',
+                handle,
+            ),
+            linked_button(
+                feelings["repo"],
+                "nav-source.svg",
+                f'Inspect {feelings["name"]} source repository',
+                handle,
+            ),
+            "</p>",
             "",
             "</details>",
             "",
@@ -177,7 +209,14 @@ def render_readme(profile: dict | None = None) -> str:
                 "and object-oriented programming."
             ),
             "",
-            f'[View privacy-safe public résumé ↗]({resume_url})',
+            "<p>",
+            linked_button(
+                resume_url,
+                "nav-resume.svg",
+                "View Ayush Roy privacy-safe public resume",
+                handle,
+            ),
+            "</p>",
             "",
             image("section-arsenal.svg", "Section 02: technical range", handle),
             "",
@@ -252,9 +291,46 @@ def render_readme(profile: dict | None = None) -> str:
                 "collaborations where interface craft meets real systems."
             ),
             "",
-            f'[Email](mailto:{contact["email"]}) · [LinkedIn]({contact["linkedin"]}) · '
-            f'[Portfolio]({contact["portfolio"]}) · [GitHub]({contact["github"]}) · '
-            f'[Devpost]({contact["devpost"]}) · [Steam]({contact["steam"]})',
+            "<p>",
+            linked_button(
+                f'mailto:{contact["email"]}?subject=Next%20Transmission',
+                "nav-email.svg",
+                "Email Ayush Roy",
+                handle,
+            ),
+            linked_button(
+                contact["linkedin"],
+                "nav-linkedin.svg",
+                "Open Ayush Roy LinkedIn profile",
+                handle,
+            ),
+            "<br/>",
+            linked_button(
+                contact["portfolio"],
+                "nav-portfolio.svg",
+                "Open Ayush Roy portfolio",
+                handle,
+            ),
+            linked_button(
+                contact["github"],
+                "nav-github.svg",
+                "Open Ayush Roy GitHub profile",
+                handle,
+            ),
+            "<br/>",
+            linked_button(
+                contact["devpost"],
+                "nav-devpost.svg",
+                "Open Ayush Roy Devpost profile",
+                handle,
+            ),
+            linked_button(
+                contact["steam"],
+                "nav-steam.svg",
+                "Open Ayush Roy Steam profile",
+                handle,
+            ),
+            "</p>",
             "",
             '<div align="center">',
             "",

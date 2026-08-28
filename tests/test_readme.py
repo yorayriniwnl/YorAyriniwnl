@@ -44,13 +44,31 @@ class ReadmeTests(unittest.TestCase):
         image_tags = re.findall(r"<img\b[^>]*?/>", self.readme)
         widths = re.findall(r'width="([^"]+)"', self.readme)
 
-        self.assertGreaterEqual(len(image_tags), 20)
+        self.assertGreaterEqual(len(image_tags), 35)
         self.assertTrue(all(re.search(r'alt="[^"]+"', tag) for tag in image_tags))
         self.assertTrue(all(width in {"100%", "350"} for width in widths))
         self.assertNotIn('width="24%"', self.readme)
         self.assertNotIn('width="49%"', self.readme)
         for filename in generate_readme.PROJECT_VISUALS.values():
             self.assertIn(f'output/{filename}" width="100%"', self.readme)
+
+    def test_every_authored_hyperlink_is_a_visual_control(self):
+        markdown_links = re.findall(r"(?<!!)\[[^\]]+\]\([^)]+\)", self.readme)
+        html_links = re.findall(r'<a href="[^"]+">.*?</a>', self.readme, re.DOTALL)
+
+        self.assertEqual(markdown_links, [])
+        self.assertGreaterEqual(len(html_links), 30)
+        self.assertTrue(all("<img " in link for link in html_links))
+        for filename in (
+            "nav-live.svg",
+            "nav-source.svg",
+            "nav-experiment.svg",
+            "nav-email.svg",
+            "nav-github.svg",
+            "nav-devpost.svg",
+            "nav-steam.svg",
+        ):
+            self.assertIn(f"output/{filename}", self.readme)
 
     def test_public_content_is_current_and_privacy_safe(self):
         lower = self.readme.lower()
@@ -71,6 +89,13 @@ class ReadmeTests(unittest.TestCase):
             "nav-projects.svg",
             "nav-resume.svg",
             "nav-linkedin.svg",
+            "nav-live.svg",
+            "nav-source.svg",
+            "nav-experiment.svg",
+            "nav-email.svg",
+            "nav-github.svg",
+            "nav-devpost.svg",
+            "nav-steam.svg",
             "signal-strip.svg",
             "section-projects.svg",
             "project-portfolio.svg",

@@ -2041,6 +2041,13 @@ def build_asset_manifest():
         ("nav-projects.svg", "PROJECTS", "EXPLORE THE BUILDS", "⌁"),
         ("nav-resume.svg", "RÉSUMÉ", "VIEW PUBLIC RECORD", "▤"),
         ("nav-linkedin.svg", "LINKEDIN", "OPEN PROFESSIONAL LINK", "◇"),
+        ("nav-live.svg", "LIVE SYSTEM", "LAUNCH DEPLOYMENT", "◈"),
+        ("nav-source.svg", "SOURCE", "INSPECT REPOSITORY", "⌁"),
+        ("nav-experiment.svg", "LIVE LAB", "OPEN EXPERIMENT", "◉"),
+        ("nav-email.svg", "EMAIL", "TRANSMIT MESSAGE", "◇"),
+        ("nav-github.svg", "GITHUB", "OPEN BUILD RECORD", "⌁"),
+        ("nav-devpost.svg", "DEVPOST", "VIEW PROTOTYPES", "◈"),
+        ("nav-steam.svg", "STEAM", "OPEN HUMAN ARCHIVE", "◉"),
     )
     for index, (filename, label, code, glyph) in enumerate(nav_specs):
         manifest[filename] = build_nav_button_svg(
