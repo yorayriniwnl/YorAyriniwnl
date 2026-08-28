@@ -124,7 +124,7 @@
 </p>
 
 <a href="https://github.com/yorayriniwnl">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/stats.svg" width="100%" alt="Ayush Roy live profile views, GitHub repositories, stars, followers, languages, and system status"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/stats.svg" width="100%" alt="Ayush Roy GitHub repositories, stars, followers, languages, and system status"/>
 </a>
 
 <a href="https://github.com/yorayriniwnl">

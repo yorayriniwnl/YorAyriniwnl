@@ -11,11 +11,6 @@ spec.loader.exec_module(generate_stats)
 
 
 class GenerateStatsTests(unittest.TestCase):
-    def test_profile_view_counter_parser_preserves_exact_total(self):
-        svg = '<svg aria-label="TOTAL PROFILE VIEWS: 12,345"><title>TOTAL PROFILE VIEWS: 12,345</title></svg>'
-
-        self.assertEqual(generate_stats.parse_profile_views(svg), 12345)
-
     def test_language_percentages_include_hidden_languages_in_denominator(self):
         rows = generate_stats.language_percentages(
             [("Python", 50), ("TypeScript", 30), ("Rust", 20), ("CSS", 100)]
@@ -47,14 +42,14 @@ class GenerateStatsTests(unittest.TestCase):
         self.assertNotIn("RUST", panel)
         self.assertNotIn("STATS_TOKEN", panel)
 
-    def test_overview_panel_includes_profile_views(self):
+    def test_overview_panel_keeps_live_views_as_single_source_of_truth(self):
         panel = generate_stats.build_overview_panel(
-            {"views": 237, "public_repos": 25, "stars": 2, "followers": 1}
+            {"public_repos": 25, "stars": 2, "followers": 1}
         )
 
         self.assertIn("PROFILE TELEMETRY", panel)
-        self.assertIn("237", panel)
-        self.assertIn("VIEWS", panel)
+        self.assertIn("REPOS", panel)
+        self.assertNotIn("VIEWS", panel)
 
 
 if __name__ == "__main__":

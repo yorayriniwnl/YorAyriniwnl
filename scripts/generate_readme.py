@@ -282,7 +282,7 @@ def render_readme(profile: dict | None = None) -> str:
             *linked_image(
                 contact["github"],
                 "stats.svg",
-                "Ayush Roy live profile views, GitHub repositories, stars, followers, languages, and system status",
+                "Ayush Roy GitHub repositories, stars, followers, languages, and system status",
                 handle,
             ),
             "",

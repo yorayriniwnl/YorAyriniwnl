@@ -28,7 +28,6 @@ import base64
 import datetime
 import json
 import os
-import re
 import sys
 import urllib.error
 import urllib.request
@@ -49,11 +48,6 @@ PALETTE = PROFILE["visual_contract"]["palette"]
 USERNAME = PROFILE["identity"]["handle"]
 API = "https://api.github.com"
 GQL = "https://api.github.com/graphql"
-PROFILE_VIEWS_URL = (
-    "https://komarev.com/ghpvc/?"
-    f"username={USERNAME}&label=TOTAL+PROFILE+VIEWS&color=ff335f&"
-    "style=for-the-badge&abbreviated=false"
-)
 
 # Same canonical palette as the README asset generator.
 PRIMARY = PALETTE["crimson"]
@@ -104,27 +98,6 @@ def gh_graphql(query, variables, token):
         return json.loads(r.read().decode())
 
 
-def parse_profile_views(svg):
-    """Extract the exact counter value from the counter service SVG."""
-    match = re.search(r"TOTAL PROFILE VIEWS:\s*([\d,]+)", svg, re.IGNORECASE)
-    return int(match.group(1).replace(",", "")) if match else None
-
-
-def fetch_profile_views():
-    req = urllib.request.Request(
-        PROFILE_VIEWS_URL,
-        headers={"User-Agent": f"{USERNAME}-telemetry-bot"},
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=20) as response:
-            count = parse_profile_views(response.read().decode("utf-8"))
-    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as error:
-        print(f"[stats] profile-view fetch failed: {error}", file=sys.stderr)
-        return None
-    print(f"[stats] profile views: {count if count is not None else 'unavailable'}")
-    return count
-
-
 def fetch_overview(token):
     user = gh_rest(f"/users/{USERNAME}", token)
     repos, page = [], 1
@@ -140,7 +113,6 @@ def fetch_overview(token):
     stars = sum(r.get("stargazers_count", 0) for r in non_fork)
     print(f"[stats] fetched user + {len(repos)} repos ({len(non_fork)} non-fork), {stars} stars total")
     return {
-        "views": fetch_profile_views(),
         "followers": user.get("followers", 0),
         "public_repos": user.get("public_repos", 0),
         "stars": stars,
@@ -257,19 +229,18 @@ def build_overview_panel(overview):
     w, h = 380, 170
     is_sample = overview.get("_sample", False)
     def fmt(v):
-        return "\u2014" if is_sample or v is None else v
+        return "\u2014" if is_sample else v
     stats = [
-        ("VIEWS", overview.get("views")),
         ("REPOS", overview["public_repos"]),
         ("STARS", overview["stars"]),
         ("FOLLOWERS", overview["followers"]),
     ]
-    col_w = (w - 44) / 4
+    col_w = (w - 56) / 3
     cells = []
     for i, (label, value) in enumerate(stats):
-        cx = 22 + col_w * i + col_w / 2
-        cells.append(f'<text x="{cx:.1f}" y="108" text-anchor="middle" class="stat-num" font-size="34">{fmt(value)}</text>')
-        cells.append(f'<text x="{cx:.1f}" y="132" text-anchor="middle" class="stat-lbl" font-size="8">{label}</text>')
+        cx = 28 + col_w * i + col_w / 2
+        cells.append(f'<text x="{cx:.1f}" y="108" text-anchor="middle" class="stat-num" font-size="42">{fmt(value)}</text>')
+        cells.append(f'<text x="{cx:.1f}" y="132" text-anchor="middle" class="stat-lbl" font-size="10">{label}</text>')
     return card_shell(w, h, "PROFILE TELEMETRY") + "".join(cells)
 
 
@@ -367,7 +338,6 @@ def build_stats_combined_svg(overview, ranked_langs, streak, dmmono_b64, cormora
 
 
 SAMPLE_OVERVIEW = {
-    "views": None,
     "followers": 0,
     "public_repos": 0,
     "stars": 0,
