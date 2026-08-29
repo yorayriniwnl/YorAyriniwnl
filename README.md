@@ -107,7 +107,7 @@
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-field.svg" width="100%" alt="Section 02: field notes covering verified experience, education, and trajectory."/>
 
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/field-notes.svg" width="100%" alt="Telecom &amp; Data Network Intern at Bharat Sanchar Nigam Limited (BSNL), June 2026. Completed an RGMTTC-certified four-week program in telecom, data-network systems, and infrastructure. B.Tech in Computer Science and Communication Engineering at KIIT Deemed University, 2023-2027 (Expected). Coursework: Data Structures &amp; Algorithms; Operating Systems; Database Management Systems; Computer Networks; Object-Oriented Programming."/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/field-notes.svg?rev=privacy-v2" width="100%" alt="Telecom &amp; Data Network Intern at Bharat Sanchar Nigam Limited (BSNL), June 2026. Completed an RGMTTC-certified four-week program in telecom, data-network systems, and infrastructure. B.Tech in Computer Science and Communication Engineering at KIIT Deemed University, 2023-2027 (Expected). Coursework: Data Structures &amp; Algorithms; Operating Systems; Database Management Systems; Computer Networks; Object-Oriented Programming."/>
 
 <p align="center">
 <a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg" width="350" alt="View Ayush Roy privacy-safe public resume"/></a>

@@ -32,6 +32,7 @@ ASSET_REVISIONS = {
     # Revision only the asset that received the immediate post-publish layout
     # correction; future generators keep the normal stable URLs by default.
     "skills-matrix.svg": "kinetic-v2",
+    "field-notes.svg": "privacy-v2",
 }
 
 
