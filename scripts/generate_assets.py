@@ -1476,7 +1476,7 @@ def build_skills_matrix_svg(cfg):
         y = 58 + index * row_height
         value_lines = wrap_lines(" · ".join(values), 56)[:3]
         values_svg = "".join(
-            f'<tspan x="156" dy="{0 if line_index == 0 else 21}">{esc(line)}</tspan>'
+            f'<tspan x="190" dy="{0 if line_index == 0 else 21}">{esc(line)}</tspan>'
             for line_index, line in enumerate(value_lines)
         )
         glyph = kinetic_glyph_svg(icon_kind, 18, 15, .65, index * .24)
@@ -1487,8 +1487,8 @@ def build_skills_matrix_svg(cfg):
 {glyph}
 <text x="70" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // {code}</text>
 <text x="70" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">{esc(label)}</text>
-<path d="M134 15V79" stroke="#310808"/>
-<text x="156" y="34" class="mono" font-size="13" fill="#d7caca">{values_svg}</text>
+<path d="M168 15V79" stroke="#310808"/>
+<text x="190" y="34" class="mono" font-size="13" fill="#d7caca">{values_svg}</text>
 <circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="{1.2 + index * .17:.2f}s" repeatCount="indefinite"/></circle>
 </g>''')
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
