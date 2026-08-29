@@ -1452,7 +1452,7 @@ def build_field_notes_svg(cfg):
 {education_glyph}
 <text x="100" y="63" class="mono" font-size="19" fill="#f5eaea">{degree_svg}</text>
 <text x="100" y="116" class="mono" font-size="13" fill="#e84b4b">{esc(education["institution"].upper())}</text>
-<text x="100" y="141" class="mono" font-size="10" fill="#8d7777">{esc(education["location"].upper())} · CGPA {esc(education["cgpa"])}</text>
+<text x="100" y="141" class="mono" font-size="10" fill="#8d7777">{esc(education["location"].upper())}</text>
 <path d="M22 154H660" stroke="#310808"/>
 <text x="34" y="178" class="mono" font-size="11" fill="#b7a6a6">{coursework_svg}</text>
 </g>

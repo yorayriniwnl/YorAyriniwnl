@@ -243,7 +243,7 @@ def build_resume(raw_output: Path) -> None:
     y_right = draw_wrapped(pdf, education["degree"], right_x, y_right, right_width, regular, 7.8, 10.2, MUTED, 3)
     pdf.setFillColor(MUTED)
     pdf.setFont(regular, 7.3)
-    pdf.drawString(right_x, y_right, f"{education['period']}  /  CGPA {education['cgpa']}")
+    pdf.drawString(right_x, y_right, education["period"])
     y_right -= 19
 
     y_right = draw_section_title(pdf, "Expanding Into", right_x, y_right, right_width, bold)
