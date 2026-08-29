@@ -19,7 +19,12 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertIn("data:image/jpeg;base64,", svg)
         self.assertIn("AYR // OPERATOR ONLINE", svg)
         self.assertIn("FULL-STACK DEVELOPER", svg)
-        self.assertIn('values="1492;1516;1492"', svg)
+        self.assertIn('data-rotating-earth="true"', svg)
+        self.assertIn('data-live-graph="true"', svg)
+        self.assertIn("EARTH GRID // ROTATING", svg)
+        self.assertIn("LIVE SIGNAL // 01", svg)
+        self.assertIn('<animate attributeName="d"', svg)
+        self.assertNotIn('values="1492;1516;1492"', svg)
 
     def test_navigation_and_canonical_project_card_render_valid_svg(self):
         nav = generate_assets.build_nav_button_svg(

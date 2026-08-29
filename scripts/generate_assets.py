@@ -1022,6 +1022,132 @@ def kinetic_glyph_svg(kind, x, y, scale=1.0, delay=0.0):
 </g>'''
 
 
+def build_hero_earth_system(cfg):
+    """Animate the existing world in the approved key art without replacing it.
+
+    The raster remains untouched.  Moving longitude cages, orbiting packets,
+    and a travelling terminator create the impression of a live rotating
+    network globe while the portrait stays completely stable.
+    """
+    accent = cfg["primary"]
+    signal = cfg["sparkle"]
+    return f'''
+<g data-rotating-earth="true" aria-label="Rotating live network Earth">
+<g clip-path="url(#earthDisk)">
+<ellipse cx="365" cy="296" rx="322" ry="286" fill="#020101" opacity=".08"/>
+<g fill="none" stroke="{accent}" stroke-width="1" opacity=".24">
+<ellipse cx="365" cy="296" rx="318" ry="74" stroke-dasharray="8 18">
+<animate attributeName="stroke-dashoffset" values="0;-104" dur="8s" repeatCount="indefinite"/>
+</ellipse>
+<ellipse cx="365" cy="296" rx="296" ry="146" stroke-dasharray="3 16">
+<animate attributeName="stroke-dashoffset" values="0;-114" dur="11s" repeatCount="indefinite"/>
+</ellipse>
+<ellipse cx="365" cy="296" rx="250" ry="218" stroke-dasharray="2 19">
+<animate attributeName="stroke-dashoffset" values="0;-126" dur="14s" repeatCount="indefinite"/>
+</ellipse>
+</g>
+<g fill="none" stroke="{signal}" stroke-width="1.15" opacity=".34">
+<ellipse cx="365" cy="296" rx="62" ry="284"/>
+<ellipse cx="365" cy="296" rx="142" ry="284"/>
+<ellipse cx="365" cy="296" rx="232" ry="284"/>
+<animateTransform attributeName="transform" type="rotate" from="0 365 296"
+ to="360 365 296" dur="34s" repeatCount="indefinite"/>
+</g>
+<g fill="none" stroke="{accent}" stroke-width=".8" opacity=".2">
+<ellipse cx="365" cy="296" rx="102" ry="284"/>
+<ellipse cx="365" cy="296" rx="192" ry="284"/>
+<ellipse cx="365" cy="296" rx="278" ry="284"/>
+<animateTransform attributeName="transform" type="rotate" from="360 365 296"
+ to="0 365 296" dur="47s" repeatCount="indefinite"/>
+</g>
+<rect x="-220" y="4" width="170" height="584" fill="url(#earthTerminator)" opacity=".7">
+<animate attributeName="x" values="-220;760" dur="12s" repeatCount="indefinite"/>
+</rect>
+<g fill="{signal}" filter="url(#earthGlow)">
+<circle r="3.2"><animateMotion path="M55 296 A310 92 0 1 1 675 296 A310 92 0 1 1 55 296"
+ dur="9s" repeatCount="indefinite"/></circle>
+<circle r="2.4"><animateMotion path="M96 215 A286 128 0 1 0 634 377 A286 128 0 1 0 96 215"
+ dur="13s" begin="-5s" repeatCount="indefinite"/></circle>
+<circle r="2"><animateMotion path="M130 417 A255 176 0 1 1 600 175 A255 176 0 1 1 130 417"
+ dur="16s" begin="-8s" repeatCount="indefinite"/></circle>
+</g>
+</g>
+<ellipse cx="365" cy="296" rx="324" ry="288" fill="none" stroke="{signal}"
+ stroke-width="1.2" opacity=".3" stroke-dasharray="22 15">
+<animate attributeName="stroke-dashoffset" values="0;-148" dur="9s" repeatCount="indefinite"/>
+</ellipse>
+<ellipse cx="365" cy="296" rx="352" ry="112" fill="none" stroke="{accent}"
+ stroke-width="1" opacity=".42" stroke-dasharray="12 24" transform="rotate(-14 365 296)">
+<animateTransform attributeName="transform" type="rotate" from="-14 365 296"
+ to="346 365 296" dur="18s" repeatCount="indefinite"/>
+</ellipse>
+<circle r="4" fill="{signal}" filter="url(#earthGlow)">
+<animateMotion path="M24 383 A352 112 -14 1 1 706 209 A352 112 -14 1 1 24 383"
+ dur="18s" repeatCount="indefinite"/>
+<animate attributeName="r" values="3;6;3" dur="1.8s" repeatCount="indefinite"/>
+</circle>
+<g transform="translate(522,118)">
+<rect width="176" height="28" rx="3" fill="#040101" opacity=".78" stroke="{accent}"/>
+<circle cx="14" cy="14" r="3" fill="{signal}">
+<animate attributeName="opacity" values=".25;1;.25" dur="1.2s" repeatCount="indefinite"/>
+</circle>
+<text x="26" y="18" class="mono" font-size="8.5" fill="#d6c8c8" letter-spacing="1.5">
+EARTH GRID // ROTATING
+</text>
+</g>
+</g>'''
+
+
+def build_hero_live_graph(cfg):
+    """Overlay a morphing telemetry trace on the chart in the key art."""
+    accent = cfg["primary"]
+    signal = cfg["sparkle"]
+    frames = (
+        "M1308 374 L1326 357 L1344 365 L1362 326 L1380 348 L1398 304 L1416 319 L1434 278 L1452 301 L1470 264",
+        "M1308 361 L1326 368 L1344 338 L1362 347 L1380 311 L1398 328 L1416 286 L1434 309 L1452 273 L1470 292",
+        "M1308 378 L1326 346 L1344 354 L1362 315 L1380 334 L1398 289 L1416 306 L1434 270 L1452 286 L1470 251",
+        "M1308 374 L1326 357 L1344 365 L1362 326 L1380 348 L1398 304 L1416 319 L1434 278 L1452 301 L1470 264",
+    )
+    values = ";".join(frames)
+    return f'''
+<g data-live-graph="true" aria-label="Live moving systems graph">
+<rect x="1298" y="234" width="180" height="176" rx="4" fill="#030101" opacity=".68"
+ stroke="{accent}" stroke-width="1"/>
+<path d="M1298 255H1478" stroke="{accent}" opacity=".36"/>
+<circle cx="1310" cy="246" r="3" fill="{signal}">
+<animate attributeName="opacity" values=".25;1;.25" dur="1s" repeatCount="indefinite"/>
+</circle>
+<text x="1320" y="249" class="mono" font-size="8" fill="#d6c8c8" letter-spacing="1.5">
+LIVE SIGNAL // 01
+</text>
+<g clip-path="url(#liveGraphClip)">
+<g stroke="{accent}" stroke-width=".65" opacity=".16">
+<path d="M1298 276H1478M1298 308H1478M1298 340H1478M1298 372H1478"/>
+<path d="M1328 255V410M1358 255V410M1388 255V410M1418 255V410M1448 255V410"/>
+</g>
+<path d="{frames[0]}" fill="none" stroke="{accent}" stroke-width="7" opacity=".16"
+ filter="url(#graphGlow)">
+<animate attributeName="d" values="{values}" dur="4.8s" repeatCount="indefinite"/>
+</path>
+<path d="{frames[0]}" fill="none" stroke="{signal}" stroke-width="2.2"
+ stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5">
+<animate attributeName="d" values="{values}" dur="4.8s" repeatCount="indefinite"/>
+<animate attributeName="stroke-dashoffset" values="0;-48" dur="1.4s" repeatCount="indefinite"/>
+</path>
+<rect x="1290" y="255" width="18" height="155" fill="url(#graphCursor)" opacity=".8">
+<animate attributeName="x" values="1290;1480" dur="2.8s" repeatCount="indefinite"/>
+</rect>
+</g>
+<g fill="{accent}" opacity=".66">
+<rect x="1308" y="394" width="8" height="8"><animate attributeName="height" values="8;3;11;8" dur="1.4s" repeatCount="indefinite"/></rect>
+<rect x="1320" y="391" width="8" height="11"><animate attributeName="height" values="11;5;14;11" dur="1.7s" repeatCount="indefinite"/></rect>
+<rect x="1332" y="396" width="8" height="6"><animate attributeName="height" values="6;13;4;6" dur="1.2s" repeatCount="indefinite"/></rect>
+</g>
+<text x="1468" y="401" text-anchor="end" class="mono" font-size="8" fill="#9d7f87"
+ letter-spacing="1.2">STREAMING</text>
+</g>'''
+
+
 def build_cinematic_hero_svg(cfg):
     """A self-contained title sequence: original raster key art plus a
     GitHub-safe animated HUD, scan pass, signal traces, and identity lockup."""
@@ -1082,9 +1208,11 @@ def build_cinematic_hero_svg(cfg):
 <defs>
 {fonts}
 <clipPath id="heroClip"><rect x="10" y="10" width="1480" height="600" rx="8"/></clipPath>
+<clipPath id="earthDisk"><ellipse cx="365" cy="296" rx="322" ry="286"/></clipPath>
+<clipPath id="liveGraphClip"><rect x="1298" y="255" width="180" height="137"/></clipPath>
 <linearGradient id="heroShade" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#000" stop-opacity=".98"/>
-<stop offset="37%" stop-color="#000" stop-opacity=".88"/>
+<stop offset="0%" stop-color="#000" stop-opacity=".91"/>
+<stop offset="37%" stop-color="#000" stop-opacity=".80"/>
 <stop offset="61%" stop-color="#000" stop-opacity=".18"/>
 <stop offset="100%" stop-color="#000" stop-opacity=".05"/>
 </linearGradient>
@@ -1096,6 +1224,18 @@ def build_cinematic_hero_svg(cfg):
 <stop offset="0%" stop-color="#e84b4b" stop-opacity="0"/>
 <stop offset="50%" stop-color="#ff8a7f" stop-opacity=".34"/>
 <stop offset="100%" stop-color="#e84b4b" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="earthTerminator" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="{cfg['primary']}" stop-opacity="0"/>
+<stop offset="46%" stop-color="{cfg['primary']}" stop-opacity=".08"/>
+<stop offset="58%" stop-color="{cfg['sparkle']}" stop-opacity=".34"/>
+<stop offset="72%" stop-color="{cfg['primary']}" stop-opacity=".06"/>
+<stop offset="100%" stop-color="{cfg['primary']}" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="graphCursor" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="{cfg['primary']}" stop-opacity="0"/>
+<stop offset="52%" stop-color="{cfg['sparkle']}" stop-opacity=".55"/>
+<stop offset="100%" stop-color="{cfg['primary']}" stop-opacity="0"/>
 </linearGradient>
 <pattern id="scanlines" width="8" height="8" patternUnits="userSpaceOnUse">
 <rect width="8" height="1" fill="#fff" opacity=".025"/>
@@ -1109,15 +1249,19 @@ def build_cinematic_hero_svg(cfg):
 <filter id="softHero" x="-30%" y="-30%" width="160%" height="160%">
 <feGaussianBlur stdDeviation="18"/>
 </filter>
+<filter id="earthGlow" x="-300%" y="-300%" width="700%" height="700%">
+<feGaussianBlur stdDeviation="2.6" result="b"/>
+<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<filter id="graphGlow" x="-40%" y="-80%" width="180%" height="260%">
+<feGaussianBlur stdDeviation="4"/>
+</filter>
 {grain_filter("experienceGrain", cfg["seed"] + 900)}
 </defs>
+<title>Ayush Roy — rotating world and live systems telemetry</title>
 <rect width="{W}" height="{H}" rx="10" fill="#000"/>
 <g clip-path="url(#heroClip)">
 <image href="{art}" x="4" y="4" width="1492" height="612" preserveAspectRatio="xMidYMid slice">
-<animate attributeName="x" values="4;-8;4" dur="26s" repeatCount="indefinite"/>
-<animate attributeName="y" values="4;-3;4" dur="26s" repeatCount="indefinite"/>
-<animate attributeName="width" values="1492;1516;1492" dur="26s" repeatCount="indefinite"/>
-<animate attributeName="height" values="612;626;612" dur="26s" repeatCount="indefinite"/>
 </image>
 <rect x="10" y="10" width="1480" height="600" fill="url(#heroShade)"/>
 <rect x="10" y="10" width="1480" height="600" fill="url(#heroBottom)"/>
@@ -1126,6 +1270,8 @@ def build_cinematic_hero_svg(cfg):
 <rect x="-220" y="10" width="180" height="600" fill="url(#scan)" opacity=".72">
 <animate attributeName="x" values="-220;1540" dur="8s" repeatCount="indefinite"/>
 </rect>
+{build_hero_earth_system(cfg)}
+{build_hero_live_graph(cfg)}
 <ellipse cx="1120" cy="220" rx="250" ry="250" fill="none" stroke="#e84b4b"
  stroke-width="1" opacity=".16" stroke-dasharray="12 20">
 <animateTransform attributeName="transform" type="rotate" from="0 1120 220"

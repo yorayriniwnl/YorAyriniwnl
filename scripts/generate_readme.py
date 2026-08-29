@@ -33,6 +33,7 @@ ASSET_REVISIONS = {
     # correction; future generators keep the normal stable URLs by default.
     "skills-matrix.svg": "kinetic-v2",
     "field-notes.svg": "privacy-v2",
+    "hero.svg": "living-world-v1",
 }
 
 

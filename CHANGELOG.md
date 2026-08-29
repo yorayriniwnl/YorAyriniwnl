@@ -1,5 +1,11 @@
 # What moved, and why
 
+## Pass 13: living world telemetry
+
+The cinematic hero now animates the actual systems depicted in its approved key art. The Earth carries two independently rotating longitude cages, moving latitude traffic, orbiting packets, a travelling terminator, and a continuous orbital sweep. The graph beside the portrait is now a clipped live telemetry console with a morphing signal, streaming dash flow, scan cursor, pulse state, and animated activity bars.
+
+The previous whole-image camera drift was removed so the portrait remains perfectly stable and every procedural overlay stays registered to the Earth and graph beneath it. The original portrait source is still byte-for-byte unchanged.
+
 ## Pass 12: project key art suite
 
 The project cards now carry four generated visual systems instead of relying on schematic placeholders: a solar digital twin for Yor Zenith, a live power-grid anomaly scene for Yor Helios, a human-versus-synthetic vision study for AI vs Real, and a crimson realtime network for Yor Talks V2. Each scene is embedded into its card as self-contained raster art, then layered with the existing SVG traces, pulse nodes, confidence telemetry, and sweep motion.

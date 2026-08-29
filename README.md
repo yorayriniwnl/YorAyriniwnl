@@ -3,7 +3,7 @@
 <div align="center">
 
 <a href="https://www.yorayriniwnl.in">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg" width="100%" alt="Ayush Roy, full-stack developer and applied ml builder"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg?rev=living-world-v1" width="100%" alt="Ayush Roy, full-stack developer and applied ml builder"/>
 </a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/kinetic-primer.gif" width="100%" alt="Animated visual decoder for GPU interfaces, realtime systems, computer vision, and connected platforms"/>
