@@ -27,10 +27,18 @@ PROJECT_VISUALS = {
     "vision": "project-vision.svg",
     "talks": "project-talks.svg",
 }
+ASSET_REVISIONS = {
+    # GitHub's raw CDN can retain a recently replaced SVG at the same URL.
+    # Revision only the asset that received the immediate post-publish layout
+    # correction; future generators keep the normal stable URLs by default.
+    "skills-matrix.svg": "kinetic-v2",
+}
 
 
 def raw_asset_url(handle: str, filename: str) -> str:
-    return f"https://raw.githubusercontent.com/{handle}/{PROFILE_REPOSITORY}/output/{filename}"
+    url = f"https://raw.githubusercontent.com/{handle}/{PROFILE_REPOSITORY}/output/{filename}"
+    revision = ASSET_REVISIONS.get(filename)
+    return f"{url}?rev={revision}" if revision else url
 
 
 def profile_views_url(handle: str) -> str:

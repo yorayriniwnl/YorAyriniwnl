@@ -68,6 +68,7 @@ class ReadmeTests(unittest.TestCase):
         self.assertIn("https://komarev.com/ghpvc/?", self.readme)
         self.assertIn("label=TOTAL+PROFILE+VIEWS", self.readme)
         self.assertIn("kinetic-primer.gif", self.readme)
+        self.assertIn("skills-matrix.svg?rev=kinetic-v2", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)
         for filename in generate_readme.PROJECT_VISUALS.values():
             self.assertIn(f'output/{filename}" width="100%"', self.readme)

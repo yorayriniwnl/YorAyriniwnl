@@ -117,7 +117,7 @@
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/arsenal.svg" width="100%" alt="Ayush Roy technical range across product, backend, machine learning, and platform engineering"/>
 
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/skills-matrix.svg" width="100%" alt="Product: TypeScript; JavaScript; React; Next.js; Tailwind CSS; Three.js; React Three Fiber; Framer Motion. Backend: Python; FastAPI; Flask; Node.js; REST APIs; WebSocket; SQL; SQLite. Applied ML: OpenCV; Scikit-Learn; SVM; LBP; GLCM; Feature Engineering; Model Evaluation; Streamlit. Platform: Docker; Docker Compose; Git; GitHub Actions; Vercel; Linux; Vitest. Currently expanding: Generative AI; LLMs; Prompt Engineering; RAG; AI Agents; LangChain; AWS S3; AWS Lambda; Vector Databases."/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/skills-matrix.svg?rev=kinetic-v2" width="100%" alt="Product: TypeScript; JavaScript; React; Next.js; Tailwind CSS; Three.js; React Three Fiber; Framer Motion. Backend: Python; FastAPI; Flask; Node.js; REST APIs; WebSocket; SQL; SQLite. Applied ML: OpenCV; Scikit-Learn; SVM; LBP; GLCM; Feature Engineering; Model Evaluation; Streamlit. Platform: Docker; Docker Compose; Git; GitHub Actions; Vercel; Linux; Vitest. Currently expanding: Generative AI; LLMs; Prompt Engineering; RAG; AI Agents; LangChain; AWS S3; AWS Lambda; Vector Databases."/>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-record.svg" width="100%" alt="Section 04: live public GitHub record with verified fallback data"/>
 
