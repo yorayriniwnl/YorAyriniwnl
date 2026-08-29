@@ -14,6 +14,8 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn("actions/setup-python@v5", workflow)
         self.assertIn("python scripts/profile_data.py", workflow)
         self.assertIn("python scripts/optimize_assets.py", workflow)
+        self.assertIn("python main/scripts/generate_motion.py", workflow)
+        self.assertIn("cp main/generated/kinetic-primer.gif output/", workflow)
         self.assertIn("git diff --exit-code -- assets", workflow)
         self.assertIn("python scripts/generate_readme.py --check", workflow)
         self.assertIn("python -m unittest discover -s tests -v", workflow)

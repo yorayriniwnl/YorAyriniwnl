@@ -864,6 +864,164 @@ def experience_font_defs():
     )
 
 
+def kinetic_glyph_svg(kind, x, y, scale=1.0, delay=0.0):
+    """Render a compact animated pictogram before dense information.
+
+    The glyphs deliberately use geometry instead of Unicode symbols so they
+    stay consistent across GitHub renderers, operating systems, and fallback
+    fonts. Every icon shares the same 64 px visual grammar and can be scaled
+    into proof cards, dossier labels, timelines, or loadout rows.
+    """
+    accent = "#e84b4b"
+    signal = "#ff8a7f"
+    paper = "#f5eaea"
+    muted = "#8d7777"
+    begin = f"-{delay:.2f}s"
+
+    if kind == "apps":
+        marks = []
+        for index, (gx, gy) in enumerate(((19, 19), (34, 19), (19, 34), (34, 34))):
+            marks.append(
+                f'<rect x="{gx}" y="{gy}" width="11" height="11" rx="2" '
+                f'fill="{accent}" opacity=".32"><animate attributeName="opacity" '
+                f'values=".25;1;.25" dur="2s" begin="-{index * .24:.2f}s" '
+                f'repeatCount="indefinite"/></rect>'
+            )
+        icon = "".join(marks)
+    elif kind == "tests":
+        icon = f'''
+<circle cx="32" cy="32" r="16" fill="none" stroke="{accent}" stroke-width="2"/>
+<path d="M23 32l6 6 13-15" fill="none" stroke="{paper}" stroke-width="3"
+ stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 20a20 20 0 0 1 27-1" fill="none" stroke="{signal}" stroke-width="2"
+ stroke-linecap="round"><animate attributeName="stroke-dasharray" values="2 60;34 60;2 60"
+ dur="2.8s" begin="{begin}" repeatCount="indefinite"/></path>'''
+    elif kind == "accuracy":
+        icon = f'''
+<path d="M16 42a18 18 0 0 1 32 0" fill="none" stroke="{accent}" stroke-width="4"
+ stroke-linecap="round"/>
+<path d="M20 42a14 14 0 0 1 24 0" fill="none" stroke="{muted}" stroke-width="1.5"/>
+<line x1="32" y1="42" x2="32" y2="24" stroke="{paper}" stroke-width="2.5"
+ stroke-linecap="round"><animateTransform attributeName="transform" type="rotate"
+ values="-48 32 42;43 32 42;-48 32 42" dur="3.2s" begin="{begin}"
+ repeatCount="indefinite"/></line><circle cx="32" cy="42" r="4" fill="{signal}"/>'''
+    elif kind == "prototypes":
+        icon = f'''
+<path d="M32 14c8 6 12 14 12 23l-12 9-12-9c0-9 4-17 12-23Z" fill="none"
+ stroke="{accent}" stroke-width="2"/><circle cx="32" cy="29" r="4" fill="{paper}"/>
+<path d="M25 44l-4 8M32 47v9M39 44l4 8" stroke="{signal}" stroke-width="2"
+ stroke-linecap="round"><animate attributeName="opacity" values=".2;1;.2" dur="1.1s"
+ begin="{begin}" repeatCount="indefinite"/></path>'''
+    elif kind in {"mission", "target"}:
+        icon = f'''
+<circle cx="32" cy="32" r="16" fill="none" stroke="{accent}" stroke-width="2"/>
+<circle cx="32" cy="32" r="6" fill="none" stroke="{signal}" stroke-width="2">
+<animate attributeName="r" values="4;11;4" dur="2.4s" begin="{begin}" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="1;.25;1" dur="2.4s" begin="{begin}" repeatCount="indefinite"/>
+</circle><path d="M32 10v10M32 44v10M10 32h10M44 32h10" stroke="{muted}"/>'''
+    elif kind in {"proof", "shield"}:
+        icon = f'''
+<path d="M32 13l16 6v11c0 11-6 18-16 22-10-4-16-11-16-22V19l16-6Z" fill="none"
+ stroke="{accent}" stroke-width="2"/><path d="M24 32l6 6 11-13" fill="none" stroke="{paper}"
+ stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="32" cy="32" r="22" fill="none" stroke="{signal}" opacity=".35"
+ stroke-dasharray="4 8"><animateTransform attributeName="transform" type="rotate"
+ from="0 32 32" to="360 32 32" dur="8s" begin="{begin}" repeatCount="indefinite"/></circle>'''
+    elif kind in {"stack", "layers"}:
+        icon = f'''
+<path d="M14 24l18-10 18 10-18 10-18-10Z" fill="none" stroke="{paper}" stroke-width="2"/>
+<path d="M14 33l18 10 18-10M14 42l18 10 18-10" fill="none" stroke="{accent}"
+ stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" values=".35;1;.35"
+ dur="2.4s" begin="{begin}" repeatCount="indefinite"/></path>'''
+    elif kind == "telecom":
+        icon = f'''
+<path d="M32 20v30M24 50h16M27 50l5-22 5 22" fill="none" stroke="{paper}" stroke-width="2"/>
+<circle cx="32" cy="19" r="3" fill="{signal}"/>
+<path d="M22 15a14 14 0 0 0 0 9M42 15a14 14 0 0 1 0 9M15 10a23 23 0 0 0 0 19M49 10a23 23 0 0 1 0 19"
+ fill="none" stroke="{accent}" stroke-width="2" stroke-linecap="round">
+<animate attributeName="opacity" values=".25;1;.25" dur="1.8s" begin="{begin}" repeatCount="indefinite"/>
+</path>'''
+    elif kind == "education":
+        icon = f'''
+<path d="M14 23l18-9 18 9-18 9-18-9Z" fill="none" stroke="{paper}" stroke-width="2"/>
+<path d="M21 28v11c7 6 15 6 22 0V28M50 24v17" fill="none" stroke="{accent}" stroke-width="2"/>
+<circle cx="50" cy="44" r="3" fill="{signal}"><animate attributeName="opacity"
+ values=".25;1;.25" dur="1.6s" begin="{begin}" repeatCount="indefinite"/></circle>'''
+    elif kind == "product":
+        icon = f'''
+<rect x="14" y="16" width="36" height="32" rx="3" fill="none" stroke="{paper}" stroke-width="2"/>
+<path d="M14 24h36" stroke="{accent}" stroke-width="2"/><circle cx="19" cy="20" r="2" fill="{signal}"/>
+<rect x="19" y="30" width="11" height="12" rx="2" fill="{accent}" opacity=".6"/>
+<path d="M35 31h10M35 37h8M35 43h6" stroke="{muted}" stroke-width="2" stroke-linecap="round"/>'''
+    elif kind == "backend":
+        icon = f'''
+<rect x="15" y="15" width="34" height="10" rx="3" fill="none" stroke="{paper}" stroke-width="2"/>
+<rect x="15" y="28" width="34" height="10" rx="3" fill="none" stroke="{accent}" stroke-width="2"/>
+<rect x="15" y="41" width="34" height="10" rx="3" fill="none" stroke="{paper}" stroke-width="2"/>
+<g fill="{signal}"><circle cx="21" cy="20" r="2"/><circle cx="21" cy="33" r="2"/>
+<circle cx="21" cy="46" r="2"><animate attributeName="opacity" values=".2;1;.2" dur="1.2s"
+ begin="{begin}" repeatCount="indefinite"/></circle></g>'''
+    elif kind == "ml":
+        icon = f'''
+<path d="M18 22l14 10 14-14M18 42l14-10 14 12" fill="none" stroke="{accent}" stroke-width="1.8"
+ stroke-dasharray="4 4"><animate attributeName="stroke-dashoffset" values="0;-24" dur="3s"
+ begin="{begin}" repeatCount="indefinite"/></path>
+<g fill="{paper}"><circle cx="18" cy="22" r="5"/><circle cx="18" cy="42" r="5"/>
+<circle cx="32" cy="32" r="6" fill="{signal}"/><circle cx="46" cy="18" r="5"/><circle cx="46" cy="44" r="5"/></g>'''
+    elif kind == "platform":
+        icon = f'''
+<path d="M32 13l18 10v20L32 53 14 43V23l18-10Z" fill="none" stroke="{accent}" stroke-width="2"/>
+<path d="M14 23l18 10 18-10M32 33v20" fill="none" stroke="{paper}" stroke-width="2"/>
+<path d="M21 27l18-10" stroke="{signal}" stroke-width="2"><animate attributeName="opacity"
+ values=".25;1;.25" dur="2s" begin="{begin}" repeatCount="indefinite"/></path>'''
+    elif kind == "expanding":
+        icon = f'''
+<path d="M32 13v38M13 32h38M19 19l26 26M45 19L19 45" stroke="{accent}" stroke-width="2"
+ stroke-linecap="round"/><circle cx="32" cy="32" r="7" fill="{signal}"/>
+<circle cx="32" cy="32" r="10" fill="none" stroke="{paper}" opacity=".7">
+<animate attributeName="r" values="8;25;8" dur="2.8s" begin="{begin}" repeatCount="indefinite"/>
+<animate attributeName="opacity" values=".8;0;.8" dur="2.8s" begin="{begin}" repeatCount="indefinite"/>
+</circle>'''
+    elif kind == "gpu":
+        coords = [(20 + col * 12, 20 + row * 12) for row in range(3) for col in range(3)]
+        icon = "".join(
+            f'<circle cx="{gx}" cy="{gy}" r="3" fill="{signal}" opacity=".35">'
+            f'<animate attributeName="r" values="2;5;2" dur="2.2s" '
+            f'begin="-{index * .13:.2f}s" repeatCount="indefinite"/></circle>'
+            for index, (gx, gy) in enumerate(coords)
+        )
+        icon += f'<rect x="14" y="14" width="36" height="36" rx="4" fill="none" stroke="{accent}"/>'
+    elif kind == "realtime":
+        icon = f'''
+<path d="M12 34h8l5-13 8 25 7-18 5 6h8" fill="none" stroke="{accent}" stroke-width="2.4"
+ stroke-linecap="round" stroke-linejoin="round"/>
+<circle r="4" fill="{signal}"><animateMotion path="M12 34h8l5-13 8 25 7-18 5 6h8"
+ dur="2.6s" begin="{begin}" repeatCount="indefinite"/></circle>'''
+    elif kind == "vision":
+        icon = f'''
+<path d="M11 32s8-14 21-14 21 14 21 14-8 14-21 14S11 32 11 32Z" fill="none"
+ stroke="{accent}" stroke-width="2"/><circle cx="32" cy="32" r="9" fill="none" stroke="{paper}" stroke-width="2"/>
+<circle cx="32" cy="32" r="3" fill="{signal}"/>
+<line x1="15" y1="24" x2="49" y2="24" stroke="{signal}" opacity=".5">
+<animate attributeName="y1" values="22;42;22" dur="2.4s" begin="{begin}" repeatCount="indefinite"/>
+<animate attributeName="y2" values="22;42;22" dur="2.4s" begin="{begin}" repeatCount="indefinite"/>
+</line>'''
+    else:
+        icon = f'<circle cx="32" cy="32" r="12" fill="none" stroke="{accent}" stroke-width="2"/><circle cx="32" cy="32" r="4" fill="{signal}"/>'
+
+    return f'''
+<g data-kinetic-glyph="{esc(kind)}" transform="translate({x},{y}) scale({scale})">
+<rect x="1" y="1" width="62" height="62" rx="11" fill="#070101" stroke="#3d0b0b"/>
+<path d="M8 17V8h9M47 8h9v9M8 47v9h9M47 56h9v-9" fill="none" stroke="{accent}"
+ stroke-width="1.3" opacity=".7"/>
+<circle cx="32" cy="32" r="26" fill="none" stroke="{accent}" opacity=".18" stroke-dasharray="2 7">
+<animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32"
+ dur="11s" begin="{begin}" repeatCount="indefinite"/>
+</circle>
+{icon}
+</g>'''
+
+
 def build_cinematic_hero_svg(cfg):
     """A self-contained title sequence: original raster key art plus a
     GitHub-safe animated HUD, scan pass, signal traces, and identity lockup."""
@@ -1136,6 +1294,7 @@ def build_section_header_svg(index, title, subtitle, cfg):
 def build_proof_card_svg(item, index, cfg):
     """A compact metric card that remains readable beside the nav controls."""
     W, H = 350, 138
+    glyph = kinetic_glyph_svg(item["id"], 22, 36, .64, index * .31)
     detail_lines = wrap_lines(item["detail"].upper(), 43)[:2]
     detail_svg = "".join(
         f'<tspan x="24" dy="{0 if line_index == 0 else 15}">{esc(line)}</tspan>'
@@ -1161,8 +1320,9 @@ def build_proof_card_svg(item, index, cfg):
 <rect x="1" y="1" width="5" height="136" rx="2" fill="#e84b4b"/>
 <rect x="1" y="1" width="348" height="136" rx="5" fill="url(#proofSweep)"/>
 <text x="24" y="26" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">VERIFIED // {index + 1:02d}</text>
-<text x="24" y="67" class="mono" font-size="32" fill="#f5eaea">{esc(item["value"])}</text>
-<text x="118" y="62" class="mono" font-size="10" fill="#e84b4b" letter-spacing="1.4">{esc(item["label"])}</text>
+{glyph}
+<text x="82" y="67" class="mono" font-size="32" fill="#f5eaea">{esc(item["value"])}</text>
+<text x="166" y="62" class="mono" font-size="10" fill="#e84b4b" letter-spacing="1.4">{esc(item["label"])}</text>
 <rect x="24" y="82" width="302" height="1" fill="#310808"/>
 <text x="24" y="105" class="mono" font-size="8" fill="#a99494" letter-spacing=".6">{detail_svg}</text>
 <circle cx="324" cy="22" r="4" fill="#ff8a7f">
@@ -1192,6 +1352,9 @@ def build_project_dossier_svg(project, cfg):
         f'<tspan x="30" dy="{0 if index == 0 else 18}">{esc(line)}</tspan>'
         for index, line in enumerate(stack_lines)
     )
+    mission_glyph = kinetic_glyph_svg("mission", 28, 94, .34, project["order"] * .17)
+    proof_glyph = kinetic_glyph_svg("proof", 28, 177, .34, project["order"] * .23)
+    stack_glyph = kinetic_glyph_svg("stack", 28, 307, .34, project["order"] * .29)
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
 <title>{esc(code)} — {esc(project["name"])}</title>
 <desc>{esc(project["summary"])} Proof: {esc("; ".join(project["proof"]))}. Stack: {esc("; ".join(project["stack"]))}.</desc>
@@ -1220,12 +1383,15 @@ def build_project_dossier_svg(project, cfg):
 <text x="690" y="37" text-anchor="end" class="mono" font-size="10" fill="#e84b4b" letter-spacing="1.4">{esc(project["status"].upper())}</text>
 <text x="690" y="59" text-anchor="end" class="mono" font-size="10" fill="#a99494">{esc(project["period"].upper())}</text>
 <path d="M20 88H700" stroke="#310808"/>
-<text x="30" y="111" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">MISSION</text>
+{mission_glyph}
+<text x="58" y="111" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">MISSION</text>
 <text x="30" y="137" class="mono" font-size="16" fill="#d7caca">{summary_svg}</text>
-<text x="30" y="194" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">VERIFIED PROOF</text>
+{proof_glyph}
+<text x="58" y="194" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">VERIFIED PROOF</text>
 {proof_svg}
 <path d="M20 301H700" stroke="#310808"/>
-<text x="30" y="324" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">STACK / LOADOUT</text>
+{stack_glyph}
+<text x="58" y="324" class="mono" font-size="9" fill="#e84b4b" letter-spacing="2">STACK / LOADOUT</text>
 <text x="30" y="350" class="mono" font-size="12" fill="#a99494">{stack_svg}</text>
 <text x="690" y="355" text-anchor="end" class="mono" font-size="10" fill="#e84b4b">OPEN SIGNAL ↗</text>
 </svg>'''
@@ -1243,7 +1409,7 @@ def build_field_notes_svg(cfg):
     )
     degree_lines = wrap_lines(education["degree"], 49)[:2]
     degree_svg = "".join(
-        f'<tspan x="34" dy="{0 if index == 0 else 24}">{esc(line)}</tspan>'
+        f'<tspan x="100" dy="{0 if index == 0 else 24}">{esc(line)}</tspan>'
         for index, line in enumerate(degree_lines)
     )
     coursework = " · ".join(education["coursework"])
@@ -1252,6 +1418,8 @@ def build_field_notes_svg(cfg):
         f'<tspan x="34" dy="{0 if index == 0 else 18}">{esc(line)}</tspan>'
         for index, line in enumerate(coursework_lines)
     )
+    experience_glyph = kinetic_glyph_svg("telecom", 22, 42, .86, .2)
+    education_glyph = kinetic_glyph_svg("education", 22, 42, .86, .7)
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
 <title>Field notes — experience and education</title>
 <desc>{esc(experience["role"])} at {esc(experience["organization"])}. {esc(education["degree"])} at {esc(education["institution"])}.</desc>
@@ -1270,9 +1438,10 @@ def build_field_notes_svg(cfg):
 <rect width="684" height="196" rx="5" fill="#050101" stroke="#3d0b0b"/>
 <rect width="6" height="196" rx="2" fill="#e84b4b"/>
 <text x="22" y="31" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">EXP-01 // {esc(experience["period"].upper())}</text>
-<text x="22" y="65" class="mono" font-size="22" fill="#f5eaea">{esc(experience["role"].upper())}</text>
-<text x="22" y="91" class="mono" font-size="13" fill="#e84b4b">{esc(experience["organization"].upper())}</text>
-<text x="22" y="119" class="mono" font-size="10" fill="#8d7777">{esc(experience["location"].upper())}</text>
+{experience_glyph}
+<text x="100" y="65" class="mono" font-size="22" fill="#f5eaea">{esc(experience["role"].upper())}</text>
+<text x="100" y="91" class="mono" font-size="13" fill="#e84b4b">{esc(experience["organization"].upper())}</text>
+<text x="100" y="119" class="mono" font-size="10" fill="#8d7777">{esc(experience["location"].upper())}</text>
 <path d="M22 132H660" stroke="#310808"/>
 <text x="34" y="156" class="mono" font-size="14" fill="#cfc1c1">{experience_svg}</text>
 </g>
@@ -1280,9 +1449,10 @@ def build_field_notes_svg(cfg):
 <rect width="684" height="214" rx="5" fill="#050101" stroke="#3d0b0b"/>
 <rect width="6" height="214" rx="2" fill="#671515"/>
 <text x="22" y="31" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">EDU-01 // {esc(education["period"].upper())}</text>
-<text x="22" y="63" class="mono" font-size="19" fill="#f5eaea">{degree_svg}</text>
-<text x="22" y="116" class="mono" font-size="13" fill="#e84b4b">{esc(education["institution"].upper())}</text>
-<text x="22" y="141" class="mono" font-size="10" fill="#8d7777">{esc(education["location"].upper())} · CGPA {esc(education["cgpa"])}</text>
+{education_glyph}
+<text x="100" y="63" class="mono" font-size="19" fill="#f5eaea">{degree_svg}</text>
+<text x="100" y="116" class="mono" font-size="13" fill="#e84b4b">{esc(education["institution"].upper())}</text>
+<text x="100" y="141" class="mono" font-size="10" fill="#8d7777">{esc(education["location"].upper())} · CGPA {esc(education["cgpa"])}</text>
 <path d="M22 154H660" stroke="#310808"/>
 <text x="34" y="178" class="mono" font-size="11" fill="#b7a6a6">{coursework_svg}</text>
 </g>
@@ -1293,30 +1463,32 @@ def build_skills_matrix_svg(cfg):
     """Render the complete canonical skill inventory without Markdown prose."""
     W = 720
     rows = (
-        ("01", "PRODUCT", PROFILE["skills"]["product"]),
-        ("02", "BACKEND", PROFILE["skills"]["backend"]),
-        ("03", "APPLIED ML", PROFILE["skills"]["ml"]),
-        ("04", "PLATFORM", PROFILE["skills"]["platform"]),
-        ("05", "EXPANDING", PROFILE["skills"]["expanding"]),
+        ("01", "PRODUCT", PROFILE["skills"]["product"], "product"),
+        ("02", "BACKEND", PROFILE["skills"]["backend"], "backend"),
+        ("03", "APPLIED ML", PROFILE["skills"]["ml"], "ml"),
+        ("04", "PLATFORM", PROFILE["skills"]["platform"], "platform"),
+        ("05", "EXPANDING", PROFILE["skills"]["expanding"], "expanding"),
     )
     row_height = 108
     H = 70 + len(rows) * row_height
     row_svg = []
-    for index, (code, label, values) in enumerate(rows):
+    for index, (code, label, values, icon_kind) in enumerate(rows):
         y = 58 + index * row_height
-        value_lines = wrap_lines(" · ".join(values), 58)[:3]
+        value_lines = wrap_lines(" · ".join(values), 56)[:3]
         values_svg = "".join(
-            f'<tspan x="146" dy="{0 if line_index == 0 else 21}">{esc(line)}</tspan>'
+            f'<tspan x="156" dy="{0 if line_index == 0 else 21}">{esc(line)}</tspan>'
             for line_index, line in enumerate(value_lines)
         )
+        glyph = kinetic_glyph_svg(icon_kind, 18, 15, .65, index * .24)
         row_svg.append(f'''
 <g transform="translate(18,{y})">
 <rect width="684" height="94" rx="5" fill="#050101" stroke="#3d0b0b"/>
 <rect width="5" height="94" rx="2" fill="{"#e84b4b" if index in (0, 4) else "#671515"}"/>
-<text x="22" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // {code}</text>
-<text x="22" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">{esc(label)}</text>
-<path d="M124 15V79" stroke="#310808"/>
-<text x="146" y="34" class="mono" font-size="13" fill="#d7caca">{values_svg}</text>
+{glyph}
+<text x="70" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // {code}</text>
+<text x="70" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">{esc(label)}</text>
+<path d="M134 15V79" stroke="#310808"/>
+<text x="156" y="34" class="mono" font-size="13" fill="#d7caca">{values_svg}</text>
 <circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="{1.2 + index * .17:.2f}s" repeatCount="indefinite"/></circle>
 </g>''')
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
@@ -1367,6 +1539,19 @@ def build_identity_console_svg(cfg):
             f'fill="#c4c4c4" letter-spacing="1.5">{label}</text></g>'
         )
 
+    manifest_entries = (
+        ("gpu", "4,000 GPU particle interfaces."),
+        ("realtime", "Real-time energy monitoring."),
+        ("vision", "SVM + texture computer vision."),
+        ("telecom", "BSNL telecom systems grounding."),
+    )
+    manifest_svg = "".join(
+        f'<g>{kinetic_glyph_svg(kind, 34, 170 + index * 25, .32, index * .21)}'
+        f'<text x="66" y="188" dy="{index * 25}" class="mono" font-size="13" '
+        f'fill="#a99494">{esc(label)}</text></g>'
+        for index, (kind, label) in enumerate(manifest_entries)
+    )
+
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
 <title>Ayush Roy operator manifest</title>
 <desc>Full-stack developer and applied machine learning builder in Bhubaneswar, open to software engineering internships.</desc>
@@ -1389,12 +1574,7 @@ OPERATOR MANIFEST
 <text x="34" y="93" class="serif" font-size="35" fill="#f5eaea">I build systems where</text>
 <text x="34" y="132" class="serif" font-size="35" fill="#f5eaea">software meets reality.</text>
 <rect x="34" y="154" width="440" height="1" fill="#671515"/>
-<text x="34" y="188" class="mono" font-size="13" fill="#a99494">
-<tspan x="34" dy="0">4,000 GPU particle interfaces.</tspan>
-<tspan x="34" dy="25">Real-time energy monitoring.</tspan>
-<tspan x="34" dy="25">SVM + texture computer vision.</tspan>
-<tspan x="34" dy="25">BSNL telecom systems grounding.</tspan>
-</text>
+{manifest_svg}
 <text x="34" y="319" class="mono" font-size="10" fill="#e84b4b" letter-spacing="2">
 THE DOMAIN CHANGES. THE STANDARD DOESN'T.
 </text>

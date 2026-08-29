@@ -135,6 +135,12 @@ def render_readme(profile: dict | None = None) -> str:
         ),
         "",
         image(
+            "kinetic-primer.gif",
+            "Animated visual decoder for GPU interfaces, realtime systems, computer vision, and connected platforms",
+            handle,
+        ),
+        "",
+        image(
             "identity-console.svg",
             (
                 f'{identity["name"]}. {identity["role"]} and {identity["specialty"]}. '

@@ -6,6 +6,8 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg" width="100%" alt="Ayush Roy, full-stack developer and applied ml builder"/>
 </a>
 
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/kinetic-primer.gif" width="100%" alt="Animated visual decoder for GPU interfaces, realtime systems, computer vision, and connected platforms"/>
+
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg" width="100%" alt="Ayush Roy. Full-Stack Developer and Applied ML Builder. I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world. Open to software engineering internships. B.Tech 2027. Bhubaneswar, Odisha, India."/>
 
 <p>

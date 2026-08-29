@@ -60,13 +60,14 @@ class ReadmeTests(unittest.TestCase):
         image_tags = re.findall(r"<img\b[^>]*?/>", self.readme)
         widths = re.findall(r'width="([^"]+)"', self.readme)
 
-        self.assertGreaterEqual(len(image_tags), 57)
+        self.assertGreaterEqual(len(image_tags), 59)
         self.assertTrue(all(re.search(r'alt="[^"]+"', tag) for tag in image_tags))
         self.assertTrue(all(width in {"100%", "350"} for width in widths))
         self.assertNotIn('width="24%"', self.readme)
         self.assertNotIn('width="49%"', self.readme)
         self.assertIn("https://komarev.com/ghpvc/?", self.readme)
         self.assertIn("label=TOTAL+PROFILE+VIEWS", self.readme)
+        self.assertIn("kinetic-primer.gif", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)
         for filename in generate_readme.PROJECT_VISUALS.values():
             self.assertIn(f'output/{filename}" width="100%"', self.readme)
@@ -101,9 +102,10 @@ class ReadmeTests(unittest.TestCase):
         self.assertIsNone(re.search(r"(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}", self.readme))
 
     def test_readme_references_only_published_visual_assets(self):
-        referenced = set(re.findall(r"/output/([a-z0-9-]+\.svg)", self.readme))
+        referenced = set(re.findall(r"/output/([a-z0-9-]+\.(?:svg|gif))", self.readme))
         expected = {
             "hero.svg",
+            "kinetic-primer.gif",
             "identity-console.svg",
             "proof-apps.svg",
             "proof-tests.svg",

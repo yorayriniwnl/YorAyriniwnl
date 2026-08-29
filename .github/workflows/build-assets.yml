@@ -7,6 +7,7 @@ on:
       - "README.md"
       - "data/profile.json"
       - "scripts/generate_assets.py"
+      - "scripts/generate_motion.py"
       - "scripts/generate_readme.py"
       - "scripts/optimize_assets.py"
       - "scripts/profile_data.py"
@@ -61,7 +62,9 @@ jobs:
           git diff --exit-code -- assets
 
       - name: Generate profile visuals
-        run: python main/scripts/generate_assets.py
+        run: |
+          python main/scripts/generate_assets.py
+          python main/scripts/generate_motion.py
 
       - name: Verify README and all profile contracts
         working-directory: main
@@ -85,6 +88,7 @@ jobs:
             ! -name 'contribution-stream.svg' \
             -delete
           cp main/generated/*.svg output/
+          cp main/generated/kinetic-primer.gif output/
 
       - name: Commit if changed
         if: github.event_name != 'pull_request'

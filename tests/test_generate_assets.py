@@ -122,6 +122,28 @@ class GenerateAssetsTests(unittest.TestCase):
             for proof in project["proof"]:
                 self.assertIn(proof, dossier)
 
+    def test_dense_copy_is_preceded_by_contextual_kinetic_glyphs(self):
+        manifest = generate_assets.build_asset_manifest()
+
+        for kind in ("gpu", "realtime", "vision", "telecom"):
+            self.assertIn(f'data-kinetic-glyph="{kind}"', manifest["identity-console.svg"])
+
+        for proof in generate_assets.PROFILE["proof"]:
+            self.assertIn(
+                f'data-kinetic-glyph="{proof["id"]}"',
+                manifest[f'proof-{proof["id"]}.svg'],
+            )
+
+        dossier = manifest["project-dossier-portfolio.svg"]
+        for kind in ("mission", "proof", "stack"):
+            self.assertIn(f'data-kinetic-glyph="{kind}"', dossier)
+
+        for kind in ("telecom", "education"):
+            self.assertIn(f'data-kinetic-glyph="{kind}"', manifest["field-notes.svg"])
+
+        for kind in ("product", "backend", "ml", "platform", "expanding"):
+            self.assertIn(f'data-kinetic-glyph="{kind}"', manifest["skills-matrix.svg"])
+
     def test_operator_mode_assets_are_valid_and_complete(self):
         assets = {
             "gateway": generate_assets.build_operator_gateway_svg(generate_assets.CONFIG),
