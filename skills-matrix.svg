@@ -31,8 +31,8 @@
 </g>
 <text x="70" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // 01</text>
 <text x="70" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">PRODUCT</text>
-<path d="M134 15V79" stroke="#310808"/>
-<text x="156" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="156" dy="0">TypeScript · JavaScript · React · Next.js · Tailwind CSS</tspan><tspan x="156" dy="21">· Three.js · React Three Fiber · Framer Motion</tspan></text>
+<path d="M168 15V79" stroke="#310808"/>
+<text x="190" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="190" dy="0">TypeScript · JavaScript · React · Next.js · Tailwind CSS</tspan><tspan x="190" dy="21">· Three.js · React Three Fiber · Framer Motion</tspan></text>
 <circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="1.20s" repeatCount="indefinite"/></circle>
 </g>
 <g transform="translate(18,166)">
@@ -57,8 +57,8 @@
 </g>
 <text x="70" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // 02</text>
 <text x="70" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">BACKEND</text>
-<path d="M134 15V79" stroke="#310808"/>
-<text x="156" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="156" dy="0">Python · FastAPI · Flask · Node.js · REST APIs ·</tspan><tspan x="156" dy="21">WebSocket · SQL · SQLite</tspan></text>
+<path d="M168 15V79" stroke="#310808"/>
+<text x="190" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="190" dy="0">Python · FastAPI · Flask · Node.js · REST APIs ·</tspan><tspan x="190" dy="21">WebSocket · SQL · SQLite</tspan></text>
 <circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="1.37s" repeatCount="indefinite"/></circle>
 </g>
 <g transform="translate(18,274)">
@@ -82,8 +82,8 @@
 </g>
 <text x="70" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // 03</text>
 <text x="70" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">APPLIED ML</text>
-<path d="M134 15V79" stroke="#310808"/>
-<text x="156" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="156" dy="0">OpenCV · Scikit-Learn · SVM · LBP · GLCM · Feature</tspan><tspan x="156" dy="21">Engineering · Model Evaluation · Streamlit</tspan></text>
+<path d="M168 15V79" stroke="#310808"/>
+<text x="190" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="190" dy="0">OpenCV · Scikit-Learn · SVM · LBP · GLCM · Feature</tspan><tspan x="190" dy="21">Engineering · Model Evaluation · Streamlit</tspan></text>
 <circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="1.54s" repeatCount="indefinite"/></circle>
 </g>
 <g transform="translate(18,382)">
@@ -106,8 +106,8 @@
 </g>
 <text x="70" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // 04</text>
 <text x="70" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">PLATFORM</text>
-<path d="M134 15V79" stroke="#310808"/>
-<text x="156" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="156" dy="0">Docker · Docker Compose · Git · GitHub Actions · Vercel</tspan><tspan x="156" dy="21">· Linux · Vitest</tspan></text>
+<path d="M168 15V79" stroke="#310808"/>
+<text x="190" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="190" dy="0">Docker · Docker Compose · Git · GitHub Actions · Vercel</tspan><tspan x="190" dy="21">· Linux · Vitest</tspan></text>
 <circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="1.71s" repeatCount="indefinite"/></circle>
 </g>
 <g transform="translate(18,490)">
@@ -132,8 +132,8 @@
 </g>
 <text x="70" y="28" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">LOADOUT // 05</text>
 <text x="70" y="60" class="mono" font-size="15" fill="#e84b4b" letter-spacing="1.2">EXPANDING</text>
-<path d="M134 15V79" stroke="#310808"/>
-<text x="156" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="156" dy="0">Generative AI · LLMs · Prompt Engineering · RAG · AI</tspan><tspan x="156" dy="21">Agents · LangChain · AWS S3 · AWS Lambda · Vector</tspan><tspan x="156" dy="21">Databases</tspan></text>
+<path d="M168 15V79" stroke="#310808"/>
+<text x="190" y="34" class="mono" font-size="13" fill="#d7caca"><tspan x="190" dy="0">Generative AI · LLMs · Prompt Engineering · RAG · AI</tspan><tspan x="190" dy="21">Agents · LangChain · AWS S3 · AWS Lambda · Vector</tspan><tspan x="190" dy="21">Databases</tspan></text>
 <circle cx="658" cy="20" r="4" fill="#ff8a7f"><animate attributeName="opacity" values=".2;1;.2" dur="1.88s" repeatCount="indefinite"/></circle>
 </g>
 </svg>
