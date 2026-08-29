@@ -33,7 +33,6 @@ ASSET_REVISIONS = {
     # correction; future generators keep the normal stable URLs by default.
     "skills-matrix.svg": "kinetic-v2",
     "field-notes.svg": "privacy-v2",
-    "hero.svg": "living-world-v1",
 }
 
 
@@ -139,7 +138,7 @@ def render_readme(profile: dict | None = None) -> str:
         "",
         *linked_image(
             contact["portfolio"],
-            "hero.svg",
+            "hero-live-v1.svg",
             f'{identity["name"]}, {identity["role"].lower()} and {identity["specialty"].lower()}',
             handle,
         ),

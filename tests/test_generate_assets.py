@@ -47,7 +47,7 @@ class GenerateAssetsTests(unittest.TestCase):
     def test_manifest_contains_only_public_readme_assets(self):
         manifest = generate_assets.build_asset_manifest()
         expected = {
-            "hero.svg",
+            "hero-live-v1.svg",
             "identity-console.svg",
             "signal-strip.svg",
             "field-notes.svg",

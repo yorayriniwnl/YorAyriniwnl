@@ -2580,7 +2580,7 @@ def canonical_project_card_spec(project):
 def build_asset_manifest():
     """Build only assets used by the public README."""
     manifest = {
-        "hero.svg": build_cinematic_hero_svg(CONFIG),
+        "hero-live-v1.svg": build_cinematic_hero_svg(CONFIG),
         "identity-console.svg": build_identity_console_svg(CONFIG),
         "signal-strip.svg": build_signal_strip_svg(CONFIG),
         "field-notes.svg": build_field_notes_svg(CONFIG),
