@@ -68,7 +68,6 @@ class ReadmeTests(unittest.TestCase):
         self.assertIn("https://komarev.com/ghpvc/?", self.readme)
         self.assertIn("label=TOTAL+PROFILE+VIEWS", self.readme)
         self.assertIn("kinetic-primer.gif", self.readme)
-        self.assertIn("hero-live-v1.svg", self.readme)
         self.assertIn("skills-matrix.svg?rev=kinetic-v2", self.readme)
         self.assertIn("field-notes.svg?rev=privacy-v2", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)
@@ -107,7 +106,7 @@ class ReadmeTests(unittest.TestCase):
     def test_readme_references_only_published_visual_assets(self):
         referenced = set(re.findall(r"/output/([a-z0-9-]+\.(?:svg|gif))", self.readme))
         expected = {
-            "hero-live-v1.svg",
+            "hero.svg",
             "kinetic-primer.gif",
             "identity-console.svg",
             "proof-apps.svg",

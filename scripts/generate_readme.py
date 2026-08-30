@@ -138,7 +138,7 @@ def render_readme(profile: dict | None = None) -> str:
         "",
         *linked_image(
             contact["portfolio"],
-            "hero-live-v1.svg",
+            "hero.svg",
             f'{identity["name"]}, {identity["role"].lower()} and {identity["specialty"].lower()}',
             handle,
         ),
