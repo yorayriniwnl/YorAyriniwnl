@@ -6,13 +6,25 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg" width="100%" alt="Ayush Roy, full-stack developer and applied ml builder"/>
 </a>
 
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/kinetic-primer.gif" width="100%" alt="Animated visual decoder for GPU interfaces, realtime systems, computer vision, and connected platforms"/>
+<p>
+<a href="#selected-systems"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-projects.svg" width="160" alt="Jump to selected projects"/></a>
+<a href="#field-notes"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-experience.svg" width="160" alt="Jump to experience and education"/></a>
+<a href="#public-record"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-activity.svg" width="160" alt="Jump to GitHub activity and profile views"/></a>
+<a href="#open-channel"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-contact.svg" width="160" alt="Jump to contact and collaboration"/></a>
+</p>
+
+<picture>
+<source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-mobile-still.png"/>
+<source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-still.png"/>
+<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-mobile.gif"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel.gif" width="100%" alt="The systems I build: particle worlds, realtime event streams, texture vision, and connected platforms. Illustrative motion study."/>
+</picture>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg" width="100%" alt="Ayush Roy. Full-Stack Developer and Applied ML Builder. I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world. Open to software engineering internships. B.Tech 2027. Bhubaneswar, Odisha, India."/>
 
 <p>
 <a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg" width="350" alt="Open Ayush Roy portfolio"/></a>
-<a href="https://github.com/yorayriniwnl?tab=repositories"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-projects.svg" width="350" alt="Explore Ayush Roy projects"/></a>
+<a href="#selected-systems"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-projects.svg" width="350" alt="Explore Ayush Roy projects"/></a>
 <br/>
 <a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg" width="350" alt="View Ayush Roy public resume"/></a>
 <a href="https://www.linkedin.com/in/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-linkedin.svg" width="350" alt="Open Ayush Roy LinkedIn profile"/></a>
@@ -30,15 +42,25 @@
 
 </div>
 
+<a id="selected-systems"></a>
+
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects.svg" width="100%" alt="Section 01: selected systems. Five end-to-end builds with public proof and verified data."/>
 
 <a href="https://www.yorayriniwnl.in">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio.svg" width="100%" alt="Personal Developer Portfolio: the product universe"/>
+<picture>
+<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-mobile-v2.svg"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-v2.svg" width="100%" alt="Personal Developer Portfolio: the product universe"/>
+</picture>
 </a>
+
+<details>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand Personal Developer Portfolio mission, proof, and stack"/></picture></summary>
 
 <a href="https://www.yorayriniwnl.in">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-portfolio.svg" width="100%" alt="SYS-01: Personal Developer Portfolio. Live, March-April 2026. A production-grade portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface. Proof: 4,000 GPU-driven particles; 24 tests across five Vitest suites; Automated GitHub content synchronization. Stack: Next.js 16; TypeScript; Three.js; React Three Fiber; Framer Motion; Vitest."/>
 </a>
+
+</details>
 
 <p align="center">
 <a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Personal Developer Portfolio live system"/></a>
@@ -49,9 +71,14 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg" width="100%" alt="Yor Helios: realtime energy intelligence"/>
 </a>
 
+<details>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand Yor Helios mission, proof, and stack"/></picture></summary>
+
 <a href="https://github.com/yorayriniwnl/Yor-Helios">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-helios.svg" width="100%" alt="SYS-02: Yor Helios. In development, January 2026-Present. An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards. Proof: Bidirectional realtime alert streaming; Continuous anomaly and threshold engine; One-command Docker Compose environment. Stack: Python; FastAPI; TypeScript; Docker; WebSocket."/>
 </a>
+
+</details>
 
 <p align="center">
 <a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Helios source repository"/></a>
@@ -61,9 +88,14 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg" width="100%" alt="Yor Zenith: solar decision support"/>
 </a>
 
+<details>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand Yor Zenith mission, proof, and stack"/></picture></summary>
+
 <a href="https://zenith-xi-snowy.vercel.app">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-zenith.svg" width="100%" alt="SYS-03: Yor Zenith. Live, January-December 2025. A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis. Proof: Interactive panel-placement simulation; Energy-output modeling across roof configurations; Subsidy, ROI, and payback analysis. Stack: React; TypeScript; Three.js; Python; FastAPI."/>
 </a>
+
+</details>
 
 <p align="center">
 <a href="https://zenith-xi-snowy.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Yor Zenith live system"/></a>
@@ -74,9 +106,14 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
 
+<details>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand AI vs. Real Image Detector mission, proof, and stack"/></picture></summary>
+
 <a href="https://yor-ai-vs-real-image.vercel.app">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision.svg" width="100%" alt="SYS-04: AI vs. Real Image Detector. Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Proof: 78% held-out test accuracy; Sub-two-second local inference; Lighting-invariant preprocessing. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit."/>
 </a>
+
+</details>
 
 <p align="center">
 <a href="https://yor-ai-vs-real-image.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch AI vs. Real Image Detector live system"/></a>
@@ -87,9 +124,14 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg" width="100%" alt="Yor Talks V2: realtime communication"/>
 </a>
 
+<details>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand Yor Talks V2 mission, proof, and stack"/></picture></summary>
+
 <a href="https://yor-talks.vercel.app">
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks.svg" width="100%" alt="SYS-05: Yor Talks V2. Live, April 2026. A full-stack communication platform with realtime messaging, typed interface components, and scalable conversation APIs. Proof: Low-latency bidirectional messaging; Authentication, conversation, and message APIs; Responsive reusable interface system. Stack: React; Next.js; TypeScript; FastAPI; WebSocket; Tailwind CSS."/>
 </a>
+
+</details>
 
 <p align="center">
 <a href="https://yor-talks.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg" width="350" alt="Launch Yor Talks V2 live system"/></a>
@@ -105,6 +147,8 @@
 <a href="https://github.com/yorayriniwnl/Yor-Feelings"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg" width="350" alt="Inspect Yor Feelings source repository"/></a>
 </p>
 
+<a id="field-notes"></a>
+
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-field.svg" width="100%" alt="Section 02: field notes covering verified experience, education, and trajectory."/>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/field-notes.svg?rev=privacy-v2" width="100%" alt="Telecom &amp; Data Network Intern at Bharat Sanchar Nigam Limited (BSNL), June 2026. Completed an RGMTTC-certified four-week program in telecom, data-network systems, and infrastructure. B.Tech in Computer Science and Communication Engineering at KIIT Deemed University, 2023-2027 (Expected). Coursework: Data Structures &amp; Algorithms; Operating Systems; Database Management Systems; Computer Networks; Object-Oriented Programming."/>
@@ -118,6 +162,8 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/arsenal.svg" width="100%" alt="Ayush Roy technical range across product, backend, machine learning, and platform engineering"/>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/skills-matrix.svg?rev=kinetic-v2" width="100%" alt="Product: TypeScript; JavaScript; React; Next.js; Tailwind CSS; Three.js; React Three Fiber; Framer Motion. Backend: Python; FastAPI; Flask; Node.js; REST APIs; WebSocket; SQL; SQLite. Applied ML: OpenCV; Scikit-Learn; SVM; LBP; GLCM; Feature Engineering; Model Evaluation; Streamlit. Platform: Docker; Docker Compose; Git; GitHub Actions; Vercel; Linux; Vitest. Currently expanding: Generative AI; LLMs; Prompt Engineering; RAG; AI Agents; LangChain; AWS S3; AWS Lambda; Vector Databases."/>
+
+<a id="public-record"></a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-record.svg" width="100%" alt="Section 04: live public GitHub record with verified fallback data"/>
 
@@ -149,6 +195,8 @@
 </a>
 
 </details>
+
+<a id="open-channel"></a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-channel.svg" width="100%" alt="Section 06: open channel for software engineering internships, ambitious products, and collaboration"/>
 

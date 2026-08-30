@@ -56,7 +56,13 @@ class GenerateAssetsTests(unittest.TestCase):
             "protocol-engineer.svg",
             "protocol-product.svg",
             "protocol-human.svg",
-            "project-portfolio.svg",
+            "project-portfolio-v2.svg",
+            "project-portfolio-mobile-v2.svg",
+            "dossier-toggle.svg",
+            "jump-projects.svg",
+            "jump-experience.svg",
+            "jump-activity.svg",
+            "jump-contact.svg",
             "project-helios.svg",
             "project-zenith.svg",
             "project-vision.svg",
@@ -121,6 +127,23 @@ class GenerateAssetsTests(unittest.TestCase):
             self.assertIn(project["status"].upper(), dossier)
             for proof in project["proof"]:
                 self.assertIn(proof, dossier)
+
+    def test_new_showcase_is_accessible_and_respects_reduced_motion(self):
+        for mobile in (False, True):
+            svg = generate_assets.build_featured_project_svg(generate_assets.CONFIG, mobile)
+            root = ET.fromstring(svg)
+            self.assertEqual(root.get("role"), "img")
+            self.assertIn("prefers-reduced-motion:reduce", svg)
+            self.assertIn("illustrative artwork", svg)
+            self.assertNotIn("<script", svg)
+            self.assertNotIn("<foreignObject", svg)
+            for proof in generate_assets.PROFILE["projects"][0]["proof"]:
+                self.assertIn(proof, svg)
+
+        for index, label in enumerate(("PROJECTS", "EXPERIENCE", "ACTIVITY", "CONTACT")):
+            svg = generate_assets.build_jump_button_svg(label, index)
+            self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
+            self.assertIn("prefers-reduced-motion:reduce", svg)
 
     def test_dense_copy_is_preceded_by_contextual_kinetic_glyphs(self):
         manifest = generate_assets.build_asset_manifest()

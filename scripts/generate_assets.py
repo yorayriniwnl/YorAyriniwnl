@@ -1907,97 +1907,133 @@ def build_protocol_human_svg(cfg):
 </svg>'''
 
 
-def build_featured_project_svg(cfg):
-    W, H = 1500, 520
+def sculpture_svg():
+    """A deterministic folded light ribbon, drawn as a depth-sorted wire mesh."""
+    strands = []
+    for band in range(13):
+        v = -1 + band / 6
+        coords = []
+        depth = 0
+        for step in range(81):
+            u = step / 80 * math.tau
+            radius = 195 + v * 68 * math.cos(u / 2)
+            x, y, z = radius * math.cos(u), radius * math.sin(u), v * 68 * math.sin(u / 2)
+            xx = x * .92 + z * .39
+            zz = -x * .39 + z * .92
+            yy = y * .54 - zz * .84
+            depth += y * .84 + zz * .54
+            coords.append(f"{xx:.1f},{yy:.1f}")
+        light = abs(v)
+        color = "#ffe5de" if band in (0, 12) else ("#ff8a7f" if band % 3 == 0 else "#b73d48")
+        strands.append((depth, f'<polyline points="{" ".join(coords)}" fill="none" stroke="{color}" '
+                        f'stroke-width="{1.8 if band in (0, 12) else .85}" opacity="{.35 + light * .5:.2f}"/>'))
+    ribs = []
+    for step in range(0, 80, 4):
+        u = step / 80 * math.tau
+        coords = []
+        for band in range(13):
+            v = -1 + band / 6
+            radius = 195 + v * 68 * math.cos(u / 2)
+            x, y, z = radius * math.cos(u), radius * math.sin(u), v * 68 * math.sin(u / 2)
+            coords.append(f"{x * .92 + z * .39:.1f},{y * .54 - (-x * .39 + z * .92) * .84:.1f}")
+        ribs.append(f'<polyline points="{" ".join(coords)}" fill="none" stroke="#ff8a7f" stroke-width=".6" opacity=".3"/>')
+    return "".join(svg for _, svg in sorted(strands)) + "".join(ribs)
+
+
+def build_featured_project_svg(cfg, mobile=False):
+    """An editorial flagship cover; the surrounding HTML owns the real links."""
+    W, H = (720, 840) if mobile else (1500, 660)
     project = next(item for item in PROFILE["projects"] if item["id"] == "portfolio")
-    proof = project["proof"]
-    stack = " · ".join(project["stack"][:5]).upper()
-    rng = random.Random(cfg["seed"] + 1200)
-    particles = []
-    for i in range(92):
-        angle = rng.uniform(0, math.pi * 2)
-        radius = rng.uniform(34, 190)
-        x = 1110 + math.cos(angle) * radius * 1.5
-        y = 258 + math.sin(angle) * radius
-        r = rng.uniform(.9, 2.7)
-        dur = rng.uniform(3, 8)
-        particles.append(
-            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.2f}" '
-            f'fill="{"#ff8a7f" if i % 5 == 0 else "#e84b4b"}">'
-            f'<animate attributeName="opacity" values=".12;.95;.12" dur="{dur:.2f}s" '
-            f'begin="-{rng.uniform(0,dur):.2f}s" repeatCount="indefinite"/></circle>'
+    cx, cy, scale = (360, 454, 1.05) if mobile else (1090, 300, 1.42)
+    left = 36 if mobile else 64
+    title_y = 150 if mobile else 222
+    title_size = 72 if mobile else 106
+    second_y = 238 if mobile else 334
+    second_size = 96 if mobile else 138
+    footer_y = 663 if mobile else 530
+    proof_svg = []
+    for i, proof in enumerate(project["proof"]):
+        x = left if mobile else 64 + i * 478
+        y = 703 + i * 36 if mobile else 589
+        proof_svg.append(
+            f'<circle cx="{x + 4}" cy="{y - 7}" r="3" fill="#ff8a7f"/>'
+            f'<text x="{x + 21}" y="{y}" class="mono" font-size="{19 if mobile else 17}" fill="#e0c8cb">{esc(proof)}</text>'
         )
-    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+    subtitle = "" if mobile else f'''
+<text x="66" y="390" class="mono" font-size="17" fill="#ba939b" letter-spacing="1.4">GPU INTERFACES. ENGINEERED TO SHIP.</text>
+<path d="M66 422H514" stroke="#63242d"/>
+<text x="66" y="469" class="mono" font-size="16" fill="#f5eaea" letter-spacing="1.5">ENTER THE PORTFOLIO <tspan fill="#ff8a7f">↗</tspan></text>
+'''
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">
+<title id="title">The product universe — {esc(project["name"])}</title>
+<desc id="desc">{esc(project["summary"])} {esc("; ".join(project["proof"]))}. The light sculpture is illustrative artwork.</desc>
 <defs>
 {experience_font_defs()}
-<linearGradient id="featureBg" x1="0%" x2="100%">
-<stop offset="0%" stop-color="#020202"/><stop offset="58%" stop-color="#080101"/>
-<stop offset="100%" stop-color="#1f0404"/>
-</linearGradient>
-<radialGradient id="particleGlow">
-<stop offset="0" stop-color="#e84b4b" stop-opacity=".28"/>
-<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
-</radialGradient>
-<pattern id="featureGrid" width="36" height="36" patternUnits="userSpaceOnUse">
-<path d="M36 0H0V36" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".09"/>
-</pattern>
-<filter id="featureGlow"><feGaussianBlur stdDeviation="10"/></filter>
+<radialGradient id="ambient"><stop stop-color="#7b1528" stop-opacity=".48"/><stop offset="1" stop-color="#080508" stop-opacity="0"/></radialGradient>
+<linearGradient id="edge"><stop stop-color="#ff8a7f"/><stop offset=".4" stop-color="#57222c"/><stop offset="1" stop-color="#190c11"/></linearGradient>
+<pattern id="dust" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#ad5865" opacity=".15"/></pattern>
+<clipPath id="coverClip"><rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="10"/></clipPath>
+<style>
+.sculpture-float {{animation:levitate 14s ease-in-out infinite;transform-origin:0 0}}
+.orbit-trace {{animation:trace 18s linear infinite;stroke-dasharray:18 520}}
+@keyframes levitate {{0%,100%{{transform:translateY(0) rotate(-5deg)}}50%{{transform:translateY(-14px) rotate(5deg)}}}}
+@keyframes trace {{to{{stroke-dashoffset:-1076}}}}
+@media (prefers-reduced-motion:reduce) {{.sculpture-float,.orbit-trace{{animation:none}}}}
+</style>
 </defs>
-<rect x="1" y="1" width="1498" height="518" rx="8" fill="url(#featureBg)" stroke="#671515"/>
-<rect x="1" y="1" width="1498" height="518" rx="8" fill="url(#featureGrid)"/>
-<rect x="18" y="18" width="1464" height="484" rx="5" fill="none" stroke="#e84b4b"
- opacity=".16" stroke-dasharray="38 12"/>
-<text x="52" y="62" class="mono" font-size="10" fill="#e84b4b" letter-spacing="3">
-FLAGSHIP // 01
-</text>
-<text x="52" y="128" class="serif" font-size="62" fill="#f5eaea">{esc(project["name"])}</text>
-<text x="52" y="164" class="mono" font-size="15" fill="#bdaaaa" letter-spacing="1.5">
-{esc(project["codename"])}
-</text>
-<rect x="52" y="190" width="520" height="1" fill="#671515"/>
-<text x="52" y="232" class="mono" font-size="13" fill="#a99494">
-<tspan x="52" dy="0">{esc(proof[0])}.</tspan>
-<tspan x="52" dy="27">{esc(proof[1])}.</tspan>
-<tspan x="52" dy="27">{esc(proof[2])}.</tspan>
-<tspan x="52" dy="27">STATUS // {esc(project["status"].upper())}</tspan>
-</text>
-<g transform="translate(52,354)">
-<rect width="172" height="50" rx="3" fill="#671515"/>
-<text x="86" y="31" text-anchor="middle" class="mono" font-size="12" fill="#fff"
- letter-spacing="2">ENTER SYSTEM</text>
+<g clip-path="url(#coverClip)">
+<rect width="{W}" height="{H}" fill="#060507"/>
+<rect width="{W}" height="{H}" fill="url(#dust)"/>
+<ellipse cx="{cx}" cy="{cy}" rx="{345 * scale}" ry="{250 * scale}" fill="url(#ambient)"/>
+<path d="M{left} 1H{W - left}" stroke="url(#edge)" stroke-width="3"/>
+<text x="{left}" y="52" class="mono" font-size="{17 if mobile else 15}" fill="#ff8a7f" letter-spacing="2.4">FLAGSHIP / SYS-01</text>
+<text x="{W - left}" y="52" class="mono" font-size="15" fill="#cda4ab" text-anchor="end" letter-spacing="2">{esc(project["status"].upper())} ↗</text>
+<g transform="translate({cx} {cy}) scale({scale})">
+<ellipse cy="132" rx="242" ry="46" fill="none" stroke="#471822" opacity=".75"/>
+<ellipse cy="132" rx="242" ry="46" fill="none" stroke="#e84b4b" stroke-width="1.4" class="orbit-trace"/>
+<g class="sculpture-float">{sculpture_svg()}</g>
+<path d="M-285 0h14M271 0h14M0 -206v14M0 192v14" stroke="#a55e6b" opacity=".55"/>
 </g>
-<g transform="translate(238,354)">
-<rect width="146" height="50" rx="3" fill="#050505" stroke="#671515"/>
-<text x="73" y="31" text-anchor="middle" class="mono" font-size="12" fill="#e84b4b"
- letter-spacing="2">SOURCE</text>
+<text x="{left}" y="{title_y}" class="serif" font-size="{title_size}" fill="#f5eaea">The product</text>
+<text x="{left - 2}" y="{second_y}" class="serif" font-size="{second_size}" fill="#f5eaea">universe.</text>
+{subtitle}
+<path d="M{left} {footer_y}H{W - left}" stroke="#51202b"/>
+{"".join(proof_svg)}
+<text x="{left}" y="{H - 22}" class="mono" font-size="{13 if mobile else 12}" fill="#9c7680" letter-spacing="1.5">{esc(project["name"].upper())}</text>
 </g>
-<text x="52" y="470" class="mono" font-size="10" fill="#806d6d" letter-spacing="2">
-{esc(stack)}
-</text>
-<circle cx="1110" cy="258" r="245" fill="url(#particleGlow)"/>
-<ellipse cx="1110" cy="258" rx="300" ry="202" fill="none" stroke="#671515" opacity=".55"/>
-<ellipse cx="1110" cy="258" rx="240" ry="150" fill="none" stroke="#e84b4b"
- opacity=".32" stroke-dasharray="12 18">
-<animateTransform attributeName="transform" type="rotate" from="0 1110 258"
- to="360 1110 258" dur="28s" repeatCount="indefinite"/>
-</ellipse>
-<ellipse cx="1110" cy="258" rx="170" ry="240" fill="none" stroke="#ff8a7f"
- opacity=".18" stroke-dasharray="4 14">
-<animateTransform attributeName="transform" type="rotate" from="360 1110 258"
- to="0 1110 258" dur="22s" repeatCount="indefinite"/>
-</ellipse>
-{"".join(particles)}
-<circle cx="1110" cy="258" r="54" fill="#050101" stroke="#e84b4b"/>
-<circle cx="1110" cy="258" r="43" fill="none" stroke="#e84b4b" opacity=".5"
- stroke-dasharray="3 7">
-<animateTransform attributeName="transform" type="rotate" from="0 1110 258"
- to="-360 1110 258" dur="8s" repeatCount="indefinite"/>
-</circle>
-<text x="1110" y="253" text-anchor="middle" class="mono" font-size="12" fill="#f5eaea"
- letter-spacing="2">YOR</text>
-<text x="1110" y="272" text-anchor="middle" class="mono" font-size="9" fill="#e84b4b">
-PORTFOLIO
-</text>
+<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="10" fill="none" stroke="#52212b"/>
+</svg>'''
+
+
+def build_jump_button_svg(label, index):
+    """A compact, image-backed section link, with readable mobile typography."""
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="320" height="88" viewBox="0 0 320 88">
+<title>Jump to {esc(label.lower())}</title>
+<defs>{mono_font_defs()}
+<linearGradient id="edge"><stop stop-color="#e84b4b"/><stop offset="1" stop-color="#321018"/></linearGradient>
+<style>
+.trace{{animation:sweep 7s ease-in-out infinite;animation-delay:-{index * 1.7}s}}
+@keyframes sweep{{0%,100%{{opacity:.2}}50%{{opacity:.85}}}}
+@media(prefers-reduced-motion:reduce){{.trace{{animation:none}}}}
+</style>
+</defs>
+<rect x="1" y="1" width="318" height="86" rx="7" fill="#0b070a" stroke="#602330"/>
+<path d="M16 1H304" stroke="url(#edge)" stroke-width="2" class="trace"/>
+<path d="M22 32h18v22H22zM28 27h18v22" fill="none" stroke="#e84b4b" stroke-width="1.6"/>
+<text x="60" y="51" class="mono" font-size="23" fill="#f5eaea">{esc(label)}</text>
+<path d="M282 38l7 6-7 6" fill="none" stroke="#ff8a7f" stroke-width="1.6"/>
+</svg>'''
+
+
+def build_dossier_toggle_svg():
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="440" height="88" viewBox="0 0 440 88">
+<title>Expand or collapse the project dossier</title>
+<desc>Mission, supporting evidence, and technology stack. Activate this disclosure to read more.</desc>
+<defs>{mono_font_defs()}</defs>
+<rect x="1" y="1" width="438" height="86" rx="7" fill="#10090d" stroke="#6a2936"/>
+<path d="M25 34l10 10-10 10M41 34l10 10-10 10" fill="none" stroke="#ff8a7f" stroke-width="2.5"/>
+<text x="72" y="53" class="mono" font-size="25" fill="#f5eaea">OPEN DOSSIER</text>
+<path d="M389 34v20M379 44h20" stroke="#ff8a7f" stroke-width="2.5"/>
 </svg>'''
 
 
@@ -2444,10 +2480,18 @@ def build_asset_manifest():
         "protocol-engineer.svg": build_protocol_engineer_svg(CONFIG),
         "protocol-product.svg": build_protocol_product_svg(CONFIG),
         "protocol-human.svg": build_protocol_human_svg(CONFIG),
-        "project-portfolio.svg": build_featured_project_svg(CONFIG),
+        "project-portfolio-v2.svg": build_featured_project_svg(CONFIG),
+        "project-portfolio-mobile-v2.svg": build_featured_project_svg(CONFIG, mobile=True),
+        "dossier-toggle.svg": build_dossier_toggle_svg(),
         "arsenal.svg": build_arsenal_svg(CONFIG),
         "finale.svg": build_finale_svg(CONFIG),
     }
+
+    for index, (target, label) in enumerate((
+        ("projects", "PROJECTS"), ("experience", "EXPERIENCE"),
+        ("activity", "ACTIVITY"), ("contact", "CONTACT"),
+    )):
+        manifest[f"jump-{target}.svg"] = build_jump_button_svg(label, index)
 
     for index, proof_item in enumerate(PROFILE["proof"]):
         manifest[f'proof-{proof_item["id"]}.svg'] = build_proof_card_svg(

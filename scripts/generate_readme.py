@@ -21,7 +21,7 @@ README_PATH = ROOT / "README.md"
 PROFILE_REPOSITORY = "Yorayriniwnl"
 SELECTED_PROJECT_IDS = ("portfolio", "helios", "zenith", "vision", "talks")
 PROJECT_VISUALS = {
-    "portfolio": "project-portfolio.svg",
+    "portfolio": "project-portfolio-v2.svg",
     "helios": "project-helios.svg",
     "zenith": "project-zenith.svg",
     "vision": "project-vision.svg",
@@ -66,6 +66,28 @@ def linked_button(href: str, filename: str, alt: str, handle: str) -> str:
     return f'<a href="{href}">{image(filename, alt, handle, "350")}</a>'
 
 
+def systems_reel(handle: str) -> list[str]:
+    """Use native picture selection for mobile and reduced-motion visitors."""
+    variants = (
+        ("(max-width: 600px) and (prefers-reduced-motion: reduce)", "systems-reel-mobile-still.png"),
+        ("(prefers-reduced-motion: reduce)", "systems-reel-still.png"),
+        ("(max-width: 600px)", "systems-reel-mobile.gif"),
+    )
+    return [
+        "<picture>",
+        *[
+            f'<source media="{media}" srcset="{raw_asset_url(handle, filename)}"/>'
+            for media, filename in variants
+        ],
+        image(
+            "systems-reel.gif",
+            "The systems I build: particle worlds, realtime event streams, texture vision, and connected platforms. Illustrative motion study.",
+            handle,
+        ),
+        "</picture>",
+    ]
+
+
 def project_block(project: dict, handle: str) -> list[str]:
     code = f'SYS-{project["order"]:02d}'
     target = project.get("live") or project["repo"]
@@ -93,12 +115,32 @@ def project_block(project: dict, handle: str) -> list[str]:
         )
     )
 
-    lines = [
-        *linked_image(
+    if project["id"] == "portfolio":
+        cover = [
+            f'<a href="{target}">',
+            "<picture>",
+            f'<source media="(max-width: 600px)" srcset="{raw_asset_url(handle, "project-portfolio-mobile-v2.svg")}"/>',
+            image(PROJECT_VISUALS["portfolio"], f'{project["name"]}: {project["codename"].lower()}', handle),
+            "</picture>",
+            "</a>",
+        ]
+    else:
+        cover = linked_image(
             target,
             PROJECT_VISUALS[project["id"]],
             f'{project["name"]}: {project["codename"].lower()}',
             handle,
+        )
+
+    dossier_label = f'Expand {project["name"]} mission, proof, and stack'
+    lines = [
+        *cover,
+        "",
+        "<details>",
+        (
+            '<summary><picture>'
+            f'{image("dossier-toggle.svg", dossier_label, handle, "240")}'
+            '</picture></summary>'
         ),
         "",
         *linked_image(
@@ -107,6 +149,8 @@ def project_block(project: dict, handle: str) -> list[str]:
             dossier_alt,
             handle,
         ),
+        "",
+        "</details>",
         "",
         '<p align="center">',
         *links,
@@ -143,11 +187,14 @@ def render_readme(profile: dict | None = None) -> str:
             handle,
         ),
         "",
-        image(
-            "kinetic-primer.gif",
-            "Animated visual decoder for GPU interfaces, realtime systems, computer vision, and connected platforms",
-            handle,
-        ),
+        '<p>',
+        f'<a href="#selected-systems">{image("jump-projects.svg", "Jump to selected projects", handle, "160")}</a>',
+        f'<a href="#field-notes">{image("jump-experience.svg", "Jump to experience and education", handle, "160")}</a>',
+        f'<a href="#public-record">{image("jump-activity.svg", "Jump to GitHub activity and profile views", handle, "160")}</a>',
+        f'<a href="#open-channel">{image("jump-contact.svg", "Jump to contact and collaboration", handle, "160")}</a>',
+        '</p>',
+        "",
+        *systems_reel(handle),
         "",
         image(
             "identity-console.svg",
@@ -161,7 +208,7 @@ def render_readme(profile: dict | None = None) -> str:
         "",
         '<p>',
         f'<a href="{contact["portfolio"]}">{image("nav-portfolio.svg", "Open Ayush Roy portfolio", handle, "350")}</a>',
-        f'<a href="{contact["github"]}?tab=repositories">{image("nav-projects.svg", "Explore Ayush Roy projects", handle, "350")}</a>',
+        f'<a href="#selected-systems">{image("nav-projects.svg", "Explore Ayush Roy projects", handle, "350")}</a>',
         '<br/>',
         f'<a href="{resume_url}">{image("nav-resume.svg", "View Ayush Roy public resume", handle, "350")}</a>',
         f'<a href="{contact["linkedin"]}">{image("nav-linkedin.svg", "Open Ayush Roy LinkedIn profile", handle, "350")}</a>',
@@ -202,6 +249,8 @@ def render_readme(profile: dict | None = None) -> str:
         "</p>",
         "",
         "</div>",
+        "",
+        '<a id="selected-systems"></a>',
         "",
         image(
             "section-projects.svg",
@@ -244,6 +293,8 @@ def render_readme(profile: dict | None = None) -> str:
             ),
             "</p>",
             "",
+            '<a id="field-notes"></a>',
+            "",
             image(
                 "section-field.svg",
                 "Section 02: field notes covering verified experience, education, and trajectory.",
@@ -284,6 +335,8 @@ def render_readme(profile: dict | None = None) -> str:
                 ),
                 handle,
             ),
+            "",
+            '<a id="public-record"></a>',
             "",
             image("section-record.svg", "Section 04: live public GitHub record with verified fallback data", handle),
             "",
@@ -331,6 +384,8 @@ def render_readme(profile: dict | None = None) -> str:
             ),
             "",
             "</details>",
+            "",
+            '<a id="open-channel"></a>',
             "",
             image(
                 "section-channel.svg",

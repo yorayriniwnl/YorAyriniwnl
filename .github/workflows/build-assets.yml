@@ -88,7 +88,8 @@ jobs:
             ! -name 'contribution-stream.svg' \
             -delete
           cp main/generated/*.svg output/
-          cp main/generated/kinetic-primer.gif output/
+          cp main/generated/systems-reel*.gif output/
+          cp main/generated/systems-reel*-still.png output/
 
       - name: Commit if changed
         if: github.event_name != 'pull_request'

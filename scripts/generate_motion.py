@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-"""Generate the compact animated visual decoder used by the profile README."""
+"""Render seamless systems reels and reduced-motion posters.
+
+The imagery is an illustrative motion study, not simulated live telemetry.
+Both layouts use the same scenes and palette, with no external assets or fonts.
+"""
 
 from __future__ import annotations
 
 import math
 import sys
+from functools import lru_cache
 from io import BytesIO
 from pathlib import Path
 
@@ -16,230 +21,176 @@ if str(SCRIPT_DIR) not in sys.path:
 
 from profile_data import load_profile
 
-
 ROOT = SCRIPT_DIR.parent
 OUT_DIR = ROOT / "generated"
-OUTPUT = OUT_DIR / "kinetic-primer.gif"
-WIDTH, HEIGHT = 1200, 240
-FRAME_COUNT = 24
+WIDTH, HEIGHT = 1200, 280
+MOBILE_SIZE = (600, 530)
+FRAME_COUNT = 64
+FRAME_DURATION = 60
+PALETTE = load_profile()["visual_contract"]["palette"]
+TAU = math.tau
 
-PROFILE = load_profile()
-PALETTE = PROFILE["visual_contract"]["palette"]
 
-
-def rgb(value: str) -> tuple[int, int, int]:
-    value = value.lstrip("#")
-    return tuple(int(value[index:index + 2], 16) for index in (0, 2, 4))
+def rgb(value):
+    return tuple(int(value.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
 
 
 VOID = rgb(PALETTE["void"])
-PANEL = rgb(PALETTE["panel"])
 CRIMSON = rgb(PALETTE["crimson"])
 DEEP = rgb(PALETTE["deep_crimson"])
 SIGNAL = rgb(PALETTE["signal"])
 PAPER = rgb(PALETTE["paper"])
-MUTED = rgb(PALETTE["muted"])
 
 
-def font(size: int) -> ImageFont.ImageFont:
-    """Use Pillow's bundled font for identical rendering on every runner."""
+@lru_cache(maxsize=12)
+def font(size):
     return ImageFont.load_default(size=size)
 
 
-def mix(left: tuple[int, int, int], right: tuple[int, int, int], amount: float):
+def mix(left, right, amount):
     return tuple(round(a + (b - a) * amount) for a, b in zip(left, right))
 
 
-def draw_background(draw: ImageDraw.ImageDraw, phase: float) -> None:
-    for y in range(HEIGHT):
-        depth = y / max(HEIGHT - 1, 1)
-        draw.line((0, y, WIDTH, y), fill=mix(VOID, (22, 3, 3), depth * .75))
-
-    for x in range(0, WIDTH, 24):
-        draw.line((x, 44, x, HEIGHT), fill=(30, 7, 7), width=1)
-    for y in range(52, HEIGHT, 24):
-        draw.line((0, y, WIDTH, y), fill=(30, 7, 7), width=1)
-
-    scan_x = int((phase % 1.0) * (WIDTH + 220)) - 110
-    for offset in range(-42, 43):
-        strength = max(0.0, 1 - abs(offset) / 43) * .24
-        color = mix(VOID, SIGNAL, strength)
-        draw.line((scan_x + offset, 44, scan_x + offset, HEIGHT), fill=color)
-
-    draw.line((0, 43, WIDTH, 43), fill=DEEP, width=1)
-    draw.line((0, HEIGHT - 2, WIDTH, HEIGHT - 2), fill=DEEP, width=1)
+def project(x, y, z, angle, tilt=.55):
+    """Orthographic camera; periodic rotation makes the GIF loop seamless."""
+    xx = x * math.cos(angle) + z * math.sin(angle)
+    zz = -x * math.sin(angle) + z * math.cos(angle)
+    return xx, y * math.cos(tilt) - zz * math.sin(tilt), y * math.sin(tilt) + zz * math.cos(tilt)
 
 
-def draw_corner_brackets(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int]) -> None:
-    left, top, right, bottom = box
-    length = 13
-    for points in (
-        ((left + 8, top + length + 8), (left + 8, top + 8), (left + length + 8, top + 8)),
-        ((right - length - 8, top + 8), (right - 8, top + 8), (right - 8, top + length + 8)),
-        ((left + 8, bottom - length - 8), (left + 8, bottom - 8), (left + length + 8, bottom - 8)),
-        ((right - length - 8, bottom - 8), (right - 8, bottom - 8), (right - 8, bottom - length - 8)),
-    ):
-        draw.line(points, fill=CRIMSON, width=2)
+def point(draw, x, y, radius, color):
+    draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=color)
 
 
-def draw_gpu(draw: ImageDraw.ImageDraw, box, phase: float) -> None:
-    left, top, right, bottom = box
-    center_x = (left + right) // 2
-    center_y = (top + bottom) // 2 + 2
-    spacing = 19
-    coords = []
-    for row in range(4):
-        for col in range(6):
-            x = center_x + (col - 2.5) * spacing
-            y = center_y + (row - 1.5) * spacing
-            coords.append((x, y, row, col))
-
-    for x, y, row, col in coords:
-        if col < 5:
-            draw.line((x, y, x + spacing, y), fill=(50, 10, 10), width=1)
-        if row < 3:
-            draw.line((x, y, x, y + spacing), fill=(50, 10, 10), width=1)
-
-    for index, (x, y, _row, _col) in enumerate(coords):
-        pulse = (math.sin(phase * math.tau + index * .72) + 1) / 2
-        radius = 2 + round(pulse * 3)
-        color = mix(DEEP, SIGNAL, .35 + pulse * .65)
-        draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=color)
+def draw_particles(draw, cx, cy, phase):
+    particles = []
+    for ring in range(30):
+        u = ring / 30 * TAU
+        for spoke in range(8):
+            v = spoke / 8 * TAU
+            radius = 58 + 19 * math.cos(v)
+            x, y, z = project(radius * math.cos(u), 19 * math.sin(v), radius * math.sin(u), phase * TAU, .72)
+            particles.append((z, cx + x * 1.22, cy + y, 1.2 + (z + 78) / 100))
+    for z, x, y, r in sorted(particles):
+        light = max(.12, min(1, (z + 85) / 155))
+        point(draw, x, y, r, mix((42, 10, 13), SIGNAL, light))
+    draw.arc((cx - 105, cy - 51, cx + 105, cy + 51), 8, 133, fill=DEEP, width=1)
+    draw.arc((cx - 105, cy - 51, cx + 105, cy + 51), 188, 313, fill=DEEP, width=1)
 
 
-def draw_realtime(draw: ImageDraw.ImageDraw, box, phase: float) -> None:
-    left, top, right, bottom = box
-    center = (top + bottom) / 2 + 3
-    points = []
-    for index in range(88):
-        progress = index / 87
-        x = left + 20 + progress * (right - left - 40)
-        envelope = .55 + .45 * math.sin(progress * math.pi)
-        y = center + math.sin(progress * math.tau * 2.4 - phase * math.tau) * 28 * envelope
-        points.append((x, y))
-    draw.line(points, fill=CRIMSON, width=3)
-    draw.line((left + 20, center, right - 20, center), fill=(52, 10, 10), width=1)
-    marker = points[int((phase % 1.0) * (len(points) - 1))]
-    draw.ellipse((marker[0] - 7, marker[1] - 7, marker[0] + 7, marker[1] + 7), outline=SIGNAL, width=2)
-    draw.ellipse((marker[0] - 3, marker[1] - 3, marker[0] + 3, marker[1] + 3), fill=PAPER)
+def draw_streams(draw, cx, cy, phase):
+    for lane in range(7):
+        points = []
+        for sample in range(100):
+            t = sample / 99
+            envelope = math.sin(t * math.pi)
+            wave = math.sin(t * TAU * 1.4 - phase * TAU + lane * .32)
+            points.append((cx - 114 + t * 228, cy + (lane - 3) * 12 + wave * 22 * envelope))
+        color = mix((49, 12, 17), SIGNAL, .85 if lane == 3 else .12 + lane * .065)
+        draw.line(points, fill=color, width=2 if lane == 3 else 1)
+        position = (phase + lane / 7) % 1
+        px = cx - 114 + position * 228
+        py = cy + (lane - 3) * 12 + math.sin(position * TAU * 1.4 - phase * TAU + lane * .32) * 22 * math.sin(position * math.pi)
+        # Fade packets at the edges instead of visibly teleporting on loop.
+        opacity = math.sin(position * math.pi) ** .5
+        point(draw, px, py, 3, mix((30, 6, 10), SIGNAL, opacity))
+        point(draw, px, py, 1, mix((30, 6, 10), PAPER, opacity))
 
 
-def draw_vision(draw: ImageDraw.ImageDraw, box, phase: float) -> None:
-    left, top, right, bottom = box
-    center_x = (left + right) // 2
-    center_y = (top + bottom) // 2 + 2
-    radius = 47
-    draw.ellipse((center_x - radius, center_y - radius, center_x + radius, center_y + radius), outline=CRIMSON, width=2)
-    draw.ellipse((center_x - 25, center_y - 25, center_x + 25, center_y + 25), outline=PAPER, width=2)
-    draw.ellipse((center_x - 7, center_y - 7, center_x + 7, center_y + 7), fill=SIGNAL)
-    draw.line((center_x - radius - 18, center_y, center_x + radius + 18, center_y), fill=(80, 15, 15), width=1)
-    draw.line((center_x, center_y - radius - 12, center_x, center_y + radius + 12), fill=(80, 15, 15), width=1)
-    scan_y = center_y - radius + round((phase % 1.0) * radius * 2)
-    draw.line((center_x - radius, scan_y, center_x + radius, scan_y), fill=SIGNAL, width=2)
-    corner = 22
-    draw.line((center_x - 64, center_y - 55, center_x - 64 + corner, center_y - 55), fill=CRIMSON, width=3)
-    draw.line((center_x - 64, center_y - 55, center_x - 64, center_y - 55 + corner), fill=CRIMSON, width=3)
-    draw.line((center_x + 64, center_y + 55, center_x + 64 - corner, center_y + 55), fill=CRIMSON, width=3)
-    draw.line((center_x + 64, center_y + 55, center_x + 64, center_y + 55 - corner), fill=CRIMSON, width=3)
+def draw_vision(draw, cx, cy, phase):
+    scan_y = cy + math.sin(phase * TAU) * 45
+    for row in range(11):
+        for col in range(24):
+            x, y = cx - 92 + col * 8, cy - 40 + row * 8
+            texture = (math.sin(col * .8 + row * .4) + math.cos(col * .25 - row * .8) + 2) / 4
+            proximity = max(0, 1 - abs(y - scan_y) / 20)
+            color = mix((21, 7, 10), SIGNAL, texture * (.25 + proximity * .65))
+            draw.rectangle((x, y, x + 3, y + 3), fill=color)
+    for sign_x in (-1, 1):
+        for sign_y in (-1, 1):
+            x, y = cx + sign_x * 108, cy + sign_y * 54
+            draw.line([(x - sign_x * 15, y), (x, y), (x, y - sign_y * 15)], fill=CRIMSON, width=2)
+    draw.line((cx - 99, scan_y, cx + 99, scan_y), fill=SIGNAL, width=1)
+    draw.line((cx - 5, cy, cx + 5, cy), fill=PAPER, width=1)
+    draw.line((cx, cy - 5, cx, cy + 5), fill=PAPER, width=1)
 
 
-def draw_systems(draw: ImageDraw.ImageDraw, box, phase: float) -> None:
-    left, top, right, bottom = box
-    width = right - left
-    height = bottom - top
-    nodes = (
-        (left + width * .20, top + height * .30),
-        (left + width * .50, top + height * .18),
-        (left + width * .80, top + height * .34),
-        (left + width * .72, top + height * .74),
-        (left + width * .35, top + height * .78),
-    )
-    edges = ((0, 1), (1, 2), (2, 3), (3, 4), (4, 0), (0, 2), (1, 3))
-    for start, end in edges:
-        draw.line((*nodes[start], *nodes[end]), fill=(83, 18, 18), width=2)
-    for index, (x, y) in enumerate(nodes):
-        pulse = (math.sin(phase * math.tau + index * .9) + 1) / 2
-        radius = 7 + round(pulse * 4)
-        draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=PANEL, outline=CRIMSON, width=2)
-        draw.ellipse((x - 3, y - 3, x + 3, y + 3), fill=SIGNAL)
-
-    path = edges[int((phase % 1.0) * len(edges)) % len(edges)]
-    local = (phase * len(edges)) % 1.0
-    start, end = nodes[path[0]], nodes[path[1]]
-    marker_x = start[0] + (end[0] - start[0]) * local
-    marker_y = start[1] + (end[1] - start[1]) * local
-    draw.ellipse((marker_x - 5, marker_y - 5, marker_x + 5, marker_y + 5), fill=PAPER)
+def draw_network(draw, cx, cy, phase):
+    nodes = [(cx - 106, cy), (cx - 57, cy - 41), (cx + 55, cy - 40),
+             (cx + 107, cy + 8), (cx + 56, cy + 46), (cx - 55, cy + 44)]
+    center = (cx, cy)
+    for i, end in enumerate(nodes):
+        draw.line([center, end], fill=DEEP, width=1)
+        draw.line([end, nodes[(i + 1) % len(nodes)]], fill=(47, 11, 15), width=1)
+        progress = (phase + i / len(nodes)) % 1
+        x = cx + (end[0] - cx) * progress
+        y = cy + (end[1] - cy) * progress
+        point(draw, x, y, 2.5, mix(DEEP, SIGNAL, math.sin(progress * math.pi)))
+        point(draw, *end, 5, DEEP)
+        point(draw, *end, 2, SIGNAL)
+    top, left, right, bottom = (cx, cy - 24), (cx - 26, cy - 10), (cx + 26, cy - 10), (cx, cy + 28)
+    draw.polygon([top, right, (cx, cy + 4), left], fill=(50, 10, 16), outline=SIGNAL)
+    draw.polygon([left, (cx, cy + 4), bottom, (cx - 26, cy + 14)], fill=(19, 5, 9), outline=CRIMSON)
+    draw.polygon([(cx, cy + 4), right, (cx + 26, cy + 14), bottom], fill=(33, 7, 12), outline=CRIMSON)
 
 
-def build_frame(frame_index: int) -> Image.Image:
-    phase = frame_index / FRAME_COUNT
-    image = Image.new("RGB", (WIDTH, HEIGHT), VOID)
-    draw = ImageDraw.Draw(image)
-    draw_background(draw, phase)
-
-    draw.text((20, 13), "VISUAL DECODER // KINETIC PRIMER", font=font(16), fill=SIGNAL)
-    right_label = "04 SIGNALS / CONTINUOUS LOOP"
-    right_bbox = draw.textbbox((0, 0), right_label, font=font(13))
-    draw.text((WIDTH - 20 - (right_bbox[2] - right_bbox[0]), 15), right_label, font=font(13), fill=MUTED)
-
-    margin = 18
-    gap = 12
-    panel_width = (WIDTH - margin * 2 - gap * 3) // 4
-    labels = (
-        ("01", "GPU FIELD", "4K PARTICLES", draw_gpu),
-        ("02", "REALTIME", "LIVE SIGNAL", draw_realtime),
-        ("03", "VISION", "TEXTURE SCAN", draw_vision),
-        ("04", "SYSTEMS", "CONNECTED CORE", draw_systems),
-    )
-
-    for index, (code, title, note, renderer) in enumerate(labels):
-        left = margin + index * (panel_width + gap)
-        box = (left, 54, left + panel_width, HEIGHT - 14)
-        draw.rounded_rectangle(box, radius=7, fill=(5, 1, 1), outline=DEEP, width=2)
-        draw.rectangle((left, 54, left + 5, HEIGHT - 14), fill=CRIMSON if index in (0, 3) else DEEP)
-        draw_corner_brackets(draw, box)
-        draw.text((left + 18, 67), f"SIGNAL // {code}", font=font(12), fill=MUTED)
-        draw.text((left + 18, 88), title, font=font(19), fill=PAPER)
-        renderer(draw, (left + 20, 104, left + panel_width - 20, HEIGHT - 42), phase)
-        draw.text((left + 18, HEIGHT - 34), note, font=font(11), fill=CRIMSON)
-        status_x = left + panel_width - 27
-        pulse = int(2 + ((math.sin(phase * math.tau + index) + 1) / 2) * 3)
-        draw.ellipse((status_x - pulse, 73 - pulse, status_x + pulse, 73 + pulse), fill=SIGNAL)
-
-    return image
+SCENES = (
+    ("01", "GPU WORLDS", "PARTICLES / INTERFACES", draw_particles),
+    ("02", "REALTIME", "EVENTS / SIGNALS", draw_streams),
+    ("03", "VISION", "TEXTURES / FEATURES", draw_vision),
+    ("04", "PLATFORMS", "APIs / CONNECTIONS", draw_network),
+)
 
 
-def build_kinetic_primer_gif() -> bytes:
-    frames = [build_frame(index) for index in range(FRAME_COUNT)]
-    palette = frames[0].quantize(
-        colors=64,
-        method=Image.Quantize.MEDIANCUT,
-        dither=Image.Dither.NONE,
-    )
-    indexed = [
-        frame.quantize(palette=palette, dither=Image.Dither.NONE)
-        for frame in frames
-    ]
+def build_frame(frame_index, mobile=False):
+    phase = (frame_index % FRAME_COUNT) / FRAME_COUNT
+    size = MOBILE_SIZE if mobile else (WIDTH, HEIGHT)
+    frame = Image.new("RGB", size, (3, 3, 5))
+    draw = ImageDraw.Draw(frame)
+    columns = 2 if mobile else 4
+    margin, gap, top = 16, 12, 64
+    panel_w = (size[0] - 2 * margin - (columns - 1) * gap) // columns
+    panel_h = 217 if mobile else 200
+    draw.text((20, 16), "THE SYSTEMS I BUILD", font=font(23), fill=PAPER)
+    if not mobile:
+        draw.text((937, 22), "ILLUSTRATIVE MOTION STUDY", font=font(13), fill=(166, 131, 140))
+    draw.line((20, 49, size[0] - 20, 49), fill=(52, 15, 21), width=1)
+    draw.line((20, 49, 80, 49), fill=SIGNAL, width=1)
+
+    for index, (code, label, note, renderer) in enumerate(SCENES):
+        left = margin + (index % columns) * (panel_w + gap)
+        y = top + (index // columns) * (panel_h + gap)
+        right, bottom = left + panel_w, y + panel_h
+        draw.rounded_rectangle((left, y, right, bottom), radius=6, fill=(8, 5, 8), outline=(67, 21, 28))
+        draw.text((left + 14, y + 13), label, font=font(25), fill=PAPER)
+        draw.text((right - 32, y + 18), code, font=font(13), fill=CRIMSON)
+        draw.line((left + 14, bottom - 32, right - 14, bottom - 32), fill=(52, 15, 21), width=1)
+        renderer(draw, (left + right) / 2, y + (113 if mobile else 104), phase)
+        draw.text((left + 14, bottom - 23), note, font=font(13), fill=(177, 145, 154))
+        draw.line((right - 27, bottom - 18, right - 14, bottom - 18), fill=CRIMSON, width=1)
+    return frame
+
+
+def build_systems_reel_gif(mobile=False):
+    frames = [build_frame(index, mobile) for index in range(FRAME_COUNT)]
+    # A shared palette prevents frame-to-frame shimmer and keeps transfers small.
+    palette = frames[0].quantize(colors=32, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    indexed = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
     buffer = BytesIO()
-    indexed[0].save(
-        buffer,
-        format="GIF",
-        save_all=True,
-        append_images=indexed[1:],
-        duration=80,
-        loop=0,
-        optimize=False,
-        disposal=2,
-        comment=b"YorAyriniwnl kinetic visual decoder",
-    )
+    indexed[0].save(buffer, format="GIF", save_all=True, append_images=indexed[1:],
+                    duration=FRAME_DURATION, loop=0, optimize=True, disposal=1,
+                    comment=b"Illustrative systems motion study - Ayush Roy")
     return buffer.getvalue()
 
 
-def main() -> int:
+def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    payload = build_kinetic_primer_gif()
-    OUTPUT.write_bytes(payload)
-    print(f"wrote {OUTPUT} ({len(payload) / 1024:.1f} KB, {FRAME_COUNT} frames)")
+    for mobile, stem in ((False, "systems-reel"), (True, "systems-reel-mobile")):
+        path = OUT_DIR / f"{stem}.gif"
+        payload = build_systems_reel_gif(mobile)
+        path.write_bytes(payload)
+        build_frame(0, mobile).save(OUT_DIR / f"{stem}-still.png", optimize=True)
+        print(f"wrote {path.name} ({len(payload) / 1024:.1f} KB, {FRAME_COUNT} frames)")
     return 0
 
 

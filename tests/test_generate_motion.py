@@ -13,22 +13,31 @@ spec.loader.exec_module(generate_motion)
 
 
 class GenerateMotionTests(unittest.TestCase):
-    def test_kinetic_primer_is_compact_animated_gif(self):
-        payload = generate_motion.build_kinetic_primer_gif()
+    def test_responsive_reels_are_compact_and_genuinely_animated(self):
+        for mobile, size in ((False, (1200, 280)), (True, (600, 530))):
+            with self.subTest(mobile=mobile):
+                payload = generate_motion.build_systems_reel_gif(mobile)
+                self.assertLess(len(payload), 500_000)
+                with Image.open(BytesIO(payload)) as image:
+                    self.assertEqual(image.format, "GIF")
+                    self.assertEqual(image.size, size)
+                    self.assertTrue(image.is_animated)
+                    self.assertEqual(image.n_frames, generate_motion.FRAME_COUNT)
+                    self.assertEqual(image.info.get("loop"), 0)
+                    self.assertEqual(image.info.get("duration"), generate_motion.FRAME_DURATION)
+                    first = image.convert("RGB")
+                    image.seek(image.n_frames // 2)
+                    middle = image.convert("RGB")
+                    self.assertIsNotNone(ImageChops.difference(first, middle).getbbox())
 
-        self.assertLess(len(payload), 500_000)
-        with Image.open(BytesIO(payload)) as image:
-            self.assertEqual(image.format, "GIF")
-            self.assertEqual(image.size, (1200, 240))
-            self.assertTrue(image.is_animated)
-            self.assertEqual(image.n_frames, generate_motion.FRAME_COUNT)
-            self.assertEqual(image.info.get("loop"), 0)
-
-            image.seek(0)
-            first = image.convert("RGB")
-            image.seek(image.n_frames // 2)
-            middle = image.convert("RGB")
-            self.assertIsNotNone(ImageChops.difference(first, middle).getbbox())
+    def test_posters_are_first_frames_and_motion_is_periodic(self):
+        for mobile in (False, True):
+            poster = generate_motion.build_frame(0, mobile)
+            cycle = generate_motion.build_frame(generate_motion.FRAME_COUNT, mobile)
+            self.assertIsNone(ImageChops.difference(poster, cycle).getbbox())
+            buffer = BytesIO()
+            poster.save(buffer, format="PNG", optimize=True)
+            self.assertLess(len(buffer.getvalue()), 50_000)
 
 
 if __name__ == "__main__":

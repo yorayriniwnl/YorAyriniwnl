@@ -62,12 +62,16 @@ class ReadmeTests(unittest.TestCase):
 
         self.assertGreaterEqual(len(image_tags), 59)
         self.assertTrue(all(re.search(r'alt="[^"]+"', tag) for tag in image_tags))
-        self.assertTrue(all(width in {"100%", "350"} for width in widths))
+        self.assertTrue(all(width in {"100%", "350", "240", "160"} for width in widths))
         self.assertNotIn('width="24%"', self.readme)
         self.assertNotIn('width="49%"', self.readme)
         self.assertIn("https://komarev.com/ghpvc/?", self.readme)
         self.assertIn("label=TOTAL+PROFILE+VIEWS", self.readme)
-        self.assertIn("kinetic-primer.gif", self.readme)
+        self.assertIn("systems-reel.gif", self.readme)
+        self.assertIn("systems-reel-mobile.gif", self.readme)
+        self.assertIn("systems-reel-still.png", self.readme)
+        self.assertIn("systems-reel-mobile-still.png", self.readme)
+        self.assertNotIn("kinetic-primer.gif", self.readme)
         self.assertIn("skills-matrix.svg?rev=kinetic-v2", self.readme)
         self.assertIn("field-notes.svg?rev=privacy-v2", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)
@@ -92,6 +96,18 @@ class ReadmeTests(unittest.TestCase):
         ):
             self.assertIn(f"output/{filename}", self.readme)
 
+    def test_section_shortcuts_resolve_and_dossiers_remain_native(self):
+        targets = re.findall(r'<a href="#([^"]+)"', self.readme)
+        anchors = re.findall(r'<a id="([^"]+)"', self.readme)
+        self.assertEqual(len(anchors), len(set(anchors)))
+        self.assertEqual(set(targets), set(anchors))
+        self.assertEqual(set(anchors), {"selected-systems", "field-notes", "public-record", "open-channel"})
+        self.assertEqual(self.readme.count("<details>"), len(generate_readme.SELECTED_PROJECT_IDS) + 1)
+        self.assertEqual(self.readme.count("<details>"), self.readme.count("</details>"))
+        self.assertNotIn("<details open", self.readme)
+        self.assertIn('media="(max-width: 600px) and (prefers-reduced-motion: reduce)"', self.readme)
+        self.assertIn('media="(prefers-reduced-motion: reduce)"', self.readme)
+
     def test_public_content_is_current_and_privacy_safe(self):
         lower = self.readme.lower()
 
@@ -104,10 +120,18 @@ class ReadmeTests(unittest.TestCase):
         self.assertIsNone(re.search(r"(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}", self.readme))
 
     def test_readme_references_only_published_visual_assets(self):
-        referenced = set(re.findall(r"/output/([a-z0-9-]+\.(?:svg|gif))", self.readme))
+        referenced = set(re.findall(r"/output/([a-z0-9-]+\.(?:svg|gif|png))", self.readme))
         expected = {
             "hero.svg",
-            "kinetic-primer.gif",
+            "systems-reel.gif",
+            "systems-reel-mobile.gif",
+            "systems-reel-still.png",
+            "systems-reel-mobile-still.png",
+            "jump-projects.svg",
+            "jump-experience.svg",
+            "jump-activity.svg",
+            "jump-contact.svg",
+            "dossier-toggle.svg",
             "identity-console.svg",
             "proof-apps.svg",
             "proof-tests.svg",
@@ -133,7 +157,8 @@ class ReadmeTests(unittest.TestCase):
             "project-dossier-vision.svg",
             "project-dossier-talks.svg",
             "project-dossier-feelings.svg",
-            "project-portfolio.svg",
+            "project-portfolio-v2.svg",
+            "project-portfolio-mobile-v2.svg",
             "project-helios.svg",
             "project-zenith.svg",
             "project-vision.svg",
