@@ -14,6 +14,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_PATH = ROOT / "data" / "profile.json"
 DEFAULT_TOKENS_PATH = ROOT / "design" / "yor-tokens.json"
+DEFAULT_AUDIT_PATH = ROOT / "data" / "repo-audit.json"
 PHONE_PATTERN = re.compile(r"(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}")
 REQUIRED_PROJECT_IDS = {"portfolio", "helios", "zenith", "vision", "talks", "feelings"}
 STALE_PUBLIC_CLAIMS = {
@@ -41,6 +42,12 @@ def load_profile(path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]:
         profile = json.load(stream)
     validate_profile(profile)
     return profile
+
+
+def load_repository_audit(path: Path = DEFAULT_AUDIT_PATH) -> dict[str, Any]:
+    """Load the read-only account inventory that backs public profile curation."""
+    with path.open(encoding="utf-8") as stream:
+        return json.load(stream)
 
 
 def _require(mapping: dict[str, Any], keys: set[str], context: str) -> None:
@@ -122,6 +129,53 @@ def _validate_design_tokens(profile: dict[str, Any]) -> None:
         raise ProfileDataError(f"design token contract is missing: {', '.join(missing)}")
 
 
+def _validate_repository_audit() -> None:
+    audit = load_repository_audit()
+    _require(
+        audit,
+        {
+            "schema_version",
+            "account",
+            "reviewed_on",
+            "repository_count_expected",
+            "repository_count_audited",
+            "missing_local_clones",
+            "proposed_pins",
+            "repositories",
+        },
+        "repository audit",
+    )
+    if audit["schema_version"] != 1:
+        raise ProfileDataError("unsupported repository audit schema version")
+    if audit["account"] != "yorayriniwnl":
+        raise ProfileDataError("repository audit account must be yorayriniwnl")
+
+    repositories = audit["repositories"]
+    names = [item.get("name") for item in repositories]
+    expected_count = audit["repository_count_expected"]
+    if expected_count != 25 or audit["repository_count_audited"] != expected_count:
+        raise ProfileDataError("repository audit must cover the 25-repository public scope")
+    if len(names) != expected_count or len(set(names)) != expected_count:
+        raise ProfileDataError("repository audit must contain unique repository names")
+    if audit["missing_local_clones"]:
+        raise ProfileDataError("repository audit has missing local clones")
+    if not all(item.get("public") is True for item in repositories):
+        raise ProfileDataError("repository audit scope must contain only public repositories")
+
+    pin_names = [item.get("name") for item in audit["proposed_pins"]]
+    if pin_names != [
+        "Yor-Ayrin-iwnl",
+        "yor-talksv2",
+        "Yor-Helios",
+        "Yor-Zenith",
+        "Yor-Ai-vs-real-image",
+        "Hyperliquid_Analysis",
+    ]:
+        raise ProfileDataError("repository audit proposed pins changed unexpectedly")
+    if not set(pin_names).issubset(names):
+        raise ProfileDataError("repository audit proposed pins must exist in the audited set")
+
+
 def validate_profile(profile: dict[str, Any]) -> None:
     _require(
         profile,
@@ -158,6 +212,7 @@ def validate_profile(profile: dict[str, Any]) -> None:
     _validate_projects(profile["projects"])
     _validate_public_content(profile)
     _validate_design_tokens(profile)
+    _validate_repository_audit()
     _validate_hero(profile)
 
 

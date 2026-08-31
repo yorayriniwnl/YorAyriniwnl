@@ -1703,10 +1703,13 @@ def build_operator_gateway_svg(cfg):
 
 def build_achievement_rack_svg(cfg):
     W, H = 1500, 286
+    accuracy = next(item for item in PROFILE["proof"] if item["id"] == "accuracy")
+    accuracy_value = accuracy["value"]
+    accuracy_progress = float(accuracy_value.rstrip("%")) / 100
     achievements = [
         ("GPU", "4,000", "PARTICLES", "ONE DRAW CALL", .92),
         ("QA", "24", "TESTS", "FIVE SUITES", .84),
-        ("CV", "78%", "ACCURACY", "CALIBRATED", .78),
+        ("CV", accuracy_value, "ACCURACY", "CALIBRATED", accuracy_progress),
         ("XP", "125", "STEAM LEVEL", "LONG GAME", .88),
         ("OSS", "25+", "PUBLIC REPOS", "BUILD LOG", .74),
     ]
@@ -2088,6 +2091,7 @@ def project_visual_svg(kind, cfg):
 </g>'''
     if kind == "vision":
         art = asset_data_uri(VISUAL_CONTRACT["project_art"]["vision"])
+        accuracy = next(item for item in PROFILE["proof"] if item["id"] == "accuracy")["value"]
         return f'''
 <clipPath id="visionClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
 <g clip-path="url(#visionClip)">
@@ -2098,7 +2102,7 @@ def project_visual_svg(kind, cfg):
  dur="4s" repeatCount="indefinite"/></path>
 <rect x="480" y="102" width="170" height="58" rx="4" fill="#080202" opacity=".84" stroke="#e84b4b"/>
 <text x="500" y="127" class="mono" font-size="10" fill="#8d7777" letter-spacing="1.5">HELD-OUT SIGNAL</text>
-<text x="500" y="148" class="mono" font-size="20" fill="#f5eaea">78% / REAL</text>
+<text x="500" y="148" class="mono" font-size="20" fill="#f5eaea">{esc(accuracy)} / REAL</text>
 </g>'''
     if kind == "talks":
         art = asset_data_uri(VISUAL_CONTRACT["project_art"]["talks"])

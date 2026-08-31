@@ -180,11 +180,14 @@ def build_resume(raw_output: Path) -> None:
     y_left = draw_section_title(pdf, "Selected Systems", left_x, y_left, left_width, bold)
     project_ids = ["portfolio", "helios", "zenith", "vision", "talks"]
     project_lookup = {project["id"]: project for project in profile["projects"]}
+    vision_accuracy = next(
+        proof for proof in project_lookup["vision"]["proof"] if "%" in proof
+    )
     project_notes = {
         "portfolio": "4,000 GPU particles / 24 tests across 5 suites / automated GitHub sync",
         "helios": "FastAPI + WebSocket telemetry / targeted anomaly alerts / Docker Compose",
         "zenith": "3D roof planning / energy simulation / subsidy, ROI, and payback analysis",
-        "vision": "LBP + GLCM texture features / calibrated SVM / 78% held-out accuracy",
+        "vision": f"LBP + GLCM texture features / calibrated SVM / {vision_accuracy}",
         "talks": "Realtime messaging / auth and conversation APIs / typed responsive UI",
     }
     for project_id in project_ids:
@@ -314,7 +317,7 @@ def validate_resume(output_path: Path) -> None:
     if leaked:
         raise RuntimeError(f"private or stale resume content found: {', '.join(leaked)}")
 
-    required = ("ayushroy.dev@gmail.com", "LBP", "GLCM", "SVM", "78%", "BSNL")
+    required = ("ayushroy.dev@gmail.com", "LBP", "GLCM", "SVM", "78.5%", "BSNL")
     missing = [term for term in required if term not in text]
     if missing:
         raise RuntimeError(f"required resume evidence is missing: {', '.join(missing)}")

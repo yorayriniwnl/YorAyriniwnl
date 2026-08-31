@@ -1,0 +1,2850 @@
+{
+  "schema_version": 1,
+  "account": "yorayriniwnl",
+  "reviewed_on": "2026-08-31",
+  "scope": "Public repositories returned by the GitHub user API and checked out locally; no destructive actions performed.",
+  "repository_count_expected": 25,
+  "repository_count_audited": 25,
+  "missing_local_clones": [],
+  "proposed_pins": [
+    {
+      "name": "Yor-Ayrin-iwnl",
+      "reason": "Focused 3D developer portfolio with case-study navigation and automated tests."
+    },
+    {
+      "name": "yor-talksv2",
+      "reason": "Primary full-stack realtime communication system; public beta evidence is documented, launch gates remain visible."
+    },
+    {
+      "name": "Yor-Helios",
+      "reason": "Realtime energy telemetry and operator dashboard system under active development."
+    },
+    {
+      "name": "Yor-Zenith",
+      "reason": "Solar decision-support product with 3D planning and financial modeling; preserve contribution attribution."
+    },
+    {
+      "name": "Yor-Ai-vs-real-image",
+      "reason": "Classical texture-feature image classifier with held-out evaluation; document dataset and inference limits."
+    },
+    {
+      "name": "Hyperliquid_Analysis",
+      "reason": "Evidence-first quantitative research dossier over preserved assignment exports."
+    }
+  ],
+  "repositories": [
+    {
+      "name": "Yorayriniwnl",
+      "public": true,
+      "classification": "profile",
+      "status": "VERIFIED",
+      "intent": "Account home: generated profile, public proof, and the visual system source.",
+      "pin_priority": null,
+      "github": {
+        "description": "Crafting Ideas Into Code With Curiosity, Care and Love",
+        "homepage": "",
+        "topics": [
+          "backend",
+          "developer",
+          "frontend",
+          "github-profile",
+          "portfolio",
+          "projects",
+          "web-development"
+        ],
+        "language": "Python",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-31T07:13:18Z",
+        "pushed_at": "2026-08-31T07:10:44Z"
+      },
+      "git": {
+        "head": "0493c6bfc55c1efa3f7a6429a0c78bba3fa3686e",
+        "head_subject": "chore(profile): formalize shared YOR design tokens",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yorayriniwnl.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 45,
+        "tracked_bytes": 13009835,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [],
+        "ci_workflows": [
+          ".github/workflows/build-assets.yml",
+          ".github/workflows/build-stats.yml",
+          ".github/workflows/contribution-stream.yml"
+        ],
+        "test_files": [
+          "tests/test_generate_assets.py",
+          "tests/test_generate_contributions.py",
+          "tests/test_generate_motion.py",
+          "tests/test_generate_stats.py",
+          "tests/test_optimize_assets.py",
+          "tests/test_profile_data.py",
+          "tests/test_readme.py",
+          "tests/test_workflows.py"
+        ],
+        "largest_files": [
+          {
+            "path": "assets/hero-keyart-v2.png",
+            "bytes": 2004508
+          },
+          {
+            "path": "assets/project-zenith-keyart-v2.png",
+            "bytes": 1891287
+          },
+          {
+            "path": "assets/project-vision-keyart-v2.png",
+            "bytes": 1846123
+          },
+          {
+            "path": "assets/zenith-solar-reference.png",
+            "bytes": 1844201
+          },
+          {
+            "path": "assets/project-talks-keyart-v2.png",
+            "bytes": 1779497
+          },
+          {
+            "path": "assets/project-helios-keyart-v2.png",
+            "bytes": 1679404
+          },
+          {
+            "path": "full-page-preview.png",
+            "bytes": 925766
+          },
+          {
+            "path": "assets/hero-keyart-v2-optimized.jpg",
+            "bytes": 161833
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 12,
+            "example-domain": 0
+          },
+          "paths": [
+            "CHANGELOG.md",
+            "scripts/generate_stats.py"
+          ],
+          "total": 12
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 2,
+            "unsupported-scale": 2
+          },
+          "paths": [
+            "README.md",
+            "data/profile.json"
+          ],
+          "total": 4
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "yor-talksv2",
+      "public": true,
+      "classification": "flagship-full-stack",
+      "status": "DEMO",
+      "intent": "Primary full-stack realtime communication system; public beta evidence is documented, launch gates remain visible.",
+      "pin_priority": 2,
+      "github": {
+        "description": "Realtime communication platform with Next.js, FastAPI, WebSockets, authentication, and typed conversation APIs.",
+        "homepage": "https://yor-talks.vercel.app",
+        "topics": [
+          "fastapi",
+          "nextjs",
+          "realtime-chat",
+          "tailwindcss",
+          "typescript",
+          "websocket"
+        ],
+        "language": "TypeScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-28T15:41:49Z",
+        "pushed_at": "2026-08-31T02:53:28Z"
+      },
+      "git": {
+        "head": "6ba165adf6f32633492de2b4480a85af6a57169d",
+        "head_subject": "Document launch verification and migrations",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/yor-talksv2.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 638,
+        "tracked_bytes": 8178167,
+        "readme_files": [
+          "README.md",
+          "social/ios/App/CapApp-SPM/README.md"
+        ],
+        "manifest_files": [
+          "api-server/Dockerfile",
+          "api-server/package.json",
+          "docker-compose.yml",
+          "lib/api-client-react/package.json",
+          "lib/api-spec/package.json",
+          "lib/api-zod/package.json",
+          "lib/db/package.json",
+          "lib/shared/package.json",
+          "mockup-sandbox/package.json",
+          "mockup-sandbox/vite.config.ts",
+          "package.json",
+          "pnpm-workspace.yaml",
+          "scripts/package.json",
+          "social/Dockerfile",
+          "social/package.json",
+          "social/vercel.json",
+          "social/vite.config.ts",
+          "vercel.json"
+        ],
+        "ci_workflows": [
+          ".github/workflows/ci.yml"
+        ],
+        "test_files": [
+          "api-server/src/__tests__/account-service.test.ts",
+          "api-server/src/__tests__/auth-controller.test.ts",
+          "api-server/src/__tests__/auth-service.test.ts",
+          "api-server/src/__tests__/community-service.test.ts",
+          "api-server/src/__tests__/contact-shield.test.ts",
+          "api-server/src/__tests__/content-safety.test.ts",
+          "api-server/src/__tests__/disappearing-message.test.ts",
+          "api-server/src/__tests__/event-service.test.ts",
+          "api-server/src/__tests__/message-service.test.ts",
+          "api-server/src/__tests__/moderation-service.test.ts",
+          "api-server/src/__tests__/note-service.test.ts",
+          "api-server/src/__tests__/operational-metrics-service.test.ts",
+          "api-server/src/__tests__/pagination-service.test.ts",
+          "api-server/src/__tests__/product-service.test.ts",
+          "api-server/src/__tests__/queue-service.test.ts",
+          "api-server/src/__tests__/redis-compat.test.ts",
+          "api-server/src/__tests__/search-service.test.ts",
+          "api-server/src/__tests__/security-service.test.ts",
+          "api-server/src/__tests__/social-service.test.ts",
+          "api-server/src/__tests__/story-service.test.ts",
+          "api-server/src/__tests__/test-helpers.ts",
+          "api-server/src/__tests__/trusted-origin.test.ts",
+          "api-server/src/__tests__/upload-validation.test.ts",
+          "scripts/telemetry-test-server.js",
+          "social/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java"
+        ],
+        "largest_files": [
+          {
+            "path": "social/public/images/yor-discovery-still-life-v1.png",
+            "bytes": 2323561
+          },
+          {
+            "path": "social/public/images/anya.png",
+            "bytes": 739930
+          },
+          {
+            "path": "social/public/images/anya.jpg",
+            "bytes": 332079
+          },
+          {
+            "path": "pnpm-lock.yaml",
+            "bytes": 320012
+          },
+          {
+            "path": "social/public/images/ayush.jpg",
+            "bytes": 268115
+          },
+          {
+            "path": "social/public/images/yor-discovery-still-life-v1.jpg",
+            "bytes": 257167
+          },
+          {
+            "path": "lib/api-spec/openapi.yaml",
+            "bytes": 134232
+          },
+          {
+            "path": "social/src/premium.css",
+            "bytes": 120166
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 147,
+            "example-domain": 8
+          },
+          "paths": [
+            ".github/workflows/ci.yml",
+            "api-server/src/__tests__/moderation-service.test.ts",
+            "api-server/src/__tests__/queue-service.test.ts",
+            "api-server/src/__tests__/search-service.test.ts",
+            "api-server/src/__tests__/test-helpers.ts",
+            "api-server/src/config/env.ts",
+            "mockup-sandbox/src/components/ui/command.tsx",
+            "mockup-sandbox/src/components/ui/input.tsx",
+            "mockup-sandbox/src/components/ui/select.tsx",
+            "mockup-sandbox/src/components/ui/textarea.tsx",
+            "mockup-sandbox/src/index.css",
+            "scripts/create-profiles.ts",
+            "social/src/components/auth/DeviceApprovalInbox.tsx",
+            "social/src/components/auth/OtpLoginModal.tsx",
+            "social/src/components/comments/GifPickerModal.tsx",
+            "social/src/components/comments/RichCommentComposer.tsx",
+            "social/src/components/feed/NotesTray.tsx",
+            "social/src/components/feed/Post.tsx",
+            "social/src/components/feed/StoryBuilderModal.tsx",
+            "social/src/components/feed/StoryViewer.tsx",
+            "social/src/components/monetization/UpiTipJarModal.tsx",
+            "social/src/components/studio/StudioCameraModal.tsx",
+            "social/src/components/ui/CommandPalette.tsx",
+            "social/src/components/ui/Skeletons.tsx",
+            "social/src/components/ui/command.tsx",
+            "social/src/components/ui/input.tsx",
+            "social/src/components/ui/select.tsx",
+            "social/src/components/ui/textarea.tsx",
+            "social/src/components/video/ReelsSwiper.tsx",
+            "social/src/components/worlds/WorldPreferencesForm.tsx",
+            "social/src/pages/ai-assistant.tsx",
+            "social/src/pages/arcade.tsx",
+            "social/src/pages/articles.tsx",
+            "social/src/pages/auth.tsx",
+            "social/src/pages/bounties.tsx",
+            "social/src/pages/broadcast-channels.tsx",
+            "social/src/pages/business-dashboard.tsx",
+            "social/src/pages/clans.tsx",
+            "social/src/pages/clip-studio.tsx",
+            "social/src/pages/communities.tsx"
+          ],
+          "total": 155
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 4,
+            "unsupported-scale": 0
+          },
+          "paths": [
+            "pnpm-lock.yaml"
+          ],
+          "total": 4
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 40
+          },
+          "paths": [
+            "api-server/src/__tests__/auth-controller.test.ts",
+            "api-server/src/__tests__/auth-service.test.ts",
+            "api-server/src/scripts/create-profiles.ts",
+            "api-server/src/services/account-service.ts",
+            "api-server/src/services/ai-service.ts",
+            "api-server/src/services/auth-service.ts",
+            "api-server/src/services/email-service.ts",
+            "api-server/src/services/storage-service.ts",
+            "api-server/src/validators/auth.ts",
+            "api-server/src/validators/user.ts",
+            "lib/api-client-react/src/generated/api.schemas.ts",
+            "lib/api-spec/openapi.yaml",
+            "lib/api-zod/src/generated/types/loginBody.ts",
+            "lib/api-zod/src/generated/types/registerBody.ts",
+            "scripts/create-profiles.ts",
+            "social/src/lib/api-client.ts",
+            "social/src/lib/store.ts",
+            "social/src/pages/auth.tsx",
+            "social/src/pages/settings.tsx"
+          ],
+          "total": 40
+        }
+      }
+    },
+    {
+      "name": "Yor-Helios",
+      "public": true,
+      "classification": "flagship-realtime",
+      "status": "IN_DEVELOPMENT",
+      "intent": "Realtime energy telemetry and operator dashboard system under active development.",
+      "pin_priority": 3,
+      "github": {
+        "description": "Realtime energy intelligence platform streaming anomaly and threshold alerts through FastAPI, WebSockets, and Docker.",
+        "homepage": "",
+        "topics": [
+          "docker",
+          "energy-monitoring",
+          "fastapi",
+          "python",
+          "realtime",
+          "typescript",
+          "websocket"
+        ],
+        "language": "Python",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-28T02:58:13Z",
+        "pushed_at": "2026-08-01T00:57:59Z"
+      },
+      "git": {
+        "head": "959458bbfa60d832acb7199b664e07ee4e987372",
+        "head_subject": "Initial commit",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Helios.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 259,
+        "tracked_bytes": 1385412,
+        "readme_files": [
+          "README.md",
+          "frontend/README.md"
+        ],
+        "manifest_files": [
+          "backend/Dockerfile",
+          "backend/requirements.txt",
+          "data-simulator/requirements.txt",
+          "docker-compose.yml",
+          "frontend/Dockerfile",
+          "frontend/next.config.js",
+          "frontend/package.json",
+          "package.json"
+        ],
+        "ci_workflows": [
+          ".github/workflows/ci.yml"
+        ],
+        "test_files": [
+          "backend/tests/conftest.py",
+          "backend/tests/test_alert_service.py",
+          "backend/tests/test_anomaly_service.py",
+          "backend/tests/test_api_endpoints.py",
+          "backend/tests/test_auth_service.py",
+          "backend/tests/test_data_simulator.py",
+          "backend/tests/test_e2e_flow.py"
+        ],
+        "largest_files": [
+          {
+            "path": "frontend/tsconfig.tsbuildinfo",
+            "bytes": 316208
+          },
+          {
+            "path": "data/helios.db",
+            "bytes": 167936
+          },
+          {
+            "path": "frontend/package-lock.json",
+            "bytes": 111527
+          },
+          {
+            "path": "backend/app/services/anomaly_service.py",
+            "bytes": 18010
+          },
+          {
+            "path": "frontend/components/alerts/AlertFeed.tsx",
+            "bytes": 14410
+          },
+          {
+            "path": "frontend/app/page.tsx",
+            "bytes": 13735
+          },
+          {
+            "path": "backend/scripts/seed.py",
+            "bytes": 13196
+          },
+          {
+            "path": "frontend/app/dashboard/analytics/page.tsx",
+            "bytes": 12286
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 19,
+            "example-domain": 22
+          },
+          "paths": [
+            "README.md",
+            "backend/app/main.py",
+            "backend/scripts/seed.py",
+            "backend/tests/test_api_endpoints.py",
+            "backend/tests/test_auth_service.py",
+            "backend/tests/test_e2e_flow.py",
+            "data-simulator/stream.py",
+            "docs/demo.md",
+            "docs/screenshots/alert-detail.svg",
+            "docs/screenshots/alerts.svg",
+            "docs/screenshots/dashboard.svg",
+            "docs/screenshots/mobile-evidence.svg",
+            "frontend/app/dashboard/meters/page.tsx",
+            "frontend/app/login/page.tsx",
+            "frontend/components/alerts/EvidenceUploader.tsx",
+            "frontend/package-lock.json",
+            "scripts/seed.py"
+          ],
+          "total": 41
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 2,
+            "unsupported-scale": 1
+          },
+          "paths": [
+            "docs/team_roles.md",
+            "docs/tech_stack_justification.md"
+          ],
+          "total": 3
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 11
+          },
+          "paths": [
+            "backend/app/api/v1/routes/auth.py",
+            "backend/app/core/config.py",
+            "backend/app/core/security.py",
+            "backend/app/schemas/user.py",
+            "backend/app/services/auth_service.py",
+            "backend/tests/test_api_endpoints.py",
+            "data-simulator/stream.py",
+            "frontend/store/authStore.ts"
+          ],
+          "total": 11
+        }
+      }
+    },
+    {
+      "name": "Yor-Talks",
+      "public": true,
+      "classification": "legacy-product",
+      "status": "ARCHIVE_CANDIDATE",
+      "intent": "Legacy communication predecessor; retain history and explain its relationship to V2.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "JavaScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-28T20:58:21Z",
+        "pushed_at": "2026-04-28T20:58:17Z"
+      },
+      "git": {
+        "head": "60cf570f5155f397f38955d7068f5ecb50c6b88f",
+        "head_subject": "Fix broken admin, activity, and creator flows",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Talks.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 84,
+        "tracked_bytes": 667845,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "backend/Dockerfile",
+          "backend/package.json",
+          "docker-compose.yml",
+          "frontend/Dockerfile",
+          "frontend/package.json",
+          "frontend/vite.config.js",
+          "package.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "backend/package-lock.json",
+            "bytes": 92801
+          },
+          {
+            "path": "frontend/package-lock.json",
+            "bytes": 75489
+          },
+          {
+            "path": "frontend/src/screens/AllScreens.jsx",
+            "bytes": 73134
+          },
+          {
+            "path": "frontend/src/screens/BillionScreens.jsx",
+            "bytes": 61649
+          },
+          {
+            "path": "backend/routes/misc.js",
+            "bytes": 34250
+          },
+          {
+            "path": "backend/db.js",
+            "bytes": 29873
+          },
+          {
+            "path": "frontend/src/components/PostCard.jsx",
+            "bytes": 25463
+          },
+          {
+            "path": "backend/routes/posts.js",
+            "bytes": 20915
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 31,
+            "example-domain": 0
+          },
+          "paths": [
+            "backend/routes/posts.js",
+            "backend/utils/seed.js",
+            "frontend/src/components/PostCard.jsx",
+            "frontend/src/index.css",
+            "frontend/src/screens/AllScreens.jsx",
+            "frontend/src/screens/BillionScreens.jsx",
+            "frontend/src/screens/CollectionsScreen.jsx",
+            "frontend/src/screens/SecurityScreen.jsx"
+          ],
+          "total": 31
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 5,
+            "unsupported-scale": 1
+          },
+          "paths": [
+            "README.md",
+            "frontend/src/index.css",
+            "frontend/src/screens/BillionScreens.jsx"
+          ],
+          "total": 6
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 12
+          },
+          "paths": [
+            "backend/routes/auth.js",
+            "frontend/src/api/index.js",
+            "frontend/src/screens/AllScreens.jsx",
+            "setup.sh"
+          ],
+          "total": 12
+        }
+      }
+    },
+    {
+      "name": "Hyperliquid_Analysis",
+      "public": true,
+      "classification": "flagship-research",
+      "status": "VERIFIED",
+      "intent": "Evidence-first quantitative research dossier over preserved assignment exports.",
+      "pin_priority": 6,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "Python",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T07:15:51Z",
+        "pushed_at": "2026-08-31T07:33:57Z"
+      },
+      "git": {
+        "head": "c9a03b2726cd2626c3664619890e0305e97c5c73",
+        "head_subject": "docs(hyperliquid): align atlas with verified event data",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Hyperliquid_Analysis.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 43,
+        "tracked_bytes": 88162122,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "requirements.txt"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "data/trader_data.csv",
+            "bytes": 55906573
+          },
+          {
+            "path": "data/historical_data.csv",
+            "bytes": 30636308
+          },
+          {
+            "path": "charts/09_robustness_checks.png",
+            "bytes": 187012
+          },
+          {
+            "path": "charts/05_segmentation_deep_dive.png",
+            "bytes": 154330
+          },
+          {
+            "path": "charts/03_behavioral_fingerprint.png",
+            "bytes": 141499
+          },
+          {
+            "path": "charts/04_event_coverage.png",
+            "bytes": 129636
+          },
+          {
+            "path": "charts/07_archetypes.png",
+            "bytes": 112989
+          },
+          {
+            "path": "charts/01_performance_by_sentiment.png",
+            "bytes": 112497
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [
+          "data/trader_data.csv",
+          "data/historical_data.csv"
+        ],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 1,
+            "example-domain": 0
+          },
+          "paths": [
+            "analysis.py"
+          ],
+          "total": 1
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "C_PlusPlus",
+      "public": true,
+      "classification": "learning-log",
+      "status": "LEARNING",
+      "intent": "Small C++ learning log; intentionally modest and not presented as a flagship product.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "C++",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-05-03T12:47:56Z",
+        "pushed_at": "2026-05-03T12:47:53Z"
+      },
+      "git": {
+        "head": "a94b17990ffd6264e11ff11cf95bdfd9bb35ef92",
+        "head_subject": "Update P1.cpp with modified content",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/C_PlusPlus.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 3,
+        "tracked_bytes": 458,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": ".gitignore",
+            "bytes": 260
+          },
+          {
+            "path": "README.md",
+            "bytes": 106
+          },
+          {
+            "path": "Day1/P1.cpp",
+            "bytes": 92
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 0,
+            "example-domain": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "Yor-Feelings",
+      "public": true,
+      "classification": "experimental-interface",
+      "status": "EXPERIMENTAL",
+      "intent": "Mood-responsive interaction experiment; identity and privacy boundaries need clear documentation.",
+      "pin_priority": null,
+      "github": {
+        "description": "Experimental Next.js interface translating sentiment and mood signals into responsive visual states.",
+        "homepage": "https://yor-feelings.vercel.app",
+        "topics": [
+          "creative-coding",
+          "nextjs",
+          "sentiment-analysis",
+          "typescript"
+        ],
+        "language": "TypeScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-28T03:03:18Z",
+        "pushed_at": "2026-04-23T07:17:46Z"
+      },
+      "git": {
+        "head": "937a564e9c9a6f3df9931e527c9ef9c26c490e91",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Feelings.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 71,
+        "tracked_bytes": 245189,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "next.config.js",
+          "package.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "package-lock.json",
+            "bytes": 179146
+          },
+          {
+            "path": "app/threads/[id]/page.tsx",
+            "bytes": 3332
+          },
+          {
+            "path": "prisma/schema.prisma",
+            "bytes": 3042
+          },
+          {
+            "path": "app/(auth)/login/page.tsx",
+            "bytes": 2877
+          },
+          {
+            "path": "app/api/auth/request-otp/route.ts",
+            "bytes": 2699
+          },
+          {
+            "path": "app/page.tsx",
+            "bytes": 2224
+          },
+          {
+            "path": "app/api/messages/route.ts",
+            "bytes": 2030
+          },
+          {
+            "path": "lib/auth.ts",
+            "bytes": 1963
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 7,
+            "example-domain": 0
+          },
+          "paths": [
+            "app/(auth)/login/page.tsx",
+            "app/(auth)/onboarding/page.tsx",
+            "app/threads/[id]/page.tsx",
+            "components/NewThreadModal.tsx",
+            "components/ui/Input.tsx"
+          ],
+          "total": 7
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 3
+          },
+          "paths": [
+            "app/api/auth/request-otp/route.ts",
+            "lib/auth.ts",
+            "middleware.ts"
+          ],
+          "total": 3
+        }
+      }
+    },
+    {
+      "name": "yor-stories",
+      "public": true,
+      "classification": "empty-shell",
+      "status": "ARCHIVE_CANDIDATE",
+      "intent": "Empty public shell; do not leave unexplained in the final public catalog.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": null,
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-06-29T21:46:44Z",
+        "pushed_at": "2026-06-29T21:46:44Z"
+      },
+      "git": {
+        "head": "HEAD",
+        "head_subject": "",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/yor-stories.git",
+        "shallow": false
+      },
+      "checks": {
+        "tracked_file_count": 0,
+        "tracked_bytes": 0,
+        "readme_files": [],
+        "manifest_files": [],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [],
+        "empty_repository": true,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 0,
+            "example-domain": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "yorayriniwnl.in2",
+      "public": true,
+      "classification": "legacy-portfolio",
+      "status": "ARCHIVE_CANDIDATE",
+      "intent": "Older portfolio candidate; compare against the focused portfolio and field hub before any archive action.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "TypeScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-05-24T19:51:45Z",
+        "pushed_at": "2026-05-24T19:51:41Z"
+      },
+      "git": {
+        "head": "b6bebf30fb7bcb29d1a393a6c5fffb5fac4aa7c6",
+        "head_subject": "fix(accessibility): add aria-labels to icon-only GitHub links",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/yorayriniwnl.in2.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 31,
+        "tracked_bytes": 536927,
+        "readme_files": [],
+        "manifest_files": [
+          "next.config.mjs",
+          "package.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "package-lock.json",
+            "bytes": 241272
+          },
+          {
+            "path": "yorayriniwnl.in2-fixed.zip",
+            "bytes": 111336
+          },
+          {
+            "path": "tsconfig.tsbuildinfo",
+            "bytes": 106053
+          },
+          {
+            "path": "components/home/Projects.tsx",
+            "bytes": 9098
+          },
+          {
+            "path": "data/home.ts",
+            "bytes": 7932
+          },
+          {
+            "path": "components/home/Hero.tsx",
+            "bytes": 7706
+          },
+          {
+            "path": "styles/globals.css",
+            "bytes": 7396
+          },
+          {
+            "path": "components/Navbar.tsx",
+            "bytes": 6466
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 0,
+            "example-domain": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 1
+          },
+          "paths": [
+            "components/home/About.tsx"
+          ],
+          "total": 1
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "Yorayriniwnl.in",
+      "public": true,
+      "classification": "field-hub",
+      "status": "REPORTED",
+      "intent": "Broader field hub distinct from the focused portfolio; relationship and outbound links need verification.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": "https://yorayriniwnl.in",
+        "topics": [],
+        "language": "TypeScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-26T09:13:09Z",
+        "pushed_at": "2026-08-26T09:09:49Z"
+      },
+      "git": {
+        "head": "df036b9d1f0e0a6d04ad53c1cd097e46d3d820ab",
+        "head_subject": "Rebuild hub identity and discovery surfaces",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yorayriniwnl.in.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 37,
+        "tracked_bytes": 2518794,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "package.json",
+          "vercel.json",
+          "vite.config.ts"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "public/ayush-avatar.png",
+            "bytes": 2013508
+          },
+          {
+            "path": "src/games/Chess.tsx",
+            "bytes": 65299
+          },
+          {
+            "path": "package-lock.json",
+            "bytes": 42120
+          },
+          {
+            "path": "src/styles.css",
+            "bytes": 40901
+          },
+          {
+            "path": "src/games/ClassicShooter3D.tsx",
+            "bytes": 38687
+          },
+          {
+            "path": "src/games/CarGame.tsx",
+            "bytes": 38208
+          },
+          {
+            "path": "src/games/TypingChallenge.tsx",
+            "bytes": 36959
+          },
+          {
+            "path": "src/games/TicTacToe.tsx",
+            "bytes": 31696
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 1,
+            "example-domain": 0
+          },
+          "paths": [
+            "src/games/GameShell.tsx"
+          ],
+          "total": 1
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 8,
+            "unsupported-scale": 0
+          },
+          "paths": [
+            "src/games/WordGuess.tsx",
+            "src/lib/games/wordGuess.ts"
+          ],
+          "total": 8
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "Yor-Status",
+      "public": true,
+      "classification": "experimental-civic",
+      "status": "EXPERIMENTAL",
+      "intent": "Civic accountability prototype; preserve methodology and provenance rather than unsupported scale language.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": "https://yor-status.vercel.app",
+        "topics": [],
+        "language": "JavaScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T22:35:44Z",
+        "pushed_at": "2026-04-23T22:35:40Z"
+      },
+      "git": {
+        "head": "2bc56a8d45f6d479e35214a355b5d1dbeadf0224",
+        "head_subject": "Fix unstable backend logic",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Status.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 49,
+        "tracked_bytes": 516097,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "backend/package.json",
+          "package.json",
+          "vercel.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "frontend/js/app.js",
+            "bytes": 84287
+          },
+          {
+            "path": "package-lock.json",
+            "bytes": 84185
+          },
+          {
+            "path": "frontend/css/style.css",
+            "bytes": 66442
+          },
+          {
+            "path": "backend/seed/seed_core.js",
+            "bytes": 57864
+          },
+          {
+            "path": "backend/seed/seed_legal.js",
+            "bytes": 44727
+          },
+          {
+            "path": "frontend/index.html",
+            "bytes": 18753
+          },
+          {
+            "path": "backend/db.js",
+            "bytes": 17643
+          },
+          {
+            "path": "README.md",
+            "bytes": 10878
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 22,
+            "example-domain": 2
+          },
+          "paths": [
+            "frontend/css/style.css",
+            "frontend/index.html",
+            "frontend/js/app.js"
+          ],
+          "total": 24
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 1,
+            "unsupported-scale": 4
+          },
+          "paths": [
+            "README.md",
+            "backend/package.json",
+            "backend/seed/seed_core.js",
+            "frontend/index.html"
+          ],
+          "total": 5
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 3
+          },
+          "paths": [
+            "backend/middleware/auth.js",
+            "frontend/js/app.js"
+          ],
+          "total": 3
+        }
+      }
+    },
+    {
+      "name": "Landgrabbers_2",
+      "public": true,
+      "classification": "empty-shell",
+      "status": "ARCHIVE_CANDIDATE",
+      "intent": "Empty public shell; hold for explicit archive/private/delete decision.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": null,
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-05-18T12:54:40Z",
+        "pushed_at": "2026-05-18T12:54:40Z"
+      },
+      "git": {
+        "head": "HEAD",
+        "head_subject": "",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Landgrabbers_2.git",
+        "shallow": false
+      },
+      "checks": {
+        "tracked_file_count": 0,
+        "tracked_bytes": 0,
+        "readme_files": [],
+        "manifest_files": [],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [],
+        "empty_repository": true,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 0,
+            "example-domain": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "yor-story",
+      "public": true,
+      "classification": "writing-broadcast",
+      "status": "EXPERIMENTAL",
+      "intent": "ON AIR writing/broadcast archive with draft gating; preserve the authored aesthetic and writing boundary.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": "https://yor-story.vercel.app",
+        "topics": [],
+        "language": "TypeScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-07-20T11:31:01Z",
+        "pushed_at": "2026-07-20T11:30:44Z"
+      },
+      "git": {
+        "head": "2de2f1de8dceb01335825decf7ba42ce037688f5",
+        "head_subject": "Complete integration of Reflections package",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/yor-story.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 91,
+        "tracked_bytes": 6520522,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "package.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "page-tall.png",
+            "bytes": 3180199
+          },
+          {
+            "path": "page-mobile-tall.png",
+            "bytes": 1894194
+          },
+          {
+            "path": "root-desktop.png",
+            "bytes": 1114798
+          },
+          {
+            "path": "package-lock.json",
+            "bytes": 138806
+          },
+          {
+            "path": "styles/reflections-onair.css",
+            "bytes": 60848
+          },
+          {
+            "path": "content/reflections/w01-introduction.md",
+            "bytes": 16426
+          },
+          {
+            "path": "app/reflections/page.tsx",
+            "bytes": 10037
+          },
+          {
+            "path": "README.md",
+            "bytes": 8385
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 10,
+            "example-domain": 1
+          },
+          "paths": [
+            "README.md",
+            "app/reflections/[slug]/page.tsx",
+            "components/reflections/EmailCapture.tsx",
+            "components/reflections/EssayCard.tsx",
+            "components/reflections/SearchWidget.tsx",
+            "lib/reflections.test.ts",
+            "lib/reflections.ts",
+            "styles/reflections-onair.css"
+          ],
+          "total": 11
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 1
+          },
+          "paths": [
+            "content/reflections/w01-introduction.md"
+          ],
+          "total": 1
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 1
+          },
+          "paths": [
+            "app/api/subscribe/route.ts"
+          ],
+          "total": 1
+        }
+      }
+    },
+    {
+      "name": "CBSE-Result-Analyzer",
+      "public": true,
+      "classification": "data-tool",
+      "status": "DEMO",
+      "intent": "Educational data-transformation tool across CLI, Flask, and Streamlit entry points.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": "https://cbse-result-analyzer.vercel.app",
+        "topics": [],
+        "language": "Python",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T07:05:29Z",
+        "pushed_at": "2026-04-23T07:05:25Z"
+      },
+      "git": {
+        "head": "5822664bacfd9ad9892a84e556aeeaa8a741c872",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/CBSE-Result-Analyzer.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 34,
+        "tracked_bytes": 201851,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "pyproject.toml",
+          "requirements-dev.txt",
+          "requirements.txt",
+          "vercel.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [
+          "tests/__init__.py",
+          "tests/test_analyzer.py",
+          "tests/test_server.py"
+        ],
+        "largest_files": [
+          {
+            "path": "templates/index.html",
+            "bytes": 77456
+          },
+          {
+            "path": "streamlit_app.py",
+            "bytes": 39860
+          },
+          {
+            "path": "app.py",
+            "bytes": 23347
+          },
+          {
+            "path": "tests/test_server.py",
+            "bytes": 14607
+          },
+          {
+            "path": "exporter/excel_writer.py",
+            "bytes": 9935
+          },
+          {
+            "path": "tests/test_analyzer.py",
+            "bytes": 7147
+          },
+          {
+            "path": "parser/gazette_parser.py",
+            "bytes": 6359
+          },
+          {
+            "path": "services/analyzer_service.py",
+            "bytes": 5480
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 1,
+            "example-domain": 0
+          },
+          "paths": [
+            "streamlit_app.py"
+          ],
+          "total": 1
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "Yor-Solar-Nexus",
+      "public": true,
+      "classification": "superseded-concept",
+      "status": "ARCHIVE_CANDIDATE",
+      "intent": "Conceptual solar predecessor; compare against Zenith and preserve attribution if superseded.",
+      "pin_priority": null,
+      "github": {
+        "description": "A cloud-based platform for solar energy planning and optimization. It evaluates location feasibility, assesses energy needs, estimates cost savings, and provides subsidy and rooftop guidance. Designed for personalized analysis, scalability, and collaborative research to support informed solar adoption.",
+        "homepage": null,
+        "topics": [],
+        "language": "HTML",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T07:18:00Z",
+        "pushed_at": "2026-04-23T07:17:57Z"
+      },
+      "git": {
+        "head": "9e710cca8dd6cf2ca354dd7c9c9b141ccdb1f47b",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Solar-Nexus.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 13,
+        "tracked_bytes": 6944,
+        "readme_files": [
+          "README.md",
+          "data/README.md",
+          "docs/README.md",
+          "src/README.md"
+        ],
+        "manifest_files": [],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "README.md",
+            "bytes": 1236
+          },
+          {
+            "path": "LICENSE",
+            "bytes": 1090
+          },
+          {
+            "path": "src/login.css",
+            "bytes": 793
+          },
+          {
+            "path": "src/services/subsidies.html",
+            "bytes": 716
+          },
+          {
+            "path": "src/login.js",
+            "bytes": 695
+          },
+          {
+            "path": "src/services/rooftop.html",
+            "bytes": 688
+          },
+          {
+            "path": "src/login.html",
+            "bytes": 566
+          },
+          {
+            "path": "src/services/services.css",
+            "bytes": 512
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 2,
+            "example-domain": 0
+          },
+          "paths": [
+            "src/login.html"
+          ],
+          "total": 2
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 2
+          },
+          "paths": [
+            "src/login.js"
+          ],
+          "total": 2
+        }
+      }
+    },
+    {
+      "name": "mentor-mentee-system",
+      "public": true,
+      "classification": "platform",
+      "status": "DEMO",
+      "intent": "Mentor/mentee matching platform with a documented scoring and matching flow.",
+      "pin_priority": null,
+      "github": {
+        "description": "A thoughtful platform for managing mentor–mentee relationships and supporting growth.",
+        "homepage": "https://mentor-mentee-system.vercel.app",
+        "topics": [
+          "flask",
+          "mentor-mentee-system",
+          "mentorship",
+          "student-management",
+          "tracking",
+          "vercel",
+          "web-app"
+        ],
+        "language": "Python",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T07:15:57Z",
+        "pushed_at": "2026-04-23T07:15:53Z"
+      },
+      "git": {
+        "head": "78819712f2acd9df645861c534baff6b6c17207c",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/mentor-mentee-system.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 44,
+        "tracked_bytes": 3447158,
+        "readme_files": [
+          "README.md",
+          "images/profiles/README.txt"
+        ],
+        "manifest_files": [
+          "requirements.txt",
+          "vercel.json"
+        ],
+        "ci_workflows": [
+          ".github/workflows/ci.yml",
+          ".github/workflows/deploy_vercel.yml"
+        ],
+        "test_files": [
+          "tests/test_api_smoke.py",
+          "tests/test_cancel_session.py",
+          "tests/test_throttle.py",
+          "tests/test_throttle_redis.py"
+        ],
+        "largest_files": [
+          {
+            "path": "images/kiit_building.jpg",
+            "bytes": 3083948
+          },
+          {
+            "path": "images/profiles/2329027.png",
+            "bytes": 93017
+          },
+          {
+            "path": "gui.py",
+            "bytes": 73234
+          },
+          {
+            "path": "app.py",
+            "bytes": 20934
+          },
+          {
+            "path": "database_sqlite.py",
+            "bytes": 17475
+          },
+          {
+            "path": "database_sqlalchemy.py",
+            "bytes": 16890
+          },
+          {
+            "path": "database_json.py",
+            "bytes": 15232
+          },
+          {
+            "path": "data.json",
+            "bytes": 10814
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 9,
+            "example-domain": 2
+          },
+          "paths": [
+            "app.py",
+            "data.json",
+            "gui.py",
+            "tests/test_cancel_session.py"
+          ],
+          "total": 11
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 18
+          },
+          "paths": [
+            "app.py",
+            "auth.py",
+            "database_sqlalchemy.py",
+            "gui.py",
+            "setup_db.py"
+          ],
+          "total": 18
+        }
+      }
+    },
+    {
+      "name": "Yor-Store",
+      "public": true,
+      "classification": "scraping-product",
+      "status": "DEMO",
+      "intent": "Grocery price comparison prototype; integration scope and scraper durability need explicit limits.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "TypeScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-30T20:12:34Z",
+        "pushed_at": "2026-04-30T20:12:29Z"
+      },
+      "git": {
+        "head": "c854a76690dbfba87744b5b77df313660ea174a6",
+        "head_subject": "Handle missing dev service env vars",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Store.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 39,
+        "tracked_bytes": 318807,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "next.config.js",
+          "package.json",
+          "vercel.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "package-lock.json",
+            "bytes": 193770
+          },
+          {
+            "path": "DEPLOYMENT_AND_REVIEW.md",
+            "bytes": 9666
+          },
+          {
+            "path": "app/page.tsx",
+            "bytes": 9024
+          },
+          {
+            "path": "app/search/page.tsx",
+            "bytes": 8789
+          },
+          {
+            "path": "scrapers/manager.ts",
+            "bytes": 8752
+          },
+          {
+            "path": "prisma/seed.ts",
+            "bytes": 8170
+          },
+          {
+            "path": "app/product/[slug]/page.tsx",
+            "bytes": 7313
+          },
+          {
+            "path": "scrapers/bigbasket.ts",
+            "bytes": 6768
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 6,
+            "example-domain": 5
+          },
+          "paths": [
+            "app/page.tsx",
+            "components/SearchBar.tsx",
+            "prisma/seed.ts"
+          ],
+          "total": 11
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 1
+          },
+          "paths": [
+            "app/api/scrape/route.ts"
+          ],
+          "total": 1
+        }
+      }
+    },
+    {
+      "name": "Yor-Zenith",
+      "public": true,
+      "classification": "flagship-product",
+      "status": "DEMO",
+      "intent": "Solar decision-support product with 3D planning and financial modeling; preserve contribution attribution.",
+      "pin_priority": 4,
+      "github": {
+        "description": "Full-stack solar feasibility platform with 3D roof planning, energy simulation, subsidy, ROI, and payback analysis.",
+        "homepage": "https://zenith-xi-snowy.vercel.app",
+        "topics": [
+          "data-visualization",
+          "fastapi",
+          "react",
+          "roi-calculator",
+          "solar-energy",
+          "threejs",
+          "typescript"
+        ],
+        "language": "TypeScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-28T02:59:10Z",
+        "pushed_at": "2026-04-23T07:18:07Z"
+      },
+      "git": {
+        "head": "0a3f98c25b153b5d482caa940d0958bcef97dd03",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Zenith.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 79,
+        "tracked_bytes": 7993212,
+        "readme_files": [
+          "README.md",
+          "Readme",
+          "zenith-app/README.md"
+        ],
+        "manifest_files": [
+          "zenith-app/package.json",
+          "zenith-app/requirements.txt"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "zenith-app/public/images/login-bg.png",
+            "bytes": 2159563
+          },
+          {
+            "path": "zenith-app/public/images/solar-hero-v2.png",
+            "bytes": 1844201
+          },
+          {
+            "path": "zenith-app/public/images/zenith-logo.png",
+            "bytes": 1243948
+          },
+          {
+            "path": "zenith-app/app/(dashboard)/service4/RooftopAnimations.tsx",
+            "bytes": 1046907
+          },
+          {
+            "path": "zenith-app/public/images/service5-lumen.jpg",
+            "bytes": 341079
+          },
+          {
+            "path": "zenith-app/package-lock.json",
+            "bytes": 286273
+          },
+          {
+            "path": "zenith-app/app/(dashboard)/service4/RooftopPage.tsx",
+            "bytes": 146658
+          },
+          {
+            "path": "zenith-app/public/images/service5.jpg",
+            "bytes": 129663
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 15,
+            "example-domain": 0
+          },
+          "paths": [
+            "zenith-app/app/(dashboard)/service1/page.tsx",
+            "zenith-app/app/(dashboard)/service4/RooftopAnimations.tsx",
+            "zenith-app/app/login/page.tsx",
+            "zenith-app/components/lumen/ScenarioForm.tsx",
+            "zenith-app/package-lock.json"
+          ],
+          "total": 15
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 1,
+            "unsupported-scale": 0
+          },
+          "paths": [
+            "zenith-app/app/(dashboard)/service4/RooftopAnimations.tsx"
+          ],
+          "total": 1
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 3
+          },
+          "paths": [
+            "zenith-app/app/login/page.tsx",
+            "zenith-app/lib/gemini-server.ts",
+            "zenith-app/lib/gemini.ts"
+          ],
+          "total": 3
+        }
+      }
+    },
+    {
+      "name": "Yor-Project-Health-Tracker",
+      "public": true,
+      "classification": "admin-scaffold",
+      "status": "DEMO",
+      "intent": "Health-tracking scaffold; distinguish seeded/demo data from production claims and never publish reusable credentials.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "TypeScript",
+        "default_branch": "master",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-26T08:26:00Z",
+        "pushed_at": "2026-04-26T08:25:55Z"
+      },
+      "git": {
+        "head": "1a15c9939e8ea8a2eddb3f8f407feac3aa977744",
+        "head_subject": "Initial project health tracker setup",
+        "branch": "master",
+        "remote": "https://github.com/yorayriniwnl/Yor-Project-Health-Tracker.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 154,
+        "tracked_bytes": 578913,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "backend/Dockerfile",
+          "backend/package.json",
+          "docker-compose.yml",
+          "frontend/next.config.mjs",
+          "frontend/package.json",
+          "package.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "package-lock.json",
+            "bytes": 349319
+          },
+          {
+            "path": "backend/src/modules/projects/projects.service.ts",
+            "bytes": 13425
+          },
+          {
+            "path": "backend/src/prisma/schema.prisma",
+            "bytes": 10640
+          },
+          {
+            "path": "backend/src/modules/reports/reports.service.ts",
+            "bytes": 9694
+          },
+          {
+            "path": "backend/src/common/utils/health-score.ts",
+            "bytes": 7666
+          },
+          {
+            "path": "backend/src/prisma/seed.ts",
+            "bytes": 7503
+          },
+          {
+            "path": "frontend/src/components/projects/ProjectForm.tsx",
+            "bytes": 6653
+          },
+          {
+            "path": "frontend/src/app/projects/[id]/page.tsx",
+            "bytes": 5921
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 14,
+            "example-domain": 0
+          },
+          "paths": [
+            "backend/src/modules/auth/auth.controller.ts",
+            "frontend/src/app/brokers/page.tsx",
+            "frontend/src/app/contractors/page.tsx",
+            "frontend/src/app/projects/page.tsx",
+            "frontend/src/app/public-portal/page.tsx",
+            "frontend/src/components/brokers/BrokerForm.tsx",
+            "frontend/src/components/common/SearchBar.tsx",
+            "frontend/src/components/contractors/ContractorForm.tsx",
+            "package-lock.json"
+          ],
+          "total": 14
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 1
+          },
+          "paths": [
+            "README.md"
+          ],
+          "total": 1
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 5
+          },
+          "paths": [
+            "README.md",
+            "backend/src/modules/auth/auth.module.ts",
+            "backend/src/modules/auth/auth.service.ts",
+            "frontend/src/lib/auth.ts",
+            "frontend/src/lib/validations.ts"
+          ],
+          "total": 5
+        }
+      }
+    },
+    {
+      "name": "Yor-Ai-vs-real-image",
+      "public": true,
+      "classification": "flagship-ml",
+      "status": "DEMO",
+      "intent": "Classical texture-feature image classifier with held-out evaluation; document dataset and inference limits.",
+      "pin_priority": 5,
+      "github": {
+        "description": "AI-vs-real image detector using LBP/GLCM texture features and a calibrated SVM — 78% held-out accuracy with local inference.",
+        "homepage": "https://yor-ai-vs-real-image.vercel.app",
+        "topics": [
+          "computer-vision",
+          "image-classification",
+          "opencv",
+          "python",
+          "scikit-learn",
+          "streamlit",
+          "svm"
+        ],
+        "language": "Python",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-28T03:00:07Z",
+        "pushed_at": "2026-04-23T07:17:33Z"
+      },
+      "git": {
+        "head": "a02711e448b942a2dea66386afff185b8acfda23",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Ai-vs-real-image.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 564,
+        "tracked_bytes": 447469937,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "requirements.txt"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "dataset/real/IMG_6652.MP4",
+            "bytes": 5937150
+          },
+          {
+            "path": "dataset/real/IMG_6652.JPG",
+            "bytes": 4808660
+          },
+          {
+            "path": "dataset/real/IMG_6653.JPG",
+            "bytes": 4546292
+          },
+          {
+            "path": "dataset/real/IMG_4703.JPG",
+            "bytes": 4151266
+          },
+          {
+            "path": "dataset/real/IMG_6651.MP4",
+            "bytes": 4026821
+          },
+          {
+            "path": "dataset/ai/ChatGPT Image Feb 22, 2026, 12_25_42 AM.png",
+            "bytes": 3877561
+          },
+          {
+            "path": "dataset/ai/ChatGPT Image Feb 22, 2026, 12_27_56 AM.png",
+            "bytes": 3636121
+          },
+          {
+            "path": "dataset/real/IMG_6649.JPG",
+            "bytes": 3533695
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 0,
+            "example-domain": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 2,
+            "unsupported-scale": 0
+          },
+          "paths": [
+            "README.md",
+            "svm_model.py"
+          ],
+          "total": 2
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "Yor-Ayrin-iwnl",
+      "public": true,
+      "classification": "flagship-frontend",
+      "status": "VERIFIED",
+      "intent": "Focused 3D developer portfolio with case-study navigation and automated tests.",
+      "pin_priority": 1,
+      "github": {
+        "description": "Production-grade 3D developer portfolio with 4,000 GPU-driven particles, lazy-loaded case studies, and 24 automated tests.",
+        "homepage": "https://www.yorayriniwnl.in",
+        "topics": [
+          "framer-motion",
+          "nextjs",
+          "portfolio",
+          "react-three-fiber",
+          "threejs",
+          "typescript",
+          "vitest"
+        ],
+        "language": "CSS",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-08-28T02:56:18Z",
+        "pushed_at": "2026-08-26T08:57:03Z"
+      },
+      "git": {
+        "head": "0a97bdd1aa67521977451881b3dfef754c78b6f6",
+        "head_subject": "Rebuild portfolio evidence-first experience",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor-Ayrin-iwnl.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 45,
+        "tracked_bytes": 5373189,
+        "readme_files": [
+          "README.md",
+          "public/avatars/mixamo/README.txt"
+        ],
+        "manifest_files": [
+          "next.config.js",
+          "package.json",
+          "vercel.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "public/images/ayush-portrait.png",
+            "bytes": 2072400
+          },
+          {
+            "path": "public/images/ayush-avatar.png",
+            "bytes": 2013508
+          },
+          {
+            "path": "public/resume.pdf",
+            "bytes": 530685
+          },
+          {
+            "path": "public/images/ayush-about.png",
+            "bytes": 402953
+          },
+          {
+            "path": "package-lock.json",
+            "bytes": 230793
+          },
+          {
+            "path": "app/portfolio.css",
+            "bytes": 23244
+          },
+          {
+            "path": "public/Ayush_Roy_CV.docx",
+            "bytes": 17158
+          },
+          {
+            "path": "app/page.tsx",
+            "bytes": 12111
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 2,
+            "example-domain": 0
+          },
+          "paths": [
+            "APPLICATION_STRATEGY.md"
+          ],
+          "total": 2
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    },
+    {
+      "name": "Eat-a-lot",
+      "public": true,
+      "classification": "demo-product",
+      "status": "DEMO",
+      "intent": "Food ordering/product prototype; document SQLite durability, seeded accounts, and hosted-runtime boundaries.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": "https://eat-a-lot-five.vercel.app",
+        "topics": [],
+        "language": "HTML",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T07:15:42Z",
+        "pushed_at": "2026-04-23T07:15:38Z"
+      },
+      "git": {
+        "head": "01f30cc05da16652ef010ded9b551d370a85d2ff",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Eat-a-lot.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 50,
+        "tracked_bytes": 520621,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "package.json",
+          "vercel.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "public/assets/catalog/brand-banner.jpg",
+            "bytes": 99146
+          },
+          {
+            "path": "public/index.html",
+            "bytes": 76734
+          },
+          {
+            "path": "package-lock.json",
+            "bytes": 68630
+          },
+          {
+            "path": "public/admin.html",
+            "bytes": 38997
+          },
+          {
+            "path": "db/database.js",
+            "bytes": 9155
+          },
+          {
+            "path": "public/assets/catalog/chatpata-paneer-maggi.jpg",
+            "bytes": 8464
+          },
+          {
+            "path": "public/assets/catalog/special-pahadi-vegii-maggie.jpg",
+            "bytes": 8387
+          },
+          {
+            "path": "public/assets/catalog/tangy-mushroom-maggie.jpg",
+            "bytes": 8177
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 29,
+            "example-domain": 0
+          },
+          "paths": [
+            "public/admin.html",
+            "public/index.html",
+            "routes/orders.js",
+            "routes/settings.js"
+          ],
+          "total": 29
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 3
+          },
+          "paths": [
+            "README.md",
+            "public/admin.html",
+            "routes/admin.js"
+          ],
+          "total": 3
+        }
+      }
+    },
+    {
+      "name": "Trading_Bot",
+      "public": true,
+      "classification": "systems-experiment",
+      "status": "EXPERIMENTAL",
+      "intent": "Binance Futures Testnet execution experiment; no live trading or profit claims.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "Python",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T07:16:05Z",
+        "pushed_at": "2026-04-23T07:16:02Z"
+      },
+      "git": {
+        "head": "47bc178cbd2c444e637b7327bec9e93fce7805e8",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Trading_Bot.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 31,
+        "tracked_bytes": 165623,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "pyproject.toml",
+          "requirements.txt"
+        ],
+        "ci_workflows": [],
+        "test_files": [
+          "tests/__init__.py",
+          "tests/test_cli.py",
+          "tests/test_client.py",
+          "tests/test_exchange_info.py",
+          "tests/test_execution.py",
+          "tests/test_orders.py",
+          "tests/test_validators.py"
+        ],
+        "largest_files": [
+          {
+            "path": "ui.py",
+            "bytes": 81167
+          },
+          {
+            "path": "tests/test_client.py",
+            "bytes": 8409
+          },
+          {
+            "path": "bot/exchange_info.py",
+            "bytes": 7896
+          },
+          {
+            "path": "bot/client.py",
+            "bytes": 7174
+          },
+          {
+            "path": "tests/test_orders.py",
+            "bytes": 6850
+          },
+          {
+            "path": "cli.py",
+            "bytes": 6091
+          },
+          {
+            "path": "README.md",
+            "bytes": 5429
+          },
+          {
+            "path": "tests/test_exchange_info.py",
+            "bytes": 5068
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 3,
+            "example-domain": 0
+          },
+          "paths": [
+            "README.md",
+            "ui.py"
+          ],
+          "total": 3
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 1
+          },
+          "paths": [
+            "README.md"
+          ],
+          "total": 1
+        }
+      }
+    },
+    {
+      "name": "Taskflow",
+      "public": true,
+      "classification": "engineering-submission",
+      "status": "DEMO",
+      "intent": "Backend-focused internship assignment and workflow app; preserve assignment provenance.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": "https://taskflow-xi-ochre.vercel.app",
+        "topics": [],
+        "language": "JavaScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-23T07:16:01Z",
+        "pushed_at": "2026-04-23T07:15:58Z"
+      },
+      "git": {
+        "head": "d33b193bc3e82874279f70ed0ca685de90b384e9",
+        "head_subject": "Add CLAUDE.md",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Taskflow.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 63,
+        "tracked_bytes": 351152,
+        "readme_files": [
+          "README.md"
+        ],
+        "manifest_files": [
+          "backend/Dockerfile",
+          "backend/package.json",
+          "docker-compose.yml",
+          "frontend/Dockerfile",
+          "frontend/package.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [],
+        "largest_files": [
+          {
+            "path": "backend/package-lock.json",
+            "bytes": 86809
+          },
+          {
+            "path": "frontend/package-lock.json",
+            "bytes": 44384
+          },
+          {
+            "path": "frontend/src/index.css",
+            "bytes": 43882
+          },
+          {
+            "path": "frontend/src/pages/TasksPage.jsx",
+            "bytes": 12734
+          },
+          {
+            "path": "frontend/src/pages/DashboardPage.jsx",
+            "bytes": 9183
+          },
+          {
+            "path": "frontend/src/pages/AdminPage.jsx",
+            "bytes": 8956
+          },
+          {
+            "path": "docs/postman/TaskFlow.postman_collection.json",
+            "bytes": 8123
+          },
+          {
+            "path": "frontend/src/pages/ProfilePage.jsx",
+            "bytes": 8002
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 47,
+            "example-domain": 4
+          },
+          "paths": [
+            "README.md",
+            "backend/src/config/swagger.js",
+            "backend/src/db/migrate.js",
+            "backend/src/models/Task.js",
+            "backend/src/routes/v1/auth.routes.js",
+            "backend/src/routes/v1/task.routes.js",
+            "backend/src/validators/task.validator.js",
+            "docs/postman/TaskFlow.postman_collection.json",
+            "frontend/src/components/TaskModal.jsx",
+            "frontend/src/index.css",
+            "frontend/src/pages/AdminPage.jsx",
+            "frontend/src/pages/DashboardPage.jsx",
+            "frontend/src/pages/LoginPage.jsx",
+            "frontend/src/pages/ProfilePage.jsx",
+            "frontend/src/pages/RegisterPage.jsx",
+            "frontend/src/pages/TasksPage.jsx"
+          ],
+          "total": 51
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 2
+          },
+          "paths": [
+            "frontend/index.html"
+          ],
+          "total": 2
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 8
+          },
+          "paths": [
+            "backend/src/config/database.js",
+            "backend/src/routes/v1/auth.routes.js",
+            "frontend/src/pages/LoginPage.jsx",
+            "frontend/src/pages/RegisterPage.jsx"
+          ],
+          "total": 8
+        }
+      }
+    },
+    {
+      "name": "Yor_Token_Usage",
+      "public": true,
+      "classification": "browser-extension",
+      "status": "EXPERIMENTAL",
+      "intent": "Chrome MV3 multi-AI usage cockpit; permission, storage, privacy, and clear-data behavior need a dedicated README.",
+      "pin_priority": null,
+      "github": {
+        "description": null,
+        "homepage": null,
+        "topics": [],
+        "language": "JavaScript",
+        "default_branch": "main",
+        "archived": false,
+        "fork": false,
+        "updated_at": "2026-04-25T15:02:01Z",
+        "pushed_at": "2026-04-25T18:00:45Z"
+      },
+      "git": {
+        "head": "f10c59dfe8c1bbfd1a2df2a38e2fa14b08d32e8b",
+        "head_subject": "Fix popup width collapse",
+        "branch": "main",
+        "remote": "https://github.com/yorayriniwnl/Yor_Token_Usage.git",
+        "shallow": true
+      },
+      "checks": {
+        "tracked_file_count": 64,
+        "tracked_bytes": 368019,
+        "readme_files": [
+          "backend/README.md"
+        ],
+        "manifest_files": [
+          "backend/Dockerfile",
+          "backend/package.json"
+        ],
+        "ci_workflows": [],
+        "test_files": [
+          "backend/tests/quotaPolicy.test.ts",
+          "backend/tests/syncPagination.test.ts",
+          "backend/tests/usageQueue.test.ts",
+          "backend/tests/usageSchema.test.ts",
+          "backend/tests/usageWorkerPolicy.test.ts"
+        ],
+        "largest_files": [
+          {
+            "path": "content/index.js",
+            "bytes": 86597
+          },
+          {
+            "path": "backend/package-lock.json",
+            "bytes": 59810
+          },
+          {
+            "path": "background/service-worker.js",
+            "bytes": 45557
+          },
+          {
+            "path": "dashboard/index.js",
+            "bytes": 16964
+          },
+          {
+            "path": "popup/index.js",
+            "bytes": 15534
+          },
+          {
+            "path": "settings/index.js",
+            "bytes": 13694
+          },
+          {
+            "path": "backend/README.md",
+            "bytes": 12999
+          },
+          {
+            "path": "popup/popup.css",
+            "bytes": 9997
+          }
+        ],
+        "empty_repository": false,
+        "large_artifact_paths": [],
+        "placeholder_scan": {
+          "counts": {
+            "replace-marker": 0,
+            "example-domain": 1
+          },
+          "paths": [
+            "backend/README.md"
+          ],
+          "total": 1
+        },
+        "hype_scan": {
+          "counts": {
+            "valuation-language": 0,
+            "unsupported-scale": 0
+          },
+          "paths": [],
+          "total": 0
+        },
+        "sensitive_literal_scan": {
+          "counts": {
+            "private-key-marker": 0,
+            "credential-assignment": 0
+          },
+          "paths": [],
+          "total": 0
+        }
+      }
+    }
+  ]
+}

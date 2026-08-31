@@ -18,6 +18,26 @@ class ProfileDataTests(unittest.TestCase):
 
         validate_profile(self.profile)
 
+    def test_repository_audit_locks_public_scope_and_proposed_pins(self):
+        from scripts.profile_data import load_repository_audit
+
+        audit = load_repository_audit()
+        self.assertEqual(audit["account"], "yorayriniwnl")
+        self.assertEqual(audit["repository_count_expected"], 25)
+        self.assertEqual(audit["repository_count_audited"], 25)
+        self.assertEqual(audit["missing_local_clones"], [])
+        self.assertEqual(
+            [item["name"] for item in audit["proposed_pins"]],
+            [
+                "Yor-Ayrin-iwnl",
+                "yor-talksv2",
+                "Yor-Helios",
+                "Yor-Zenith",
+                "Yor-Ai-vs-real-image",
+                "Hyperliquid_Analysis",
+            ],
+        )
+
     def test_design_tokens_are_the_palette_source_of_truth(self):
         from scripts.profile_data import load_design_tokens
 
@@ -47,7 +67,7 @@ class ProfileDataTests(unittest.TestCase):
         vision = next(project for project in self.profile["projects"] if project["id"] == "vision")
         evidence = " ".join([vision["summary"], *vision["proof"], *vision["stack"]]).lower()
 
-        for term in ("lbp", "glcm", "svm", "78%", "sub-two-second"):
+        for term in ("lbp", "glcm", "svm", "78.5%", "local inference"):
             self.assertIn(term, evidence)
         self.assertNotIn("cnn", evidence)
         self.assertNotIn("deep learning", evidence)

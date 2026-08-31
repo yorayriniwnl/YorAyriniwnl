@@ -37,9 +37,9 @@
     },
     {
       "id": "accuracy",
-      "value": "78%",
+      "value": "78.5%",
       "label": "HELD-OUT ACCURACY",
-      "detail": "LBP and GLCM features with a calibrated SVM"
+      "detail": "Deterministic 80/20 holdout using LBP and GLCM features with an RBF SVM"
     },
     {
       "id": "prototypes",
@@ -160,7 +160,7 @@
       "status": "Live",
       "repo": "https://github.com/yorayriniwnl/Yor-Ayrin-iwnl",
       "live": "https://www.yorayriniwnl.in",
-      "summary": "A production-grade portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface.",
+      "summary": "A focused portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface.",
       "proof": [
         "4,000 GPU-driven particles",
         "24 tests across five Vitest suites",
@@ -232,8 +232,8 @@
       "live": "https://yor-ai-vs-real-image.vercel.app",
       "summary": "A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.",
       "proof": [
-        "78% held-out test accuracy",
-        "Sub-two-second local inference",
+        "78.5% held-out test accuracy",
+        "Local inference with committed SVM and scaler artifacts",
         "Lighting-invariant preprocessing"
       ],
       "stack": [
@@ -252,10 +252,10 @@
       "name": "Yor Talks V2",
       "codename": "REALTIME COMMUNICATION",
       "period": "April 2026",
-      "status": "Live",
+      "status": "Demo",
       "repo": "https://github.com/yorayriniwnl/yor-talksv2",
       "live": "https://yor-talks.vercel.app",
-      "summary": "A full-stack communication platform with realtime messaging, typed interface components, and scalable conversation APIs.",
+      "summary": "A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path.",
       "proof": [
         "Low-latency bidirectional messaging",
         "Authentication, conversation, and message APIs",
@@ -263,11 +263,12 @@
       ],
       "stack": [
         "React",
-        "Next.js",
+        "Vite",
         "TypeScript",
-        "FastAPI",
-        "WebSocket",
-        "Tailwind CSS"
+        "Express",
+        "Socket.IO",
+        "Postgres",
+        "Drizzle"
       ]
     },
     {

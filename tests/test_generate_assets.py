@@ -36,7 +36,7 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertTrue(ET.fromstring(nav).tag.endswith("svg"))
         self.assertTrue(ET.fromstring(card).tag.endswith("svg"))
         self.assertIn("AI VS. REAL IMAGE DETECTOR", card)
-        self.assertIn("78% HELD-OUT TEST ACCURACY", card.upper())
+        self.assertIn("78.5% HELD-OUT TEST ACCURACY", card.upper())
         self.assertIn("data:image/jpeg;base64,", card)
 
     def test_manifest_contains_only_public_readme_assets(self):

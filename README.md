@@ -36,7 +36,7 @@
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-apps.svg" width="350" alt="5 END-TO-END APPS. Designed and built across product, backend, realtime, and ML layers"/>
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-tests.svg" width="350" alt="24 AUTOMATED TESTS. Across five Vitest suites in the portfolio"/>
 <br/>
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-accuracy.svg" width="350" alt="78% HELD-OUT ACCURACY. LBP and GLCM features with a calibrated SVM"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-accuracy.svg" width="350" alt="78.5% HELD-OUT ACCURACY. Deterministic 80/20 holdout using LBP and GLCM features with an RBF SVM"/>
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/proof-prototypes.svg" width="350" alt="3 DEVPOST PROTOTYPES. Shipped under competitive hackathon deadlines"/>
 </p>
 
@@ -57,7 +57,7 @@
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand Personal Developer Portfolio mission, proof, and stack"/></picture></summary>
 
 <a href="https://www.yorayriniwnl.in">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-portfolio.svg" width="100%" alt="SYS-01: Personal Developer Portfolio. Live, March-April 2026. A production-grade portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface. Proof: 4,000 GPU-driven particles; 24 tests across five Vitest suites; Automated GitHub content synchronization. Stack: Next.js 16; TypeScript; Three.js; React Three Fiber; Framer Motion; Vitest."/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-portfolio.svg" width="100%" alt="SYS-01: Personal Developer Portfolio. Live, March-April 2026. A focused portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface. Proof: 4,000 GPU-driven particles; 24 tests across five Vitest suites; Automated GitHub content synchronization. Stack: Next.js 16; TypeScript; Three.js; React Three Fiber; Framer Motion; Vitest."/>
 </a>
 
 </details>
@@ -110,7 +110,7 @@
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand AI vs. Real Image Detector mission, proof, and stack"/></picture></summary>
 
 <a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision.svg" width="100%" alt="SYS-04: AI vs. Real Image Detector. Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Proof: 78% held-out test accuracy; Sub-two-second local inference; Lighting-invariant preprocessing. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit."/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision.svg" width="100%" alt="SYS-04: AI vs. Real Image Detector. Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Proof: 78.5% held-out test accuracy; Local inference with committed SVM and scaler artifacts; Lighting-invariant preprocessing. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit."/>
 </a>
 
 </details>
@@ -128,7 +128,7 @@
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg" width="240" alt="Expand Yor Talks V2 mission, proof, and stack"/></picture></summary>
 
 <a href="https://yor-talks.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks.svg" width="100%" alt="SYS-05: Yor Talks V2. Live, April 2026. A full-stack communication platform with realtime messaging, typed interface components, and scalable conversation APIs. Proof: Low-latency bidirectional messaging; Authentication, conversation, and message APIs; Responsive reusable interface system. Stack: React; Next.js; TypeScript; FastAPI; WebSocket; Tailwind CSS."/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks.svg" width="100%" alt="SYS-05: Yor Talks V2. Demo, April 2026. A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path. Proof: Low-latency bidirectional messaging; Authentication, conversation, and message APIs; Responsive reusable interface system. Stack: React; Vite; TypeScript; Express; Socket.IO; Postgres; Drizzle."/>
 </a>
 
 </details>
