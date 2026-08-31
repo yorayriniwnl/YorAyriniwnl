@@ -11,8 +11,7 @@
   },
   "contact": {
     "email": "ayushroy.dev@gmail.com",
-    "portfolio": "https://yorayriniwnl.vercel.app",
-    "hub": "https://www.yorayriniwnl.in",
+    "portfolio": "https://www.yorayriniwnl.in",
     "github": "https://github.com/yorayriniwnl",
     "linkedin": "https://www.linkedin.com/in/yorayriniwnl",
     "devpost": "https://devpost.com/yorayriniwnl",
@@ -34,7 +33,7 @@
       "id": "tests",
       "value": "24",
       "label": "AUTOMATED TESTS",
-      "detail": "Resume-reported across five Vitest suites in an earlier portfolio iteration"
+      "detail": "Across five Vitest suites in the portfolio"
     },
     {
       "id": "accuracy",
@@ -157,21 +156,23 @@
       "order": 1,
       "name": "Personal Developer Portfolio",
       "codename": "THE PRODUCT UNIVERSE",
-      "period": "March 2026-Present",
+      "period": "March-April 2026",
       "status": "Live",
       "repo": "https://github.com/yorayriniwnl/Yor-Ayrin-iwnl",
-      "live": "https://yorayriniwnl.vercel.app",
-      "summary": "A focused portfolio presenting selected work, project context, engineering capabilities, and a direct contact path.",
+      "live": "https://www.yorayriniwnl.in",
+      "summary": "A production-grade portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface.",
       "proof": [
-        "Four selected project presentations",
-        "Dedicated work, capabilities, and contact sections",
-        "Next.js, React, and TypeScript implementation"
+        "4,000 GPU-driven particles",
+        "24 tests across five Vitest suites",
+        "Automated GitHub content synchronization"
       ],
       "stack": [
         "Next.js 16",
         "TypeScript",
-        "React",
-        "CSS"
+        "Three.js",
+        "React Three Fiber",
+        "Framer Motion",
+        "Vitest"
       ]
     },
     {
@@ -254,20 +255,18 @@
       "status": "Live",
       "repo": "https://github.com/yorayriniwnl/yor-talksv2",
       "live": "https://yor-talks.vercel.app",
-      "summary": "A social platform connecting profiles, feeds, communities, and conversations through a React frontend and an Express API.",
+      "summary": "A full-stack communication platform with realtime messaging, typed interface components, and scalable conversation APIs.",
       "proof": [
-        "Socket.IO realtime communication",
-        "Express APIs with Postgres and Drizzle persistence",
-        "React and Vite interface with shared TypeScript packages"
+        "Low-latency bidirectional messaging",
+        "Authentication, conversation, and message APIs",
+        "Responsive reusable interface system"
       ],
       "stack": [
         "React",
-        "Vite",
+        "Next.js",
         "TypeScript",
-        "Express",
-        "Socket.IO",
-        "Postgres",
-        "Drizzle",
+        "FastAPI",
+        "WebSocket",
         "Tailwind CSS"
       ]
     },

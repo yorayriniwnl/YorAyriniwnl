@@ -10,8 +10,6 @@ on:
       - "data/profile.json"
       - "scripts/generate_stats.py"
       - "scripts/profile_data.py"
-      - "scripts/gallery.py"
-      - "requirements-profile.txt"
       - ".github/workflows/build-stats.yml"
 
 permissions:
@@ -37,9 +35,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install shared renderer dependencies
-        run: python -m pip install -r main/requirements-profile.txt
-
       - name: Fetch live data + render stat cards
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,10 +52,7 @@ jobs:
           path: output
 
       - name: Copy generated card into output branch
-        run: |
-          cp main/generated/stats.svg output/
-          cp main/generated/gallery-record*.svg output/
-          cp main/generated/public-record.json output/
+        run: cp main/generated/stats.svg output/
 
       - name: Commit if changed
         uses: stefanzweifel/git-auto-commit-action@v5

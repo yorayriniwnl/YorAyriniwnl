@@ -14,9 +14,6 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn("actions/setup-python@v5", workflow)
         self.assertIn("python scripts/profile_data.py", workflow)
         self.assertIn("python scripts/optimize_assets.py", workflow)
-        self.assertIn("python scripts/prepare_gallery_media.py", workflow)
-        self.assertIn('"PROFILE.md"', workflow)
-        self.assertIn('"data/gallery.json"', workflow)
         self.assertIn("python main/scripts/generate_motion.py", workflow)
         self.assertIn("cp main/generated/systems-reel*.gif output/", workflow)
         self.assertIn("cp main/generated/systems-reel*-still.png output/", workflow)
@@ -32,10 +29,6 @@ class WorkflowTests(unittest.TestCase):
         for filename in (
             "stats.svg",
             "contribution-stream.svg",
-            "gallery-record-v1.svg",
-            "gallery-record-mobile-v1.svg",
-            "gallery-contributions-v1.svg",
-            "gallery-contributions-mobile-v1.svg",
         ):
             self.assertIn(f"! -name '{filename}'", workflow)
         self.assertNotIn("github-contribution-grid-snake", workflow)
@@ -47,20 +40,12 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn('"scripts/profile_data.py"', workflow)
         self.assertIn("actions/setup-python@v5", workflow)
         self.assertIn("python main/scripts/generate_stats.py", workflow)
-        self.assertIn('"scripts/gallery.py"', workflow)
-        self.assertIn("pip install -r main/requirements-profile.txt", workflow)
-        self.assertIn("cp main/generated/gallery-record*.svg output/", workflow)
-        self.assertIn("cp main/generated/public-record.json output/", workflow)
 
     def test_contribution_workflow_generates_owned_stream(self):
         workflow = (WORKFLOWS / "contribution-stream.yml").read_text(encoding="utf-8")
 
         self.assertIn("python main/scripts/generate_contributions.py", workflow)
         self.assertIn("contribution-stream.svg", workflow)
-        self.assertIn('"scripts/gallery.py"', workflow)
-        self.assertIn("pip install -r main/requirements-profile.txt", workflow)
-        self.assertIn("cp main/generated/gallery-contributions*.svg output/", workflow)
-        self.assertIn("cp main/generated/contribution-record.json output/", workflow)
         self.assertNotIn("Platane/snk", workflow)
 
 

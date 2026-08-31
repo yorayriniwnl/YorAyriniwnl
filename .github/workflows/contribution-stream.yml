@@ -9,8 +9,6 @@ on:
     paths:
       - "scripts/generate_contributions.py"
       - "scripts/profile_data.py"
-      - "scripts/gallery.py"
-      - "requirements-profile.txt"
       - "scripts/fonts/dm-mono-500.woff2"
       - "data/profile.json"
       - ".github/workflows/contribution-stream.yml"
@@ -38,9 +36,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install shared renderer dependencies
-        run: python -m pip install -r main/requirements-profile.txt
-
       - name: Fetch public contribution calendar and render owned animation
         run: python main/scripts/generate_contributions.py
 
@@ -51,10 +46,7 @@ jobs:
           path: output
 
       - name: Publish contribution stream
-        run: |
-          cp main/generated/contribution-stream.svg output/
-          cp main/generated/gallery-contributions*.svg output/
-          cp main/generated/contribution-record.json output/
+        run: cp main/generated/contribution-stream.svg output/
 
       - name: Commit if changed
         uses: stefanzweifel/git-auto-commit-action@v5

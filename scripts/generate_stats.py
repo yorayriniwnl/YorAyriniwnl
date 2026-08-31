@@ -350,7 +350,6 @@ SAMPLE_STREAK = None
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sample", action="store_true", help="render with placeholder data, no network calls")
-    ap.add_argument("--overview-only", action="store_true", help="skip optional per-repository language and streak requests")
     args = ap.parse_args()
 
     dmmono_b64 = b64_font("dm-mono-500.woff2")
@@ -364,24 +363,14 @@ def main():
         token = os.environ.get("GITHUB_TOKEN")
         stats_token = os.environ.get("STATS_TOKEN")
         overview, non_fork = fetch_overview(token)
-        ranked_langs = [] if args.overview_only else fetch_languages(non_fork, token)
-        streak = None if args.overview_only else fetch_streak(stats_token)
+        ranked_langs = fetch_languages(non_fork, token)
+        streak = fetch_streak(stats_token)
 
     svg = build_stats_combined_svg(overview, ranked_langs, streak, dmmono_b64, cormorant_b64)
     path = os.path.join(OUT_DIR, "stats.svg")
     with open(path, "w", encoding="utf-8") as f:
         f.write(svg)
     print(f"wrote {path} ({len(svg)/1024:.1f} KB)")
-
-    from gallery import asset_name, render_public_record
-
-    checked_at = datetime.datetime.now(datetime.timezone.utc).strftime("%d %b %Y / %H:%M UTC")
-    for mobile in (False, True):
-        gallery_path = Path(OUT_DIR) / asset_name("record", mobile)
-        gallery_path.write_text(render_public_record(overview, checked_at, mobile), encoding="utf-8")
-        print(f"wrote {gallery_path.name}")
-    snapshot = {"updated_at": checked_at, "source": "GitHub REST API", "overview": overview}
-    (Path(OUT_DIR) / "public-record.json").write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

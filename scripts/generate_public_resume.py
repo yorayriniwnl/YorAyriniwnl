@@ -142,7 +142,7 @@ def build_resume(raw_output: Path) -> None:
     pdf.drawRightString(width - margin, height - 47, profile["identity"]["location"])
     pdf.drawRightString(width - margin, height - 59, "Open to SWE internships / remote")
     draw_link(pdf, "ayushroy.dev@gmail.com", "mailto:ayushroy.dev@gmail.com", header_right_x, height - 73, regular, 7.1)
-    draw_link(pdf, "Portfolio / website", profile["contact"]["portfolio"], 467, height - 73, regular, 7.1)
+    draw_link(pdf, "yorayriniwnl.in", profile["contact"]["portfolio"], 470, height - 73, regular, 7.1)
 
     pdf.setStrokeColor(CRIMSON)
     pdf.setLineWidth(2)
@@ -181,11 +181,11 @@ def build_resume(raw_output: Path) -> None:
     project_ids = ["portfolio", "helios", "zenith", "vision", "talks"]
     project_lookup = {project["id"]: project for project in profile["projects"]}
     project_notes = {
-        "portfolio": "Selected project showcase / Next.js + React + TypeScript / work and contact paths",
+        "portfolio": "4,000 GPU particles / 24 tests across 5 suites / automated GitHub sync",
         "helios": "FastAPI + WebSocket telemetry / targeted anomaly alerts / Docker Compose",
         "zenith": "3D roof planning / energy simulation / subsidy, ROI, and payback analysis",
         "vision": "LBP + GLCM texture features / calibrated SVM / 78% held-out accuracy",
-        "talks": "React + Vite / Express + Socket.IO / Postgres + Drizzle persistence",
+        "talks": "Realtime messaging / auth and conversation APIs / typed responsive UI",
     }
     for project_id in project_ids:
         project = project_lookup[project_id]
@@ -214,7 +214,7 @@ def build_resume(raw_output: Path) -> None:
     metric_width = (right_width - 8) / 2
     metrics = profile["proof"]
     draw_metric(pdf, metrics[0]["value"], "END-TO-END APPS", right_x, y_right, metric_width, bold, regular)
-    draw_metric(pdf, metrics[1]["value"], "TESTS / EARLIER BUILD", right_x + metric_width + 8, y_right, metric_width, bold, regular)
+    draw_metric(pdf, metrics[1]["value"], "AUTOMATED TESTS", right_x + metric_width + 8, y_right, metric_width, bold, regular)
     y_right -= 51
     draw_metric(pdf, metrics[2]["value"], "HELD-OUT ACCURACY", right_x, y_right, metric_width, bold, regular)
     draw_metric(pdf, metrics[3]["value"], "DEVPOST BUILDS", right_x + metric_width + 8, y_right, metric_width, bold, regular)
@@ -309,7 +309,7 @@ def validate_resume(output_path: Path) -> None:
         raise RuntimeError("public resume must remain exactly one page")
 
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    forbidden = ("+91", "89189", "yorayriniwnl@gmail.com", "deep learning", "CNN", "CGPA", "4,000 GPU")
+    forbidden = ("+91", "89189", "yorayriniwnl@gmail.com", "deep learning", "CNN")
     leaked = [term for term in forbidden if term.lower() in text.lower()]
     if leaked:
         raise RuntimeError(f"private or stale resume content found: {', '.join(leaked)}")
