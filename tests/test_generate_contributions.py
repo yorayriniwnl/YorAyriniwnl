@@ -49,6 +49,23 @@ class GenerateContributionsTests(unittest.TestCase):
 
         self.assertEqual(metrics, {"total": 9, "active": 2, "longest": 2, "peak": 7})
 
+    def test_selectable_snapshot_matches_chart_counts(self):
+        days = [
+            {"date": generate_contributions.dt.date(2026, 8, 29), "count": 0},
+            {"date": generate_contributions.dt.date(2026, 8, 27), "count": 2},
+            {"date": generate_contributions.dt.date(2026, 8, 28), "count": 7},
+        ]
+        snapshot = generate_contributions.contribution_snapshot(days, "31 Aug 2026 / 06:00 UTC")
+        self.assertEqual(snapshot["total"], 9)
+        self.assertEqual(snapshot["active_days"], 2)
+        self.assertEqual(snapshot["first_date"], "2026-08-27")
+        self.assertEqual(snapshot["last_date"], "2026-08-29")
+        self.assertEqual([item["count"] for item in snapshot["days"]], [2, 7, 0])
+        self.assertFalse(snapshot["sample"])
+        self.assertTrue(generate_contributions.contribution_snapshot(days, "preview", sample=True)["sample"])
+        with self.assertRaises(ValueError):
+            generate_contributions.contribution_snapshot([], "31 Aug 2026")
+
 
 if __name__ == "__main__":
     unittest.main()

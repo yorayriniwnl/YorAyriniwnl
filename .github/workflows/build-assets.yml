@@ -5,7 +5,11 @@ on:
     branches: [main]
     paths:
       - "README.md"
+      - "PROFILE.md"
+      - "data/gallery.json"
       - "data/profile.json"
+      - "scripts/gallery.py"
+      - "scripts/prepare_gallery_media.py"
       - "scripts/generate_assets.py"
       - "scripts/generate_motion.py"
       - "scripts/generate_readme.py"
@@ -19,6 +23,8 @@ on:
   pull_request:
     paths:
       - "README.md"
+      - "PROFILE.md"
+      - "data/gallery.json"
       - "data/profile.json"
       - "scripts/**"
       - "assets/**"
@@ -59,6 +65,7 @@ jobs:
         run: |
           python scripts/profile_data.py
           python scripts/optimize_assets.py
+          python scripts/prepare_gallery_media.py
           git diff --exit-code -- assets
 
       - name: Generate profile visuals
@@ -86,6 +93,10 @@ jobs:
           find output -maxdepth 1 -type f -name '*.svg' \
             ! -name 'stats.svg' \
             ! -name 'contribution-stream.svg' \
+            ! -name 'gallery-record-v1.svg' \
+            ! -name 'gallery-record-mobile-v1.svg' \
+            ! -name 'gallery-contributions-v1.svg' \
+            ! -name 'gallery-contributions-mobile-v1.svg' \
             -delete
           cp main/generated/*.svg output/
           cp main/generated/systems-reel*.gif output/

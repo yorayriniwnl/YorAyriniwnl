@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render seamless systems reels and reduced-motion posters.
+"""Render a short rotating signal study and reduced-motion posters.
 
 The imagery is an illustrative motion study, not simulated live telemetry.
 Both layouts use the same scenes and palette, with no external assets or fonts.
@@ -23,10 +23,10 @@ from profile_data import load_profile
 
 ROOT = SCRIPT_DIR.parent
 OUT_DIR = ROOT / "generated"
-WIDTH, HEIGHT = 1200, 280
-MOBILE_SIZE = (600, 530)
-FRAME_COUNT = 64
-FRAME_DURATION = 60
+WIDTH, HEIGHT = 900, 320
+MOBILE_SIZE = (600, 650)
+FRAME_COUNT = 48
+FRAME_DURATION = 120
 PALETTE = load_profile()["visual_contract"]["palette"]
 TAU = math.tau
 
@@ -143,39 +143,45 @@ SCENES = (
 
 
 def build_frame(frame_index, mobile=False):
-    phase = (frame_index % FRAME_COUNT) / FRAME_COUNT
+    index = frame_index % FRAME_COUNT
+    phase = index / FRAME_COUNT
+    scene_index = min(len(SCENES) - 1, index * len(SCENES) // FRAME_COUNT)
+    _, label, _, renderer = SCENES[scene_index]
+    label = "INTERFACES" if scene_index == 0 else label
     size = MOBILE_SIZE if mobile else (WIDTH, HEIGHT)
-    frame = Image.new("RGB", size, (3, 3, 5))
+    frame = Image.new("RGB", size, (5, 5, 7))
     draw = ImageDraw.Draw(frame)
-    columns = 2 if mobile else 4
-    margin, gap, top = 16, 12, 64
-    panel_w = (size[0] - 2 * margin - (columns - 1) * gap) // columns
-    panel_h = 217 if mobile else 200
-    draw.text((20, 16), "THE SYSTEMS I BUILD", font=font(23), fill=PAPER)
-    if not mobile:
-        draw.text((937, 22), "ILLUSTRATIVE MOTION STUDY", font=font(13), fill=(166, 131, 140))
-    draw.line((20, 49, size[0] - 20, 49), fill=(52, 15, 21), width=1)
-    draw.line((20, 49, 80, 49), fill=SIGNAL, width=1)
-
-    for index, (code, label, note, renderer) in enumerate(SCENES):
-        left = margin + (index % columns) * (panel_w + gap)
-        y = top + (index // columns) * (panel_h + gap)
-        right, bottom = left + panel_w, y + panel_h
-        draw.rounded_rectangle((left, y, right, bottom), radius=6, fill=(8, 5, 8), outline=(67, 21, 28))
-        draw.text((left + 14, y + 13), label, font=font(25), fill=PAPER)
-        draw.text((right - 32, y + 18), code, font=font(13), fill=CRIMSON)
-        draw.line((left + 14, bottom - 32, right - 14, bottom - 32), fill=(52, 15, 21), width=1)
-        renderer(draw, (left + right) / 2, y + (113 if mobile else 104), phase)
-        draw.text((left + 14, bottom - 23), note, font=font(13), fill=(177, 145, 154))
-        draw.line((right - 27, bottom - 18, right - 14, bottom - 18), fill=CRIMSON, width=1)
+    body_size = 42 if mobile else 26
+    draw.rounded_rectangle((1, 1, size[0]-2, size[1]-2), radius=14,
+                           outline=(72, 32, 41), width=2)
+    draw.text((30, 24), "AYR / SIGNAL STUDY", font=font(body_size), fill=SIGNAL)
+    draw.line((30, 78, size[0]-30, 78), fill=DEEP, width=2)
+    diagram = Image.new("RGB", (300, 190), (5, 5, 7))
+    renderer(ImageDraw.Draw(diagram), 150, 95, phase)
+    if mobile:
+        draw.text((30, 105), label, font=font(58), fill=PAPER)
+        frame.paste(diagram.resize((540, 342), Image.Resampling.LANCZOS), (30, 170))
+        draw = ImageDraw.Draw(frame)
+        draw.text((30, 524), "ILLUSTRATIVE ART", font=font(body_size), fill=SIGNAL)
+        draw.text((30, 577), "NOT LIVE DATA", font=font(body_size), fill=(196, 181, 183))
+    else:
+        frame.paste(diagram.resize((340, 215), Image.Resampling.LANCZOS), (22, 85))
+        draw = ImageDraw.Draw(frame)
+        draw.text((407, 116), label, font=font(49), fill=PAPER)
+        draw.text((410, 189), "ILLUSTRATIVE ART", font=font(body_size), fill=SIGNAL)
+        draw.text((410, 235), "NOT LIVE DATA", font=font(body_size), fill=(196, 181, 183))
     return frame
+
+
+def build_poster(mobile=False):
+    return build_frame(0, mobile).quantize(colors=16, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
 
 
 def build_systems_reel_gif(mobile=False):
     frames = [build_frame(index, mobile) for index in range(FRAME_COUNT)]
     # A shared palette prevents frame-to-frame shimmer and keeps transfers small.
-    palette = frames[0].quantize(colors=32, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
-    indexed = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
+    palette = build_poster(mobile)
+    indexed = [palette.copy(), *[frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames[1:]]]
     buffer = BytesIO()
     indexed[0].save(buffer, format="GIF", save_all=True, append_images=indexed[1:],
                     duration=FRAME_DURATION, loop=0, optimize=True, disposal=1,
@@ -185,11 +191,11 @@ def build_systems_reel_gif(mobile=False):
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    for mobile, stem in ((False, "systems-reel"), (True, "systems-reel-mobile")):
+    for mobile, stem in ((False, "systems-reel-v2"), (True, "systems-reel-mobile-v2")):
         path = OUT_DIR / f"{stem}.gif"
         payload = build_systems_reel_gif(mobile)
         path.write_bytes(payload)
-        build_frame(0, mobile).save(OUT_DIR / f"{stem}-still.png", optimize=True)
+        build_poster(mobile).save(OUT_DIR / f"{stem}-still.png", optimize=True)
         print(f"wrote {path.name} ({len(payload) / 1024:.1f} KB, {FRAME_COUNT} frames)")
     return 0
 

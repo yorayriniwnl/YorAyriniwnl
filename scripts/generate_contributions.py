@@ -7,6 +7,7 @@ import argparse
 import base64
 import datetime as dt
 import html
+import json
 import re
 import sys
 import urllib.error
@@ -273,6 +274,22 @@ def build_contribution_stream_svg(days: list[dict], username: str = USERNAME) ->
 </svg>'''
 
 
+def contribution_snapshot(days, checked_at, sample=False):
+    ordered = sorted(days, key=lambda item: item["date"])
+    if not ordered:
+        raise ValueError("a contribution snapshot must have daily data")
+    return {
+        "updated_at": checked_at,
+        "source": f"https://github.com/users/{USERNAME}/contributions",
+        "sample": sample,
+        "first_date": ordered[0]["date"].isoformat(),
+        "last_date": ordered[-1]["date"].isoformat(),
+        "total": sum(item["count"] for item in ordered),
+        "active_days": sum(item["count"] > 0 for item in ordered),
+        "days": [{"date": item["date"].isoformat(), "count": item["count"]} for item in ordered],
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sample", action="store_true", help="render deterministic sample data")
@@ -287,6 +304,15 @@ def main() -> int:
     output = OUT_DIR / "contribution-stream.svg"
     output.write_text(svg, encoding="utf-8")
     print(f"wrote {output} ({output.stat().st_size / 1024:.1f} KB)")
+    from gallery import asset_name, render_contributions
+
+    checked_at = dt.datetime.now(dt.timezone.utc).strftime("%d %b %Y / %H:%M UTC")
+    for mobile in (False, True):
+        path = OUT_DIR / asset_name("contributions", mobile)
+        path.write_text(render_contributions(days, checked_at, mobile, sample=args.sample), encoding="utf-8")
+        print(f"wrote {path.name}")
+    (OUT_DIR / "contribution-record.json").write_text(
+        json.dumps(contribution_snapshot(days, checked_at, args.sample), indent=2) + "\n", encoding="utf-8")
     return 0
 
 

@@ -2468,84 +2468,21 @@ def canonical_project_card_spec(project):
 
 
 def build_asset_manifest():
-    """Build only assets used by the public README."""
-    manifest = {
-        "hero.svg": build_cinematic_hero_svg(CONFIG),
-        "identity-console.svg": build_identity_console_svg(CONFIG),
-        "signal-strip.svg": build_signal_strip_svg(CONFIG),
-        "field-notes.svg": build_field_notes_svg(CONFIG),
-        "skills-matrix.svg": build_skills_matrix_svg(CONFIG),
-        "operator-gateway.svg": build_operator_gateway_svg(CONFIG),
-        "achievement-rack.svg": build_achievement_rack_svg(CONFIG),
-        "protocol-engineer.svg": build_protocol_engineer_svg(CONFIG),
-        "protocol-product.svg": build_protocol_product_svg(CONFIG),
-        "protocol-human.svg": build_protocol_human_svg(CONFIG),
-        "project-portfolio-v2.svg": build_featured_project_svg(CONFIG),
-        "project-portfolio-mobile-v2.svg": build_featured_project_svg(CONFIG, mobile=True),
-        "dossier-toggle.svg": build_dossier_toggle_svg(),
-        "arsenal.svg": build_arsenal_svg(CONFIG),
-        "finale.svg": build_finale_svg(CONFIG),
-    }
+    """The approved hero plus the responsive proof-gallery assets."""
+    from gallery import assert_approved_hero, build_gallery_manifest
 
-    for index, (target, label) in enumerate((
-        ("projects", "PROJECTS"), ("experience", "EXPERIENCE"),
-        ("activity", "ACTIVITY"), ("contact", "CONTACT"),
-    )):
-        manifest[f"jump-{target}.svg"] = build_jump_button_svg(label, index)
-
-    for index, proof_item in enumerate(PROFILE["proof"]):
-        manifest[f'proof-{proof_item["id"]}.svg'] = build_proof_card_svg(
-            proof_item, index, CONFIG
-        )
-
-    nav_specs = (
-        ("nav-portfolio.svg", "PORTFOLIO", "ENTER THE SYSTEM", "◢"),
-        ("nav-projects.svg", "PROJECTS", "EXPLORE THE BUILDS", "⌁"),
-        ("nav-resume.svg", "RÉSUMÉ", "VIEW PUBLIC RECORD", "▤"),
-        ("nav-linkedin.svg", "LINKEDIN", "OPEN PROFESSIONAL LINK", "◇"),
-        ("nav-live.svg", "LIVE SYSTEM", "LAUNCH DEPLOYMENT", "◈"),
-        ("nav-source.svg", "SOURCE", "INSPECT REPOSITORY", "⌁"),
-        ("nav-experiment.svg", "LIVE LAB", "OPEN EXPERIMENT", "◉"),
-        ("nav-email.svg", "EMAIL", "TRANSMIT MESSAGE", "◇"),
-        ("nav-github.svg", "GITHUB", "OPEN BUILD RECORD", "⌁"),
-        ("nav-devpost.svg", "DEVPOST", "VIEW PROTOTYPES", "◈"),
-        ("nav-steam.svg", "STEAM", "OPEN HUMAN ARCHIVE", "◉"),
-    )
-    for index, (filename, label, code, glyph) in enumerate(nav_specs):
-        manifest[filename] = build_nav_button_svg(
-            label, code, glyph, CONFIG, CONFIG["seed"] + 1500 + index
-        )
-
-    section_specs = (
-        ("section-projects.svg", "01", "SELECTED / SYSTEMS", "FIVE BUILDS · PUBLIC PROOF · VERIFIED DATA"),
-        ("section-field.svg", "02", "FIELD / NOTES", "EXPERIENCE · EDUCATION · TRAJECTORY"),
-        ("section-arsenal.svg", "03", "TECHNICAL / RANGE", "PRODUCT · BACKEND · APPLIED ML"),
-        ("section-record.svg", "04", "LIVE / TELEMETRY", "TOTAL VIEWS · 365-DAY STREAM · PUBLIC SIGNALS"),
-        ("section-operator.svg", "05", "OPERATOR / MODE", "INTERACTIVE PROTOCOL ARCHIVE"),
-        ("section-channel.svg", "06", "OPEN / CHANNEL", "INTERNSHIPS · PRODUCTS · COLLABORATION"),
-    )
-    for filename, index, title, subtitle in section_specs:
-        manifest[filename] = build_section_header_svg(index, title, subtitle, CONFIG)
-
-    projects = {project["id"]: project for project in PROFILE["projects"]}
-    for project_id in ("helios", "zenith", "vision", "talks"):
-        manifest[f"project-{project_id}.svg"] = build_project_card_svg(
-            canonical_project_card_spec(projects[project_id]), CONFIG
-        )
-
-    for project in PROFILE["projects"]:
-        manifest[f'project-dossier-{project["id"]}.svg'] = build_project_dossier_svg(
-            project, CONFIG
-        )
-
-    return manifest
+    hero = build_cinematic_hero_svg(CONFIG)
+    assert_approved_hero(hero)
+    return {"hero.svg": hero, **build_gallery_manifest(PROFILE)}
 
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest = build_asset_manifest()
     expected = set(manifest)
-    preserved = {"stats.svg", "contribution-stream.svg"}
+    preserved = {"stats.svg", "contribution-stream.svg", "gallery-record-v1.svg",
+                 "gallery-record-mobile-v1.svg", "gallery-contributions-v1.svg",
+                 "gallery-contributions-mobile-v1.svg"}
 
     for stale_path in OUT_DIR.glob("*.svg"):
         if stale_path.name not in expected | preserved:

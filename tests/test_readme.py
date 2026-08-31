@@ -1,186 +1,115 @@
+import html
 import importlib.util
 import re
 import unittest
 from pathlib import Path
 
-
 ROOT = Path(__file__).parents[1]
-README_PATH = ROOT / "README.md"
-SCRIPT = ROOT / "scripts" / "generate_readme.py"
-spec = importlib.util.spec_from_file_location("generate_readme", SCRIPT)
+spec = importlib.util.spec_from_file_location("generate_readme", ROOT / "scripts/generate_readme.py")
 generate_readme = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(generate_readme)
+from gallery import asset_name, build_gallery_manifest, load_gallery
 
 
 class ReadmeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.profile = generate_readme.load_profile()
-        cls.readme = README_PATH.read_text(encoding="utf-8")
+        cls.gallery = load_gallery()
+        cls.readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        cls.text = (ROOT / "PROFILE.md").read_text(encoding="utf-8")
 
-    def test_readme_matches_canonical_generator(self):
+    def test_both_editions_match_their_generators(self):
         self.assertEqual(self.readme, generate_readme.render_readme(self.profile))
+        self.assertEqual(self.text, generate_readme.render_text_profile(self.profile))
 
-    def test_primary_narrative_is_visual_and_proof_first(self):
-        section_assets = [
-            "section-projects.svg",
-            "section-field.svg",
-            "section-arsenal.svg",
-            "section-record.svg",
-            "section-operator.svg",
-            "section-channel.svg",
-        ]
-        positions = [self.readme.index(asset) for asset in section_assets]
-
+    def test_featured_work_precedes_labs_and_personal_record(self):
+        names = [asset_name(key) for key in self.gallery["featured"] + self.gallery["lab"]]
+        positions = [self.readme.index(name) for name in names]
         self.assertEqual(positions, sorted(positions))
-        self.assertLess(
-            self.readme.index("section-projects.svg"),
-            self.readme.index("section-operator.svg"),
-        )
-        for project_id in generate_readme.SELECTED_PROJECT_IDS:
-            project = next(item for item in self.profile["projects"] if item["id"] == project_id)
-            self.assertIn(project["name"], self.readme)
-            for proof in project["proof"]:
-                self.assertIn(proof, self.readme)
+        self.assertLess(self.readme.index(asset_name("portfolio")), self.readme.index("systems-reel-v2.gif"))
+        self.assertLess(self.readme.index(asset_name("zenith")), self.readme.index(asset_name("section-lab")))
 
-    def test_every_visible_authored_block_is_visual(self):
-        without_comments = re.sub(r"<!--.*?-->", "", self.readme, flags=re.DOTALL)
-        visible_text = re.sub(r"<[^>]+>", "", without_comments).strip()
+    def test_opening_is_compact_and_links_to_readable_edition(self):
+        opening = self.readme.split(asset_name("portfolio"), 1)[0]
+        self.assertIn("PROFILE.md", opening)
+        self.assertIn("Ayush_Roy_Resume_Public.pdf", opening)
+        for old in ("identity-console", "proof-apps", "signal-strip", "systems-reel"):
+            self.assertNotIn(old, opening)
 
-        self.assertEqual(visible_text, "")
-        self.assertNotIn("<h1", self.readme)
+    def test_every_authored_visible_block_and_link_remains_visual(self):
+        no_comments = re.sub(r"<!--.*?-->", "", self.readme, flags=re.S)
+        self.assertEqual(re.sub(r"<[^>]+>", "", no_comments).strip(), "")
         self.assertNotRegex(self.readme, r"(?m)^#{1,6}\s")
-        self.assertNotRegex(self.readme, r"(?m)^\s*[-*+]\s+")
-        self.assertRegex(
-            self.readme,
-            r"<summary><picture><img\b[^>]+></picture></summary>",
-        )
+        self.assertEqual(re.findall(r"(?<!!)\[[^\]]+\]\([^)]+\)", self.readme), [])
+        links = re.findall(r'<a href="[^"]+">.*?</a>', self.readme, re.S)
+        self.assertTrue(links)
+        self.assertTrue(all("<img " in link for link in links))
+        for href in ("mailto:ayushroy.dev@gmail.com", self.profile["contact"]["linkedin"], self.profile["contact"]["steam"]):
+            self.assertIn(href, self.readme)
 
-    def test_layout_is_mobile_safe_and_images_are_accessible(self):
-        image_tags = re.findall(r"<img\b[^>]*?/>", self.readme)
-        widths = re.findall(r'width="([^"]+)"', self.readme)
+    def test_images_have_semantic_alts_and_bounded_controls(self):
+        for tag in re.findall(r"<img\b[^>]*>", self.readme):
+            self.assertRegex(tag, r'alt="[^"]+"')
+            self.assertRegex(tag, r'width="(?:100%|140|180|280)"')
+        self.assertNotIn("TOTAL+PROFILE+VIEWS", self.readme)
+        self.assertIn("label=PROFILE+VIEWS", self.readme)
+        self.assertIn("not a unique-visitor", self.readme)
 
-        self.assertGreaterEqual(len(image_tags), 59)
-        self.assertTrue(all(re.search(r'alt="[^"]+"', tag) for tag in image_tags))
-        self.assertTrue(all(width in {"100%", "350", "240", "160"} for width in widths))
-        self.assertNotIn('width="24%"', self.readme)
-        self.assertNotIn('width="49%"', self.readme)
-        self.assertIn("https://komarev.com/ghpvc/?", self.readme)
-        self.assertIn("label=TOTAL+PROFILE+VIEWS", self.readme)
-        self.assertIn("systems-reel.gif", self.readme)
-        self.assertIn("systems-reel-mobile.gif", self.readme)
-        self.assertIn("systems-reel-still.png", self.readme)
-        self.assertIn("systems-reel-mobile-still.png", self.readme)
-        self.assertNotIn("kinetic-primer.gif", self.readme)
-        self.assertIn("skills-matrix.svg?rev=kinetic-v2", self.readme)
-        self.assertIn("field-notes.svg?rev=privacy-v2", self.readme)
-        self.assertNotIn("github-readme-activity-graph", self.readme)
-        for filename in generate_readme.PROJECT_VISUALS.values():
-            self.assertIn(f'output/{filename}" width="100%"', self.readme)
-
-    def test_every_authored_hyperlink_is_a_visual_control(self):
-        markdown_links = re.findall(r"(?<!!)\[[^\]]+\]\([^)]+\)", self.readme)
-        html_links = re.findall(r'<a href="[^"]+">.*?</a>', self.readme, re.DOTALL)
-
-        self.assertEqual(markdown_links, [])
-        self.assertGreaterEqual(len(html_links), 30)
-        self.assertTrue(all("<img " in link for link in html_links))
-        for filename in (
-            "nav-live.svg",
-            "nav-source.svg",
-            "nav-experiment.svg",
-            "nav-email.svg",
-            "nav-github.svg",
-            "nav-devpost.svg",
-            "nav-steam.svg",
-        ):
-            self.assertIn(f"output/{filename}", self.readme)
-
-    def test_section_shortcuts_resolve_and_dossiers_remain_native(self):
+    def test_disclosures_and_section_navigation_are_native(self):
         targets = re.findall(r'<a href="#([^"]+)"', self.readme)
         anchors = re.findall(r'<a id="([^"]+)"', self.readme)
         self.assertEqual(len(anchors), len(set(anchors)))
-        self.assertEqual(set(targets), set(anchors))
-        self.assertEqual(set(anchors), {"selected-systems", "field-notes", "public-record", "open-channel"})
-        self.assertEqual(self.readme.count("<details>"), len(generate_readme.SELECTED_PROJECT_IDS) + 1)
+        self.assertTrue(set(targets).issubset(anchors))
+        self.assertEqual(self.readme.count("<details>"), len(self.profile["projects"]) + 1)
         self.assertEqual(self.readme.count("<details>"), self.readme.count("</details>"))
         self.assertNotIn("<details open", self.readme)
-        self.assertIn('media="(max-width: 600px) and (prefers-reduced-motion: reduce)"', self.readme)
+        for project in self.profile["projects"]:
+            self.assertIn(f'Under the hood: {html.escape(project["name"], quote=True)}', self.readme)
         self.assertIn('media="(prefers-reduced-motion: reduce)"', self.readme)
 
-    def test_public_content_is_current_and_privacy_safe(self):
-        lower = self.readme.lower()
-
-        self.assertIn("mailto:ayushroy.dev@gmail.com", lower)
-        self.assertIn("ayush_roy_resume_public.pdf", lower)
-        self.assertNotIn("yorayriniwnl@gmail.com", lower)
-        self.assertNotIn("prisma", lower)
-        self.assertNotIn("deep learning", lower)
-        self.assertNotIn("convolutional neural network", lower)
-        self.assertIsNone(re.search(r"(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}", self.readme))
-
-    def test_readme_references_only_published_visual_assets(self):
+    def test_only_expected_published_assets_are_referenced(self):
         referenced = set(re.findall(r"/output/([a-z0-9-]+\.(?:svg|gif|png))", self.readme))
-        expected = {
-            "hero.svg",
-            "systems-reel.gif",
-            "systems-reel-mobile.gif",
-            "systems-reel-still.png",
-            "systems-reel-mobile-still.png",
-            "jump-projects.svg",
-            "jump-experience.svg",
-            "jump-activity.svg",
-            "jump-contact.svg",
-            "dossier-toggle.svg",
-            "identity-console.svg",
-            "proof-apps.svg",
-            "proof-tests.svg",
-            "proof-accuracy.svg",
-            "proof-prototypes.svg",
-            "nav-portfolio.svg",
-            "nav-projects.svg",
-            "nav-resume.svg",
-            "nav-linkedin.svg",
-            "nav-live.svg",
-            "nav-source.svg",
-            "nav-experiment.svg",
-            "nav-email.svg",
-            "nav-github.svg",
-            "nav-devpost.svg",
-            "nav-steam.svg",
-            "signal-strip.svg",
-            "section-projects.svg",
-            "section-field.svg",
-            "project-dossier-portfolio.svg",
-            "project-dossier-helios.svg",
-            "project-dossier-zenith.svg",
-            "project-dossier-vision.svg",
-            "project-dossier-talks.svg",
-            "project-dossier-feelings.svg",
-            "project-portfolio-v2.svg",
-            "project-portfolio-mobile-v2.svg",
-            "project-helios.svg",
-            "project-zenith.svg",
-            "project-vision.svg",
-            "project-talks.svg",
-            "section-arsenal.svg",
-            "arsenal.svg",
-            "skills-matrix.svg",
-            "field-notes.svg",
-            "section-record.svg",
-            "stats.svg",
-            "contribution-stream.svg",
-            "section-operator.svg",
-            "operator-gateway.svg",
-            "achievement-rack.svg",
-            "protocol-engineer.svg",
-            "protocol-product.svg",
-            "protocol-human.svg",
-            "section-channel.svg",
-            "finale.svg",
-        }
-
+        expected = {"hero.svg", *build_gallery_manifest(self.profile), *generate_readme.DYNAMIC_ASSETS, *generate_readme.MOTION_ASSETS}
         self.assertEqual(referenced, expected)
+
+    def test_all_projects_have_source_controls_and_responsive_notes(self):
+        for project in self.profile["projects"]:
+            key = project["id"]
+            spec = self.gallery["projects"][key]
+            block = "\n".join(generate_readme.project_block(project, "yorayriniwnl", self.gallery))
+            self.assertIn(project["repo"], block)
+            self.assertIn(asset_name(key, True), block)
+            self.assertIn(asset_name("dossier-" + key, True), block)
+            if not spec["show_site"] and project.get("live"):
+                self.assertNotIn('href="' + project["live"], block)
+
+    def test_text_edition_is_complete_selectable_and_motion_free(self):
+        self.assertNotIn("<img", self.text)
+        self.assertNotIn("![", self.text)
+        self.assertIn("# Ayush Roy", self.text)
+        for project in self.profile["projects"]:
+            self.assertIn(project["name"], self.text)
+            for proof in project["proof"]:
+                self.assertIn(proof, self.text)
+        for items in self.profile["skills"].values():
+            for skill in items:
+                self.assertIn(skill, self.text)
+        self.assertIn("earlier portfolio iteration", self.text)
+        self.assertIn("not an end-to-end certification", self.text)
+
+    def test_public_record_links_to_selectable_source_data(self):
+        for filename in ("public-record.json", "contribution-record.json"):
+            self.assertIn("/blob/output/" + filename, self.readme)
+            self.assertIn("/blob/output/" + filename, self.text)
+
+    def test_public_content_omits_private_and_retired_claims(self):
+        for copy in (self.readme, self.text):
+            for term in ("cgpa", "7.00/10", "yorayriniwnl@gmail.com", "4,000 GPU"):
+                self.assertNotIn(term.lower(), copy.lower())
+            self.assertIsNone(re.search(r"(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}", copy))
+        self.assertIn("Express", self.text)
+        self.assertIn("Socket.IO", self.text)
 
 
 if __name__ == "__main__":

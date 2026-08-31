@@ -1,0 +1,2 @@
+# Generated PDFs contain binary streams and format-required xref whitespace.
+*.pdf binary
