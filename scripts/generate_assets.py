@@ -17,7 +17,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from profile_data import load_profile
+from profile_data import load_design_tokens, load_profile
 
 
 ROOT = SCRIPT_DIR.parent
@@ -25,9 +25,18 @@ HERE = str(SCRIPT_DIR)
 OUT_DIR = ROOT / "generated"
 ASSET_DIR = ROOT / "assets"
 PROFILE = load_profile()
+TOKENS = load_design_tokens()
 IDENTITY = PROFILE["identity"]
 VISUAL_CONTRACT = PROFILE["visual_contract"]
-PALETTE = VISUAL_CONTRACT["palette"]
+PALETTE = {
+    "void": TOKENS["color"]["void"],
+    "panel": TOKENS["color"]["panel"],
+    "crimson": TOKENS["color"]["crimson"],
+    "deep_crimson": TOKENS["color"]["deepCrimson"],
+    "signal": TOKENS["color"]["signal"],
+    "paper": TOKENS["color"]["paper"],
+    "muted": TOKENS["color"]["muted"],
+}
 
 CONFIG = {
     "name": IDENTITY["name"],
@@ -38,14 +47,14 @@ CONFIG = {
     # and the #671515 -> #8c1616 crimson header gradient used by the live
     # profile's showcase bars.
     "bg_stops": [
-        (0, "#000000"), (18, "#050101"), (42, "#1f0404"),
-        (64, "#671515"), (82, "#180303"), (100, "#000000"),
+        (0, PALETTE["void"]), (18, "#050101"), (42, "#1f0404"),
+        (64, PALETTE["deep_crimson"]), (82, "#180303"), (100, PALETTE["void"]),
     ],
     "primary": PALETTE["crimson"],
-    "secondary": "#b92b2b",
+    "secondary": TOKENS["color"]["secondaryCrimson"],
     "sparkle": PALETTE["signal"],
     "muted": PALETTE["muted"],
-    "shimmer": "#ffffff",
+    "shimmer": TOKENS["color"]["shimmer"],
     "name_color": PALETTE["paper"],
     "seed": 42,
     "star_counts": {"far": 34, "mid": 24, "near": 13},
@@ -69,8 +78,8 @@ CONFIG = {
             ("The domain changes; the standard doesn't.", 364.9),
         ],
     },
-    "wave_header_stops": [(0, "#000000"), (60, "#671515"), (100, "#160303")],
-    "wave_footer_stops": [(0, "#160303"), (60, "#671515"), (100, "#000000")],
+    "wave_header_stops": [(0, PALETTE["void"]), (60, PALETTE["deep_crimson"]), (100, TOKENS["gradient"]["header"][2])],
+    "wave_footer_stops": [(0, TOKENS["gradient"]["footer"][0]), (60, PALETTE["deep_crimson"]), (100, PALETTE["void"])],
     # (output filename, glyph, config color key) — one small seal per work-
     # section project, in the same primary/secondary alternation the
     # badges under each project already use.

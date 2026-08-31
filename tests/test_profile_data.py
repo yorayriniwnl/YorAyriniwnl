@@ -18,6 +18,18 @@ class ProfileDataTests(unittest.TestCase):
 
         validate_profile(self.profile)
 
+    def test_design_tokens_are_the_palette_source_of_truth(self):
+        from scripts.profile_data import load_design_tokens
+
+        tokens = load_design_tokens()
+        self.assertEqual(tokens["color"]["crimson"], "#e84b4b")
+        self.assertEqual(tokens["color"]["deepCrimson"], "#671515")
+        self.assertEqual(
+            self.profile["visual_contract"]["palette"]["deep_crimson"],
+            tokens["color"]["deepCrimson"],
+        )
+        self.assertIn("reducedMotionMediaQuery", tokens["accessibility"])
+
     def test_public_contact_uses_professional_email_and_no_phone(self):
         serialized = json.dumps(self.profile, ensure_ascii=False)
 

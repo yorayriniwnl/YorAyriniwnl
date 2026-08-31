@@ -13,6 +13,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_PATH = ROOT / "data" / "profile.json"
+DEFAULT_TOKENS_PATH = ROOT / "design" / "yor-tokens.json"
 PHONE_PATTERN = re.compile(r"(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}")
 REQUIRED_PROJECT_IDS = {"portfolio", "helios", "zenith", "vision", "talks", "feelings"}
 STALE_PUBLIC_CLAIMS = {
@@ -24,6 +25,15 @@ STALE_PUBLIC_CLAIMS = {
 
 class ProfileDataError(ValueError):
     """Raised when canonical profile data violates a publishing contract."""
+
+
+def load_design_tokens(path: Path = DEFAULT_TOKENS_PATH) -> dict[str, Any]:
+    """Load the shared visual contract used by profile asset generation."""
+    with path.open(encoding="utf-8") as stream:
+        tokens = json.load(stream)
+    if tokens.get("schema_version") != 1:
+        raise ProfileDataError("unsupported design token schema version")
+    return tokens
 
 
 def load_profile(path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]:
@@ -90,6 +100,28 @@ def _validate_hero(profile: dict[str, Any]) -> None:
             raise ProfileDataError(f"optimized visual asset is missing: {relative_path}")
 
 
+def _validate_design_tokens(profile: dict[str, Any]) -> None:
+    tokens = load_design_tokens()
+    palette = profile["visual_contract"]["palette"]
+    expected = {
+        "void": tokens["color"]["void"],
+        "panel": tokens["color"]["panel"],
+        "crimson": tokens["color"]["crimson"],
+        "deep_crimson": tokens["color"]["deepCrimson"],
+        "signal": tokens["color"]["signal"],
+        "paper": tokens["color"]["paper"],
+        "muted": tokens["color"]["muted"],
+    }
+    if palette != expected:
+        raise ProfileDataError(
+            "visual contract palette must match design/yor-tokens.json"
+        )
+    required_sections = {"color", "gradient", "typography", "geometry", "motion", "signal", "effects", "breakpoints", "accessibility"}
+    missing = sorted(required_sections - tokens.keys())
+    if missing:
+        raise ProfileDataError(f"design token contract is missing: {', '.join(missing)}")
+
+
 def validate_profile(profile: dict[str, Any]) -> None:
     _require(
         profile,
@@ -125,6 +157,7 @@ def validate_profile(profile: dict[str, Any]) -> None:
 
     _validate_projects(profile["projects"])
     _validate_public_content(profile)
+    _validate_design_tokens(profile)
     _validate_hero(profile)
 
 
