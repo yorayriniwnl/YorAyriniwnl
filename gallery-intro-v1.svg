@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="231" viewBox="0 0 900 231" role="img" aria-labelledby="title description" data-gallery="proof-gallery-v1" data-layout="desktop">
+<title id="title">Ayush Roy / The Proof Gallery</title><desc id="description">I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world.</desc>
+<defs><style>
+.sans{font-family:Arial,Helvetica,sans-serif}.serif{font-family:GalleryDisplay,Georgia,serif;font-weight:600}
+.thread{stroke-dasharray:70 900;animation:thread 16s linear infinite}
+@keyframes thread{to{stroke-dashoffset:-970}}
+@media(prefers-reduced-motion:reduce){.thread{animation:none;stroke-dasharray:none;opacity:.45}}
+</style>
+<linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101014"/><stop offset=".5" stop-color="#09070a"/><stop offset="1" stop-color="#210c12"/></linearGradient>
+<linearGradient id="filament"><stop stop-color="#48101f"/><stop offset=".5" stop-color="#e84b4b"/><stop offset="1" stop-color="#ffd2bf"/></linearGradient>
+<radialGradient id="halo"><stop stop-color="#e84b4b" stop-opacity=".19"/><stop offset="1" stop-color="#e84b4b" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x="1" y="1" width="898" height="229" rx="14" fill="url(#surface)" stroke="#482029"/>
+<text x="40" y="62" font-size="26" fill="#ff9d91" class="sans" text-anchor="start" data-text-role="caption" >AYR / PROOF GALLERY</text><text x="40" y="117" font-size="26" fill="#f5eaea" class="sans" text-anchor="start" data-text-role="body" >Full-Stack Developer / Applied ML Builder</text><text x="40" y="167.1" font-size="26" fill="#c4b5b7" class="sans" text-anchor="start" data-text-role="body" >Open to SWE internships / remote</text>
+</svg>
