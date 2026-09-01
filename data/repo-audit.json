@@ -57,18 +57,18 @@
         "archived": false,
         "fork": false,
         "updated_at": "2026-08-31T08:04:24Z",
-        "pushed_at": "2026-08-31T08:01:43Z"
+        "pushed_at": "2026-09-01T08:55:30Z"
       },
       "git": {
-        "head": "caaba3ba62e7e65a78989e11f6e082c3c76b2b5c",
-        "head_subject": "chore(profile): sync canonical facts and audit contract",
+        "head": "8d1e70350d1cfc9f960d04e5f1d6cdb058af11cb",
+        "head_subject": "chore(profile): refresh repository audit after ascension",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yorayriniwnl.git",
         "shallow": true
       },
       "checks": {
         "tracked_file_count": 47,
-        "tracked_bytes": 13116569,
+        "tracked_bytes": 13117632,
         "readme_files": [
           "README.md"
         ],
@@ -428,7 +428,7 @@
       },
       "checks": {
         "tracked_file_count": 268,
-        "tracked_bytes": 1432805,
+        "tracked_bytes": 1424402,
         "readme_files": [
           "README.md",
           "frontend/README.md"
@@ -458,7 +458,7 @@
         "largest_files": [
           {
             "path": "frontend/tsconfig.tsbuildinfo",
-            "bytes": 324611
+            "bytes": 316208
           },
           {
             "path": "data/helios.db",
@@ -559,18 +559,18 @@
         "archived": false,
         "fork": false,
         "updated_at": "2026-09-01T08:49:02Z",
-        "pushed_at": "2026-09-01T08:43:14Z"
+        "pushed_at": "2026-09-01T08:58:30Z"
       },
       "git": {
-        "head": "8e08ce088c7a9c8c03e2b33c9ed84b0478d3783c",
-        "head_subject": "feat(talks): align social prototype with YOR",
+        "head": "1b2477f61d86d265409a0fb94140e52e1ff8b710",
+        "head_subject": "chore(talks): track design contract checker",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Talks.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 86,
-        "tracked_bytes": 673619,
+        "tracked_file_count": 87,
+        "tracked_bytes": 675339,
         "readme_files": [
           "README.md"
         ],
