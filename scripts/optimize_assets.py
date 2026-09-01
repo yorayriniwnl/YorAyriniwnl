@@ -4,20 +4,13 @@
 from __future__ import annotations
 
 import hashlib
-import sys
+import json
 from pathlib import Path
 from typing import NamedTuple
 
 from PIL import Image, ImageOps
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
-
-from profile_data import load_profile
-
-
-ROOT = SCRIPT_DIR.parent
+ROOT = Path(__file__).resolve().parent.parent
 ASSET_DIR = ROOT / "assets"
 
 
@@ -30,10 +23,10 @@ class AssetRecipe(NamedTuple):
 
 RECIPES = (
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (1600, 900), 86),
-    AssetRecipe("project-helios-keyart-v2.png", "project-helios-keyart-v2-optimized.jpg", (1200, 675)),
-    AssetRecipe("project-zenith-keyart-v2.png", "project-zenith-keyart-v2-optimized.jpg", (1200, 675)),
-    AssetRecipe("project-vision-keyart-v2.png", "project-vision-keyart-v2-optimized.jpg", (1200, 675)),
-    AssetRecipe("project-talks-keyart-v2.png", "project-talks-keyart-v2-optimized.jpg", (1200, 675)),
+    AssetRecipe("project-helios-keyart-v3.png", "project-helios-keyart-v3-optimized.jpg", (900, 506), 70),
+    AssetRecipe("project-zenith-keyart-v3.png", "project-zenith-keyart-v3-optimized.jpg", (900, 506), 70),
+    AssetRecipe("project-vision-keyart-v3.png", "project-vision-keyart-v3-optimized.jpg", (900, 506), 70),
+    AssetRecipe("project-talks-keyart-v3.png", "project-talks-keyart-v3-optimized.jpg", (900, 506), 70),
 )
 
 
@@ -42,8 +35,11 @@ def sha256(path: Path) -> str:
 
 
 def approved_hero_contract() -> tuple[Path, str]:
-    profile = load_profile()
-    contract = profile["visual_contract"]
+    # Read only the hero contract here. Full profile validation intentionally
+    # runs after optimization, because a new derivative cannot exist until
+    # this script has created it.
+    with (ROOT / "data" / "profile.json").open(encoding="utf-8") as stream:
+        contract = json.load(stream)["visual_contract"]
     return ROOT / contract["approved_hero"], contract["approved_hero_sha256"]
 
 

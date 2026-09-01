@@ -76,7 +76,10 @@ class ReadmeTests(unittest.TestCase):
         self.assertIn("field-notes.svg?rev=privacy-v2", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)
         for filename in generate_readme.PROJECT_VISUALS.values():
-            self.assertIn(f'output/{filename}" width="100%"', self.readme)
+            self.assertRegex(
+                self.readme,
+                rf'output/{re.escape(filename)}(?:\?rev=[^" ]+)?" width="100%"',
+            )
 
     def test_every_authored_hyperlink_is_a_visual_control(self):
         markdown_links = re.findall(r"(?<!!)\[[^\]]+\]\([^)]+\)", self.readme)
@@ -181,6 +184,12 @@ class ReadmeTests(unittest.TestCase):
         }
 
         self.assertEqual(referenced, expected)
+
+    def test_project_art_urls_are_cache_versioned(self):
+        for filename in generate_readme.PROJECT_VISUALS.values():
+            if filename == "project-portfolio-v2.svg":
+                continue
+            self.assertIn(f"output/{filename}?rev=detail-v3", self.readme)
 
 
 if __name__ == "__main__":

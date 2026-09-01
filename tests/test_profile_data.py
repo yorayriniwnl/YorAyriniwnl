@@ -89,6 +89,10 @@ class ProfileDataTests(unittest.TestCase):
                 self.assertTrue(path.is_file())
                 self.assertEqual(path.suffix, ".jpg")
 
+        for project_id, relative_path in contract["project_art"].items():
+            with self.subTest(project=project_id):
+                self.assertIn("keyart-v3-optimized.jpg", relative_path)
+
 
 if __name__ == "__main__":
     unittest.main()
