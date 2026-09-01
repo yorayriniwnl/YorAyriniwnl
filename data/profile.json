@@ -296,10 +296,10 @@
     "approved_hero_sha256": "fe1bc51570f6e90292de0b1aea65f8a04ec59f98ace361ab104352a21508078d",
     "optimized_hero": "assets/hero-keyart-v2-optimized.jpg",
     "project_art": {
-      "helios": "assets/project-helios-keyart-v3-optimized.jpg",
-      "zenith": "assets/project-zenith-keyart-v3-optimized.jpg",
-      "vision": "assets/project-vision-keyart-v3-optimized.jpg",
-      "talks": "assets/project-talks-keyart-v3-optimized.jpg"
+      "helios": "assets/project-helios-keyart-v4-optimized.jpg",
+      "zenith": "assets/project-zenith-keyart-v4-optimized.jpg",
+      "vision": "assets/project-vision-keyart-v4-optimized.jpg",
+      "talks": "assets/project-talks-keyart-v4-optimized.jpg"
     },
     "palette": {
       "void": "#000000",

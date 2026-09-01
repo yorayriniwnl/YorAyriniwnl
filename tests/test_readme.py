@@ -189,7 +189,7 @@ class ReadmeTests(unittest.TestCase):
         for filename in generate_readme.PROJECT_VISUALS.values():
             if filename == "project-portfolio-v2.svg":
                 continue
-            self.assertIn(f"output/{filename}?rev=detail-v3", self.readme)
+            self.assertIn(f"output/{filename}?rev=detail-v4", self.readme)
 
 
 if __name__ == "__main__":
