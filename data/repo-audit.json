@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "account": "yorayriniwnl",
-  "reviewed_on": "2026-08-31",
+  "reviewed_on": "2026-09-01",
   "scope": "Public repositories returned by the GitHub user API and checked out locally; no destructive actions performed.",
   "repository_count_expected": 25,
   "repository_count_audited": 25,
@@ -56,19 +56,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-31T07:13:18Z",
-        "pushed_at": "2026-08-31T07:10:44Z"
+        "updated_at": "2026-08-31T08:04:24Z",
+        "pushed_at": "2026-08-31T08:01:43Z"
       },
       "git": {
-        "head": "0493c6bfc55c1efa3f7a6429a0c78bba3fa3686e",
-        "head_subject": "chore(profile): formalize shared YOR design tokens",
+        "head": "caaba3ba62e7e65a78989e11f6e082c3c76b2b5c",
+        "head_subject": "chore(profile): sync canonical facts and audit contract",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yorayriniwnl.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 45,
-        "tracked_bytes": 13009835,
+        "tracked_file_count": 47,
+        "tracked_bytes": 13116569,
         "readme_files": [
           "README.md"
         ],
@@ -126,25 +126,29 @@
         "large_artifact_paths": [],
         "placeholder_scan": {
           "counts": {
-            "replace-marker": 12,
+            "replace-marker": 46,
             "example-domain": 0
           },
           "paths": [
             "CHANGELOG.md",
+            "data/repo-audit.json",
+            "scripts/audit_repositories.py",
             "scripts/generate_stats.py"
           ],
-          "total": 12
+          "total": 46
         },
         "hype_scan": {
           "counts": {
-            "valuation-language": 2,
-            "unsupported-scale": 2
+            "valuation-language": 36,
+            "unsupported-scale": 1
           },
           "paths": [
             "README.md",
-            "data/profile.json"
+            "data/profile.json",
+            "data/repo-audit.json",
+            "scripts/audit_repositories.py"
           ],
-          "total": 4
+          "total": 37
         },
         "sensitive_literal_scan": {
           "counts": {
@@ -178,19 +182,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-28T15:41:49Z",
-        "pushed_at": "2026-08-31T02:53:28Z"
+        "updated_at": "2026-08-31T08:49:46Z",
+        "pushed_at": "2026-08-31T08:44:16Z"
       },
       "git": {
-        "head": "6ba165adf6f32633492de2b4480a85af6a57169d",
-        "head_subject": "Document launch verification and migrations",
+        "head": "5107d6c8eab53419d2c84c453bacad1460fe7ed7",
+        "head_subject": "feat(talks): lock YOR visual framework and case study",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/yor-talksv2.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 638,
-        "tracked_bytes": 8178167,
+        "tracked_file_count": 674,
+        "tracked_bytes": 8476395,
         "readme_files": [
           "README.md",
           "social/ios/App/CapApp-SPM/README.md"
@@ -220,30 +224,45 @@
         ],
         "test_files": [
           "api-server/src/__tests__/account-service.test.ts",
+          "api-server/src/__tests__/ai-response.test.ts",
           "api-server/src/__tests__/auth-controller.test.ts",
           "api-server/src/__tests__/auth-service.test.ts",
+          "api-server/src/__tests__/beta-feature-gates.test.ts",
           "api-server/src/__tests__/community-service.test.ts",
           "api-server/src/__tests__/contact-shield.test.ts",
           "api-server/src/__tests__/content-safety.test.ts",
           "api-server/src/__tests__/disappearing-message.test.ts",
+          "api-server/src/__tests__/email-service.test.ts",
+          "api-server/src/__tests__/env-config.test.ts",
           "api-server/src/__tests__/event-service.test.ts",
+          "api-server/src/__tests__/live-stream-service.test.ts",
           "api-server/src/__tests__/message-service.test.ts",
           "api-server/src/__tests__/moderation-service.test.ts",
           "api-server/src/__tests__/note-service.test.ts",
           "api-server/src/__tests__/operational-metrics-service.test.ts",
           "api-server/src/__tests__/pagination-service.test.ts",
           "api-server/src/__tests__/product-service.test.ts",
+          "api-server/src/__tests__/profile-relationships.test.ts",
           "api-server/src/__tests__/queue-service.test.ts",
+          "api-server/src/__tests__/rate-limit-scope.test.ts",
+          "api-server/src/__tests__/redis-budget.test.ts",
           "api-server/src/__tests__/redis-compat.test.ts",
           "api-server/src/__tests__/search-service.test.ts",
           "api-server/src/__tests__/security-service.test.ts",
+          "api-server/src/__tests__/settings-concurrency.test.ts",
           "api-server/src/__tests__/social-service.test.ts",
+          "api-server/src/__tests__/socket-security.test.ts",
           "api-server/src/__tests__/story-service.test.ts",
           "api-server/src/__tests__/test-helpers.ts",
           "api-server/src/__tests__/trusted-origin.test.ts",
           "api-server/src/__tests__/upload-validation.test.ts",
+          "api-server/src/__tests__/user-view.test.ts",
           "scripts/telemetry-test-server.js",
-          "social/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java"
+          "social/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+          "tests/app-store.test.mjs",
+          "tests/client-session.test.mjs",
+          "tests/migration-safety.test.mjs",
+          "tests/ui-state.test.mjs"
         ],
         "largest_files": [
           {
@@ -260,7 +279,7 @@
           },
           {
             "path": "pnpm-lock.yaml",
-            "bytes": 320012
+            "bytes": 320751
           },
           {
             "path": "social/public/images/ayush.jpg",
@@ -272,22 +291,23 @@
           },
           {
             "path": "lib/api-spec/openapi.yaml",
-            "bytes": 134232
+            "bytes": 136464
           },
           {
             "path": "social/src/premium.css",
-            "bytes": 120166
+            "bytes": 121673
           }
         ],
         "empty_repository": false,
         "large_artifact_paths": [],
         "placeholder_scan": {
           "counts": {
-            "replace-marker": 147,
-            "example-domain": 8
+            "replace-marker": 154,
+            "example-domain": 9
           },
           "paths": [
-            ".github/workflows/ci.yml",
+            "README.md",
+            "api-server/src/__tests__/ai-response.test.ts",
             "api-server/src/__tests__/moderation-service.test.ts",
             "api-server/src/__tests__/queue-service.test.ts",
             "api-server/src/__tests__/search-service.test.ts",
@@ -325,10 +345,9 @@
             "social/src/pages/broadcast-channels.tsx",
             "social/src/pages/business-dashboard.tsx",
             "social/src/pages/clans.tsx",
-            "social/src/pages/clip-studio.tsx",
-            "social/src/pages/communities.tsx"
+            "social/src/pages/clip-studio.tsx"
           ],
-          "total": 155
+          "total": 163
         },
         "hype_scan": {
           "counts": {
@@ -343,11 +362,12 @@
         "sensitive_literal_scan": {
           "counts": {
             "private-key-marker": 0,
-            "credential-assignment": 40
+            "credential-assignment": 50
           },
           "paths": [
             "api-server/src/__tests__/auth-controller.test.ts",
             "api-server/src/__tests__/auth-service.test.ts",
+            "api-server/src/lib/secret-box.ts",
             "api-server/src/scripts/create-profiles.ts",
             "api-server/src/services/account-service.ts",
             "api-server/src/services/ai-service.ts",
@@ -360,13 +380,16 @@
             "lib/api-spec/openapi.yaml",
             "lib/api-zod/src/generated/types/loginBody.ts",
             "lib/api-zod/src/generated/types/registerBody.ts",
+            "lib/db/scripts/migration-safety.mjs",
             "scripts/create-profiles.ts",
             "social/src/lib/api-client.ts",
+            "social/src/lib/password-policy.ts",
             "social/src/lib/store.ts",
             "social/src/pages/auth.tsx",
-            "social/src/pages/settings.tsx"
+            "social/src/pages/settings.tsx",
+            "tests/client-session.test.mjs"
           ],
-          "total": 40
+          "total": 50
         }
       }
     },
@@ -389,23 +412,23 @@
           "typescript",
           "websocket"
         ],
-        "language": "Python",
+        "language": "TypeScript",
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-28T02:58:13Z",
-        "pushed_at": "2026-08-01T00:57:59Z"
+        "updated_at": "2026-08-31T16:42:57Z",
+        "pushed_at": "2026-08-31T16:38:54Z"
       },
       "git": {
-        "head": "959458bbfa60d832acb7199b664e07ee4e987372",
-        "head_subject": "Initial commit",
+        "head": "a99e15056eadb5252bf299c62e8af5844d543d4c",
+        "head_subject": "feat(helios): restore runtime boundaries and lock YOR visual system",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Helios.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 259,
-        "tracked_bytes": 1385412,
+        "tracked_file_count": 268,
+        "tracked_bytes": 1432805,
         "readme_files": [
           "README.md",
           "frontend/README.md"
@@ -435,7 +458,7 @@
         "largest_files": [
           {
             "path": "frontend/tsconfig.tsbuildinfo",
-            "bytes": 316208
+            "bytes": 324611
           },
           {
             "path": "data/helios.db",
@@ -455,7 +478,7 @@
           },
           {
             "path": "frontend/app/page.tsx",
-            "bytes": 13735
+            "bytes": 13846
           },
           {
             "path": "backend/scripts/seed.py",
@@ -463,18 +486,17 @@
           },
           {
             "path": "frontend/app/dashboard/analytics/page.tsx",
-            "bytes": 12286
+            "bytes": 12449
           }
         ],
         "empty_repository": false,
         "large_artifact_paths": [],
         "placeholder_scan": {
           "counts": {
-            "replace-marker": 19,
+            "replace-marker": 8,
             "example-domain": 22
           },
           "paths": [
-            "README.md",
             "backend/app/main.py",
             "backend/scripts/seed.py",
             "backend/tests/test_api_endpoints.py",
@@ -482,28 +504,25 @@
             "backend/tests/test_e2e_flow.py",
             "data-simulator/stream.py",
             "docs/demo.md",
-            "docs/screenshots/alert-detail.svg",
-            "docs/screenshots/alerts.svg",
-            "docs/screenshots/dashboard.svg",
-            "docs/screenshots/mobile-evidence.svg",
             "frontend/app/dashboard/meters/page.tsx",
             "frontend/app/login/page.tsx",
             "frontend/components/alerts/EvidenceUploader.tsx",
             "frontend/package-lock.json",
             "scripts/seed.py"
           ],
-          "total": 41
+          "total": 30
         },
         "hype_scan": {
           "counts": {
-            "valuation-language": 2,
+            "valuation-language": 3,
             "unsupported-scale": 1
           },
           "paths": [
+            "README.md",
             "docs/team_roles.md",
             "docs/tech_stack_justification.md"
           ],
-          "total": 3
+          "total": 4
         },
         "sensitive_literal_scan": {
           "counts": {
@@ -539,19 +558,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-28T20:58:21Z",
-        "pushed_at": "2026-04-28T20:58:17Z"
+        "updated_at": "2026-09-01T08:49:02Z",
+        "pushed_at": "2026-09-01T08:43:14Z"
       },
       "git": {
-        "head": "60cf570f5155f397f38955d7068f5ecb50c6b88f",
-        "head_subject": "Fix broken admin, activity, and creator flows",
+        "head": "8e08ce088c7a9c8c03e2b33c9ed84b0478d3783c",
+        "head_subject": "feat(talks): align social prototype with YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Talks.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 84,
-        "tracked_bytes": 667845,
+        "tracked_file_count": 86,
+        "tracked_bytes": 673619,
         "readme_files": [
           "README.md"
         ],
@@ -577,7 +596,7 @@
           },
           {
             "path": "frontend/src/screens/AllScreens.jsx",
-            "bytes": 73134
+            "bytes": 73364
           },
           {
             "path": "frontend/src/screens/BillionScreens.jsx",
@@ -593,7 +612,7 @@
           },
           {
             "path": "frontend/src/components/PostCard.jsx",
-            "bytes": 25463
+            "bytes": 25484
           },
           {
             "path": "backend/routes/posts.js",
@@ -621,7 +640,7 @@
         },
         "hype_scan": {
           "counts": {
-            "valuation-language": 5,
+            "valuation-language": 2,
             "unsupported-scale": 1
           },
           "paths": [
@@ -629,12 +648,12 @@
             "frontend/src/index.css",
             "frontend/src/screens/BillionScreens.jsx"
           ],
-          "total": 6
+          "total": 3
         },
         "sensitive_literal_scan": {
           "counts": {
             "private-key-marker": 0,
-            "credential-assignment": 12
+            "credential-assignment": 11
           },
           "paths": [
             "backend/routes/auth.js",
@@ -642,7 +661,7 @@
             "frontend/src/screens/AllScreens.jsx",
             "setup.sh"
           ],
-          "total": 12
+          "total": 11
         }
       }
     },
@@ -661,7 +680,7 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T07:15:51Z",
+        "updated_at": "2026-08-31T07:37:18Z",
         "pushed_at": "2026-08-31T07:33:57Z"
       },
       "git": {
@@ -760,23 +779,23 @@
         "description": null,
         "homepage": null,
         "topics": [],
-        "language": "C++",
+        "language": "Python",
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-05-03T12:47:56Z",
-        "pushed_at": "2026-05-03T12:47:53Z"
+        "updated_at": "2026-09-01T08:12:13Z",
+        "pushed_at": "2026-09-01T08:05:31Z"
       },
       "git": {
-        "head": "a94b17990ffd6264e11ff11cf95bdfd9bb35ef92",
-        "head_subject": "Update P1.cpp with modified content",
+        "head": "daa97da11139538f7aa6060ecd8f73172bc6aa91",
+        "head_subject": "feat(cpp): document YOR practice node",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/C_PlusPlus.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 3,
-        "tracked_bytes": 458,
+        "tracked_file_count": 4,
+        "tracked_bytes": 2134,
         "readme_files": [
           "README.md"
         ],
@@ -785,16 +804,20 @@
         "test_files": [],
         "largest_files": [
           {
+            "path": "README.md",
+            "bytes": 1016
+          },
+          {
+            "path": "scripts/check_contract.py",
+            "bytes": 715
+          },
+          {
             "path": ".gitignore",
             "bytes": 260
           },
           {
-            "path": "README.md",
-            "bytes": 106
-          },
-          {
             "path": "Day1/P1.cpp",
-            "bytes": 92
+            "bytes": 143
           }
         ],
         "empty_repository": false,
@@ -845,19 +868,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-28T03:03:18Z",
-        "pushed_at": "2026-04-23T07:17:46Z"
+        "updated_at": "2026-09-01T02:04:19Z",
+        "pushed_at": "2026-09-01T02:03:53Z"
       },
       "git": {
-        "head": "937a564e9c9a6f3df9931e527c9ef9c26c490e91",
-        "head_subject": "Add CLAUDE.md",
+        "head": "f7dbce7056c42a70d7359bbabb4da7ea8a416663",
+        "head_subject": "feat(feelings): lock anonymous signal surface to YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Feelings.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 71,
-        "tracked_bytes": 245189,
+        "tracked_file_count": 74,
+        "tracked_bytes": 408949,
         "readme_files": [
           "README.md"
         ],
@@ -870,15 +893,23 @@
         "largest_files": [
           {
             "path": "package-lock.json",
-            "bytes": 179146
+            "bytes": 336516
+          },
+          {
+            "path": "app/globals.css",
+            "bytes": 3886
           },
           {
             "path": "app/threads/[id]/page.tsx",
-            "bytes": 3332
+            "bytes": 3356
           },
           {
             "path": "prisma/schema.prisma",
             "bytes": 3042
+          },
+          {
+            "path": "README.md",
+            "bytes": 2881
           },
           {
             "path": "app/(auth)/login/page.tsx",
@@ -889,16 +920,8 @@
             "bytes": 2699
           },
           {
-            "path": "app/page.tsx",
-            "bytes": 2224
-          },
-          {
             "path": "app/api/messages/route.ts",
             "bytes": 2030
-          },
-          {
-            "path": "lib/auth.ts",
-            "bytes": 1963
           }
         ],
         "empty_repository": false,
@@ -1015,20 +1038,22 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-05-24T19:51:45Z",
-        "pushed_at": "2026-05-24T19:51:41Z"
+        "updated_at": "2026-09-01T06:01:52Z",
+        "pushed_at": "2026-09-01T05:59:48Z"
       },
       "git": {
-        "head": "b6bebf30fb7bcb29d1a393a6c5fffb5fac4aa7c6",
-        "head_subject": "fix(accessibility): add aria-labels to icon-only GitHub links",
+        "head": "7db41d155394cb04cce084bc10f1f3a7d7fadff4",
+        "head_subject": "feat(portfolio): harden YOR visual and build contract",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/yorayriniwnl.in2.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 31,
-        "tracked_bytes": 536927,
-        "readme_files": [],
+        "tracked_file_count": 34,
+        "tracked_bytes": 432918,
+        "readme_files": [
+          "README.md"
+        ],
         "manifest_files": [
           "next.config.mjs",
           "package.json"
@@ -1045,12 +1070,12 @@
             "bytes": 111336
           },
           {
-            "path": "tsconfig.tsbuildinfo",
-            "bytes": 106053
-          },
-          {
             "path": "components/home/Projects.tsx",
             "bytes": 9098
+          },
+          {
+            "path": "styles/globals.css",
+            "bytes": 8183
           },
           {
             "path": "data/home.ts",
@@ -1058,15 +1083,15 @@
           },
           {
             "path": "components/home/Hero.tsx",
-            "bytes": 7706
-          },
-          {
-            "path": "styles/globals.css",
-            "bytes": 7396
+            "bytes": 7541
           },
           {
             "path": "components/Navbar.tsx",
-            "bytes": 6466
+            "bytes": 6435
+          },
+          {
+            "path": "components/home/About.tsx",
+            "bytes": 5792
           }
         ],
         "empty_repository": false,
@@ -1114,19 +1139,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-26T09:13:09Z",
-        "pushed_at": "2026-08-26T09:09:49Z"
+        "updated_at": "2026-09-01T05:22:46Z",
+        "pushed_at": "2026-09-01T05:21:31Z"
       },
       "git": {
-        "head": "df036b9d1f0e0a6d04ad53c1cd097e46d3d820ab",
-        "head_subject": "Rebuild hub identity and discovery surfaces",
+        "head": "c8c8e75d46f4390a7fabe962199d06c4c667a535",
+        "head_subject": "feat(hub): lock field hub to YOR visual system",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yorayriniwnl.in.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 37,
-        "tracked_bytes": 2518794,
+        "tracked_file_count": 39,
+        "tracked_bytes": 2521539,
         "readme_files": [
           "README.md"
         ],
@@ -1152,7 +1177,7 @@
           },
           {
             "path": "src/styles.css",
-            "bytes": 40901
+            "bytes": 41181
           },
           {
             "path": "src/games/ClassicShooter3D.tsx",
@@ -1219,19 +1244,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T22:35:44Z",
-        "pushed_at": "2026-04-23T22:35:40Z"
+        "updated_at": "2026-09-01T01:00:25Z",
+        "pushed_at": "2026-09-01T01:00:08Z"
       },
       "git": {
-        "head": "2bc56a8d45f6d479e35214a355b5d1dbeadf0224",
-        "head_subject": "Fix unstable backend logic",
+        "head": "ea704ede3dad19bb4984f91cd764a58d1e4305c2",
+        "head_subject": "feat(status): align public accountability surface with YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Status.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 49,
-        "tracked_bytes": 516097,
+        "tracked_file_count": 51,
+        "tracked_bytes": 521405,
         "readme_files": [
           "README.md"
         ],
@@ -1253,7 +1278,7 @@
           },
           {
             "path": "frontend/css/style.css",
-            "bytes": 66442
+            "bytes": 68998
           },
           {
             "path": "backend/seed/seed_core.js",
@@ -1265,7 +1290,7 @@
           },
           {
             "path": "frontend/index.html",
-            "bytes": 18753
+            "bytes": 18525
           },
           {
             "path": "backend/db.js",
@@ -1273,7 +1298,7 @@
           },
           {
             "path": "README.md",
-            "bytes": 10878
+            "bytes": 12121
           }
         ],
         "empty_repository": false,
@@ -1293,15 +1318,13 @@
         "hype_scan": {
           "counts": {
             "valuation-language": 1,
-            "unsupported-scale": 4
+            "unsupported-scale": 1
           },
           "paths": [
-            "README.md",
             "backend/package.json",
-            "backend/seed/seed_core.js",
-            "frontend/index.html"
+            "backend/seed/seed_core.js"
           ],
-          "total": 5
+          "total": 2
         },
         "sensitive_literal_scan": {
           "counts": {
@@ -1392,19 +1415,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-07-20T11:31:01Z",
-        "pushed_at": "2026-07-20T11:30:44Z"
+        "updated_at": "2026-09-01T07:46:48Z",
+        "pushed_at": "2026-09-01T07:43:25Z"
       },
       "git": {
-        "head": "2de2f1de8dceb01335825decf7ba42ce037688f5",
-        "head_subject": "Complete integration of Reflections package",
+        "head": "d4653c318762156369df11c7b772ac45a2a05306",
+        "head_subject": "feat(story): lock reflections archive to YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/yor-story.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 91,
-        "tracked_bytes": 6520522,
+        "tracked_file_count": 93,
+        "tracked_bytes": 6525937,
         "readme_files": [
           "README.md"
         ],
@@ -1432,7 +1455,7 @@
           },
           {
             "path": "styles/reflections-onair.css",
-            "bytes": 60848
+            "bytes": 63746
           },
           {
             "path": "content/reflections/w01-introduction.md",
@@ -1440,11 +1463,11 @@
           },
           {
             "path": "app/reflections/page.tsx",
-            "bytes": 10037
+            "bytes": 10023
           },
           {
             "path": "README.md",
-            "bytes": 8385
+            "bytes": 9927
           }
         ],
         "empty_repository": false,
@@ -1503,19 +1526,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T07:05:29Z",
-        "pushed_at": "2026-04-23T07:05:25Z"
+        "updated_at": "2026-09-01T05:07:46Z",
+        "pushed_at": "2026-09-01T05:07:25Z"
       },
       "git": {
-        "head": "5822664bacfd9ad9892a84e556aeeaa8a741c872",
-        "head_subject": "Add CLAUDE.md",
+        "head": "dbf59a2e4b4e693b593de5e9dcdf2fc398b1d1dc",
+        "head_subject": "feat(cbse): align analyzer surfaces with YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/CBSE-Result-Analyzer.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 34,
-        "tracked_bytes": 201851,
+        "tracked_file_count": 36,
+        "tracked_bytes": 213502,
         "readme_files": [
           "README.md"
         ],
@@ -1534,19 +1557,19 @@
         "largest_files": [
           {
             "path": "templates/index.html",
-            "bytes": 77456
+            "bytes": 82515
           },
           {
             "path": "streamlit_app.py",
-            "bytes": 39860
+            "bytes": 43438
           },
           {
             "path": "app.py",
-            "bytes": 23347
+            "bytes": 23542
           },
           {
             "path": "tests/test_server.py",
-            "bytes": 14607
+            "bytes": 14617
           },
           {
             "path": "exporter/excel_writer.py",
@@ -1610,19 +1633,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T07:18:00Z",
-        "pushed_at": "2026-04-23T07:17:57Z"
+        "updated_at": "2026-09-01T08:09:10Z",
+        "pushed_at": "2026-09-01T08:02:04Z"
       },
       "git": {
-        "head": "9e710cca8dd6cf2ca354dd7c9c9b141ccdb1f47b",
-        "head_subject": "Add CLAUDE.md",
+        "head": "a157f26245a4e7209ad85aa87784b5865698cd98",
+        "head_subject": "feat(solar): complete YOR static planning surface",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Solar-Nexus.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 13,
-        "tracked_bytes": 6944,
+        "tracked_file_count": 19,
+        "tracked_bytes": 47300,
         "readme_files": [
           "README.md",
           "data/README.md",
@@ -1634,49 +1657,51 @@
         "test_files": [],
         "largest_files": [
           {
-            "path": "README.md",
-            "bytes": 1236
-          },
-          {
-            "path": "LICENSE",
-            "bytes": 1090
+            "path": "src/services/services.css",
+            "bytes": 11746
           },
           {
             "path": "src/login.css",
-            "bytes": 793
-          },
-          {
-            "path": "src/services/subsidies.html",
-            "bytes": 716
-          },
-          {
-            "path": "src/login.js",
-            "bytes": 695
+            "bytes": 7310
           },
           {
             "path": "src/services/rooftop.html",
-            "bytes": 688
+            "bytes": 3575
+          },
+          {
+            "path": "src/services/energy.html",
+            "bytes": 3550
+          },
+          {
+            "path": "src/services/subsidies.html",
+            "bytes": 3532
+          },
+          {
+            "path": "src/services/feasibility.html",
+            "bytes": 3523
+          },
+          {
+            "path": "src/index.html",
+            "bytes": 3329
           },
           {
             "path": "src/login.html",
-            "bytes": 566
-          },
-          {
-            "path": "src/services/services.css",
-            "bytes": 512
+            "bytes": 2630
           }
         ],
         "empty_repository": false,
         "large_artifact_paths": [],
         "placeholder_scan": {
           "counts": {
-            "replace-marker": 2,
+            "replace-marker": 4,
             "example-domain": 0
           },
           "paths": [
+            "README.md",
+            "src/login.css",
             "src/login.html"
           ],
-          "total": 2
+          "total": 4
         },
         "hype_scan": {
           "counts": {
@@ -1721,19 +1746,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T07:15:57Z",
-        "pushed_at": "2026-04-23T07:15:53Z"
+        "updated_at": "2026-09-01T00:52:34Z",
+        "pushed_at": "2026-09-01T00:52:22Z"
       },
       "git": {
-        "head": "78819712f2acd9df645861c534baff6b6c17207c",
-        "head_subject": "Add CLAUDE.md",
+        "head": "2105ec5a1ab5486f328403f38551e66016f55e0b",
+        "head_subject": "feat(mentor): align workflow surface with YOR contract",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/mentor-mentee-system.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 44,
-        "tracked_bytes": 3447158,
+        "tracked_file_count": 46,
+        "tracked_bytes": 3445614,
         "readme_files": [
           "README.md",
           "images/profiles/README.txt"
@@ -1767,7 +1792,7 @@
           },
           {
             "path": "app.py",
-            "bytes": 20934
+            "bytes": 26978
           },
           {
             "path": "database_sqlite.py",
@@ -1804,10 +1829,12 @@
         "hype_scan": {
           "counts": {
             "valuation-language": 0,
-            "unsupported-scale": 0
+            "unsupported-scale": 1
           },
-          "paths": [],
-          "total": 0
+          "paths": [
+            "README.md"
+          ],
+          "total": 1
         },
         "sensitive_literal_scan": {
           "counts": {
@@ -1840,19 +1867,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-30T20:12:34Z",
-        "pushed_at": "2026-04-30T20:12:29Z"
+        "updated_at": "2026-09-01T04:14:18Z",
+        "pushed_at": "2026-09-01T04:14:13Z"
       },
       "git": {
-        "head": "c854a76690dbfba87744b5b77df313660ea174a6",
-        "head_subject": "Handle missing dev service env vars",
+        "head": "5d1b07468a00d198f2481cd301a631086593e0b8",
+        "head_subject": "feat(store): lock price signal surface to YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Store.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 39,
-        "tracked_bytes": 318807,
+        "tracked_file_count": 42,
+        "tracked_bytes": 321145,
         "readme_files": [
           "README.md"
         ],
@@ -1873,12 +1900,8 @@
             "bytes": 9666
           },
           {
-            "path": "app/page.tsx",
-            "bytes": 9024
-          },
-          {
             "path": "app/search/page.tsx",
-            "bytes": 8789
+            "bytes": 8812
           },
           {
             "path": "scrapers/manager.ts",
@@ -1893,6 +1916,10 @@
             "bytes": 7313
           },
           {
+            "path": "app/globals.css",
+            "bytes": 6838
+          },
+          {
             "path": "scrapers/bigbasket.ts",
             "bytes": 6768
           }
@@ -1901,15 +1928,15 @@
         "large_artifact_paths": [],
         "placeholder_scan": {
           "counts": {
-            "replace-marker": 6,
+            "replace-marker": 5,
             "example-domain": 5
           },
           "paths": [
-            "app/page.tsx",
+            "app/globals.css",
             "components/SearchBar.tsx",
             "prisma/seed.ts"
           ],
-          "total": 11
+          "total": 10
         },
         "hype_scan": {
           "counts": {
@@ -1954,19 +1981,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-28T02:59:10Z",
-        "pushed_at": "2026-04-23T07:18:07Z"
+        "updated_at": "2026-08-31T18:46:01Z",
+        "pushed_at": "2026-08-31T18:39:35Z"
       },
       "git": {
-        "head": "0a3f98c25b153b5d482caa940d0958bcef97dd03",
-        "head_subject": "Add CLAUDE.md",
+        "head": "58b2a256aa56c1eff202ef39ef5c7fa73bc2dea1",
+        "head_subject": "chore(zenith): keep token check lint-clean",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Zenith.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 79,
-        "tracked_bytes": 7993212,
+        "tracked_file_count": 83,
+        "tracked_bytes": 7982857,
         "readme_files": [
           "README.md",
           "Readme",
@@ -2005,7 +2032,7 @@
           },
           {
             "path": "zenith-app/app/(dashboard)/service4/RooftopPage.tsx",
-            "bytes": 146658
+            "bytes": 146713
           },
           {
             "path": "zenith-app/public/images/service5.jpg",
@@ -2016,7 +2043,7 @@
         "large_artifact_paths": [],
         "placeholder_scan": {
           "counts": {
-            "replace-marker": 15,
+            "replace-marker": 16,
             "example-domain": 0
           },
           "paths": [
@@ -2026,17 +2053,18 @@
             "zenith-app/components/lumen/ScenarioForm.tsx",
             "zenith-app/package-lock.json"
           ],
-          "total": 15
+          "total": 16
         },
         "hype_scan": {
           "counts": {
             "valuation-language": 1,
-            "unsupported-scale": 0
+            "unsupported-scale": 1
           },
           "paths": [
+            "README.md",
             "zenith-app/app/(dashboard)/service4/RooftopAnimations.tsx"
           ],
-          "total": 1
+          "total": 2
         },
         "sensitive_literal_scan": {
           "counts": {
@@ -2067,19 +2095,19 @@
         "default_branch": "master",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-26T08:26:00Z",
-        "pushed_at": "2026-04-26T08:25:55Z"
+        "updated_at": "2026-09-01T04:38:50Z",
+        "pushed_at": "2026-09-01T04:38:31Z"
       },
       "git": {
-        "head": "1a15c9939e8ea8a2eddb3f8f407feac3aa977744",
-        "head_subject": "Initial project health tracker setup",
+        "head": "321247a99e5fbb87fc21847148cf7c52ae74898a",
+        "head_subject": "feat(health): align tracker surface with YOR",
         "branch": "master",
         "remote": "https://github.com/yorayriniwnl/Yor-Project-Health-Tracker.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 154,
-        "tracked_bytes": 578913,
+        "tracked_file_count": 156,
+        "tracked_bytes": 585534,
         "readme_files": [
           "README.md"
         ],
@@ -2196,19 +2224,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-28T03:00:07Z",
-        "pushed_at": "2026-04-23T07:17:33Z"
+        "updated_at": "2026-08-31T08:00:58Z",
+        "pushed_at": "2026-08-31T07:57:21Z"
       },
       "git": {
-        "head": "a02711e448b942a2dea66386afff185b8acfda23",
-        "head_subject": "Add CLAUDE.md",
+        "head": "88a7c7fffa4899ff88d4466f509d77b66366dee8",
+        "head_subject": "docs(detector): align texture forensics with verified holdout",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Ai-vs-real-image.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 564,
-        "tracked_bytes": 447469937,
+        "tracked_file_count": 569,
+        "tracked_bytes": 447489802,
         "readme_files": [
           "README.md"
         ],
@@ -2263,14 +2291,16 @@
         },
         "hype_scan": {
           "counts": {
-            "valuation-language": 2,
+            "valuation-language": 14,
             "unsupported-scale": 0
           },
           "paths": [
             "README.md",
+            "outputs/model-evaluation.json",
+            "scripts/evaluate_model.py",
             "svm_model.py"
           ],
-          "total": 2
+          "total": 14
         },
         "sensitive_literal_scan": {
           "counts": {
@@ -2305,19 +2335,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-08-28T02:56:18Z",
-        "pushed_at": "2026-08-26T08:57:03Z"
+        "updated_at": "2026-08-31T19:12:41Z",
+        "pushed_at": "2026-08-31T18:49:46Z"
       },
       "git": {
-        "head": "0a97bdd1aa67521977451881b3dfef754c78b6f6",
-        "head_subject": "Rebuild portfolio evidence-first experience",
+        "head": "49a22ee3aa93a384f40abe69e0652186e9e4c0f1",
+        "head_subject": "feat(portfolio): lock Ayrin surface to YOR visual system",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor-Ayrin-iwnl.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 45,
-        "tracked_bytes": 5373189,
+        "tracked_file_count": 47,
+        "tracked_bytes": 5379036,
         "readme_files": [
           "README.md",
           "public/avatars/mixamo/README.txt"
@@ -2352,7 +2382,7 @@
           },
           {
             "path": "app/portfolio.css",
-            "bytes": 23244
+            "bytes": 27459
           },
           {
             "path": "public/Ayush_Roy_CV.docx",
@@ -2408,19 +2438,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T07:15:42Z",
-        "pushed_at": "2026-04-23T07:15:38Z"
+        "updated_at": "2026-09-01T06:37:13Z",
+        "pushed_at": "2026-09-01T06:34:11Z"
       },
       "git": {
-        "head": "01f30cc05da16652ef010ded9b551d370a85d2ff",
-        "head_subject": "Add CLAUDE.md",
+        "head": "7b02580fe1543385530ab200746a2cbdacff8843",
+        "head_subject": "feat(eat): align storefront and admin surfaces with YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Eat-a-lot.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 50,
-        "tracked_bytes": 520621,
+        "tracked_file_count": 52,
+        "tracked_bytes": 533532,
         "readme_files": [
           "README.md"
         ],
@@ -2437,7 +2467,7 @@
           },
           {
             "path": "public/index.html",
-            "bytes": 76734
+            "bytes": 81174
           },
           {
             "path": "package-lock.json",
@@ -2445,7 +2475,7 @@
           },
           {
             "path": "public/admin.html",
-            "bytes": 38997
+            "bytes": 44840
           },
           {
             "path": "db/database.js",
@@ -2516,19 +2546,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T07:16:05Z",
-        "pushed_at": "2026-04-23T07:16:02Z"
+        "updated_at": "2026-09-01T07:04:37Z",
+        "pushed_at": "2026-09-01T07:02:46Z"
       },
       "git": {
-        "head": "47bc178cbd2c444e637b7327bec9e93fce7805e8",
-        "head_subject": "Add CLAUDE.md",
+        "head": "1d5bdcf916be4dc6c95a069b08e54150cc879ba3",
+        "head_subject": "feat(trading): align testnet desk with YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Trading_Bot.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 31,
-        "tracked_bytes": 165623,
+        "tracked_file_count": 33,
+        "tracked_bytes": 173514,
         "readme_files": [
           "README.md"
         ],
@@ -2549,7 +2579,7 @@
         "largest_files": [
           {
             "path": "ui.py",
-            "bytes": 81167
+            "bytes": 86755
           },
           {
             "path": "tests/test_client.py",
@@ -2568,12 +2598,12 @@
             "bytes": 6850
           },
           {
-            "path": "cli.py",
-            "bytes": 6091
+            "path": "README.md",
+            "bytes": 6769
           },
           {
-            "path": "README.md",
-            "bytes": 5429
+            "path": "cli.py",
+            "bytes": 6091
           },
           {
             "path": "tests/test_exchange_info.py",
@@ -2628,19 +2658,19 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-23T07:16:01Z",
-        "pushed_at": "2026-04-23T07:15:58Z"
+        "updated_at": "2026-09-01T06:49:06Z",
+        "pushed_at": "2026-09-01T06:48:21Z"
       },
       "git": {
-        "head": "d33b193bc3e82874279f70ed0ca685de90b384e9",
-        "head_subject": "Add CLAUDE.md",
+        "head": "5a8197991a0cbac8c689f14dcf7dcc422651dae5",
+        "head_subject": "feat(taskflow): align workspace with YOR visual contract",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Taskflow.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 63,
-        "tracked_bytes": 351152,
+        "tracked_file_count": 65,
+        "tracked_bytes": 352692,
         "readme_files": [
           "README.md"
         ],
@@ -2659,12 +2689,12 @@
             "bytes": 86809
           },
           {
-            "path": "frontend/package-lock.json",
-            "bytes": 44384
+            "path": "frontend/src/index.css",
+            "bytes": 49942
           },
           {
-            "path": "frontend/src/index.css",
-            "bytes": 43882
+            "path": "frontend/package-lock.json",
+            "bytes": 44384
           },
           {
             "path": "frontend/src/pages/TasksPage.jsx",
@@ -2691,11 +2721,10 @@
         "large_artifact_paths": [],
         "placeholder_scan": {
           "counts": {
-            "replace-marker": 47,
+            "replace-marker": 46,
             "example-domain": 4
           },
           "paths": [
-            "README.md",
             "backend/src/config/swagger.js",
             "backend/src/db/migrate.js",
             "backend/src/models/Task.js",
@@ -2712,17 +2741,15 @@
             "frontend/src/pages/RegisterPage.jsx",
             "frontend/src/pages/TasksPage.jsx"
           ],
-          "total": 51
+          "total": 50
         },
         "hype_scan": {
           "counts": {
             "valuation-language": 0,
-            "unsupported-scale": 2
+            "unsupported-scale": 0
           },
-          "paths": [
-            "frontend/index.html"
-          ],
-          "total": 2
+          "paths": [],
+          "total": 0
         },
         "sensitive_literal_scan": {
           "counts": {
@@ -2754,25 +2781,27 @@
         "default_branch": "main",
         "archived": false,
         "fork": false,
-        "updated_at": "2026-04-25T15:02:01Z",
-        "pushed_at": "2026-04-25T18:00:45Z"
+        "updated_at": "2026-09-01T07:15:48Z",
+        "pushed_at": "2026-09-01T07:12:27Z"
       },
       "git": {
-        "head": "f10c59dfe8c1bbfd1a2df2a38e2fa14b08d32e8b",
-        "head_subject": "Fix popup width collapse",
+        "head": "502952d44c31150d14bdbc27c58b1db22b802cac",
+        "head_subject": "feat(token-usage): align extension surfaces with YOR",
         "branch": "main",
         "remote": "https://github.com/yorayriniwnl/Yor_Token_Usage.git",
         "shallow": true
       },
       "checks": {
-        "tracked_file_count": 64,
-        "tracked_bytes": 368019,
+        "tracked_file_count": 67,
+        "tracked_bytes": 379205,
         "readme_files": [
+          "README.md",
           "backend/README.md"
         ],
         "manifest_files": [
           "backend/Dockerfile",
-          "backend/package.json"
+          "backend/package.json",
+          "package.json"
         ],
         "ci_workflows": [],
         "test_files": [
@@ -2813,7 +2842,7 @@
           },
           {
             "path": "popup/popup.css",
-            "bytes": 9997
+            "bytes": 12603
           }
         ],
         "empty_repository": false,
