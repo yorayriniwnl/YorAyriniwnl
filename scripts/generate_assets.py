@@ -47,8 +47,8 @@ CONFIG = {
     "width": 1500,
     "height": 300,
     # Steam-profile palette: a pure-black canvas, translucent black panels,
-    # and the #671515 -> #8c1616 crimson header gradient used by the live
-    # profile's showcase bars.
+    # and a saturated scarlet header gradient used by the live profile's
+    # showcase bars.
     "bg_stops": [
         (0, PALETTE["void"]), (18, "#050101"), (42, "#1f0404"),
         (64, PALETTE["deep_crimson"]), (82, "#180303"), (100, PALETTE["void"]),
@@ -108,7 +108,7 @@ TEXT_ZONE = {"x0": 330, "x1": 1170, "y0": 92, "y1": 228}
 # manifest-build time. Keeping this list explicit makes the privacy/artwork
 # boundary auditable and prevents a future generator change from accidentally
 # touching the approved profile image.
-ATLAS_TREATMENT_REVISION = "atlas-v3"
+ATLAS_TREATMENT_REVISION = "atlas-v4"
 ATLAS_TREATMENT_EXCLUDED = frozenset({
     "hero.svg",
     "project-portfolio-v2.svg",
@@ -230,16 +230,52 @@ def _atlas_overlay(filename, svg):
 </g>'''
 
 
+def apply_red_theme(svg):
+    """Normalize legacy hand-authored accents to the canonical red system.
+
+    Most supporting visuals predate the token file and contain inline colors.
+    Keeping this last-mile normalization makes the design tokens authoritative
+    without rewriting hundreds of intentionally data-rich SVG templates.
+    Embedded raster data is base64, so these substitutions cannot alter the
+    approved hero or project artwork bytes.
+    """
+    replacements = {
+        "#e84b4b": PALETTE["crimson"],
+        "#b92b2b": TOKENS["color"]["secondaryCrimson"],
+        "#ff8a7f": PALETTE["signal"],
+        "#f5eaea": PALETTE["paper"],
+        "#671515": PALETTE["deep_crimson"],
+        "#8c1616": TOKENS["gradient"]["showcase"][1],
+        "#2a0505": TOKENS["gradient"]["showcase"][2],
+        "#321018": WORLD_TOKENS["portfolio"]["line"],
+        "#57222c": WORLD_TOKENS["portfolio"]["line"],
+        "#190c11": WORLD_TOKENS["portfolio"]["canvas"],
+        "#b73d48": TOKENS["color"]["secondaryCrimson"],
+        "#a55e6b": TOKENS["color"]["secondaryCrimson"],
+        "#ad5865": TOKENS["color"]["secondaryCrimson"],
+        "#9c7680": PALETTE["muted"],
+        "#ffe5de": PALETTE["paper"],
+        "#fff0e8": PALETTE["paper"],
+        "#fff2f0": PALETTE["paper"],
+        "#c4c4c4": PALETTE["muted"],
+    }
+    for old, new in replacements.items():
+        svg = svg.replace(old, new)
+    return svg
+
+
 def apply_atlas_treatment(manifest):
     treated = {}
     for filename, svg in manifest.items():
         if filename in ATLAS_TREATMENT_EXCLUDED:
-            treated[filename] = svg
+            treated[filename] = apply_red_theme(svg)
             continue
         close = svg.rfind("</svg>")
         if close < 0:
             raise ValueError(f"cannot treat malformed SVG: {filename}")
-        treated[filename] = f"{svg[:close]}{_atlas_overlay(filename, svg)}{svg[close:]}"
+        treated[filename] = apply_red_theme(
+            f"{svg[:close]}{_atlas_overlay(filename, svg)}{svg[close:]}"
+        )
     return treated
 
 

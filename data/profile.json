@@ -193,9 +193,9 @@
       "summary": "An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards.",
       "visual": {
         "world": "helios",
-        "source": "assets/project-helios-atmosphere-crimson-v2.png",
-        "delivery": "assets/project-helios-atmosphere-crimson-v2-optimized.jpg",
-        "evidence": "code-authored synthetic operator preview; no production telemetry; crimson art direction"
+        "source": "assets/project-helios-atmosphere-crimson-v3.png",
+        "delivery": "assets/project-helios-atmosphere-crimson-v3-optimized.jpg",
+        "evidence": "code-authored synthetic operator preview; no production telemetry; saturated red art direction"
       },
       "proof": [
         "Bidirectional realtime alert streaming",
@@ -222,9 +222,9 @@
       "summary": "A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis.",
       "visual": {
         "world": "zenith",
-        "source": "assets/project-zenith-atmosphere-crimson-v2.png",
-        "delivery": "assets/project-zenith-atmosphere-crimson-v2-optimized.jpg",
-        "evidence": "red-hour daylight architectural atmosphere plus product-shaped decision workflow"
+        "source": "assets/project-zenith-atmosphere-crimson-v3.png",
+        "delivery": "assets/project-zenith-atmosphere-crimson-v3-optimized.jpg",
+        "evidence": "red-hour architectural atmosphere plus product-shaped decision workflow in the shared scarlet system"
       },
       "proof": [
         "Interactive panel-placement simulation",
@@ -251,9 +251,9 @@
       "summary": "A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.",
       "visual": {
         "world": "vision",
-        "source": "assets/project-vision-atmosphere-crimson-v2.png",
-        "delivery": "assets/project-vision-atmosphere-crimson-v2-optimized.jpg",
-        "evidence": "forensic still life with crimson inspection light; metric and pipeline are grounded in the project record"
+        "source": "assets/project-vision-atmosphere-crimson-v3.png",
+        "delivery": "assets/project-vision-atmosphere-crimson-v3-optimized.jpg",
+        "evidence": "forensic still life with saturated scarlet inspection light; metric and pipeline are grounded in the project record"
       },
       "proof": [
         "78.5% held-out test accuracy",
@@ -282,9 +282,9 @@
       "summary": "A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path.",
       "visual": {
         "world": "talks",
-        "source": "assets/project-talks-atmosphere-crimson-v2.png",
-        "delivery": "assets/project-talks-atmosphere-crimson-v2-optimized.jpg",
-        "evidence": "illustrative communication surface in the shared crimson system; no fabricated user or traffic metrics"
+        "source": "assets/project-talks-atmosphere-crimson-v3.png",
+        "delivery": "assets/project-talks-atmosphere-crimson-v3-optimized.jpg",
+        "evidence": "illustrative communication surface in the shared scarlet system; no fabricated user or traffic metrics"
       },
       "proof": [
         "Low-latency bidirectional messaging",
@@ -328,19 +328,19 @@
     "source": {
       "hero": "assets/hero-keyart-v2.png",
       "project_art": {
-        "helios": "assets/project-helios-atmosphere-crimson-v2.png",
-        "zenith": "assets/project-zenith-atmosphere-crimson-v2.png",
-        "vision": "assets/project-vision-atmosphere-crimson-v2.png",
-        "talks": "assets/project-talks-atmosphere-crimson-v2.png"
+        "helios": "assets/project-helios-atmosphere-crimson-v3.png",
+        "zenith": "assets/project-zenith-atmosphere-crimson-v3.png",
+        "vision": "assets/project-vision-atmosphere-crimson-v3.png",
+        "talks": "assets/project-talks-atmosphere-crimson-v3.png"
       }
     },
     "delivery": {
       "hero": "assets/hero-keyart-v2-optimized.jpg",
       "project_art": {
-        "helios": "assets/project-helios-atmosphere-crimson-v2-optimized.jpg",
-        "zenith": "assets/project-zenith-atmosphere-crimson-v2-optimized.jpg",
-        "vision": "assets/project-vision-atmosphere-crimson-v2-optimized.jpg",
-        "talks": "assets/project-talks-atmosphere-crimson-v2-optimized.jpg"
+        "helios": "assets/project-helios-atmosphere-crimson-v3-optimized.jpg",
+        "zenith": "assets/project-zenith-atmosphere-crimson-v3-optimized.jpg",
+        "vision": "assets/project-vision-atmosphere-crimson-v3-optimized.jpg",
+        "talks": "assets/project-talks-atmosphere-crimson-v3-optimized.jpg"
       }
     },
     "github_derivative": {
@@ -363,19 +363,19 @@
       }
     },
     "project_art": {
-      "helios": "assets/project-helios-atmosphere-crimson-v2-optimized.jpg",
-      "zenith": "assets/project-zenith-atmosphere-crimson-v2-optimized.jpg",
-      "vision": "assets/project-vision-atmosphere-crimson-v2-optimized.jpg",
-      "talks": "assets/project-talks-atmosphere-crimson-v2-optimized.jpg"
+      "helios": "assets/project-helios-atmosphere-crimson-v3-optimized.jpg",
+      "zenith": "assets/project-zenith-atmosphere-crimson-v3-optimized.jpg",
+      "vision": "assets/project-vision-atmosphere-crimson-v3-optimized.jpg",
+      "talks": "assets/project-talks-atmosphere-crimson-v3-optimized.jpg"
     },
     "palette": {
       "void": "#000000",
       "panel": "#050505",
-      "crimson": "#e84b4b",
-      "deep_crimson": "#671515",
-      "signal": "#ff8a7f",
-      "paper": "#f5eaea",
-      "muted": "#c4c4c4"
+      "crimson": "#ff1f2d",
+      "deep_crimson": "#8f0014",
+      "signal": "#ff6670",
+      "paper": "#fff5f5",
+      "muted": "#d2a1a7"
     }
   }
 }

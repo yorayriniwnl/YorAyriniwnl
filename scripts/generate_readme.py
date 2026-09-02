@@ -81,22 +81,22 @@ MOTION_ASSETS = (
 
 ASSET_REVISIONS = {
     # GitHub's raw CDN can retain a recently replaced visual at the same URL.
-    # Supporting assets share the crimson atlas pass; motion gets its own
+    # Supporting assets share the saturated red atlas pass; motion gets its own
     # revision so responsive GIF and still fallbacks cannot be mixed by a stale
     # CDN edge.
     **{
-        filename: "atlas-v3"
+        filename: "atlas-v4"
         for filename in ATLAS_ASSETS
     },
-    "systems-reel.gif": "motion-v5",
-    "systems-reel-mobile.gif": "motion-v5",
-    "systems-reel-still.png": "motion-v5",
-    "systems-reel-mobile-still.png": "motion-v5",
+    "systems-reel.gif": "motion-v6",
+    "systems-reel-mobile.gif": "motion-v6",
+    "systems-reel-still.png": "motion-v6",
+    "systems-reel-mobile-still.png": "motion-v6",
     "hero.svg": "raster-v2",
-    "project-helios.svg": "raster-v3",
-    "project-zenith.svg": "raster-v3",
-    "project-vision.svg": "raster-v3",
-    "project-talks.svg": "raster-v3",
+    "project-helios.svg": "raster-v4",
+    "project-zenith.svg": "raster-v4",
+    "project-vision.svg": "raster-v4",
+    "project-talks.svg": "raster-v4",
 }
 
 
@@ -109,7 +109,7 @@ def raw_asset_url(handle: str, filename: str) -> str:
 def profile_views_url(handle: str) -> str:
     return (
         "https://komarev.com/ghpvc/?"
-        f"username={handle}&amp;label=TOTAL+PROFILE+VIEWS&amp;color=e84b4b&amp;"
+        f"username={handle}&amp;label=TOTAL+PROFILE+VIEWS&amp;color=ff1f2d&amp;"
         "style=for-the-badge&amp;abbreviated=false"
     )
 

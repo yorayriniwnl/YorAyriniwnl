@@ -19,7 +19,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from profile_data import load_profile
+from profile_data import load_design_tokens, load_profile
 
 
 ROOT = SCRIPT_DIR.parent
@@ -27,7 +27,18 @@ OUT_DIR = ROOT / "generated"
 PROFILE = load_profile()
 USERNAME = PROFILE["identity"]["handle"]
 PALETTE = PROFILE["visual_contract"]["palette"]
-LEVEL_COLORS = ("#130207", "#310711", "#671515", "#b52e3e", "#ff5b69")
+TOKENS = load_design_tokens()
+WORLD = TOKENS["worlds"]["portfolio"]
+PRIMARY = PALETTE["crimson"]
+SECONDARY = TOKENS["color"]["secondaryCrimson"]
+DEEP = PALETTE["deep_crimson"]
+SIGNAL = PALETTE["signal"]
+PAPER = PALETTE["paper"]
+MUTED = PALETTE["muted"]
+SURFACE = WORLD["surface"]
+SURFACE_ALT = WORLD["surface_alt"]
+LINE = WORLD["line"]
+LEVEL_COLORS = (PALETTE["void"], SURFACE, DEEP, SECONDARY, PRIMARY)
 
 
 def esc(value: object) -> str:
@@ -166,7 +177,7 @@ def build_contribution_stream_svg(days: list[dict], username: str = USERNAME) ->
             )
         cell_nodes.append(
             f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" '
-            f'fill="{LEVEL_COLORS[level]}" stroke="#4a0b18" stroke-opacity=".45" '
+            f'fill="{LEVEL_COLORS[level]}" stroke="{LINE}" stroke-opacity=".45" '
             f'data-date="{item["date"].isoformat()}" data-count="{item["count"]}">{animation}</rect>'
         )
 
@@ -180,7 +191,7 @@ def build_contribution_stream_svg(days: list[dict], username: str = USERNAME) ->
         week, _ = positions[item["date"]]
         x = grid_x + week * pitch
         month_nodes.append(
-            f'<text x="{x}" y="130" class="mono" font-size="9" fill="#8f747b" '
+            f'<text x="{x}" y="130" class="mono" font-size="9" fill="{MUTED}" '
             f'letter-spacing="1.5">{item["date"].strftime("%b").upper()}</text>'
         )
 
@@ -224,11 +235,11 @@ def build_contribution_stream_svg(days: list[dict], username: str = USERNAME) ->
         x = 96 + index * 350
         metric_nodes.append(
             f'<g transform="translate({x},430)">'
-            f'<rect width="310" height="62" rx="5" fill="#090103" stroke="#3d0912"/>'
-            f'<rect width="4" height="62" rx="2" fill="#e84b4b"/>'
-            f'<text x="22" y="24" class="mono" font-size="8" fill="#8f747b" letter-spacing="1.4">{label}</text>'
+            f'<rect width="310" height="62" rx="5" fill="{SURFACE}" stroke="{LINE}"/>'
+            f'<rect width="4" height="62" rx="2" fill="{PRIMARY}"/>'
+            f'<text x="22" y="24" class="mono" font-size="8" fill="{MUTED}" letter-spacing="1.4">{label}</text>'
             f'<text x="22" y="51" class="metric" font-size="28">{value}</text>'
-            f'<circle cx="286" cy="18" r="3" fill="#ff8a7f"><animate attributeName="opacity" '
+            f'<circle cx="286" cy="18" r="3" fill="{SIGNAL}"><animate attributeName="opacity" '
             f'values=".2;1;.2" dur="{1.4 + index * .27:.2f}s" repeatCount="indefinite"/></circle>'
             f'</g>'
         )
@@ -240,34 +251,34 @@ def build_contribution_stream_svg(days: list[dict], username: str = USERNAME) ->
 <style>
 @font-face {{ font-family:'DM Mono'; font-weight:500; src:url(data:font/woff2;base64,{dmmono}) format('woff2'); }}
 .mono {{ font-family:'DM Mono',monospace; font-weight:500; }}
-.metric {{ font-family:Georgia,serif; font-weight:700; fill:#f5eaea; }}
+ .metric {{ font-family:Georgia,serif; font-weight:700; fill:{PAPER}; }}
 </style>
 <linearGradient id="streamBg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="#030001"/><stop offset=".58" stop-color="#080103"/><stop offset="1" stop-color="#1a0308"/>
+<stop offset="0" stop-color="{PALETTE['void']}"/><stop offset=".58" stop-color="{SURFACE}"/><stop offset="1" stop-color="{DEEP}"/>
 </linearGradient>
 <linearGradient id="scan" x1="0" x2="1">
-<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/><stop offset=".5" stop-color="#ff8a7f" stop-opacity=".22"/><stop offset="1" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset="0" stop-color="{SIGNAL}" stop-opacity="0"/><stop offset=".5" stop-color="{SIGNAL}" stop-opacity=".22"/><stop offset="1" stop-color="{SIGNAL}" stop-opacity="0"/>
 </linearGradient>
-<linearGradient id="wave" x1="0" x2="1"><stop stop-color="#671515"/><stop offset=".55" stop-color="#e84b4b"/><stop offset="1" stop-color="#ff8a7f"/></linearGradient>
+<linearGradient id="wave" x1="0" x2="1"><stop stop-color="{DEEP}"/><stop offset=".55" stop-color="{PRIMARY}"/><stop offset="1" stop-color="{SIGNAL}"/></linearGradient>
 <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="2" seed="71"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 .32 .32 .32 0 0"/></filter>
 </defs>
-<rect x="1" y="1" width="1498" height="518" rx="8" fill="url(#streamBg)" stroke="#4a0b18"/>
+<rect x="1" y="1" width="1498" height="518" rx="8" fill="url(#streamBg)" stroke="{LINE}"/>
 <rect x="1" y="1" width="1498" height="518" rx="8" filter="url(#grain)" opacity=".045"/>
-<path d="M24 70V24H70 M1430 24h46v46 M24 450v46h46 M1430 496h46v-46" fill="none" stroke="#e84b4b" stroke-width="2" opacity=".48"/>
-<text x="72" y="55" class="mono" font-size="18" fill="#f5eaea" letter-spacing="4">CONTRIBUTION SIGNAL // 365-DAY ACTIVITY</text>
-<text x="72" y="80" class="mono" font-size="9" fill="#9d7f87" letter-spacing="2">PUBLIC GITHUB TELEMETRY · EXACT DAILY COUNTS · OWNED ANIMATION</text>
-<g transform="translate(1190,35)"><rect width="238" height="42" rx="21" fill="#120207" stroke="#671515"/><circle cx="24" cy="21" r="5" fill="#ff5b69" filter="url(#glow)"><animate attributeName="opacity" values=".25;1;.25" dur="1.25s" repeatCount="indefinite"/></circle><text x="43" y="25" class="mono" font-size="9" fill="#e7cfd4" letter-spacing="1.5">AUTO-REFRESH // 24H</text></g>
+<path d="M24 70V24H70 M1430 24h46v46 M24 450v46h46 M1430 496h46v-46" fill="none" stroke="{PRIMARY}" stroke-width="2" opacity=".48"/>
+<text x="72" y="55" class="mono" font-size="18" fill="{PAPER}" letter-spacing="4">CONTRIBUTION SIGNAL // 365-DAY ACTIVITY</text>
+<text x="72" y="80" class="mono" font-size="9" fill="{MUTED}" letter-spacing="2">PUBLIC GITHUB TELEMETRY · EXACT DAILY COUNTS · OWNED ANIMATION</text>
+<g transform="translate(1190,35)"><rect width="238" height="42" rx="21" fill="{SURFACE}" stroke="{DEEP}"/><circle cx="24" cy="21" r="5" fill="{SIGNAL}" filter="url(#glow)"><animate attributeName="opacity" values=".25;1;.25" dur="1.25s" repeatCount="indefinite"/></circle><text x="43" y="25" class="mono" font-size="9" fill="{PAPER}" letter-spacing="1.5">AUTO-REFRESH // 24H</text></g>
 {''.join(month_nodes)}
-<text x="94" y="181" class="mono" font-size="8" fill="#795f66" letter-spacing="1.3">MON</text>
-<text x="94" y="225" class="mono" font-size="8" fill="#795f66" letter-spacing="1.3">WED</text>
-<text x="94" y="269" class="mono" font-size="8" fill="#795f66" letter-spacing="1.3">FRI</text>
-<path d="{signal_path}" fill="none" stroke="#ff8a7f" stroke-width="2" stroke-dasharray="3 70" opacity=".18"><animate attributeName="stroke-dashoffset" values="0;-292" dur="5.5s" repeatCount="indefinite"/></path>
+<text x="94" y="181" class="mono" font-size="8" fill="{MUTED}" letter-spacing="1.3">MON</text>
+<text x="94" y="225" class="mono" font-size="8" fill="{MUTED}" letter-spacing="1.3">WED</text>
+<text x="94" y="269" class="mono" font-size="8" fill="{MUTED}" letter-spacing="1.3">FRI</text>
+<path d="{signal_path}" fill="none" stroke="{SIGNAL}" stroke-width="2" stroke-dasharray="3 70" opacity=".18"><animate attributeName="stroke-dashoffset" values="0;-292" dur="5.5s" repeatCount="indefinite"/></path>
 {''.join(cell_nodes)}
 <rect x="{grid_x - 80}" y="{grid_y - 12}" width="80" height="{grid_height + 24}" fill="url(#scan)" opacity=".75"><animate attributeName="x" values="{grid_x - 80};{grid_x + grid_width}" dur="7.8s" repeatCount="indefinite"/></rect>
-<circle cx="{recent_x:.1f}" cy="{recent_y:.1f}" r="12" fill="none" stroke="#fff3f5" stroke-width="2" filter="url(#glow)"><animate attributeName="r" values="9;18;9" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/></circle>
-<text x="94" y="365" class="mono" font-size="8" fill="#795f66" letter-spacing="1.3">WEEKLY SIGNAL DENSITY</text>
-<polyline points="{' '.join(wave_points)}" fill="none" stroke="#3d0912" stroke-width="8" opacity=".5"/>
+<circle cx="{recent_x:.1f}" cy="{recent_y:.1f}" r="12" fill="none" stroke="{PAPER}" stroke-width="2" filter="url(#glow)"><animate attributeName="r" values="9;18;9" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/></circle>
+<text x="94" y="365" class="mono" font-size="8" fill="{MUTED}" letter-spacing="1.3">WEEKLY SIGNAL DENSITY</text>
+<polyline points="{' '.join(wave_points)}" fill="none" stroke="{LINE}" stroke-width="8" opacity=".5"/>
 <polyline points="{' '.join(wave_points)}" fill="none" stroke="url(#wave)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" stroke-dasharray="1500" stroke-dashoffset="1500"><animate attributeName="stroke-dashoffset" values="1500;0" dur="3.4s" fill="freeze"/></polyline>
 {''.join(metric_nodes)}
 </svg>'''

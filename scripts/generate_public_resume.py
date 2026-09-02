@@ -13,18 +13,19 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
-from profile_data import ROOT, load_profile
+from profile_data import ROOT, load_design_tokens, load_profile
 
 
 DEFAULT_OUTPUT = ROOT / "output" / "pdf" / "Ayush_Roy_Resume_Public.pdf"
 TMP_DIR = ROOT / "tmp" / "pdfs"
 
-INK = HexColor("#171313")
-MUTED = HexColor("#6e6262")
-CRIMSON = HexColor("#9f222b")
-DEEP_CRIMSON = HexColor("#671515")
-PALE = HexColor("#f7eeee")
-HAIRLINE = HexColor("#dfcccc")
+TOKENS = load_design_tokens()
+INK = HexColor(TOKENS["worlds"]["portfolio"]["ink"])
+MUTED = HexColor(TOKENS["worlds"]["portfolio"]["muted"])
+CRIMSON = HexColor(TOKENS["color"]["crimson"])
+DEEP_CRIMSON = HexColor(TOKENS["color"]["deepCrimson"])
+PALE = HexColor(TOKENS["worlds"]["portfolio"]["surface_alt"])
+HAIRLINE = HexColor(TOKENS["worlds"]["portfolio"]["line"])
 WHITE = HexColor("#ffffff")
 
 

@@ -37,13 +37,14 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from profile_data import load_profile
+from profile_data import load_design_tokens, load_profile
 
 
 HERE = str(SCRIPT_DIR)
 OUT_DIR = str(SCRIPT_DIR.parent / "generated")
 PROFILE = load_profile()
 PALETTE = PROFILE["visual_contract"]["palette"]
+TOKENS = load_design_tokens()
 
 USERNAME = PROFILE["identity"]["handle"]
 API = "https://api.github.com"
@@ -51,14 +52,14 @@ GQL = "https://api.github.com/graphql"
 
 # Same canonical palette as the README asset generator.
 PRIMARY = PALETTE["crimson"]
-SECONDARY = "#b92b2b"
+SECONDARY = TOKENS["color"]["secondaryCrimson"]
 SPARKLE = PALETTE["signal"]
 MUTED = PALETTE["muted"]
 VOID = PALETTE["void"]
 PANEL = PALETTE["panel"]
 BORDER = PALETTE["deep_crimson"]
 
-LANG_COLORS = [PRIMARY, SECONDARY, SPARKLE, "#b0685a", MUTED, "#6b1420"]
+LANG_COLORS = [PRIMARY, SECONDARY, SPARKLE, SECONDARY, MUTED, BORDER]
 
 
 def esc(s):
@@ -297,7 +298,7 @@ def build_languages_panel(ranked_langs):
         bar_w = max(bar_max * pct / 100, 3)
         rows.append(
             f'<text x="28" y="{y:.1f}" class="stat-lbl" font-size="10">{esc(lang)}</text>'
-            f'<rect x="130" y="{y-9:.1f}" width="{bar_max}" height="7" rx="3" fill="#2e0010"/>'
+            f'<rect x="130" y="{y-9:.1f}" width="{bar_max}" height="7" rx="3" fill="{BORDER}"/>'
             f'<rect x="130" y="{y-9:.1f}" width="{bar_w:.1f}" height="7" rx="3" fill="{color}"/>'
             f'<text x="{w-28}" y="{y:.1f}" text-anchor="end" class="stat-lbl" font-size="9" opacity="0.7">{pct:.1f}%</text>'
         )

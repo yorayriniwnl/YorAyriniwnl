@@ -44,8 +44,8 @@ class ProfileDataTests(unittest.TestCase):
         from scripts.profile_data import load_design_tokens
 
         tokens = load_design_tokens()
-        self.assertEqual(tokens["color"]["crimson"], "#e84b4b")
-        self.assertEqual(tokens["color"]["deepCrimson"], "#671515")
+        self.assertEqual(tokens["color"]["crimson"], "#ff1f2d")
+        self.assertEqual(tokens["color"]["deepCrimson"], "#8f0014")
         self.assertEqual(set(tokens["worlds"]), {"portfolio", "helios", "zenith", "vision", "talks"})
         self.assertEqual(
             self.profile["visual_contract"]["palette"]["deep_crimson"],
@@ -96,11 +96,11 @@ class ProfileDataTests(unittest.TestCase):
 
         for project_id, relative_path in contract["source"]["project_art"].items():
             with self.subTest(project=project_id):
-                self.assertTrue(relative_path.endswith("-crimson-v2.png"))
+                self.assertTrue(relative_path.endswith("-crimson-v3.png"))
                 self.assertTrue((ROOT / relative_path).is_file())
         for project_id, relative_path in contract["delivery"]["project_art"].items():
             with self.subTest(delivery=project_id):
-                self.assertIn("atmosphere-crimson-v2-optimized.jpg", relative_path)
+                self.assertIn("atmosphere-crimson-v3-optimized.jpg", relative_path)
         github_paths = [
             contract["github_derivative"]["hero"],
             *contract["github_derivative"]["project_art"].values(),

@@ -5,80 +5,80 @@
   "color": {
     "void": "#000000",
     "panel": "#050505",
-    "crimson": "#e84b4b",
-    "deepCrimson": "#671515",
-    "signal": "#ff8a7f",
-    "paper": "#f5eaea",
-    "muted": "#c4c4c4",
-    "secondaryCrimson": "#b92b2b",
+    "crimson": "#ff1f2d",
+    "deepCrimson": "#8f0014",
+    "signal": "#ff6670",
+    "paper": "#fff5f5",
+    "muted": "#d2a1a7",
+    "secondaryCrimson": "#d30b24",
     "shimmer": "#ffffff"
   },
   "worlds": {
     "portfolio": {
       "label": "CINEMATIC PRODUCT ARCHIVE",
-      "canvas": "#050505",
-      "surface": "#0d0a0d",
-      "surface_alt": "#171016",
-      "ink": "#f5eaea",
-      "muted": "#b7a1aa",
-      "accent": "#e84b4b",
-      "accent_soft": "#ff8a7f",
-      "line": "#51202b",
-      "glow": "#671515"
+      "canvas": "#070001",
+      "surface": "#140106",
+      "surface_alt": "#2b0710",
+      "ink": "#fff5f5",
+      "muted": "#d2a1a7",
+      "accent": "#ff1f2d",
+      "accent_soft": "#ff6670",
+      "line": "#7a1a29",
+      "glow": "#8f0014"
     },
     "helios": {
       "label": "INDUSTRIAL TELEMETRY",
-      "canvas": "#080304",
-      "surface": "#120608",
-      "surface_alt": "#211013",
-      "ink": "#f5eaea",
-      "muted": "#b7969a",
-      "accent": "#e84b4b",
-      "accent_soft": "#ff8a7f",
-      "line": "#51202b",
-      "glow": "#671515"
+      "canvas": "#070001",
+      "surface": "#140106",
+      "surface_alt": "#2b0710",
+      "ink": "#fff5f5",
+      "muted": "#d2a1a7",
+      "accent": "#ff1f2d",
+      "accent_soft": "#ff6670",
+      "line": "#7a1a29",
+      "glow": "#8f0014"
     },
     "zenith": {
       "label": "DAYLIGHT SOLAR INTELLIGENCE",
-      "canvas": "#080304",
-      "surface": "#120608",
-      "surface_alt": "#211013",
-      "ink": "#f5eaea",
-      "muted": "#b7969a",
-      "accent": "#b92b2b",
-      "accent_soft": "#ff8a7f",
-      "line": "#51202b",
-      "glow": "#671515"
+      "canvas": "#070001",
+      "surface": "#140106",
+      "surface_alt": "#2b0710",
+      "ink": "#fff5f5",
+      "muted": "#d2a1a7",
+      "accent": "#d30b24",
+      "accent_soft": "#ff6670",
+      "line": "#7a1a29",
+      "glow": "#8f0014"
     },
     "vision": {
       "label": "FORENSIC TEXTURE LAB",
-      "canvas": "#080304",
-      "surface": "#120608",
-      "surface_alt": "#211013",
-      "ink": "#f5eaea",
-      "muted": "#b7969a",
-      "accent": "#b92b2b",
-      "accent_soft": "#ff8a7f",
-      "line": "#51202b",
-      "glow": "#671515"
+      "canvas": "#070001",
+      "surface": "#140106",
+      "surface_alt": "#2b0710",
+      "ink": "#fff5f5",
+      "muted": "#d2a1a7",
+      "accent": "#d30b24",
+      "accent_soft": "#ff6670",
+      "line": "#7a1a29",
+      "glow": "#8f0014"
     },
     "talks": {
       "label": "REALTIME COMMUNICATION",
-      "canvas": "#080304",
-      "surface": "#130609",
-      "surface_alt": "#211013",
-      "ink": "#f5eaea",
-      "muted": "#ae878d",
-      "accent": "#e84b4b",
-      "accent_soft": "#ff8a7f",
-      "line": "#5b2630",
-      "glow": "#671515"
+      "canvas": "#070001",
+      "surface": "#140106",
+      "surface_alt": "#2b0710",
+      "ink": "#fff5f5",
+      "muted": "#d2a1a7",
+      "accent": "#ff1f2d",
+      "accent_soft": "#ff6670",
+      "line": "#7a1a29",
+      "glow": "#8f0014"
     }
   },
   "gradient": {
-    "showcase": ["#671515", "#8c1616", "#2a0505"],
-    "header": ["#000000", "#671515", "#160303"],
-    "footer": ["#160303", "#671515", "#000000"]
+    "showcase": ["#8f0014", "#d30b24", "#420008"],
+    "header": ["#000000", "#8f0014", "#220006"],
+    "footer": ["#220006", "#8f0014", "#000000"]
   },
   "typography": {
     "display": "Cormorant Garamond 600",
@@ -119,7 +119,7 @@
   "effects": {
     "grainOpacity": 0.04,
     "glowOpacity": 0.2,
-    "shadowStyle": "controlled-crimson"
+    "shadowStyle": "controlled-scarlet"
   },
   "breakpoints": {
     "mobile": 600,
