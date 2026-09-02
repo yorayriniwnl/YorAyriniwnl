@@ -91,10 +91,11 @@ ASSET_REVISIONS = {
     "systems-reel-mobile.gif": "motion-v3",
     "systems-reel-still.png": "motion-v3",
     "systems-reel-mobile-still.png": "motion-v3",
-    "project-helios.svg": "detail-v5",
-    "project-zenith.svg": "detail-v5",
-    "project-vision.svg": "detail-v5",
-    "project-talks.svg": "detail-v5",
+    "hero.svg": "raster-v1",
+    "project-helios.svg": "raster-v1",
+    "project-zenith.svg": "raster-v1",
+    "project-vision.svg": "raster-v1",
+    "project-talks.svg": "raster-v1",
 }
 
 

@@ -295,6 +295,15 @@
     "approved_hero": "assets/hero-keyart-v2.png",
     "approved_hero_sha256": "fe1bc51570f6e90292de0b1aea65f8a04ec59f98ace361ab104352a21508078d",
     "optimized_hero": "assets/hero-keyart-v2-optimized.jpg",
+    "high_resolution": {
+      "hero": "assets/hero-keyart-v2-4k.jpg",
+      "project_art": {
+        "helios": "assets/project-helios-keyart-v5-4k.jpg",
+        "zenith": "assets/project-zenith-keyart-v5-4k.jpg",
+        "vision": "assets/project-vision-keyart-v5-4k.jpg",
+        "talks": "assets/project-talks-keyart-v5-4k.jpg"
+      }
+    },
     "project_art": {
       "helios": "assets/project-helios-keyart-v5-optimized.jpg",
       "zenith": "assets/project-zenith-keyart-v5-optimized.jpg",

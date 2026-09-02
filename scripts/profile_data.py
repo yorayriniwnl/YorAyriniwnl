@@ -90,7 +90,18 @@ def _validate_projects(projects: list[dict[str, Any]]) -> None:
 
 def _validate_hero(profile: dict[str, Any]) -> None:
     contract = profile["visual_contract"]
-    _require(contract, {"approved_hero", "approved_hero_sha256", "optimized_hero", "project_art", "palette"}, "visual contract")
+    _require(
+        contract,
+        {
+            "approved_hero",
+            "approved_hero_sha256",
+            "optimized_hero",
+            "high_resolution",
+            "project_art",
+            "palette",
+        },
+        "visual contract",
+    )
     hero_path = ROOT / contract["approved_hero"]
     if not hero_path.is_file():
         raise ProfileDataError(f"approved hero is missing: {hero_path}")
@@ -105,6 +116,15 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         asset_path = ROOT / relative_path
         if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():
             raise ProfileDataError(f"optimized visual asset is missing: {relative_path}")
+
+    high_resolution = contract["high_resolution"]
+    _require(high_resolution, {"hero", "project_art"}, "high-resolution visual contract")
+    if set(high_resolution["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+        raise ProfileDataError("high-resolution project artwork must match the selected visual project set")
+    for relative_path in (high_resolution["hero"], *high_resolution["project_art"].values()):
+        asset_path = ROOT / relative_path
+        if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():
+            raise ProfileDataError(f"high-resolution visual asset is missing: {relative_path}")
 
 
 def _validate_design_tokens(profile: dict[str, Any]) -> None:

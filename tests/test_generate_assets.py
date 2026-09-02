@@ -95,7 +95,10 @@ class GenerateAssetsTests(unittest.TestCase):
         }
 
         self.assertEqual(set(manifest), expected)
-        self.assertLess(sum(len(svg.encode("utf-8")) for svg in manifest.values()), 2_500_000)
+        # The flagship cards now embed retina-density raster derivatives. The
+        # standalone 4K masters stay outside the SVG payload, but the larger
+        # display derivatives still need a realistic aggregate budget.
+        self.assertLess(sum(len(svg.encode("utf-8")) for svg in manifest.values()), 4_600_000)
         self.assertNotIn("project-next.svg", manifest)
         self.assertNotIn("+18.4%", "".join(manifest.values()))
 

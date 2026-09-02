@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Create deterministic, web-sized derivatives of approved profile artwork."""
+"""Create deterministic 4K masters and retina-safe derivatives of approved art.
+
+The original PNGs remain canonical.  This pipeline only creates versioned JPEG
+derivatives from those sources so the approved profile portrait can never be
+silently re-generated or replaced by an image model.
+"""
 
 from __future__ import annotations
 
@@ -8,7 +13,7 @@ import json
 from pathlib import Path
 from typing import NamedTuple
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSET_DIR = ROOT / "assets"
@@ -17,16 +22,29 @@ ASSET_DIR = ROOT / "assets"
 class AssetRecipe(NamedTuple):
     source: str
     output: str
-    max_size: tuple[int, int]
+    target_size: tuple[int, int]
     quality: int = 84
+    sharpen_percent: int = 110
 
 
 RECIPES = (
-    AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (1600, 900), 86),
-    AssetRecipe("project-helios-keyart-v5.png", "project-helios-keyart-v5-optimized.jpg", (900, 506), 70),
-    AssetRecipe("project-zenith-keyart-v5.png", "project-zenith-keyart-v5-optimized.jpg", (900, 506), 70),
-    AssetRecipe("project-vision-keyart-v5.png", "project-vision-keyart-v5-optimized.jpg", (900, 506), 70),
-    AssetRecipe("project-talks-keyart-v5.png", "project-talks-keyart-v5-optimized.jpg", (900, 506), 70),
+    # These are the derivatives embedded in the self-contained GitHub SVGs.
+    # Their 1.5-2x display density keeps the README sharp without making each
+    # generated card carry a multi-megabyte 4K payload.
+    AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (2400, 1110), 84),
+    AssetRecipe("project-helios-keyart-v5.png", "project-helios-keyart-v5-optimized.jpg", (1800, 1013), 80),
+    AssetRecipe("project-zenith-keyart-v5.png", "project-zenith-keyart-v5-optimized.jpg", (1800, 1013), 80),
+    AssetRecipe("project-vision-keyart-v5.png", "project-vision-keyart-v5-optimized.jpg", (1800, 1013), 80),
+    AssetRecipe("project-talks-keyart-v5.png", "project-talks-keyart-v5-optimized.jpg", (1800, 1013), 80),
+)
+
+FOUR_K_RECIPES = (
+    # The hero keeps its cinematic aspect ratio; project art is UHD 16:9.
+    AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-4k.jpg", (3840, 1777), 88, 118),
+    AssetRecipe("project-helios-keyart-v5.png", "project-helios-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
+    AssetRecipe("project-zenith-keyart-v5.png", "project-zenith-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
+    AssetRecipe("project-vision-keyart-v5.png", "project-vision-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
+    AssetRecipe("project-talks-keyart-v5.png", "project-talks-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
 )
 
 
@@ -51,7 +69,15 @@ def optimize_asset(recipe: AssetRecipe) -> tuple[int, int]:
     before = source.stat().st_size
     with Image.open(source) as opened:
         image = ImageOps.exif_transpose(opened).convert("RGB")
-        image.thumbnail(recipe.max_size, Image.Resampling.LANCZOS)
+        image = ImageOps.fit(
+            image,
+            recipe.target_size,
+            method=Image.Resampling.LANCZOS,
+            centering=(0.5, 0.5),
+        )
+        image = image.filter(
+            ImageFilter.UnsharpMask(radius=1.1, percent=recipe.sharpen_percent, threshold=3)
+        )
         image.save(
             temporary,
             "JPEG",
@@ -79,10 +105,33 @@ def validate_optimized_assets() -> None:
         with Image.open(output) as image:
             if image.format != "JPEG" or image.mode != "RGB":
                 raise ValueError(f"optimized asset must be an RGB JPEG: {output}")
-            if image.width > recipe.max_size[0] or image.height > recipe.max_size[1]:
-                raise ValueError(f"optimized asset exceeds its size budget: {output}")
+            if image.size != recipe.target_size:
+                raise ValueError(
+                    f"optimized asset has the wrong dimensions: {output} "
+                    f"({image.size}, expected {recipe.target_size})"
+                )
             if image.getexif():
                 raise ValueError(f"optimized asset contains EXIF metadata: {output}")
+
+
+def validate_four_k_assets() -> None:
+    for recipe in FOUR_K_RECIPES:
+        source = ASSET_DIR / recipe.source
+        output = ASSET_DIR / recipe.output
+        if not output.is_file():
+            raise ValueError(f"4K asset is missing: {output}")
+        if output.stat().st_size >= source.stat().st_size:
+            raise ValueError(f"4K asset is unexpectedly larger than its PNG source: {output}")
+        with Image.open(output) as image:
+            if image.format != "JPEG" or image.mode != "RGB":
+                raise ValueError(f"4K asset must be an RGB JPEG: {output}")
+            if image.size != recipe.target_size:
+                raise ValueError(
+                    f"4K asset has the wrong dimensions: {output} "
+                    f"({image.size}, expected {recipe.target_size})"
+                )
+            if image.getexif():
+                raise ValueError(f"4K asset contains EXIF metadata: {output}")
 
 
 def main() -> int:
@@ -93,7 +142,7 @@ def main() -> int:
 
     total_before = 0
     total_after = 0
-    for recipe in RECIPES:
+    for recipe in (*FOUR_K_RECIPES, *RECIPES):
         before, after = optimize_asset(recipe)
         total_before += before
         total_after += after
@@ -101,6 +150,7 @@ def main() -> int:
         print(f"optimized {recipe.source} -> {recipe.output}: {before:,} -> {after:,} bytes ({reduction:.1f}% smaller)")
 
     validate_optimized_assets()
+    validate_four_k_assets()
     if sha256(hero_path) != before_hero_sha:
         raise ValueError("approved hero source changed during optimization")
 

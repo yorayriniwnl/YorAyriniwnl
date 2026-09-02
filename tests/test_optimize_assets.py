@@ -13,6 +13,7 @@ spec.loader.exec_module(optimize_assets)
 class OptimizeAssetsTests(unittest.TestCase):
     def test_optimized_assets_are_valid_and_preserve_approved_hero(self):
         optimize_assets.validate_optimized_assets()
+        optimize_assets.validate_four_k_assets()
 
         hero, expected_sha = optimize_assets.approved_hero_contract()
         self.assertEqual(optimize_assets.sha256(hero), expected_sha)

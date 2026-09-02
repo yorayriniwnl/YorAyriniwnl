@@ -3,6 +3,8 @@ import json
 import unittest
 from pathlib import Path
 
+from PIL import Image
+
 
 ROOT = Path(__file__).parents[1]
 DATA_PATH = ROOT / "data" / "profile.json"
@@ -92,6 +94,17 @@ class ProfileDataTests(unittest.TestCase):
         for project_id, relative_path in contract["project_art"].items():
             with self.subTest(project=project_id):
                 self.assertIn("keyart-v5-optimized.jpg", relative_path)
+
+    def test_high_resolution_visual_contract_is_true_4k_ready(self):
+        contract = self.profile["visual_contract"]["high_resolution"]
+
+        with Image.open(ROOT / contract["hero"]) as hero:
+            self.assertEqual(hero.size, (3840, 1777))
+
+        for project_id, relative_path in contract["project_art"].items():
+            with self.subTest(project=project_id), Image.open(ROOT / relative_path) as image:
+                self.assertEqual(image.size, (3840, 2160))
+                self.assertIn("keyart-v5-4k.jpg", relative_path)
 
 
 if __name__ == "__main__":

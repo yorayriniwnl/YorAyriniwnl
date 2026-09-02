@@ -3,7 +3,7 @@
 <div align="center">
 
 <a href="https://www.yorayriniwnl.in">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg" width="100%" alt="Ayush Roy, full-stack developer and applied ml builder"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg?rev=raster-v1" width="100%" alt="Ayush Roy, full-stack developer and applied ml builder"/>
 </a>
 
 <p>
@@ -68,7 +68,7 @@
 </p>
 
 <a href="https://github.com/yorayriniwnl/Yor-Helios">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=detail-v5" width="100%" alt="Yor Helios: realtime energy intelligence"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v1" width="100%" alt="Yor Helios: realtime energy intelligence"/>
 </a>
 
 <details>
@@ -85,7 +85,7 @@
 </p>
 
 <a href="https://zenith-xi-snowy.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=detail-v5" width="100%" alt="Yor Zenith: solar decision support"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=raster-v1" width="100%" alt="Yor Zenith: solar decision support"/>
 </a>
 
 <details>
@@ -103,7 +103,7 @@
 </p>
 
 <a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=detail-v5" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v1" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
 
 <details>
@@ -121,7 +121,7 @@
 </p>
 
 <a href="https://yor-talks.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg?rev=detail-v5" width="100%" alt="Yor Talks V2: realtime communication"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg?rev=raster-v1" width="100%" alt="Yor Talks V2: realtime communication"/>
 </a>
 
 <details>
