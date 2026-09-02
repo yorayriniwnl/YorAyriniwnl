@@ -99,6 +99,26 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertNotIn("project-next.svg", manifest)
         self.assertNotIn("+18.4%", "".join(manifest.values()))
 
+    def test_supporting_assets_receive_atlas_treatment_but_flagship_art_stays_locked(self):
+        manifest = generate_assets.build_asset_manifest()
+
+        treated = set(manifest) - generate_assets.ATLAS_TREATMENT_EXCLUDED
+        self.assertEqual(len(treated), 43)
+        for filename in treated:
+            with self.subTest(asset=filename):
+                svg = manifest[filename]
+                self.assertIn('id="atlas-treatment"', svg)
+                self.assertIn('data-visual-treatment="atlas-v1"', svg)
+                self.assertIn('aria-hidden="true"', svg)
+                self.assertIn("prefers-reduced-motion: reduce", svg)
+                self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
+
+        for filename in generate_assets.ATLAS_TREATMENT_EXCLUDED:
+            with self.subTest(asset=filename):
+                self.assertNotIn('data-visual-treatment="atlas-v1"', manifest[filename])
+
+        self.assertIn(generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT["optimized_hero"]).split(",", 1)[1], manifest["hero.svg"])
+
     def test_visual_content_panels_are_valid_and_data_complete(self):
         manifest = generate_assets.build_asset_manifest()
         profile = generate_assets.PROFILE

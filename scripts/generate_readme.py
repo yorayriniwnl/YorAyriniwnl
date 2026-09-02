@@ -27,12 +27,70 @@ PROJECT_VISUALS = {
     "vision": "project-vision.svg",
     "talks": "project-talks.svg",
 }
+ATLAS_ASSETS = (
+    "identity-console.svg",
+    "signal-strip.svg",
+    "field-notes.svg",
+    "skills-matrix.svg",
+    "operator-gateway.svg",
+    "achievement-rack.svg",
+    "protocol-engineer.svg",
+    "protocol-product.svg",
+    "protocol-human.svg",
+    "dossier-toggle.svg",
+    "arsenal.svg",
+    "finale.svg",
+    "jump-projects.svg",
+    "jump-experience.svg",
+    "jump-activity.svg",
+    "jump-contact.svg",
+    "proof-apps.svg",
+    "proof-tests.svg",
+    "proof-accuracy.svg",
+    "proof-prototypes.svg",
+    "nav-portfolio.svg",
+    "nav-projects.svg",
+    "nav-resume.svg",
+    "nav-linkedin.svg",
+    "nav-live.svg",
+    "nav-source.svg",
+    "nav-experiment.svg",
+    "nav-email.svg",
+    "nav-github.svg",
+    "nav-devpost.svg",
+    "nav-steam.svg",
+    "section-projects.svg",
+    "section-field.svg",
+    "section-arsenal.svg",
+    "section-record.svg",
+    "section-operator.svg",
+    "section-channel.svg",
+    "project-dossier-portfolio.svg",
+    "project-dossier-helios.svg",
+    "project-dossier-zenith.svg",
+    "project-dossier-vision.svg",
+    "project-dossier-talks.svg",
+    "project-dossier-feelings.svg",
+)
+MOTION_ASSETS = (
+    "systems-reel.gif",
+    "systems-reel-mobile.gif",
+    "systems-reel-still.png",
+    "systems-reel-mobile-still.png",
+)
+
 ASSET_REVISIONS = {
-    # GitHub's raw CDN can retain a recently replaced SVG at the same URL.
-    # Revision only the asset that received the immediate post-publish layout
-    # correction; future generators keep the normal stable URLs by default.
-    "skills-matrix.svg": "kinetic-v2",
-    "field-notes.svg": "privacy-v2",
+    # GitHub's raw CDN can retain a recently replaced visual at the same URL.
+    # Supporting assets share the atlas pass; motion gets its own revision so
+    # responsive GIF and still fallbacks cannot be mixed by a stale CDN edge.
+    **{
+        filename: "atlas-v1"
+        for filename in ATLAS_ASSETS
+    },
+    "systems-reel.gif": "motion-v3",
+    "systems-reel-mobile.gif": "motion-v3",
+    "systems-reel-still.png": "motion-v3",
+    "systems-reel-mobile-still.png": "motion-v3",
     "project-helios.svg": "detail-v5",
     "project-zenith.svg": "detail-v5",
     "project-vision.svg": "detail-v5",

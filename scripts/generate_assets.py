@@ -6,9 +6,11 @@ Never hand-edit files under generated/. Positions are seeded so repeated runs
 remain deterministic, and stale generated SVGs are removed automatically.
 """
 import base64
+import hashlib
 import math
 import os
 import random
+import re
 import sys
 import textwrap
 from pathlib import Path
@@ -99,9 +101,145 @@ CONFIG = {
 # opaque text glyphs in paint order, so overlap there is invisible, not risky.
 TEXT_ZONE = {"x0": 330, "x1": 1170, "y0": 92, "y1": 228}
 
+# The hero and flagship project covers have their own art direction and are
+# intentionally left alone. Every other public visual is a supporting
+# interface surface, so it receives the same lightweight atlas treatment at
+# manifest-build time. Keeping this list explicit makes the privacy/artwork
+# boundary auditable and prevents a future generator change from accidentally
+# touching the approved profile image.
+ATLAS_TREATMENT_REVISION = "atlas-v1"
+ATLAS_TREATMENT_EXCLUDED = frozenset({
+    "hero.svg",
+    "project-portfolio-v2.svg",
+    "project-portfolio-mobile-v2.svg",
+    "project-helios.svg",
+    "project-zenith.svg",
+    "project-vision.svg",
+    "project-talks.svg",
+})
+
 
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def _svg_viewbox(svg):
+    match = re.search(r'<svg\b[^>]*\bviewBox="([^"]+)"', svg)
+    if not match:
+        raise ValueError("SVG is missing a numeric viewBox")
+    values = [float(value) for value in re.split(r"[\s,]+", match.group(1).strip())]
+    if len(values) != 4 or values[2] <= 0 or values[3] <= 0:
+        raise ValueError(f"invalid SVG viewBox: {match.group(1)}")
+    return values
+
+
+def _atlas_overlay(filename, svg):
+    """Add a restrained, deterministic visual chassis to supporting SVGs.
+
+    The base assets own their copy and primary illustration. This overlay is
+    deliberately a transparent, pointer-free layer: it adds depth rails,
+    edge brackets, a small orbital instrument, and one slow signal pass while
+    leaving the authored content and screen-reader title/description intact.
+    """
+    _, _, width, height = _svg_viewbox(svg)
+    digest = hashlib.sha256(filename.encode("utf-8")).hexdigest()
+    prefix = f"atlas{digest[:10]}"
+    seed = int(digest[10:18], 16)
+
+    short_edge = min(width, height)
+    inset = max(4.0, min(18.0, short_edge * 0.075))
+    bracket = max(7.0, min(30.0, short_edge * 0.24))
+    stroke = max(0.7, min(1.5, short_edge / 220.0))
+    radius = max(7.0, min(54.0, short_edge * 0.22))
+    cx = width - inset - radius - (seed % max(6, int(short_edge * 0.12)))
+    cy = inset + radius + ((seed >> 5) % max(4, int(short_edge * 0.12)))
+    cx = max(inset + radius, min(width - inset - radius, cx))
+    cy = max(inset + radius, min(height - inset - radius, cy))
+    orbit_ry = max(3.0, radius * 0.36)
+    grid = max(12, int(round(short_edge / 7)))
+    scan_width = max(18.0, min(88.0, width * 0.08))
+    scan_duration = 8.0 + (seed % 40) / 10.0
+    scan_begin = -((seed >> 9) % 80) / 10.0
+    signal_y = max(inset + 2, height - inset * 0.72)
+    signal_x = inset + bracket * 1.7
+    signal_w = max(26.0, width - signal_x - inset - bracket * 0.4)
+    trace_points = []
+    trace_count = 5 if width < 500 else 8
+    for index in range(trace_count):
+        x = signal_x + signal_w * index / (trace_count - 1)
+        wobble = ((seed >> (index * 3)) & 7) - 3
+        y = signal_y - wobble * max(0.7, short_edge / 150.0)
+        trace_points.append(f"{x:.1f},{y:.1f}")
+    trace = " ".join(trace_points)
+    orbital_dots = []
+    for index in range(3):
+        angle = (seed % 360) * math.pi / 180 + index * math.tau / 3
+        dot_x = cx + math.cos(angle) * radius
+        dot_y = cy + math.sin(angle) * orbit_ry
+        dot_r = max(1.3, min(3.2, short_edge / 48.0))
+        orbital_dots.append(
+            f'<circle cx="{dot_x:.1f}" cy="{dot_y:.1f}" r="{dot_r:.1f}" '
+            f'fill="#ff8a7f" opacity="{0.36 + index * 0.12:.2f}"/>'
+        )
+
+    safe_width = max(1.0, width - inset * 2)
+    safe_height = max(1.0, height - inset * 2)
+    return f'''<defs>
+<radialGradient id="{prefix}Glow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="{prefix}Sweep" gradientUnits="userSpaceOnUse" x1="-{scan_width:.1f}" x2="0">
+<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
+<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+</linearGradient>
+<pattern id="{prefix}Grid" width="{grid}" height="{grid}" patternUnits="userSpaceOnUse">
+<path d="M{grid} 0H0V{grid}" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+</pattern>
+<style>
+.{prefix}-scan {{ animation: {prefix}-scan {scan_duration:.1f}s linear infinite; animation-delay: {scan_begin:.1f}s; }}
+.{prefix}-orbit {{ transform-box: fill-box; transform-origin: center; animation: {prefix}-orbit {22 + seed % 18}s linear infinite; }}
+@keyframes {prefix}-scan {{ from {{ transform: translateX(0); }} to {{ transform: translateX({width + scan_width * 2:.1f}px); }} }}
+@keyframes {prefix}-orbit {{ to {{ transform: rotate(360deg); }} }}
+@media (prefers-reduced-motion: reduce) {{ .{prefix}-scan, .{prefix}-orbit {{ animation: none !important; }} }}
+</style>
+</defs>
+<g id="atlas-treatment" data-visual-treatment="{ATLAS_TREATMENT_REVISION}" aria-hidden="true" pointer-events="none">
+<rect x="{inset:.1f}" y="{inset:.1f}" width="{safe_width:.1f}" height="{safe_height:.1f}" rx="{max(2.0, min(10.0, inset)):.1f}"
+ fill="url(#{prefix}Grid)" opacity=".52"/>
+<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{radius * 1.8:.1f}" ry="{radius * .9:.1f}"
+ fill="url(#{prefix}Glow)" opacity=".42"/>
+<rect class="{prefix}-scan" x="-{scan_width:.1f}" y="{inset:.1f}" width="{scan_width:.1f}" height="{safe_height:.1f}"
+ fill="url(#{prefix}Sweep)" opacity=".45"/>
+<path d="M{inset:.1f} {inset + bracket:.1f}V{inset:.1f}H{inset + bracket:.1f}
+ M{width - inset - bracket:.1f} {inset:.1f}H{width - inset:.1f}V{inset + bracket:.1f}
+ M{inset:.1f} {height - inset - bracket:.1f}V{height - inset:.1f}H{inset + bracket:.1f}
+ M{width - inset - bracket:.1f} {height - inset:.1f}H{width - inset:.1f}V{height - inset - bracket:.1f}"
+ fill="none" stroke="#ff8a7f" stroke-width="{stroke:.2f}" opacity=".38"/>
+<ellipse class="{prefix}-orbit" cx="{cx:.1f}" cy="{cy:.1f}" rx="{radius:.1f}" ry="{orbit_ry:.1f}"
+ fill="none" stroke="#ff8a7f" stroke-width="{stroke:.2f}" stroke-dasharray="3 7" opacity=".54"/>
+<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{radius * .66:.1f}" ry="{orbit_ry * .66:.1f}"
+ fill="none" stroke="#e84b4b" stroke-width="{max(.5, stroke * .65):.2f}" stroke-dasharray="1 8" opacity=".36"/>
+{''.join(orbital_dots)}
+<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{max(1.8, radius * .08):.1f}" fill="#ff8a7f" opacity=".72"/>
+<polyline points="{trace}" fill="none" stroke="#e84b4b" stroke-width="{max(.7, stroke * .8):.2f}" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="{signal_x + signal_w * .58:.1f}" cy="{signal_y:.1f}" r="{max(1.2, short_edge / 80):.1f}" fill="#ff8a7f" opacity=".64"/>
+</g>'''
+
+
+def apply_atlas_treatment(manifest):
+    treated = {}
+    for filename, svg in manifest.items():
+        if filename in ATLAS_TREATMENT_EXCLUDED:
+            treated[filename] = svg
+            continue
+        close = svg.rfind("</svg>")
+        if close < 0:
+            raise ValueError(f"cannot treat malformed SVG: {filename}")
+        treated[filename] = f"{svg[:close]}{_atlas_overlay(filename, svg)}{svg[close:]}"
+    return treated
 
 
 def wrap_lines(text, width):
@@ -2551,7 +2689,7 @@ def build_asset_manifest():
             project, CONFIG
         )
 
-    return manifest
+    return apply_atlas_treatment(manifest)
 
 
 def main():
