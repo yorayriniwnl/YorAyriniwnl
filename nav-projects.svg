@@ -21,4 +21,46 @@
 <text x="68" y="49" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">EXPLORE THE BUILDS</text>
 <text x="326" y="40" text-anchor="end" class="mono" font-size="19" fill="#e84b4b">→</text>
 <rect x="18" y="60" width="6" height="1" fill="#e84b4b" opacity="0.36"/><rect x="35" y="60" width="5" height="1" fill="#e84b4b" opacity="0.49"/><rect x="52" y="60" width="12" height="1" fill="#e84b4b" opacity="0.62"/><rect x="69" y="60" width="12" height="1" fill="#e84b4b" opacity="0.19"/><rect x="86" y="60" width="13" height="1" fill="#e84b4b" opacity="0.29"/><rect x="103" y="60" width="13" height="1" fill="#e84b4b" opacity="0.45"/><rect x="120" y="60" width="9" height="1" fill="#e84b4b" opacity="0.30"/><rect x="137" y="60" width="7" height="1" fill="#e84b4b" opacity="0.44"/><rect x="154" y="60" width="6" height="1" fill="#e84b4b" opacity="0.61"/><rect x="171" y="60" width="5" height="1" fill="#e84b4b" opacity="0.55"/><rect x="188" y="60" width="10" height="1" fill="#e84b4b" opacity="0.19"/><rect x="205" y="60" width="13" height="1" fill="#e84b4b" opacity="0.45"/><rect x="222" y="60" width="9" height="1" fill="#e84b4b" opacity="0.54"/><rect x="239" y="60" width="8" height="1" fill="#e84b4b" opacity="0.47"/><rect x="256" y="60" width="13" height="1" fill="#e84b4b" opacity="0.35"/><rect x="273" y="60" width="12" height="1" fill="#e84b4b" opacity="0.37"/><rect x="290" y="60" width="5" height="1" fill="#e84b4b" opacity="0.55"/><rect x="307" y="60" width="8" height="1" fill="#e84b4b" opacity="0.34"/>
-</svg>
+<defs>
+<radialGradient id="atlas401bab5e1cGlow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="atlas401bab5e1cSweep" gradientUnits="userSpaceOnUse" x1="-28.0" x2="0">
+<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
+<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+</linearGradient>
+<pattern id="atlas401bab5e1cGrid" width="12" height="12" patternUnits="userSpaceOnUse">
+<path d="M12 0H0V12" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+</pattern>
+<style>
+.atlas401bab5e1c-scan { animation: atlas401bab5e1c-scan 11.5s linear infinite; animation-delay: -3.8s; }
+.atlas401bab5e1c-orbit { transform-box: fill-box; transform-origin: center; animation: atlas401bab5e1c-orbit 39s linear infinite; }
+@keyframes atlas401bab5e1c-scan { from { transform: translateX(0); } to { transform: translateX(406.0px); } }
+@keyframes atlas401bab5e1c-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .atlas401bab5e1c-scan, .atlas401bab5e1c-orbit { animation: none !important; } }
+</style>
+</defs>
+<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<rect x="5.4" y="5.4" width="339.2" height="61.2" rx="5.4"
+ fill="url(#atlas401bab5e1cGrid)" opacity=".52"/>
+<ellipse cx="325.8" cy="23.2" rx="28.5" ry="14.3"
+ fill="url(#atlas401bab5e1cGlow)" opacity=".42"/>
+<rect class="atlas401bab5e1c-scan" x="-28.0" y="5.4" width="28.0" height="61.2"
+ fill="url(#atlas401bab5e1cSweep)" opacity=".45"/>
+<path d="M5.4 22.7V5.4H22.7
+ M327.3 5.4H344.6V22.7
+ M5.4 49.3V66.6H22.7
+ M327.3 66.6H344.6V49.3"
+ fill="none" stroke="#ff8a7f" stroke-width="0.70" opacity=".38"/>
+<ellipse class="atlas401bab5e1c-orbit" cx="325.8" cy="23.2" rx="15.8" ry="5.7"
+ fill="none" stroke="#ff8a7f" stroke-width="0.70" stroke-dasharray="3 7" opacity=".54"/>
+<ellipse cx="325.8" cy="23.2" rx="10.5" ry="3.8"
+ fill="none" stroke="#e84b4b" stroke-width="0.50" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="338.7" cy="26.5" r="1.5" fill="#ff8a7f" opacity="0.36"/><circle cx="311.4" cy="25.6" r="1.5" fill="#ff8a7f" opacity="0.48"/><circle cx="327.1" cy="17.6" r="1.5" fill="#ff8a7f" opacity="0.60"/>
+<circle cx="325.8" cy="23.2" r="1.8" fill="#ff8a7f" opacity=".72"/>
+<polyline points="34.8,68.1 110.5,68.8 186.2,66.7 262.0,66.0 337.7,66.0" fill="none" stroke="#e84b4b" stroke-width="0.70" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="210.5" cy="68.1" r="1.2" fill="#ff8a7f" opacity=".64"/>
+</g></svg>

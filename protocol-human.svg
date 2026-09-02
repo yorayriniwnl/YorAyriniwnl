@@ -47,4 +47,46 @@
 <rect x="24" y="190" width="278" height="1" fill="#310808"/>
 <text x="24" y="211" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">OPEN STEAM PROFILE ↗</text>
 </g>
-</svg>
+<defs>
+<radialGradient id="atlasce2a98cf42Glow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="atlasce2a98cf42Sweep" gradientUnits="userSpaceOnUse" x1="-88.0" x2="0">
+<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
+<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+</linearGradient>
+<pattern id="atlasce2a98cf42Grid" width="50" height="50" patternUnits="userSpaceOnUse">
+<path d="M50 0H0V50" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+</pattern>
+<style>
+.atlasce2a98cf42-scan { animation: atlasce2a98cf42-scan 10.3s linear infinite; animation-delay: -6.9s; }
+.atlasce2a98cf42-orbit { transform-box: fill-box; transform-origin: center; animation: atlasce2a98cf42-orbit 23s linear infinite; }
+@keyframes atlasce2a98cf42-scan { from { transform: translateX(0); } to { transform: translateX(1676.0px); } }
+@keyframes atlasce2a98cf42-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .atlasce2a98cf42-scan, .atlasce2a98cf42-orbit { animation: none !important; } }
+</style>
+</defs>
+<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<rect x="18.0" y="18.0" width="1464.0" height="314.0" rx="10.0"
+ fill="url(#atlasce2a98cf42Grid)" opacity=".52"/>
+<ellipse cx="1415.0" cy="73.0" rx="97.2" ry="48.6"
+ fill="url(#atlasce2a98cf42Glow)" opacity=".42"/>
+<rect class="atlasce2a98cf42-scan" x="-88.0" y="18.0" width="88.0" height="314.0"
+ fill="url(#atlasce2a98cf42Sweep)" opacity=".45"/>
+<path d="M18.0 48.0V18.0H48.0
+ M1452.0 18.0H1482.0V48.0
+ M18.0 302.0V332.0H48.0
+ M1452.0 332.0H1482.0V302.0"
+ fill="none" stroke="#ff8a7f" stroke-width="1.50" opacity=".38"/>
+<ellipse class="atlasce2a98cf42-orbit" cx="1415.0" cy="73.0" rx="54.0" ry="19.4"
+ fill="none" stroke="#ff8a7f" stroke-width="1.50" stroke-dasharray="3 7" opacity=".54"/>
+<ellipse cx="1415.0" cy="73.0" rx="35.6" ry="12.8"
+ fill="none" stroke="#e84b4b" stroke-width="0.98" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="1466.6" cy="67.3" r="3.2" fill="#ff8a7f" opacity="0.36"/><circle cx="1402.9" cy="91.9" r="3.2" fill="#ff8a7f" opacity="0.48"/><circle cx="1375.5" cy="59.7" r="3.2" fill="#ff8a7f" opacity="0.60"/>
+<circle cx="1415.0" cy="73.0" r="4.3" fill="#ff8a7f" opacity=".72"/>
+<polyline points="69.0,327.7 269.1,330.0 469.3,344.0 669.4,332.4 869.6,330.0 1069.7,339.4 1269.9,337.0 1470.0,330.0" fill="none" stroke="#e84b4b" stroke-width="1.20" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="881.6" cy="337.0" r="4.4" fill="#ff8a7f" opacity=".64"/>
+</g></svg>

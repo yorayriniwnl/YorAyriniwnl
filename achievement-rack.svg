@@ -134,4 +134,46 @@
 <animate attributeName="x" values="226;245;226" dur="2.6s" begin="-1.24s" repeatCount="indefinite"/>
 </rect>
 </g>
-</svg>
+<defs>
+<radialGradient id="atlas328a4376f0Glow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="atlas328a4376f0Sweep" gradientUnits="userSpaceOnUse" x1="-88.0" x2="0">
+<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
+<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+</linearGradient>
+<pattern id="atlas328a4376f0Grid" width="41" height="41" patternUnits="userSpaceOnUse">
+<path d="M41 0H0V41" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+</pattern>
+<style>
+.atlas328a4376f0-scan { animation: atlas328a4376f0-scan 8.8s linear infinite; animation-delay: 0.0s; }
+.atlas328a4376f0-orbit { transform-box: fill-box; transform-origin: center; animation: atlas328a4376f0-orbit 26s linear infinite; }
+@keyframes atlas328a4376f0-scan { from { transform: translateX(0); } to { transform: translateX(1676.0px); } }
+@keyframes atlas328a4376f0-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .atlas328a4376f0-scan, .atlas328a4376f0-orbit { animation: none !important; } }
+</style>
+</defs>
+<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<rect x="18.0" y="18.0" width="1464.0" height="250.0" rx="10.0"
+ fill="url(#atlas328a4376f0Grid)" opacity=".52"/>
+<ellipse cx="1422.0" cy="73.0" rx="97.2" ry="48.6"
+ fill="url(#atlas328a4376f0Glow)" opacity=".42"/>
+<rect class="atlas328a4376f0-scan" x="-88.0" y="18.0" width="88.0" height="250.0"
+ fill="url(#atlas328a4376f0Sweep)" opacity=".45"/>
+<path d="M18.0 48.0V18.0H48.0
+ M1452.0 18.0H1482.0V48.0
+ M18.0 238.0V268.0H48.0
+ M1452.0 268.0H1482.0V238.0"
+ fill="none" stroke="#ff8a7f" stroke-width="1.30" opacity=".38"/>
+<ellipse class="atlas328a4376f0-orbit" cx="1422.0" cy="73.0" rx="54.0" ry="19.4"
+ fill="none" stroke="#ff8a7f" stroke-width="1.30" stroke-dasharray="3 7" opacity=".54"/>
+<ellipse cx="1422.0" cy="73.0" rx="35.6" ry="12.8"
+ fill="none" stroke="#e84b4b" stroke-width="0.85" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="1467.8" cy="62.7" r="3.2" fill="#ff8a7f" opacity="0.36"/><circle cx="1423.9" cy="92.4" r="3.2" fill="#ff8a7f" opacity="0.48"/><circle cx="1374.3" cy="63.9" r="3.2" fill="#ff8a7f" opacity="0.60"/>
+<circle cx="1422.0" cy="73.0" r="4.3" fill="#ff8a7f" opacity=".72"/>
+<polyline points="69.0,278.8 269.1,269.2 469.3,265.4 669.4,278.8 869.6,271.1 1069.7,265.4 1269.9,265.4 1470.0,265.4" fill="none" stroke="#e84b4b" stroke-width="1.04" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="881.6" cy="273.0" r="3.6" fill="#ff8a7f" opacity=".64"/>
+</g></svg>

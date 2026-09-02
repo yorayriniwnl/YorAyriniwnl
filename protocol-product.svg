@@ -68,4 +68,46 @@
 <text x="1035" y="185" text-anchor="middle" class="mono" font-size="11" fill="#f5eaea" letter-spacing="2">SHIP</text>
 <text x="1035" y="205" text-anchor="middle" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1">LEARN</text>
 <text x="1452" y="334" text-anchor="end" class="mono" font-size="8" fill="#806d6d" letter-spacing="2">SYSTEM LOOP // CONTINUOUS</text>
-</svg>
+<defs>
+<radialGradient id="atlase3f233cfacGlow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="atlase3f233cfacSweep" gradientUnits="userSpaceOnUse" x1="-88.0" x2="0">
+<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
+<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+</linearGradient>
+<pattern id="atlase3f233cfacGrid" width="51" height="51" patternUnits="userSpaceOnUse">
+<path d="M51 0H0V51" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+</pattern>
+<style>
+.atlase3f233cfac-scan { animation: atlase3f233cfac-scan 9.6s linear infinite; animation-delay: -6.6s; }
+.atlase3f233cfac-orbit { transform-box: fill-box; transform-origin: center; animation: atlase3f233cfac-orbit 38s linear infinite; }
+@keyframes atlase3f233cfac-scan { from { transform: translateX(0); } to { transform: translateX(1676.0px); } }
+@keyframes atlase3f233cfac-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .atlase3f233cfac-scan, .atlase3f233cfac-orbit { animation: none !important; } }
+</style>
+</defs>
+<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<rect x="18.0" y="18.0" width="1464.0" height="324.0" rx="10.0"
+ fill="url(#atlase3f233cfacGrid)" opacity=".52"/>
+<ellipse cx="1426.0" cy="107.0" rx="97.2" ry="48.6"
+ fill="url(#atlase3f233cfacGlow)" opacity=".42"/>
+<rect class="atlase3f233cfac-scan" x="-88.0" y="18.0" width="88.0" height="324.0"
+ fill="url(#atlase3f233cfacSweep)" opacity=".45"/>
+<path d="M18.0 48.0V18.0H48.0
+ M1452.0 18.0H1482.0V48.0
+ M18.0 312.0V342.0H48.0
+ M1452.0 342.0H1482.0V312.0"
+ fill="none" stroke="#ff8a7f" stroke-width="1.50" opacity=".38"/>
+<ellipse class="atlase3f233cfac-orbit" cx="1426.0" cy="107.0" rx="54.0" ry="19.4"
+ fill="none" stroke="#ff8a7f" stroke-width="1.50" stroke-dasharray="3 7" opacity=".54"/>
+<ellipse cx="1426.0" cy="107.0" rx="35.6" ry="12.8"
+ fill="none" stroke="#e84b4b" stroke-width="0.98" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="1477.9" cy="112.4" r="3.2" fill="#ff8a7f" opacity="0.36"/><circle cx="1387.2" cy="120.5" r="3.2" fill="#ff8a7f" opacity="0.48"/><circle cx="1412.9" cy="88.1" r="3.2" fill="#ff8a7f" opacity="0.60"/>
+<circle cx="1426.0" cy="107.0" r="4.3" fill="#ff8a7f" opacity=".72"/>
+<polyline points="69.0,354.2 269.1,354.2 469.3,351.8 669.4,349.4 869.6,354.2 1069.7,351.8 1269.9,337.4 1470.0,342.2" fill="none" stroke="#e84b4b" stroke-width="1.20" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="881.6" cy="347.0" r="4.5" fill="#ff8a7f" opacity=".64"/>
+</g></svg>

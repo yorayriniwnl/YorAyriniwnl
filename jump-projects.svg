@@ -13,4 +13,46 @@
 <path d="M22 32h18v22H22zM28 27h18v22" fill="none" stroke="#e84b4b" stroke-width="1.6"/>
 <text x="60" y="51" class="mono" font-size="23" fill="#f5eaea">PROJECTS</text>
 <path d="M282 38l7 6-7 6" fill="none" stroke="#ff8a7f" stroke-width="1.6"/>
-</svg>
+<defs>
+<radialGradient id="atlas9217538420Glow" cx="50%" cy="50%" r="50%">
+<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="atlas9217538420Sweep" gradientUnits="userSpaceOnUse" x1="-25.6" x2="0">
+<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
+<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+</linearGradient>
+<pattern id="atlas9217538420Grid" width="13" height="13" patternUnits="userSpaceOnUse">
+<path d="M13 0H0V13" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+</pattern>
+<style>
+.atlas9217538420-scan { animation: atlas9217538420-scan 9.8s linear infinite; animation-delay: -3.8s; }
+.atlas9217538420-orbit { transform-box: fill-box; transform-origin: center; animation: atlas9217538420-orbit 30s linear infinite; }
+@keyframes atlas9217538420-scan { from { transform: translateX(0); } to { transform: translateX(371.2px); } }
+@keyframes atlas9217538420-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .atlas9217538420-scan, .atlas9217538420-orbit { animation: none !important; } }
+</style>
+</defs>
+<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<rect x="6.6" y="6.6" width="306.8" height="74.8" rx="6.6"
+ fill="url(#atlas9217538420Grid)" opacity=".52"/>
+<ellipse cx="286.0" cy="34.0" rx="34.8" ry="17.4"
+ fill="url(#atlas9217538420Glow)" opacity=".42"/>
+<rect class="atlas9217538420-scan" x="-25.6" y="6.6" width="25.6" height="74.8"
+ fill="url(#atlas9217538420Sweep)" opacity=".45"/>
+<path d="M6.6 27.7V6.6H27.7
+ M292.3 6.6H313.4V27.7
+ M6.6 60.3V81.4H27.7
+ M292.3 81.4H313.4V60.3"
+ fill="none" stroke="#ff8a7f" stroke-width="0.70" opacity=".38"/>
+<ellipse class="atlas9217538420-orbit" cx="286.0" cy="34.0" rx="19.4" ry="7.0"
+ fill="none" stroke="#ff8a7f" stroke-width="0.70" stroke-dasharray="3 7" opacity=".54"/>
+<ellipse cx="286.0" cy="34.0" rx="12.8" ry="4.6"
+ fill="none" stroke="#e84b4b" stroke-width="0.50" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="283.3" cy="40.9" r="1.8" fill="#ff8a7f" opacity="0.36"/><circle cx="270.8" cy="29.7" r="1.8" fill="#ff8a7f" opacity="0.48"/><circle cx="304.0" cy="31.3" r="1.8" fill="#ff8a7f" opacity="0.60"/>
+<circle cx="286.0" cy="34.0" r="1.8" fill="#ff8a7f" opacity=".72"/>
+<polyline points="42.5,83.9 108.1,85.3 173.7,81.8 239.3,81.1 305.0,85.3" fill="none" stroke="#e84b4b" stroke-width="0.70" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="194.7" cy="83.2" r="1.2" fill="#ff8a7f" opacity=".64"/>
+</g></svg>
