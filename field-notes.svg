@@ -86,7 +86,7 @@
 @media (prefers-reduced-motion: reduce) { .atlas4445ecd890-scan, .atlas4445ecd890-orbit { animation: none !important; } }
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="atlas-v2" aria-hidden="true" pointer-events="none">
 <rect x="18.0" y="18.0" width="684.0" height="464.0" rx="10.0"
  fill="url(#atlas4445ecd890Grid)" opacity=".52"/>
 <ellipse cx="603.0" cy="73.0" rx="97.2" ry="48.6"

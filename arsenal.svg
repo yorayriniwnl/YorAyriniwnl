@@ -61,7 +61,7 @@ PRODUCT · SYSTEMS · INFRASTRUCTURE
 @media (prefers-reduced-motion: reduce) { .atlas1090ae4a2f-scan, .atlas1090ae4a2f-orbit { animation: none !important; } }
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="atlas-v2" aria-hidden="true" pointer-events="none">
 <rect x="18.0" y="18.0" width="1464.0" height="504.0" rx="10.0"
  fill="url(#atlas1090ae4a2fGrid)" opacity=".52"/>
 <ellipse cx="1370.0" cy="119.0" rx="97.2" ry="48.6"

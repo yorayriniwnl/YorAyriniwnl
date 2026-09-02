@@ -51,7 +51,7 @@
 @media (prefers-reduced-motion: reduce) { .atlas13ab42d91b-scan, .atlas13ab42d91b-orbit { animation: none !important; } }
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="atlas-v1" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="atlas-v2" aria-hidden="true" pointer-events="none">
 <rect x="7.2" y="7.2" width="1485.6" height="81.6" rx="7.2"
  fill="url(#atlas13ab42d91bGrid)" opacity=".52"/>
 <ellipse cx="1465.7" cy="33.3" rx="38.0" ry="19.0"
