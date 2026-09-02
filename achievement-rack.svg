@@ -5,148 +5,148 @@
 <stop offset="0" stop-color="#020202"/><stop offset=".5" stop-color="#0d0202"/><stop offset="1" stop-color="#020202"/>
 </linearGradient>
 <pattern id="rackGrid" width="32" height="32" patternUnits="userSpaceOnUse">
-<path d="M32 0H0V32" fill="none" stroke="#671515" stroke-width=".4" opacity=".08"/>
+<path d="M32 0H0V32" fill="none" stroke="#8f0014" stroke-width=".4" opacity=".08"/>
 </pattern>
 </defs>
 <rect x="1" y="1" width="1498" height="284" rx="7" fill="url(#rackBg)" stroke="#310808"/>
 <rect x="1" y="1" width="1498" height="284" rx="7" fill="url(#rackGrid)"/>
-<text x="24" y="38" class="mono" font-size="11" fill="#e84b4b" letter-spacing="3">PROOF OF WORK // ACHIEVEMENTS UNLOCKED</text>
+<text x="24" y="38" class="mono" font-size="11" fill="#ff1f2d" letter-spacing="3">PROOF OF WORK // ACHIEVEMENTS UNLOCKED</text>
 <text x="1476" y="38" text-anchor="end" class="mono" font-size="9" fill="#806d6d" letter-spacing="2">SIGNAL VERIFIED · 05 RECORDS</text>
 <path d="M24 52H1476" stroke="#310808"/>
 
 <g transform="translate(24,72)">
 <rect width="276" height="188" rx="6" fill="#050101" stroke="#3d0b0b"/>
-<rect width="5" height="188" rx="2" fill="#671515"/>
+<rect width="5" height="188" rx="2" fill="#8f0014"/>
 <circle cx="63" cy="78" r="48" fill="#0b0202" stroke="#310808"/>
 <circle cx="63" cy="78" r="40" fill="none" stroke="#260606" stroke-width="5"/>
-<circle cx="63" cy="78" r="40" fill="none" stroke="#e84b4b" stroke-width="5"
+<circle cx="63" cy="78" r="40" fill="none" stroke="#ff1f2d" stroke-width="5"
  stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3"
  transform="rotate(-90 63 78)">
 <animate attributeName="stroke-dashoffset" values="251.3;20.1"
  dur="1.50s" begin="0.00s" fill="freeze"/>
 </circle>
-<circle cx="63" cy="78" r="4" fill="#ff8a7f">
+<circle cx="63" cy="78" r="4" fill="#ff6670">
 <animate attributeName="opacity" values=".25;1;.25" dur="1.30s" repeatCount="indefinite"/>
 </circle>
-<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#f5eaea" letter-spacing="1">GPU</text>
-<text x="132" y="72" class="serif" font-size="37" fill="#f5eaea">4,000</text>
-<text x="132" y="96" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">PARTICLES</text>
+<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#fff5f5" letter-spacing="1">GPU</text>
+<text x="132" y="72" class="serif" font-size="37" fill="#fff5f5">4,000</text>
+<text x="132" y="96" class="mono" font-size="9" fill="#ff1f2d" letter-spacing="1.8">PARTICLES</text>
 <path d="M22 142H254" stroke="#310808"/>
 <text x="22" y="166" class="mono" font-size="9" fill="#8d7777" letter-spacing="1.8">ONE DRAW CALL</text>
-<rect x="226" y="154" width="28" height="3" fill="#671515"/>
-<rect x="226" y="154" width="9" height="3" fill="#ff8a7f">
+<rect x="226" y="154" width="28" height="3" fill="#8f0014"/>
+<rect x="226" y="154" width="9" height="3" fill="#ff6670">
 <animate attributeName="x" values="226;245;226" dur="2.6s" begin="-0.00s" repeatCount="indefinite"/>
 </rect>
 </g>
 <g transform="translate(315,72)">
 <rect width="276" height="188" rx="6" fill="#050101" stroke="#3d0b0b"/>
-<rect width="5" height="188" rx="2" fill="#671515"/>
+<rect width="5" height="188" rx="2" fill="#8f0014"/>
 <circle cx="63" cy="78" r="48" fill="#0b0202" stroke="#310808"/>
 <circle cx="63" cy="78" r="40" fill="none" stroke="#260606" stroke-width="5"/>
-<circle cx="63" cy="78" r="40" fill="none" stroke="#e84b4b" stroke-width="5"
+<circle cx="63" cy="78" r="40" fill="none" stroke="#ff1f2d" stroke-width="5"
  stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3"
  transform="rotate(-90 63 78)">
 <animate attributeName="stroke-dashoffset" values="251.3;40.2"
  dur="1.68s" begin="0.12s" fill="freeze"/>
 </circle>
-<circle cx="63" cy="78" r="4" fill="#ff8a7f">
+<circle cx="63" cy="78" r="4" fill="#ff6670">
 <animate attributeName="opacity" values=".25;1;.25" dur="1.47s" repeatCount="indefinite"/>
 </circle>
-<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#f5eaea" letter-spacing="1">QA</text>
-<text x="132" y="72" class="serif" font-size="37" fill="#f5eaea">24</text>
-<text x="132" y="96" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">TESTS</text>
+<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#fff5f5" letter-spacing="1">QA</text>
+<text x="132" y="72" class="serif" font-size="37" fill="#fff5f5">24</text>
+<text x="132" y="96" class="mono" font-size="9" fill="#ff1f2d" letter-spacing="1.8">TESTS</text>
 <path d="M22 142H254" stroke="#310808"/>
 <text x="22" y="166" class="mono" font-size="9" fill="#8d7777" letter-spacing="1.8">FIVE SUITES</text>
-<rect x="226" y="154" width="28" height="3" fill="#671515"/>
-<rect x="226" y="154" width="9" height="3" fill="#ff8a7f">
+<rect x="226" y="154" width="28" height="3" fill="#8f0014"/>
+<rect x="226" y="154" width="9" height="3" fill="#ff6670">
 <animate attributeName="x" values="226;245;226" dur="2.6s" begin="-0.31s" repeatCount="indefinite"/>
 </rect>
 </g>
 <g transform="translate(606,72)">
 <rect width="276" height="188" rx="6" fill="#050101" stroke="#3d0b0b"/>
-<rect width="5" height="188" rx="2" fill="#671515"/>
+<rect width="5" height="188" rx="2" fill="#8f0014"/>
 <circle cx="63" cy="78" r="48" fill="#0b0202" stroke="#310808"/>
 <circle cx="63" cy="78" r="40" fill="none" stroke="#260606" stroke-width="5"/>
-<circle cx="63" cy="78" r="40" fill="none" stroke="#e84b4b" stroke-width="5"
+<circle cx="63" cy="78" r="40" fill="none" stroke="#ff1f2d" stroke-width="5"
  stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3"
  transform="rotate(-90 63 78)">
 <animate attributeName="stroke-dashoffset" values="251.3;54.0"
  dur="1.86s" begin="0.24s" fill="freeze"/>
 </circle>
-<circle cx="63" cy="78" r="4" fill="#ff8a7f">
+<circle cx="63" cy="78" r="4" fill="#ff6670">
 <animate attributeName="opacity" values=".25;1;.25" dur="1.64s" repeatCount="indefinite"/>
 </circle>
-<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#f5eaea" letter-spacing="1">CV</text>
-<text x="132" y="72" class="serif" font-size="37" fill="#f5eaea">78.5%</text>
-<text x="132" y="96" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">ACCURACY</text>
+<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#fff5f5" letter-spacing="1">CV</text>
+<text x="132" y="72" class="serif" font-size="37" fill="#fff5f5">78.5%</text>
+<text x="132" y="96" class="mono" font-size="9" fill="#ff1f2d" letter-spacing="1.8">ACCURACY</text>
 <path d="M22 142H254" stroke="#310808"/>
 <text x="22" y="166" class="mono" font-size="9" fill="#8d7777" letter-spacing="1.8">CALIBRATED</text>
-<rect x="226" y="154" width="28" height="3" fill="#671515"/>
-<rect x="226" y="154" width="9" height="3" fill="#ff8a7f">
+<rect x="226" y="154" width="28" height="3" fill="#8f0014"/>
+<rect x="226" y="154" width="9" height="3" fill="#ff6670">
 <animate attributeName="x" values="226;245;226" dur="2.6s" begin="-0.62s" repeatCount="indefinite"/>
 </rect>
 </g>
 <g transform="translate(897,72)">
 <rect width="276" height="188" rx="6" fill="#050101" stroke="#3d0b0b"/>
-<rect width="5" height="188" rx="2" fill="#671515"/>
+<rect width="5" height="188" rx="2" fill="#8f0014"/>
 <circle cx="63" cy="78" r="48" fill="#0b0202" stroke="#310808"/>
 <circle cx="63" cy="78" r="40" fill="none" stroke="#260606" stroke-width="5"/>
-<circle cx="63" cy="78" r="40" fill="none" stroke="#e84b4b" stroke-width="5"
+<circle cx="63" cy="78" r="40" fill="none" stroke="#ff1f2d" stroke-width="5"
  stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3"
  transform="rotate(-90 63 78)">
 <animate attributeName="stroke-dashoffset" values="251.3;30.2"
  dur="2.04s" begin="0.36s" fill="freeze"/>
 </circle>
-<circle cx="63" cy="78" r="4" fill="#ff8a7f">
+<circle cx="63" cy="78" r="4" fill="#ff6670">
 <animate attributeName="opacity" values=".25;1;.25" dur="1.81s" repeatCount="indefinite"/>
 </circle>
-<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#f5eaea" letter-spacing="1">XP</text>
-<text x="132" y="72" class="serif" font-size="37" fill="#f5eaea">125</text>
-<text x="132" y="96" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">STEAM LEVEL</text>
+<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#fff5f5" letter-spacing="1">XP</text>
+<text x="132" y="72" class="serif" font-size="37" fill="#fff5f5">125</text>
+<text x="132" y="96" class="mono" font-size="9" fill="#ff1f2d" letter-spacing="1.8">STEAM LEVEL</text>
 <path d="M22 142H254" stroke="#310808"/>
 <text x="22" y="166" class="mono" font-size="9" fill="#8d7777" letter-spacing="1.8">LONG GAME</text>
-<rect x="226" y="154" width="28" height="3" fill="#671515"/>
-<rect x="226" y="154" width="9" height="3" fill="#ff8a7f">
+<rect x="226" y="154" width="28" height="3" fill="#8f0014"/>
+<rect x="226" y="154" width="9" height="3" fill="#ff6670">
 <animate attributeName="x" values="226;245;226" dur="2.6s" begin="-0.93s" repeatCount="indefinite"/>
 </rect>
 </g>
 <g transform="translate(1188,72)">
 <rect width="276" height="188" rx="6" fill="#050101" stroke="#3d0b0b"/>
-<rect width="5" height="188" rx="2" fill="#671515"/>
+<rect width="5" height="188" rx="2" fill="#8f0014"/>
 <circle cx="63" cy="78" r="48" fill="#0b0202" stroke="#310808"/>
 <circle cx="63" cy="78" r="40" fill="none" stroke="#260606" stroke-width="5"/>
-<circle cx="63" cy="78" r="40" fill="none" stroke="#e84b4b" stroke-width="5"
+<circle cx="63" cy="78" r="40" fill="none" stroke="#ff1f2d" stroke-width="5"
  stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3"
  transform="rotate(-90 63 78)">
 <animate attributeName="stroke-dashoffset" values="251.3;65.3"
  dur="2.22s" begin="0.48s" fill="freeze"/>
 </circle>
-<circle cx="63" cy="78" r="4" fill="#ff8a7f">
+<circle cx="63" cy="78" r="4" fill="#ff6670">
 <animate attributeName="opacity" values=".25;1;.25" dur="1.98s" repeatCount="indefinite"/>
 </circle>
-<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#f5eaea" letter-spacing="1">OSS</text>
-<text x="132" y="72" class="serif" font-size="37" fill="#f5eaea">25+</text>
-<text x="132" y="96" class="mono" font-size="9" fill="#e84b4b" letter-spacing="1.8">PUBLIC REPOS</text>
+<text x="63" y="83" text-anchor="middle" class="mono" font-size="12" fill="#fff5f5" letter-spacing="1">OSS</text>
+<text x="132" y="72" class="serif" font-size="37" fill="#fff5f5">25+</text>
+<text x="132" y="96" class="mono" font-size="9" fill="#ff1f2d" letter-spacing="1.8">PUBLIC REPOS</text>
 <path d="M22 142H254" stroke="#310808"/>
 <text x="22" y="166" class="mono" font-size="9" fill="#8d7777" letter-spacing="1.8">BUILD LOG</text>
-<rect x="226" y="154" width="28" height="3" fill="#671515"/>
-<rect x="226" y="154" width="9" height="3" fill="#ff8a7f">
+<rect x="226" y="154" width="28" height="3" fill="#8f0014"/>
+<rect x="226" y="154" width="9" height="3" fill="#ff6670">
 <animate attributeName="x" values="226;245;226" dur="2.6s" begin="-1.24s" repeatCount="indefinite"/>
 </rect>
 </g>
 <defs>
 <radialGradient id="atlas328a4376f0Glow" cx="50%" cy="50%" r="50%">
-<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
-<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="0" stop-color="#ff1f2d" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#8f0014" stop-opacity=".08"/>
 <stop offset="1" stop-color="#000" stop-opacity="0"/>
 </radialGradient>
 <linearGradient id="atlas328a4376f0Sweep" gradientUnits="userSpaceOnUse" x1="-88.0" x2="0">
-<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
-<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
-<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+<stop offset="0" stop-color="#ff6670" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff6670" stop-opacity=".24"/>
+<stop offset="1" stop-color="#ff1f2d" stop-opacity="0"/>
 </linearGradient>
 <pattern id="atlas328a4376f0Grid" width="41" height="41" patternUnits="userSpaceOnUse">
-<path d="M41 0H0V41" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+<path d="M41 0H0V41" fill="none" stroke="#ff1f2d" stroke-width=".45" opacity=".07"/>
 </pattern>
 <style>
 .atlas328a4376f0-scan { animation: atlas328a4376f0-scan 8.8s linear infinite; animation-delay: 0.0s; }
@@ -156,7 +156,7 @@
 @media (prefers-reduced-motion: reduce) { .atlas328a4376f0-scan, .atlas328a4376f0-orbit { animation: none !important; } }
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="atlas-v3" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="atlas-v4" aria-hidden="true" pointer-events="none">
 <rect x="18.0" y="18.0" width="1464.0" height="250.0" rx="10.0"
  fill="url(#atlas328a4376f0Grid)" opacity=".52"/>
 <ellipse cx="1422.0" cy="73.0" rx="97.2" ry="48.6"
@@ -167,13 +167,13 @@
  M1452.0 18.0H1482.0V48.0
  M18.0 238.0V268.0H48.0
  M1452.0 268.0H1482.0V238.0"
- fill="none" stroke="#ff8a7f" stroke-width="1.30" opacity=".38"/>
+ fill="none" stroke="#ff6670" stroke-width="1.30" opacity=".38"/>
 <ellipse class="atlas328a4376f0-orbit" cx="1422.0" cy="73.0" rx="54.0" ry="19.4"
- fill="none" stroke="#ff8a7f" stroke-width="1.30" stroke-dasharray="3 7" opacity=".54"/>
+ fill="none" stroke="#ff6670" stroke-width="1.30" stroke-dasharray="3 7" opacity=".54"/>
 <ellipse cx="1422.0" cy="73.0" rx="35.6" ry="12.8"
- fill="none" stroke="#e84b4b" stroke-width="0.85" stroke-dasharray="1 8" opacity=".36"/>
-<circle cx="1467.8" cy="62.7" r="3.2" fill="#ff8a7f" opacity="0.36"/><circle cx="1423.9" cy="92.4" r="3.2" fill="#ff8a7f" opacity="0.48"/><circle cx="1374.3" cy="63.9" r="3.2" fill="#ff8a7f" opacity="0.60"/>
-<circle cx="1422.0" cy="73.0" r="4.3" fill="#ff8a7f" opacity=".72"/>
-<polyline points="69.0,278.8 269.1,269.2 469.3,265.4 669.4,278.8 869.6,271.1 1069.7,265.4 1269.9,265.4 1470.0,265.4" fill="none" stroke="#e84b4b" stroke-width="1.04" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="881.6" cy="273.0" r="3.6" fill="#ff8a7f" opacity=".64"/>
+ fill="none" stroke="#ff1f2d" stroke-width="0.85" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="1467.8" cy="62.7" r="3.2" fill="#ff6670" opacity="0.36"/><circle cx="1423.9" cy="92.4" r="3.2" fill="#ff6670" opacity="0.48"/><circle cx="1374.3" cy="63.9" r="3.2" fill="#ff6670" opacity="0.60"/>
+<circle cx="1422.0" cy="73.0" r="4.3" fill="#ff6670" opacity=".72"/>
+<polyline points="69.0,278.8 269.1,269.2 469.3,265.4 669.4,278.8 869.6,271.1 1069.7,265.4 1269.9,265.4 1470.0,265.4" fill="none" stroke="#ff1f2d" stroke-width="1.04" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="881.6" cy="273.0" r="3.6" fill="#ff6670" opacity=".64"/>
 </g></svg>

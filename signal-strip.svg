@@ -9,10 +9,10 @@
 <clipPath id="signalClip"><rect x="170" y="0" width="1330" height="52"/></clipPath>
 </defs>
 <rect width="1500" height="52" fill="#030303"/>
-<rect width="1500" height="1" fill="#671515"/>
-<rect y="51" width="1500" height="1" fill="#2a0505"/>
-<rect x="18" y="12" width="132" height="28" rx="3" fill="#671515"/>
-<circle cx="34" cy="26" r="4" fill="#ff8a7f">
+<rect width="1500" height="1" fill="#8f0014"/>
+<rect y="51" width="1500" height="1" fill="#420008"/>
+<rect x="18" y="12" width="132" height="28" rx="3" fill="#8f0014"/>
+<circle cx="34" cy="26" r="4" fill="#ff6670">
 <animate attributeName="opacity" values=".2;1;.2" dur="1.3s" repeatCount="indefinite"/>
 </circle>
 <text x="48" y="30" class="mono" font-size="10" fill="#fff" letter-spacing="2">LIVE SIGNAL</text>
@@ -26,17 +26,17 @@
 <rect x="150" width="1350" height="52" fill="url(#signalFade)" pointer-events="none"/>
 <defs>
 <radialGradient id="atlas67d281e8b8Glow" cx="50%" cy="50%" r="50%">
-<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
-<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="0" stop-color="#ff1f2d" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#8f0014" stop-opacity=".08"/>
 <stop offset="1" stop-color="#000" stop-opacity="0"/>
 </radialGradient>
 <linearGradient id="atlas67d281e8b8Sweep" gradientUnits="userSpaceOnUse" x1="-88.0" x2="0">
-<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
-<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
-<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+<stop offset="0" stop-color="#ff6670" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff6670" stop-opacity=".24"/>
+<stop offset="1" stop-color="#ff1f2d" stop-opacity="0"/>
 </linearGradient>
 <pattern id="atlas67d281e8b8Grid" width="12" height="12" patternUnits="userSpaceOnUse">
-<path d="M12 0H0V12" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+<path d="M12 0H0V12" fill="none" stroke="#ff1f2d" stroke-width=".45" opacity=".07"/>
 </pattern>
 <style>
 .atlas67d281e8b8-scan { animation: atlas67d281e8b8-scan 11.2s linear infinite; animation-delay: -4.7s; }
@@ -46,7 +46,7 @@
 @media (prefers-reduced-motion: reduce) { .atlas67d281e8b8-scan, .atlas67d281e8b8-orbit { animation: none !important; } }
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="atlas-v3" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="atlas-v4" aria-hidden="true" pointer-events="none">
 <rect x="4.0" y="4.0" width="1492.0" height="44.0" rx="4.0"
  fill="url(#atlas67d281e8b8Grid)" opacity=".52"/>
 <ellipse cx="1480.6" cy="19.4" rx="20.6" ry="10.3"
@@ -57,13 +57,13 @@
  M1483.5 4.0H1496.0V16.5
  M4.0 35.5V48.0H16.5
  M1483.5 48.0H1496.0V35.5"
- fill="none" stroke="#ff8a7f" stroke-width="0.70" opacity=".38"/>
+ fill="none" stroke="#ff6670" stroke-width="0.70" opacity=".38"/>
 <ellipse class="atlas67d281e8b8-orbit" cx="1480.6" cy="19.4" rx="11.4" ry="4.1"
- fill="none" stroke="#ff8a7f" stroke-width="0.70" stroke-dasharray="3 7" opacity=".54"/>
+ fill="none" stroke="#ff6670" stroke-width="0.70" stroke-dasharray="3 7" opacity=".54"/>
 <ellipse cx="1480.6" cy="19.4" rx="7.6" ry="2.7"
- fill="none" stroke="#e84b4b" stroke-width="0.50" stroke-dasharray="1 8" opacity=".36"/>
-<circle cx="1491.9" cy="18.9" r="1.3" fill="#ff8a7f" opacity="0.36"/><circle cx="1476.3" cy="23.3" r="1.3" fill="#ff8a7f" opacity="0.48"/><circle cx="1473.5" cy="16.2" r="1.3" fill="#ff8a7f" opacity="0.60"/>
-<circle cx="1480.6" cy="19.4" r="1.8" fill="#ff8a7f" opacity=".72"/>
-<polyline points="25.2,51.2 234.6,50.5 444.0,51.2 653.4,46.3 862.8,50.5 1072.2,47.7 1281.6,48.4 1491.0,47.7" fill="none" stroke="#e84b4b" stroke-width="0.70" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="875.4" cy="49.1" r="1.2" fill="#ff8a7f" opacity=".64"/>
+ fill="none" stroke="#ff1f2d" stroke-width="0.50" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="1491.9" cy="18.9" r="1.3" fill="#ff6670" opacity="0.36"/><circle cx="1476.3" cy="23.3" r="1.3" fill="#ff6670" opacity="0.48"/><circle cx="1473.5" cy="16.2" r="1.3" fill="#ff6670" opacity="0.60"/>
+<circle cx="1480.6" cy="19.4" r="1.8" fill="#ff6670" opacity=".72"/>
+<polyline points="25.2,51.2 234.6,50.5 444.0,51.2 653.4,46.3 862.8,50.5 1072.2,47.7 1281.6,48.4 1491.0,47.7" fill="none" stroke="#ff1f2d" stroke-width="0.70" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="875.4" cy="49.1" r="1.2" fill="#ff6670" opacity=".64"/>
 </g></svg>

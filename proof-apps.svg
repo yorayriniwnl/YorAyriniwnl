@@ -8,47 +8,47 @@
 <stop offset="1" stop-color="#2b0606"/>
 </linearGradient>
 <linearGradient id="proofSweep" gradientUnits="userSpaceOnUse" x1="-120" x2="0">
-<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ff8a7f" stop-opacity=".16"/>
+<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#ff6670" stop-opacity=".16"/>
 <stop offset="1" stop-color="#fff" stop-opacity="0"/>
 <animate attributeName="x1" values="-120;350" dur="7s" begin="-0.0s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="0;470" dur="7s" begin="-0.0s" repeatCount="indefinite"/>
 </linearGradient>
 </defs>
 <rect x="1" y="1" width="348" height="136" rx="5" fill="url(#proofBg)" stroke="#4b0e0e"/>
-<rect x="1" y="1" width="5" height="136" rx="2" fill="#e84b4b"/>
+<rect x="1" y="1" width="5" height="136" rx="2" fill="#ff1f2d"/>
 <rect x="1" y="1" width="348" height="136" rx="5" fill="url(#proofSweep)"/>
 <text x="24" y="26" class="mono" font-size="9" fill="#8d7777" letter-spacing="2">VERIFIED // 01</text>
 
 <g data-kinetic-glyph="apps" transform="translate(22,36) scale(0.64)">
 <rect x="1" y="1" width="62" height="62" rx="11" fill="#070101" stroke="#3d0b0b"/>
-<path d="M8 17V8h9M47 8h9v9M8 47v9h9M47 56h9v-9" fill="none" stroke="#e84b4b"
+<path d="M8 17V8h9M47 8h9v9M8 47v9h9M47 56h9v-9" fill="none" stroke="#ff1f2d"
  stroke-width="1.3" opacity=".7"/>
-<circle cx="32" cy="32" r="26" fill="none" stroke="#e84b4b" opacity=".18" stroke-dasharray="2 7">
+<circle cx="32" cy="32" r="26" fill="none" stroke="#ff1f2d" opacity=".18" stroke-dasharray="2 7">
 <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32"
  dur="11s" begin="-0.00s" repeatCount="indefinite"/>
 </circle>
-<rect x="19" y="19" width="11" height="11" rx="2" fill="#e84b4b" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.00s" repeatCount="indefinite"/></rect><rect x="34" y="19" width="11" height="11" rx="2" fill="#e84b4b" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.24s" repeatCount="indefinite"/></rect><rect x="19" y="34" width="11" height="11" rx="2" fill="#e84b4b" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.48s" repeatCount="indefinite"/></rect><rect x="34" y="34" width="11" height="11" rx="2" fill="#e84b4b" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.72s" repeatCount="indefinite"/></rect>
+<rect x="19" y="19" width="11" height="11" rx="2" fill="#ff1f2d" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.00s" repeatCount="indefinite"/></rect><rect x="34" y="19" width="11" height="11" rx="2" fill="#ff1f2d" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.24s" repeatCount="indefinite"/></rect><rect x="19" y="34" width="11" height="11" rx="2" fill="#ff1f2d" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.48s" repeatCount="indefinite"/></rect><rect x="34" y="34" width="11" height="11" rx="2" fill="#ff1f2d" opacity=".32"><animate attributeName="opacity" values=".25;1;.25" dur="2s" begin="-0.72s" repeatCount="indefinite"/></rect>
 </g>
-<text x="82" y="67" class="mono" font-size="32" fill="#f5eaea">5</text>
-<text x="166" y="62" class="mono" font-size="10" fill="#e84b4b" letter-spacing="1.4">END-TO-END APPS</text>
+<text x="82" y="67" class="mono" font-size="32" fill="#fff5f5">5</text>
+<text x="166" y="62" class="mono" font-size="10" fill="#ff1f2d" letter-spacing="1.4">END-TO-END APPS</text>
 <rect x="24" y="82" width="302" height="1" fill="#310808"/>
 <text x="24" y="105" class="mono" font-size="8" fill="#a99494" letter-spacing=".6"><tspan x="24" dy="0">DESIGNED AND BUILT ACROSS PRODUCT, BACKEND,</tspan><tspan x="24" dy="15">REALTIME, AND ML LAYERS</tspan></text>
-<circle cx="324" cy="22" r="4" fill="#ff8a7f">
+<circle cx="324" cy="22" r="4" fill="#ff6670">
 <animate attributeName="opacity" values=".2;1;.2" dur="1.20s" repeatCount="indefinite"/>
 </circle>
 <defs>
 <radialGradient id="atlas274c9ccd00Glow" cx="50%" cy="50%" r="50%">
-<stop offset="0" stop-color="#e84b4b" stop-opacity=".24"/>
-<stop offset=".55" stop-color="#671515" stop-opacity=".08"/>
+<stop offset="0" stop-color="#ff1f2d" stop-opacity=".24"/>
+<stop offset=".55" stop-color="#8f0014" stop-opacity=".08"/>
 <stop offset="1" stop-color="#000" stop-opacity="0"/>
 </radialGradient>
 <linearGradient id="atlas274c9ccd00Sweep" gradientUnits="userSpaceOnUse" x1="-28.0" x2="0">
-<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
-<stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
-<stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
+<stop offset="0" stop-color="#ff6670" stop-opacity="0"/>
+<stop offset=".5" stop-color="#ff6670" stop-opacity=".24"/>
+<stop offset="1" stop-color="#ff1f2d" stop-opacity="0"/>
 </linearGradient>
 <pattern id="atlas274c9ccd00Grid" width="20" height="20" patternUnits="userSpaceOnUse">
-<path d="M20 0H0V20" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
+<path d="M20 0H0V20" fill="none" stroke="#ff1f2d" stroke-width=".45" opacity=".07"/>
 </pattern>
 <style>
 .atlas274c9ccd00-scan { animation: atlas274c9ccd00-scan 9.8s linear infinite; animation-delay: -0.7s; }
@@ -58,7 +58,7 @@
 @media (prefers-reduced-motion: reduce) { .atlas274c9ccd00-scan, .atlas274c9ccd00-orbit { animation: none !important; } }
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="atlas-v3" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="atlas-v4" aria-hidden="true" pointer-events="none">
 <rect x="10.3" y="10.3" width="329.3" height="117.3" rx="10.0"
  fill="url(#atlas274c9ccd00Grid)" opacity=".52"/>
 <ellipse cx="307.3" cy="53.7" rx="54.6" ry="27.3"
@@ -69,13 +69,13 @@
  M309.6 10.3H339.6V40.4
  M10.3 97.7V127.7H40.4
  M309.6 127.7H339.6V97.7"
- fill="none" stroke="#ff8a7f" stroke-width="0.70" opacity=".38"/>
+ fill="none" stroke="#ff6670" stroke-width="0.70" opacity=".38"/>
 <ellipse class="atlas274c9ccd00-orbit" cx="307.3" cy="53.7" rx="30.4" ry="10.9"
- fill="none" stroke="#ff8a7f" stroke-width="0.70" stroke-dasharray="3 7" opacity=".54"/>
+ fill="none" stroke="#ff6670" stroke-width="0.70" stroke-dasharray="3 7" opacity=".54"/>
 <ellipse cx="307.3" cy="53.7" rx="20.0" ry="7.2"
- fill="none" stroke="#e84b4b" stroke-width="0.50" stroke-dasharray="1 8" opacity=".36"/>
-<circle cx="335.4" cy="49.6" r="2.9" fill="#ff8a7f" opacity="0.36"/><circle cx="303.1" cy="64.5" r="2.9" fill="#ff8a7f" opacity="0.48"/><circle cx="283.4" cy="47.0" r="2.9" fill="#ff8a7f" opacity="0.60"/>
-<circle cx="307.3" cy="53.7" r="2.4" fill="#ff8a7f" opacity=".72"/>
-<polyline points="61.4,131.5 127.9,127.8 194.5,127.8 261.1,126.9 327.6,129.6" fill="none" stroke="#e84b4b" stroke-width="0.70" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="215.8" cy="130.5" r="1.7" fill="#ff8a7f" opacity=".64"/>
+ fill="none" stroke="#ff1f2d" stroke-width="0.50" stroke-dasharray="1 8" opacity=".36"/>
+<circle cx="335.4" cy="49.6" r="2.9" fill="#ff6670" opacity="0.36"/><circle cx="303.1" cy="64.5" r="2.9" fill="#ff6670" opacity="0.48"/><circle cx="283.4" cy="47.0" r="2.9" fill="#ff6670" opacity="0.60"/>
+<circle cx="307.3" cy="53.7" r="2.4" fill="#ff6670" opacity=".72"/>
+<polyline points="61.4,131.5 127.9,127.8 194.5,127.8 261.1,126.9 327.6,129.6" fill="none" stroke="#ff1f2d" stroke-width="0.70" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="215.8" cy="130.5" r="1.7" fill="#ff6670" opacity=".64"/>
 </g></svg>
