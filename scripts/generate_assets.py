@@ -2317,9 +2317,9 @@ def project_visual_svg(kind, cfg):
 
     if kind == "helios":
         return f'''<g class="helios-motion">
-<image href="{art}" x="320" y="86" width="372" height="290" preserveAspectRatio="xMidYMid slice" opacity=".78"/>
-<rect x="320" y="86" width="372" height="290" fill="{canvas}" opacity=".38"/>
-<rect x="28" y="90" width="274" height="286" rx="6" fill="{surface}" stroke="{line}"/>
+<image href="{art}" x="320" y="86" width="372" height="290" preserveAspectRatio="xMidYMid slice" opacity=".94"/>
+<rect x="320" y="86" width="372" height="290" fill="{canvas}" opacity=".20"/>
+<rect x="28" y="90" width="274" height="286" rx="6" fill="{surface}" opacity=".88" stroke="{line}"/>
 <text x="44" y="112" class="mono" font-size="9" fill="{accent}" letter-spacing="1.7">OPERATOR SURFACE / SYNTHETIC DEMO</text>
 <rect x="44" y="127" width="242" height="61" rx="4" fill="{surface_alt}" stroke="{line}"/>
 <text x="58" y="148" class="mono" font-size="12" fill="{ink}" letter-spacing="1">METER M-104</text>
@@ -2340,7 +2340,7 @@ def project_visual_svg(kind, cfg):
  <rect x="121" y="299" width="72" height="25" rx="12" fill="{accent_soft}" opacity=".13"/><text x="157" y="316" text-anchor="middle" fill="{accent_soft}">THRESHOLD</text>
  <rect x="200" y="299" width="86" height="25" rx="12" fill="{line}" opacity=".5"/><text x="243" y="316" text-anchor="middle" fill="{muted}">WEBSOCKET</text>
 </g>
-<rect x="336" y="101" width="340" height="275" rx="6" fill="{surface}" opacity=".92" stroke="{line}"/>
+<rect x="336" y="101" width="340" height="275" rx="6" fill="{surface}" opacity=".66" stroke="{line}"/>
 <text x="354" y="123" class="mono" font-size="10" fill="{ink}" letter-spacing="1.5">EVENT TOPOLOGY</text>
 <text x="658" y="123" text-anchor="end" class="mono" font-size="8" fill="{accent}" letter-spacing="1">ALERT ROUTING</text>
 <path d="M354 142H658M354 187H658M354 232H658" stroke="{line}" opacity=".65"/>
@@ -2364,11 +2364,11 @@ def project_visual_svg(kind, cfg):
                 panel_cells.append(f'<rect x="{x}" y="{y}" width="24" height="18" rx="2" fill="{accent_soft}" opacity=".82"/>')
         return f'''<g class="zenith-motion">
 <rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
-<image href="{art}" x="28" y="86" width="664" height="290" preserveAspectRatio="xMidYMid slice" opacity=".86"/>
-<rect x="28" y="86" width="664" height="290" fill="{surface}" opacity=".16"/>
+<image href="{art}" x="28" y="86" width="664" height="290" preserveAspectRatio="xMidYMid slice" opacity=".94"/>
+<rect x="28" y="86" width="664" height="290" fill="{surface}" opacity=".10"/>
 <path d="M58 128 Q150 76 244 126" fill="none" stroke="{world["glow"]}" stroke-width="2" opacity=".45" class="zenith-sun"/>
 <circle cx="58" cy="128" r="7" fill="{world["glow"]}" opacity=".65" class="zenith-sun"/>
-<rect x="44" y="102" width="240" height="83" rx="5" fill="{surface}" opacity=".93" stroke="{line}"/>
+<rect x="44" y="102" width="240" height="83" rx="5" fill="{surface}" opacity=".86" stroke="{line}"/>
 <text x="58" y="123" class="mono" font-size="9" fill="{accent}" letter-spacing="1.6">DAYLIGHT FEASIBILITY</text>
 <text x="58" y="148" class="mono" font-size="15" fill="{ink}" letter-spacing=".8">3D ROOF PLANNING</text>
 <text x="58" y="169" class="mono" font-size="9" fill="{muted}">ARCHITECTURE → PV → DECISION</text>
@@ -2378,7 +2378,7 @@ def project_visual_svg(kind, cfg):
  <path d="M48 255L172 293L286 230" fill="none" stroke="{accent}" opacity=".7"/>
 </g>
 <text x="58" y="318" class="mono" font-size="8" fill="{muted}" letter-spacing="1.3">ROOF PLANE / SAMPLE PLACEMENT GRID</text>
-<rect x="342" y="103" width="334" height="96" rx="5" fill="{surface}" opacity=".94" stroke="{line}"/>
+<rect x="342" y="103" width="334" height="96" rx="5" fill="{surface}" opacity=".84" stroke="{line}"/>
 <text x="360" y="124" class="mono" font-size="9" fill="{accent}" letter-spacing="1.5">MODEL OUTPUT / USER INPUTS</text>
 <text x="360" y="151" class="mono" font-size="15" fill="{ink}">ENERGY → CASH FLOW</text>
 <text x="360" y="176" class="mono" font-size="10" fill="{muted}">IRR  ·  ROI  ·  PAYBACK  ·  SUBSIDY</text>
@@ -2390,7 +2390,7 @@ def project_visual_svg(kind, cfg):
  <path d="M576 246H614" stroke="{accent}" stroke-width="2" stroke-dasharray="5 6" class="zenith-flow"/>
  <rect x="620" y="232" width="38" height="28" rx="14" fill="{ink}" opacity=".1"/><text x="639" y="250" text-anchor="middle" fill="{ink}">₹</text>
 </g>
-<rect x="342" y="282" width="334" height="73" rx="5" fill="{surface}" opacity=".94" stroke="{line}"/>
+<rect x="342" y="282" width="334" height="73" rx="5" fill="{surface}" opacity=".84" stroke="{line}"/>
 <text x="360" y="304" class="mono" font-size="9" fill="{muted}" letter-spacing="1.5">DECISION SUPPORT / NOT A QUOTE</text>
 <text x="360" y="330" class="mono" font-size="12" fill="{ink}">ROOF GEOMETRY  +  SIMULATION  +  FINANCE</text>
 <text x="360" y="348" class="mono" font-size="8" fill="{accent_soft}" letter-spacing="1">REACT  ·  THREE.JS  ·  PYTHON  ·  FASTAPI</text>
@@ -2411,10 +2411,10 @@ def project_visual_svg(kind, cfg):
         texture = _vision_texture_cells(57, 143)
         return f'''<g class="vision-motion">
 <rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
-<image href="{art}" x="366" y="86" width="326" height="290" preserveAspectRatio="xMidYMid slice" opacity=".34"/>
-<rect x="28" y="86" width="664" height="290" fill="{surface}" opacity=".68"/>
+<image href="{art}" x="366" y="86" width="326" height="290" preserveAspectRatio="xMidYMid slice" opacity=".72"/>
+<rect x="28" y="86" width="664" height="290" fill="{surface}" opacity=".38"/>
 <text x="44" y="109" class="mono" font-size="9" fill="{accent}" letter-spacing="1.7">FORENSIC WORKBENCH / LOCAL INFERENCE</text>
-<rect x="44" y="124" width="146" height="204" rx="4" fill="{surface_alt}" stroke="{line}"/>
+<rect x="44" y="124" width="146" height="204" rx="4" fill="{surface_alt}" opacity=".86" stroke="{line}"/>
 <text x="57" y="139" class="mono" font-size="8" fill="{muted}" letter-spacing="1.2">TEXTURE PATCH</text>
 <g>{texture}</g>
 <rect x="57" y="256" width="120" height="55" rx="3" fill="{canvas}" opacity=".5" stroke="{line}"/>
@@ -2427,14 +2427,14 @@ def project_visual_svg(kind, cfg):
 <circle cx="296" cy="205" r="10" fill="{accent}" opacity=".18"/><circle cx="296" cy="205" r="4" fill="{accent}"/>
 <text x="296" y="285" text-anchor="middle" class="mono" font-size="11" fill="{ink}" letter-spacing="1.5">LBP</text>
 <text x="296" y="301" text-anchor="middle" class="mono" font-size="8" fill="{muted}">LOCAL PATTERN</text>
-<rect x="342" y="124" width="106" height="140" rx="4" fill="{surface_alt}" stroke="{line}"/>
+<rect x="342" y="124" width="106" height="140" rx="4" fill="{surface_alt}" opacity=".82" stroke="{line}"/>
 <text x="356" y="139" class="mono" font-size="8" fill="{muted}" letter-spacing="1">GLCM</text>
 <g>{glcm}</g>
 <text x="356" y="236" class="mono" font-size="8" fill="{muted}">CONTRAST</text><text x="356" y="250" class="mono" font-size="8" fill="{muted}">ENTROPY</text>
-<rect x="462" y="124" width="154" height="140" rx="4" fill="{surface}" opacity=".96" stroke="{line}"/>
+<rect x="462" y="124" width="154" height="140" rx="4" fill="{surface}" opacity=".78" stroke="{line}"/>
 <text x="478" y="140" class="mono" font-size="8" fill="{accent}" letter-spacing="1">FEATURE VECTOR</text>
 {"".join(feature_bars)}
-<rect x="630" y="124" width="46" height="140" rx="4" fill="{canvas}" stroke="{line}"/>
+<rect x="630" y="124" width="46" height="140" rx="4" fill="{canvas}" opacity=".76" stroke="{line}"/>
 <text x="653" y="141" text-anchor="middle" class="mono" font-size="7" fill="{muted}">SVM</text>
 <path d="M653 157V231" stroke="{line}" stroke-width="8" stroke-linecap="round"/><path d="M653 157V208" stroke="{accent}" stroke-width="8" stroke-linecap="round" class="vision-confidence"/>
 <text x="653" y="246" text-anchor="middle" class="mono" font-size="8" fill="{ink}">CAL.</text>
@@ -2446,16 +2446,16 @@ def project_visual_svg(kind, cfg):
 
     return f'''<g class="talks-motion">
 <rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
-<image href="{art}" x="320" y="86" width="372" height="290" preserveAspectRatio="xMidYMid slice" opacity=".54"/>
-<rect x="28" y="86" width="664" height="290" fill="{canvas}" opacity=".44"/>
+<image href="{art}" x="320" y="86" width="372" height="290" preserveAspectRatio="xMidYMid slice" opacity=".86"/>
+<rect x="28" y="86" width="664" height="290" fill="{canvas}" opacity=".24"/>
 <text x="44" y="109" class="mono" font-size="9" fill="{accent}" letter-spacing="1.7">ROOM 01 / ILLUSTRATIVE DEMO STATE</text>
-<rect x="44" y="124" width="184" height="223" rx="5" fill="{surface_alt}" opacity=".95" stroke="{line}"/>
+<rect x="44" y="124" width="184" height="223" rx="5" fill="{surface_alt}" opacity=".84" stroke="{line}"/>
 <text x="60" y="146" class="mono" font-size="11" fill="{ink}" letter-spacing="1">#YOR BUILDERS</text>
 <circle cx="64" cy="174" r="5" fill="{accent}"/><text x="78" y="178" class="mono" font-size="10" fill="{ink}">ALPHA</text><text x="207" y="178" text-anchor="end" class="mono" font-size="8" fill="{accent}">ONLINE</text>
 <circle cx="64" cy="204" r="5" fill="{accent_soft}"/><text x="78" y="208" class="mono" font-size="10" fill="{ink}">BETA</text><text x="207" y="208" text-anchor="end" class="mono" font-size="8" fill="{muted}">AWAY</text>
 <circle cx="64" cy="234" r="5" fill="{accent}"/><text x="78" y="238" class="mono" font-size="10" fill="{ink}">NODE 03</text><text x="207" y="238" text-anchor="end" class="mono" font-size="8" fill="{accent}">ONLINE</text>
 <path d="M60 268H212M60 289H185" stroke="{line}"/><text x="60" y="316" class="mono" font-size="8" fill="{muted}" letter-spacing="1">PRESENCE  ·  AUTH  ·  ROOMS</text>
-<rect x="250" y="124" width="426" height="223" rx="5" fill="{surface}" opacity=".94" stroke="{line}"/>
+<rect x="250" y="124" width="426" height="223" rx="5" fill="{surface}" opacity=".72" stroke="{line}"/>
 <text x="268" y="146" class="mono" font-size="9" fill="{muted}" letter-spacing="1.4">MESSAGE FLOW / SOCKET.IO</text>
 <rect x="268" y="158" width="178" height="43" rx="14" fill="{surface_alt}"/><text x="284" y="184" class="mono" font-size="10" fill="{ink}">ship the hard thing.</text><text x="430" y="193" text-anchor="end" class="mono" font-size="8" fill="{muted}">READ ✓✓</text>
 <rect x="460" y="211" width="198" height="43" rx="14" fill="{accent}" opacity=".16" stroke="{accent}"/><text x="476" y="237" class="mono" font-size="10" fill="{ink}">building it now →</text><text x="642" y="246" text-anchor="end" class="mono" font-size="8" fill="{accent}">SENT ✓</text>

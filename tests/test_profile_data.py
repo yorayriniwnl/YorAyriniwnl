@@ -96,11 +96,11 @@ class ProfileDataTests(unittest.TestCase):
 
         for project_id, relative_path in contract["source"]["project_art"].items():
             with self.subTest(project=project_id):
-                self.assertTrue(relative_path.endswith("-crimson-v3.png"))
+                self.assertTrue(relative_path.endswith("-crimson-v4.png"))
                 self.assertTrue((ROOT / relative_path).is_file())
         for project_id, relative_path in contract["delivery"]["project_art"].items():
             with self.subTest(delivery=project_id):
-                self.assertIn("atmosphere-crimson-v3-optimized.jpg", relative_path)
+                self.assertIn("atmosphere-crimson-v4-optimized.jpg", relative_path)
         github_paths = [
             contract["github_derivative"]["hero"],
             *contract["github_derivative"]["project_art"].values(),

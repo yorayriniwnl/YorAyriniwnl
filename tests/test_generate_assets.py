@@ -67,6 +67,7 @@ class GenerateAssetsTests(unittest.TestCase):
                     ).split(",", 1)[1],
                     card,
                 )
+                self.assertRegex(card, r'<image[^>]+opacity="\.(?:7[0-9]|8[0-9]|9[0-9])"')
                 for old_color in old_world_colors:
                     self.assertNotIn(old_color, card)
 

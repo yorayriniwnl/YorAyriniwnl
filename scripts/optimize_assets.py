@@ -34,10 +34,10 @@ RECIPES = (
     # Their 1.5-2x display density keeps the README sharp without making each
     # generated card carry a multi-megabyte photographic payload.
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (2400, 1110), 84),
-    AssetRecipe("project-helios-atmosphere-crimson-v3.png", "project-helios-atmosphere-crimson-v3-optimized.jpg", (1800, 1013), 82),
-    AssetRecipe("project-zenith-atmosphere-crimson-v3.png", "project-zenith-atmosphere-crimson-v3-optimized.jpg", (1800, 1013), 82),
-    AssetRecipe("project-vision-atmosphere-crimson-v3.png", "project-vision-atmosphere-crimson-v3-optimized.jpg", (1800, 1013), 82),
-    AssetRecipe("project-talks-atmosphere-crimson-v3.png", "project-talks-atmosphere-crimson-v3-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-helios-atmosphere-crimson-v4.png", "project-helios-atmosphere-crimson-v4-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-zenith-atmosphere-crimson-v4.png", "project-zenith-atmosphere-crimson-v4-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-vision-atmosphere-crimson-v4.png", "project-vision-atmosphere-crimson-v4-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-talks-atmosphere-crimson-v4.png", "project-talks-atmosphere-crimson-v4-optimized.jpg", (1800, 1013), 82),
 )
 
 LEGACY_UPSCALED_RECIPES = (

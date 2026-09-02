@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 13: detail remaster
+
+The four project worlds now use a second image-generation remaster with denser material detail, stronger foreground/midground/background depth, clearer focal subjects, and higher-fidelity red lighting: an industrial telemetry room, a rooftop solar array, a forensic imaging bench, and a realtime communication studio. The approved portrait hero remains unchanged. The source and delivery contracts are versioned independently so GitHub's raw CDN cannot keep serving the previous artwork.
+
 ## Pass 12: project key art suite
 
 The project cards now carry four generated visual systems instead of relying on schematic placeholders: a solar digital twin for Yor Zenith, a live power-grid anomaly scene for Yor Helios, a human-versus-synthetic vision study for AI vs Real, and a crimson realtime network for Yor Talks V2. Each scene is embedded into its card as self-contained raster art, then layered with the existing SVG traces, pulse nodes, confidence telemetry, and sweep motion.
