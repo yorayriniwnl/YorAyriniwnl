@@ -37,7 +37,37 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertTrue(ET.fromstring(card).tag.endswith("svg"))
         self.assertIn("AI VS. REAL IMAGE DETECTOR", card)
         self.assertIn("78.5% HELD-OUT TEST ACCURACY", card.upper())
+        self.assertIn("LBP", card)
+        self.assertIn("GLCM", card)
+        self.assertIn("FORENSIC WORKBENCH", card)
         self.assertIn("data:image/jpeg;base64,", card)
+
+    def test_flagship_cards_have_distinct_visual_worlds_and_motion_grammar(self):
+        manifest = generate_assets.build_asset_manifest()
+        expected = {
+            "helios": ("INDUSTRIAL TELEMETRY", "#f0a64a", "EVENT TOPOLOGY", "SYNTHETIC DEMO"),
+            "zenith": ("DAYLIGHT SOLAR INTELLIGENCE", "#d78327", "3D ROOF PLANNING", "IRR"),
+            "vision": ("FORENSIC TEXTURE LAB", "#169cab", "FEATURE VECTOR", "78.5%"),
+            "talks": ("REALTIME COMMUNICATION", "#5be8ff", "MESSAGE FLOW", "PRESENCE"),
+        }
+
+        for kind, markers in expected.items():
+            card = manifest[f"project-{kind}.svg"]
+            with self.subTest(project=kind):
+                self.assertTrue(all(marker in card for marker in markers))
+                self.assertIn(f'class="{kind}-motion"', card)
+                self.assertIn("prefers-reduced-motion: reduce", card)
+                self.assertIn(
+                    generate_assets.asset_data_uri(
+                        generate_assets.VISUAL_CONTRACT["project_art"][kind]
+                    ).split(",", 1)[1],
+                    card,
+                )
+
+        self.assertNotEqual(
+            manifest["project-helios.svg"].split("<image", 1)[0],
+            manifest["project-talks.svg"].split("<image", 1)[0],
+        )
 
     def test_manifest_contains_only_public_readme_assets(self):
         manifest = generate_assets.build_asset_manifest()
@@ -111,7 +141,7 @@ class GenerateAssetsTests(unittest.TestCase):
             with self.subTest(asset=filename):
                 svg = manifest[filename]
                 self.assertIn('id="atlas-treatment"', svg)
-                self.assertIn('data-visual-treatment="atlas-v1"', svg)
+                self.assertIn('data-visual-treatment="atlas-v2"', svg)
                 self.assertIn('aria-hidden="true"', svg)
                 self.assertIn("prefers-reduced-motion: reduce", svg)
                 self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))

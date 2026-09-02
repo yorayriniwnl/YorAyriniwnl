@@ -99,6 +99,9 @@ def _validate_hero(profile: dict[str, Any]) -> None:
             "high_resolution",
             "project_art",
             "palette",
+            "source",
+            "delivery",
+            "github_derivative",
         },
         "visual contract",
     )
@@ -109,6 +112,25 @@ def _validate_hero(profile: dict[str, Any]) -> None:
     if actual != contract["approved_hero_sha256"]:
         raise ProfileDataError("approved hero changed; restore the previous profile portrait")
 
+    source = contract["source"]
+    _require(source, {"hero", "project_art"}, "source visual contract")
+    _require(contract["delivery"], {"hero", "project_art"}, "delivery visual contract")
+    _require(contract["github_derivative"], {"hero", "project_art"}, "GitHub visual contract")
+    if source["hero"] != contract["approved_hero"]:
+        raise ProfileDataError("source hero must remain the approved hero")
+    if contract["delivery"]["hero"] != contract["optimized_hero"]:
+        raise ProfileDataError("delivery hero must match optimized_hero")
+    if set(source["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+        raise ProfileDataError("source project artwork must match the selected visual project set")
+    if set(contract["delivery"]["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+        raise ProfileDataError("delivery project artwork must match the selected visual project set")
+    if set(contract["github_derivative"]["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+        raise ProfileDataError("GitHub project derivatives must match the selected visual project set")
+    for relative_path in (source["hero"], *source["project_art"].values()):
+        asset_path = ROOT / relative_path
+        if not asset_path.is_file():
+            raise ProfileDataError(f"source visual asset is missing: {relative_path}")
+
     derivative_paths = [contract["optimized_hero"], *contract["project_art"].values()]
     if set(contract["project_art"]) != {"helios", "zenith", "vision", "talks"}:
         raise ProfileDataError("project artwork must match the selected visual project set")
@@ -116,6 +138,16 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         asset_path = ROOT / relative_path
         if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():
             raise ProfileDataError(f"optimized visual asset is missing: {relative_path}")
+
+    if contract["project_art"] != contract["delivery"]["project_art"]:
+        raise ProfileDataError("project_art must be the delivery derivative map")
+    github_derivatives = [
+        contract["github_derivative"]["hero"],
+        *contract["github_derivative"]["project_art"].values(),
+    ]
+    for relative_path in github_derivatives:
+        if not relative_path.startswith("output/") or not relative_path.endswith(".svg"):
+            raise ProfileDataError(f"GitHub derivative must be a published output SVG: {relative_path}")
 
     high_resolution = contract["high_resolution"]
     _require(high_resolution, {"hero", "project_art"}, "high-resolution visual contract")
@@ -143,10 +175,19 @@ def _validate_design_tokens(profile: dict[str, Any]) -> None:
         raise ProfileDataError(
             "visual contract palette must match design/yor-tokens.json"
         )
-    required_sections = {"color", "gradient", "typography", "geometry", "motion", "signal", "effects", "breakpoints", "accessibility"}
+    required_sections = {"color", "worlds", "gradient", "typography", "geometry", "motion", "signal", "effects", "breakpoints", "accessibility"}
     missing = sorted(required_sections - tokens.keys())
     if missing:
         raise ProfileDataError(f"design token contract is missing: {', '.join(missing)}")
+    required_worlds = {"portfolio", "helios", "zenith", "vision", "talks"}
+    if set(tokens["worlds"]) != required_worlds:
+        raise ProfileDataError("design token worlds must match the five visual systems")
+    for world_id, world in tokens["worlds"].items():
+        _require(
+            world,
+            {"label", "canvas", "surface", "surface_alt", "ink", "muted", "accent", "accent_soft", "line", "glow"},
+            f"visual world {world_id}",
+        )
 
 
 def _validate_repository_audit() -> None:

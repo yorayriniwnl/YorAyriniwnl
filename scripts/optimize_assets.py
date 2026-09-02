@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Create deterministic 4K masters and retina-safe derivatives of approved art.
+"""Create deterministic delivery derivatives of approved source artwork.
 
-The original PNGs remain canonical.  This pipeline only creates versioned JPEG
-derivatives from those sources so the approved profile portrait can never be
-silently re-generated or replaced by an image model.
+The original PNGs remain canonical. This pipeline only creates versioned JPEG
+delivery files from those sources. The approved profile portrait can therefore
+never be silently re-generated or replaced by an image model. Historical
+upscaled files are retained as an archive, but are intentionally not rebuilt or
+described as native 4K artwork.
 """
 
 from __future__ import annotations
@@ -32,20 +34,24 @@ RECIPES = (
     # Their 1.5-2x display density keeps the README sharp without making each
     # generated card carry a multi-megabyte 4K payload.
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (2400, 1110), 84),
-    AssetRecipe("project-helios-keyart-v5.png", "project-helios-keyart-v5-optimized.jpg", (1800, 1013), 80),
-    AssetRecipe("project-zenith-keyart-v5.png", "project-zenith-keyart-v5-optimized.jpg", (1800, 1013), 80),
-    AssetRecipe("project-vision-keyart-v5.png", "project-vision-keyart-v5-optimized.jpg", (1800, 1013), 80),
-    AssetRecipe("project-talks-keyart-v5.png", "project-talks-keyart-v5-optimized.jpg", (1800, 1013), 80),
+    AssetRecipe("project-helios-atmosphere-v1.png", "project-helios-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-zenith-atmosphere-v1.png", "project-zenith-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-vision-atmosphere-v1.png", "project-vision-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-talks-atmosphere-v1.png", "project-talks-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
 )
 
-FOUR_K_RECIPES = (
-    # The hero keeps its cinematic aspect ratio; project art is UHD 16:9.
+LEGACY_UPSCALED_RECIPES = (
+    # Retained files from the earlier release. They are not native 4K sources
+    # and are deliberately excluded from the active generation path.
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-4k.jpg", (3840, 1777), 88, 118),
     AssetRecipe("project-helios-keyart-v5.png", "project-helios-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
     AssetRecipe("project-zenith-keyart-v5.png", "project-zenith-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
     AssetRecipe("project-vision-keyart-v5.png", "project-vision-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
     AssetRecipe("project-talks-keyart-v5.png", "project-talks-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
 )
+# Backwards-compatible name for older local checks. New code should use the
+# honest archive terminology above.
+FOUR_K_RECIPES = LEGACY_UPSCALED_RECIPES
 
 
 def sha256(path: Path) -> str:
@@ -115,23 +121,24 @@ def validate_optimized_assets() -> None:
 
 
 def validate_four_k_assets() -> None:
-    for recipe in FOUR_K_RECIPES:
+    """Validate retained legacy files without endorsing their old label."""
+    for recipe in LEGACY_UPSCALED_RECIPES:
         source = ASSET_DIR / recipe.source
         output = ASSET_DIR / recipe.output
         if not output.is_file():
-            raise ValueError(f"4K asset is missing: {output}")
+            raise ValueError(f"legacy upscaled asset is missing: {output}")
         if output.stat().st_size >= source.stat().st_size:
-            raise ValueError(f"4K asset is unexpectedly larger than its PNG source: {output}")
+            raise ValueError(f"legacy upscaled asset is unexpectedly larger than its PNG source: {output}")
         with Image.open(output) as image:
             if image.format != "JPEG" or image.mode != "RGB":
-                raise ValueError(f"4K asset must be an RGB JPEG: {output}")
+                raise ValueError(f"legacy upscaled asset must be an RGB JPEG: {output}")
             if image.size != recipe.target_size:
                 raise ValueError(
-                    f"4K asset has the wrong dimensions: {output} "
+                    f"legacy upscaled asset has the wrong dimensions: {output} "
                     f"({image.size}, expected {recipe.target_size})"
                 )
             if image.getexif():
-                raise ValueError(f"4K asset contains EXIF metadata: {output}")
+                raise ValueError(f"legacy upscaled asset contains EXIF metadata: {output}")
 
 
 def main() -> int:
@@ -142,7 +149,7 @@ def main() -> int:
 
     total_before = 0
     total_after = 0
-    for recipe in (*FOUR_K_RECIPES, *RECIPES):
+    for recipe in RECIPES:
         before, after = optimize_asset(recipe)
         total_before += before
         total_after += after

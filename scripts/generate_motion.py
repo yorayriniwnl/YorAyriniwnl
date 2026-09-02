@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Render seamless systems reels and reduced-motion posters.
+"""Render a five-world systems reel and reduced-motion posters.
 
 The imagery is an illustrative motion study, not simulated live telemetry.
-Both layouts use the same scenes and palette, with no external assets or fonts.
+Each scene has its own visual world so motion explains the product domain
+without pretending to be production data. No external assets or fonts are used.
 """
 
 from __future__ import annotations
@@ -24,7 +25,7 @@ from profile_data import load_profile
 ROOT = SCRIPT_DIR.parent
 OUT_DIR = ROOT / "generated"
 WIDTH, HEIGHT = 1200, 280
-MOBILE_SIZE = (600, 530)
+MOBILE_SIZE = (600, 760)
 # A near-four-second loop at 70 ms/frame keeps the motion fluid while
 # respecting GitHub profile transfer budgets on both desktop and mobile.
 FRAME_COUNT = 54
@@ -42,6 +43,19 @@ CRIMSON = rgb(PALETTE["crimson"])
 DEEP = rgb(PALETTE["deep_crimson"])
 SIGNAL = rgb(PALETTE["signal"])
 PAPER = rgb(PALETTE["paper"])
+
+
+def motion_palette(canvas, deep, accent, signal, paper, line):
+    return tuple(rgb(value) for value in (canvas, deep, accent, signal, paper, line))
+
+
+MOTION_PALETTES = {
+    "portfolio": motion_palette("#09070a", "#321018", "#e84b4b", "#ff8a7f", "#f5eaea", "#51202b"),
+    "helios": motion_palette("#0a1112", "#203333", "#f0a64a", "#f7c878", "#e8e6d8", "#3e5a54"),
+    "zenith": motion_palette("#edf2ea", "#c7d8cf", "#d78327", "#f3c65d", "#132b3a", "#8ca9a0"),
+    "vision": motion_palette("#eef2f0", "#c2cecc", "#169cab", "#6ddde5", "#152326", "#aebcba"),
+    "talks": motion_palette("#071426", "#183c61", "#5be8ff", "#a78bff", "#e8f7ff", "#28577b"),
+}
 
 
 @lru_cache(maxsize=12)
@@ -74,13 +88,14 @@ def glow_point(glow, x, y, radius, color, alpha=150):
         glow.ellipse((x - r, y - r, x + r, y + r), fill=rgba(color, alpha * opacity))
 
 
-def draw_particles(draw, glow, cx, cy, phase):
+def draw_particles(draw, glow, cx, cy, phase, colors=None):
+    _, deep, accent, signal, paper, line = colors or MOTION_PALETTES["portfolio"]
     for radius, opacity in ((104, .18), (78, .28), (51, .42)):
         draw.ellipse((cx - radius, cy - radius * .42, cx + radius, cy + radius * .42),
-                     outline=mix((35, 8, 14), SIGNAL, opacity), width=1)
+                     outline=mix(line, signal, opacity), width=1)
         draw.arc((cx - radius, cy - radius * .42, cx + radius, cy + radius * .42),
                  int(phase * 360 + radius), int(phase * 360 + radius + 125),
-                 fill=mix(DEEP, SIGNAL, opacity + .12), width=1)
+                 fill=mix(deep, signal, opacity + .12), width=1)
     particles = []
     for ring in range(20):
         u = ring / 20 * TAU
@@ -91,24 +106,25 @@ def draw_particles(draw, glow, cx, cy, phase):
             particles.append((z, cx + x * 1.18, cy + y, 1.05 + (z + 82) / 105, ring))
     for z, x, y, r, ring in sorted(particles):
         light = max(.12, min(1, (z + 85) / 155))
-        color = mix((42, 10, 13), SIGNAL, light)
+        color = mix(deep, signal, light)
         point(draw, x, y, r, color)
         if light > .76 and ring % 4 == 0:
-            glow_point(glow, x, y, r, SIGNAL, 130)
+            glow_point(glow, x, y, r, signal, 130)
     for index in range(3):
         orbit = phase + index / 3
         x = cx + math.cos(orbit * TAU) * (86 - index * 15)
         y = cy + math.sin(orbit * TAU) * (34 - index * 6)
-        point(draw, x, y, 2.4 - index * .35, PAPER)
-        glow_point(glow, x, y, 2.6, SIGNAL, 155)
-    draw.ellipse((cx - 17, cy - 17, cx + 17, cy + 17), fill=(13, 4, 9), outline=SIGNAL, width=1)
-    point(draw, cx, cy, 4.5, SIGNAL)
-    glow_point(glow, cx, cy, 5, SIGNAL, 180)
-    draw.line((cx - 128, cy, cx + 128, cy), fill=(79, 18, 29), width=1)
-    draw.line((cx, cy - 55, cx, cy + 55), fill=(79, 18, 29), width=1)
+        point(draw, x, y, 2.4 - index * .35, paper)
+        glow_point(glow, x, y, 2.6, signal, 155)
+    draw.ellipse((cx - 17, cy - 17, cx + 17, cy + 17), fill=deep, outline=signal, width=1)
+    point(draw, cx, cy, 4.5, signal)
+    glow_point(glow, cx, cy, 5, signal, 180)
+    draw.line((cx - 128, cy, cx + 128, cy), fill=line, width=1)
+    draw.line((cx, cy - 55, cx, cy + 55), fill=line, width=1)
 
 
-def draw_streams(draw, glow, cx, cy, phase):
+def draw_streams(draw, glow, cx, cy, phase, colors=None):
+    _, deep, accent, signal, paper, line = colors or MOTION_PALETTES["helios"]
     for lane in range(9):
         points = []
         for sample in range(84):
@@ -118,10 +134,10 @@ def draw_streams(draw, glow, cx, cy, phase):
             wave += .35 * math.sin(t * TAU * 3.2 + phase * TAU * .4 - lane)
             points.append((cx - 116 + t * 232, cy + (lane - 4) * 9 + wave * 19 * envelope))
         intensity = .82 if lane in (3, 4) else .12 + (lane % 3) * .08
-        color = mix((49, 12, 17), SIGNAL, intensity)
+        color = mix(deep, signal, intensity)
         draw.line(points, fill=color, width=2 if lane in (3, 4) else 1)
         if lane in (3, 4):
-            draw.line([(x, y + 3) for x, y in points], fill=(104, 25, 37), width=1)
+            draw.line([(x, y + 3) for x, y in points], fill=accent, width=1)
         position = (phase * 1.15 + lane / 9) % 1
         for trail in range(5, -1, -1):
             trail_pos = (position - trail * .018) % 1
@@ -132,82 +148,111 @@ def draw_streams(draw, glow, cx, cy, phase):
                 + .35 * math.sin(trail_pos * TAU * 3.2 + phase * TAU * .4 - lane)
             ) * 19 * envelope
             alpha = (1 - trail / 7) * envelope
-            point(draw, px, py, 2.8 if trail == 0 else 1.3, mix((30, 6, 10), SIGNAL, alpha))
+            point(draw, px, py, 2.8 if trail == 0 else 1.3, mix(deep, signal, alpha))
             if trail == 0:
-                glow_point(glow, px, py, 3.2, SIGNAL, int(160 * alpha))
+                glow_point(glow, px, py, 3.2, signal, int(160 * alpha))
     gate = cx - 116 + ((phase * 1.15) % 1) * 232
-    draw.line((gate, cy - 73, gate, cy + 73), fill=SIGNAL, width=1)
-    draw.line((gate + 3, cy - 73, gate + 3, cy + 73), fill=(82, 20, 31), width=1)
-    glow_point(glow, gate, cy, 4, SIGNAL, 110)
+    draw.line((gate, cy - 73, gate, cy + 73), fill=signal, width=1)
+    draw.line((gate + 3, cy - 73, gate + 3, cy + 73), fill=line, width=1)
+    glow_point(glow, gate, cy, 4, signal, 110)
 
 
-def draw_vision(draw, glow, cx, cy, phase):
+def draw_solar(draw, glow, cx, cy, phase, colors=None):
+    _, deep, accent, signal, paper, line = colors or MOTION_PALETTES["zenith"]
+    sun_x = cx - 88 + ((phase * 176) % 176)
+    sun_y = cy - 48 - math.sin(phase * TAU) * 18
+    glow_point(glow, sun_x, sun_y, 10, signal, 120)
+    point(draw, sun_x, sun_y, 7, signal)
+    draw.arc((cx - 112, cy - 86, cx + 112, cy + 84), 194, 346, fill=accent, width=1)
+    roof = [(cx - 112, cy + 39), (cx + 5, cy - 28), (cx + 117, cy + 6), (cx + 6, cy + 69)]
+    draw.polygon(roof, fill=mix(deep, paper, .34), outline=accent)
+    for row in range(2):
+        for col in range(4):
+            x = cx - 74 + col * 30 + row * 4
+            y = cy + 2 + row * 23 - col * 1.2
+            draw.polygon([(x, y), (x + 23, y - 10), (x + 23, y + 7), (x, y + 17)],
+                         fill=mix(deep, accent, .35 + .1 * ((row + col) % 2)), outline=accent)
+    draw.line((cx - 108, cy + 77, cx + 116, cy + 77), fill=line, width=1)
+    for index, label in enumerate(("ROOF", "PV", "CASH")):
+        x = cx - 72 + index * 72
+        draw.rounded_rectangle((x - 25, cy + 88, x + 25, cy + 106), radius=8,
+                               fill=mix(deep, paper, .2), outline=line)
+        draw.text((x, cy + 92), label, font=font(10), fill=paper, anchor="ma")
+    draw.line((cx - 88, cy + 57, cx + 92, cy + 57), fill=signal, width=2)
+    draw.line((cx - 88 + ((phase * 180) % 180), cy + 53,
+               cx - 88 + ((phase * 180) % 180), cy + 61), fill=paper, width=2)
+
+
+def draw_vision(draw, glow, cx, cy, phase, colors=None):
+    _, deep, accent, signal, paper, line = colors or MOTION_PALETTES["vision"]
     scan_y = cy + math.sin(phase * TAU) * 45
     left, top, right, bottom = cx - 105, cy - 53, cx + 105, cy + 53
-    draw.rounded_rectangle((left, top, right, bottom), radius=8, fill=(10, 4, 9), outline=(75, 18, 28), width=1)
+    draw.rounded_rectangle((left, top, right, bottom), radius=8, fill=deep, outline=line, width=1)
     for row in range(13):
         for col in range(27):
             x, y = cx - 98 + col * 7.5, cy - 45 + row * 7.5
             texture = (math.sin(col * .77 + row * .43) + math.cos(col * .21 - row * .82) + 2) / 4
             proximity = max(0, 1 - abs(y - scan_y) / 24)
             focus = max(0, 1 - math.hypot(x - (cx + 18), y - (cy - 3)) / 86)
-            color = mix((24, 7, 12), SIGNAL, texture * (.2 + proximity * .58 + focus * .25))
+            color = mix(deep, signal, texture * (.2 + proximity * .58 + focus * .25))
             size = 1.8 + texture * 1.8 + proximity * 1.2
             draw.rectangle((x - size / 2, y - size / 2, x + size / 2, y + size / 2), fill=color)
     draw.rounded_rectangle((cx - 38, cy - 31, cx + 54, cy + 34), radius=4,
-                           outline=(176, 46, 57), width=1)
-    draw.line((cx - 38, cy - 31, cx - 25, cy - 31), fill=PAPER, width=2)
-    draw.line((cx + 54, cy + 34, cx + 41, cy + 34), fill=PAPER, width=2)
+                           outline=accent, width=1)
+    draw.line((cx - 38, cy - 31, cx - 25, cy - 31), fill=paper, width=2)
+    draw.line((cx + 54, cy + 34, cx + 41, cy + 34), fill=paper, width=2)
     for sign_x in (-1, 1):
         for sign_y in (-1, 1):
             x, y = cx + sign_x * 112, cy + sign_y * 58
-            draw.line([(x - sign_x * 15, y), (x, y), (x, y - sign_y * 15)], fill=CRIMSON, width=2)
-    draw.line((cx - 99, scan_y, cx + 99, scan_y), fill=SIGNAL, width=1)
-    draw.line((cx - 99, scan_y + 2, cx + 99, scan_y + 2), fill=(97, 23, 34), width=1)
-    glow_point(glow, cx, scan_y, 4, SIGNAL, 135)
+            draw.line([(x - sign_x * 15, y), (x, y), (x, y - sign_y * 15)], fill=accent, width=2)
+    draw.line((cx - 99, scan_y, cx + 99, scan_y), fill=signal, width=1)
+    draw.line((cx - 99, scan_y + 2, cx + 99, scan_y + 2), fill=line, width=1)
+    glow_point(glow, cx, scan_y, 4, signal, 135)
     sample_x = cx + 18 + math.sin(phase * TAU) * 31
     sample_y = cy - 3 + math.cos(phase * TAU) * 24
-    point(draw, sample_x, sample_y, 3.2, PAPER)
-    glow_point(glow, sample_x, sample_y, 4, PAPER, 125)
-    draw.line((cx - 5, cy, cx + 5, cy), fill=PAPER, width=1)
-    draw.line((cx, cy - 5, cx, cy + 5), fill=PAPER, width=1)
+    point(draw, sample_x, sample_y, 3.2, paper)
+    glow_point(glow, sample_x, sample_y, 4, paper, 125)
+    draw.line((cx - 5, cy, cx + 5, cy), fill=paper, width=1)
+    draw.line((cx, cy - 5, cx, cy + 5), fill=paper, width=1)
 
 
-def draw_network(draw, glow, cx, cy, phase):
+def draw_network(draw, glow, cx, cy, phase, colors=None):
+    _, deep, accent, signal, paper, line = colors or MOTION_PALETTES["talks"]
     nodes = [(cx - 108, cy + 2), (cx - 62, cy - 49), (cx + 13, cy - 55),
              (cx + 101, cy - 17), (cx + 88, cy + 45), (cx + 10, cy + 57),
              (cx - 75, cy + 47), (cx - 35, cy - 4)]
     center = (cx, cy)
-    draw.ellipse((cx - 128, cy - 73, cx + 128, cy + 73), outline=(46, 12, 21), width=1)
-    draw.arc((cx - 128, cy - 73, cx + 128, cy + 73), int(phase * 360), int(phase * 360 + 145), fill=CRIMSON, width=1)
+    draw.ellipse((cx - 128, cy - 73, cx + 128, cy + 73), outline=line, width=1)
+    draw.arc((cx - 128, cy - 73, cx + 128, cy + 73), int(phase * 360), int(phase * 360 + 145), fill=accent, width=1)
     for i, end in enumerate(nodes):
-        draw.line([center, end], fill=DEEP, width=1)
-        draw.line([end, nodes[(i + 1) % len(nodes)]], fill=(47, 11, 15), width=1)
+        draw.line([center, end], fill=deep, width=1)
+        draw.line([end, nodes[(i + 1) % len(nodes)]], fill=line, width=1)
         if i % 2 == 0:
-            draw.line([end, nodes[(i + 2) % len(nodes)]], fill=(37, 10, 17), width=1)
+            draw.line([end, nodes[(i + 2) % len(nodes)]], fill=line, width=1)
         progress = (phase * 1.2 + i / len(nodes)) % 1
         for trail in range(3, -1, -1):
             p = (progress - trail * .035) % 1
             x = cx + (end[0] - cx) * p
             y = cy + (end[1] - cy) * p
-            point(draw, x, y, 2.8 if trail == 0 else 1.0, mix(DEEP, SIGNAL, math.sin(p * math.pi)))
-        point(draw, *end, 6, (31, 8, 15))
-        point(draw, *end, 3, SIGNAL)
-        glow_point(glow, *end, 4, SIGNAL, 115)
+            point(draw, x, y, 2.8 if trail == 0 else 1.0, mix(deep, signal, math.sin(p * math.pi)))
+        point(draw, *end, 6, deep)
+        point(draw, *end, 3, signal)
+        glow_point(glow, *end, 4, signal, 115)
     top, left, right, bottom = (cx, cy - 27), (cx - 30, cy - 11), (cx + 30, cy - 11), (cx, cy + 32)
-    draw.polygon([top, right, (cx, cy + 4), left], fill=(50, 10, 16), outline=SIGNAL)
-    draw.polygon([left, (cx, cy + 4), bottom, (cx - 30, cy + 15)], fill=(19, 5, 9), outline=CRIMSON)
-    draw.polygon([(cx, cy + 4), right, (cx + 30, cy + 15), bottom], fill=(33, 7, 12), outline=CRIMSON)
-    draw.line((cx - 18, cy - 3, cx + 18, cy - 3), fill=(255, 138, 127), width=1)
-    point(draw, cx, cy + 4, 4, SIGNAL)
-    glow_point(glow, cx, cy + 4, 5, SIGNAL, 165)
+    draw.polygon([top, right, (cx, cy + 4), left], fill=mix(deep, accent, .45), outline=signal)
+    draw.polygon([left, (cx, cy + 4), bottom, (cx - 30, cy + 15)], fill=deep, outline=accent)
+    draw.polygon([(cx, cy + 4), right, (cx + 30, cy + 15), bottom], fill=mix(deep, signal, .22), outline=accent)
+    draw.line((cx - 18, cy - 3, cx + 18, cy - 3), fill=paper, width=1)
+    point(draw, cx, cy + 4, 4, signal)
+    glow_point(glow, cx, cy + 4, 5, signal, 165)
 
 
 SCENES = (
-    ("01", "GPU WORLDS", "PARTICLES / INTERFACES", draw_particles),
-    ("02", "REALTIME", "EVENTS / SIGNALS", draw_streams),
-    ("03", "VISION", "TEXTURES / FEATURES", draw_vision),
-    ("04", "PLATFORMS", "APIs / CONNECTIONS", draw_network),
+    ("01", "PORTFOLIO", "GPU / PARTICLES", draw_particles, MOTION_PALETTES["portfolio"]),
+    ("02", "HELIOS", "ALERT / TOPOLOGY", draw_streams, MOTION_PALETTES["helios"]),
+    ("03", "ZENITH", "ROOF / ENERGY", draw_solar, MOTION_PALETTES["zenith"]),
+    ("04", "VISION", "LBP / GLCM", draw_vision, MOTION_PALETTES["vision"]),
+    ("05", "TALKS", "PRESENCE / PACKETS", draw_network, MOTION_PALETTES["talks"]),
 )
 
 
@@ -215,22 +260,22 @@ def build_backdrop(size, phase):
     width, height = size
     frame = Image.new("RGB", size)
     draw = ImageDraw.Draw(frame)
-    top = (2, 2, 4)
-    bottom = (17, 3, 10)
+    top = (4, 9, 16)
+    bottom = (13, 20, 29)
     for y in range(height):
         t = y / max(1, height - 1)
         draw.line((0, y, width, y), fill=mix(top, bottom, t))
     atmosphere = Image.new("RGBA", size, (0, 0, 0, 0))
     atmosphere_draw = ImageDraw.Draw(atmosphere)
-    atmosphere_draw.ellipse((width * .02, height * .15, width * .42, height * 1.1), fill=rgba(CRIMSON, 45))
-    atmosphere_draw.ellipse((width * .54, -height * .5, width * 1.08, height * .75), fill=rgba(SIGNAL, 30))
+    atmosphere_draw.ellipse((width * .02, height * .15, width * .42, height * 1.1), fill=rgba((240, 166, 74), 32))
+    atmosphere_draw.ellipse((width * .54, -height * .5, width * 1.08, height * .75), fill=rgba((91, 232, 255), 34))
     atmosphere = atmosphere.filter(ImageFilter.GaussianBlur(max(12, height // 7)))
     frame = Image.alpha_composite(frame.convert("RGBA"), atmosphere).convert("RGB")
     draw = ImageDraw.Draw(frame)
     for y in range(8, height, 8):
-        draw.line((0, y, width, y), fill=(29, 7, 14), width=1)
+        draw.line((0, y, width, y), fill=(23, 39, 52), width=1)
     scan_y = int(52 + ((phase * .72) % 1) * max(1, height - 62))
-    draw.line((0, scan_y, width, scan_y), fill=(45, 10, 20), width=1)
+    draw.line((0, scan_y, width, scan_y), fill=(53, 91, 111), width=1)
     return frame
 
 
@@ -241,28 +286,29 @@ def _clip_layer(layer, clip_box):
     return layer
 
 
-def render_scene(frame, renderer, cx, cy, phase, clip_box):
+def render_scene(frame, renderer, cx, cy, phase, clip_box, colors):
     scene = Image.new("RGBA", frame.size, (0, 0, 0, 0))
     glow = Image.new("RGBA", frame.size, (0, 0, 0, 0))
-    renderer(ImageDraw.Draw(scene), ImageDraw.Draw(glow), cx, cy, phase)
+    renderer(ImageDraw.Draw(scene), ImageDraw.Draw(glow), cx, cy, phase, colors)
     glow = glow.filter(ImageFilter.GaussianBlur(6))
     frame = Image.alpha_composite(frame.convert("RGBA"), _clip_layer(glow, clip_box))
     frame = Image.alpha_composite(frame, _clip_layer(scene, clip_box))
     return frame.convert("RGB")
 
 
-def draw_panel_hud(draw, left, top, right, bottom, index, phase):
-    color = mix((42, 10, 17), SIGNAL, .18 + index * .04)
+def draw_panel_hud(draw, left, top, right, bottom, index, phase, colors):
+    _, deep, accent, signal, paper, line = colors
+    color = mix(line, signal, .18 + index * .04)
     draw.line((left + 13, top + 70, left + 13, bottom - 42), fill=color, width=1)
-    draw.line((left + 13, top + 70, left + 23, top + 70), fill=SIGNAL, width=1)
+    draw.line((left + 13, top + 70, left + 23, top + 70), fill=signal, width=1)
     for tick in range(4):
         x = right - 45 + tick * 8
         tick_h = 3 + ((index + tick) % 3) * 2
-        draw.line((x, bottom - 16, x, bottom - 16 - tick_h), fill=(112, 29, 39), width=1)
+        draw.line((x, bottom - 16, x, bottom - 16 - tick_h), fill=accent, width=1)
     radius = 8 + index * 2
     draw.arc((right - 22 - radius, top + 14 - radius, right - 22 + radius, top + 14 + radius),
-             int(phase * 360 + index * 40), int(phase * 360 + index * 40 + 94), fill=SIGNAL, width=1)
-    point(draw, right - 22, top + 14, 2, SIGNAL)
+             int(phase * 360 + index * 40), int(phase * 360 + index * 40 + 94), fill=signal, width=1)
+    point(draw, right - 22, top + 14, 2, signal)
 
 
 def build_frame(frame_index, mobile=False, compact=True):
@@ -270,27 +316,28 @@ def build_frame(frame_index, mobile=False, compact=True):
     size = MOBILE_SIZE if mobile else (WIDTH, HEIGHT)
     frame = build_backdrop(size, phase)
     draw = ImageDraw.Draw(frame)
-    columns = 2 if mobile else 4
+    columns = 2 if mobile else 5
     margin, gap, top = 16, 12, 64
     panel_w = (size[0] - 2 * margin - (columns - 1) * gap) // columns
-    panel_h = 217 if mobile else 200
-    draw.text((20, 16), "THE SYSTEMS I BUILD", font=font(23), fill=PAPER)
+    panel_h = 210 if mobile else 200
+    draw.text((20, 16), "THE WORLDS I BUILD", font=font(23), fill=(232, 247, 255))
     if not mobile:
-        draw.text((937, 22), "ILLUSTRATIVE MOTION STUDY", font=font(13), fill=(166, 131, 140))
-    draw.line((20, 49, size[0] - 20, 49), fill=(52, 15, 21), width=1)
-    draw.line((20, 49, 80, 49), fill=SIGNAL, width=1)
+        draw.text((925, 22), "ILLUSTRATIVE MOTION STUDY", font=font(13), fill=(143, 180, 199))
+    draw.line((20, 49, size[0] - 20, 49), fill=(42, 69, 87), width=1)
+    draw.line((20, 49, 80, 49), fill=(91, 232, 255), width=1)
 
-    for index, (code, label, note, renderer) in enumerate(SCENES):
+    for index, (code, label, note, renderer, colors) in enumerate(SCENES):
         left = margin + (index % columns) * (panel_w + gap)
         y = top + (index // columns) * (panel_h + gap)
         right, bottom = left + panel_w, y + panel_h
-        draw.rounded_rectangle((left, y, right, bottom), radius=7, fill=(8, 5, 8), outline=(67, 21, 28), width=1)
-        draw.rounded_rectangle((left + 5, y + 5, right - 5, bottom - 5), radius=5, outline=(27, 9, 16), width=1)
-        draw.line((left + 13, y + 5, right - 13, y + 5), fill=(116, 29, 39), width=1)
-        draw.text((left + 14, y + 13), label, font=font(25), fill=PAPER)
-        draw.text((right - 32, y + 18), code, font=font(13), fill=CRIMSON)
-        draw.line((left + 14, bottom - 32, right - 14, bottom - 32), fill=(52, 15, 21), width=1)
-        draw_panel_hud(draw, left, y, right, bottom, index, phase)
+        canvas, deep, accent, signal, paper, line = colors
+        draw.rounded_rectangle((left, y, right, bottom), radius=7, fill=canvas, outline=line, width=1)
+        draw.rounded_rectangle((left + 5, y + 5, right - 5, bottom - 5), radius=5, outline=mix(line, paper, .18), width=1)
+        draw.line((left + 13, y + 5, right - 13, y + 5), fill=accent, width=1)
+        draw.text((left + 14, y + 13), label, font=font(20 if not mobile else 21), fill=paper)
+        draw.text((right - 32, y + 18), code, font=font(12), fill=accent)
+        draw.line((left + 14, bottom - 32, right - 14, bottom - 32), fill=line, width=1)
+        draw_panel_hud(draw, left, y, right, bottom, index, phase, colors)
         frame = render_scene(
             frame,
             renderer,
@@ -298,10 +345,11 @@ def build_frame(frame_index, mobile=False, compact=True):
             y + (113 if mobile else 104),
             phase,
             (left + 2, y + 2, right - 2, bottom - 2),
+            colors,
         )
         draw = ImageDraw.Draw(frame)
-        draw.text((left + 14, bottom - 23), note, font=font(13), fill=(177, 145, 154))
-        draw.line((right - 27, bottom - 18, right - 14, bottom - 18), fill=CRIMSON, width=1)
+        draw.text((left + 14, bottom - 23), note, font=font(12), fill=mix(paper, line, .28))
+        draw.line((right - 27, bottom - 18, right - 14, bottom - 18), fill=accent, width=1)
     # The reel encoder applies a smaller shared palette later. Returning a
     # compact poster here keeps the reduced-motion PNG fallback lightweight
     # as well, without changing its dimensions or its visual hierarchy.

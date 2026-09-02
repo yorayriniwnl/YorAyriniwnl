@@ -30,6 +30,7 @@ PROFILE = load_profile()
 TOKENS = load_design_tokens()
 IDENTITY = PROFILE["identity"]
 VISUAL_CONTRACT = PROFILE["visual_contract"]
+WORLD_TOKENS = TOKENS["worlds"]
 PALETTE = {
     "void": TOKENS["color"]["void"],
     "panel": TOKENS["color"]["panel"],
@@ -107,7 +108,7 @@ TEXT_ZONE = {"x0": 330, "x1": 1170, "y0": 92, "y1": 228}
 # manifest-build time. Keeping this list explicit makes the privacy/artwork
 # boundary auditable and prevents a future generator change from accidentally
 # touching the approved profile image.
-ATLAS_TREATMENT_REVISION = "atlas-v1"
+ATLAS_TREATMENT_REVISION = "atlas-v2"
 ATLAS_TREATMENT_EXCLUDED = frozenset({
     "hero.svg",
     "project-portfolio-v2.svg",
@@ -2187,160 +2188,285 @@ def build_dossier_toggle_svg():
 </svg>'''
 
 
-def project_visual_svg(kind, cfg):
+def project_motion_style(kind):
+    """Return meaningful, stoppable motion for one visual world."""
     if kind == "helios":
-        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["helios"])
-        return f'''
-<clipPath id="heliosClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
-<g clip-path="url(#heliosClip)">
-<image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
-<rect x="28" y="82" width="664" height="224" fill="#060000" opacity=".24"/>
-<path d="M50 252 L130 205 L210 225 L292 152 L374 177 L458 98 L540 130 L640 62"
- fill="none" stroke="#ff8a7f" stroke-width="2" stroke-linecap="round"
- stroke-dasharray="900" stroke-dashoffset="900">
-<animate attributeName="stroke-dashoffset" values="900;0;0" keyTimes="0;.55;1"
- dur="5s" repeatCount="indefinite"/></path>
-</g>
-<g transform="translate(440,182)">
-<rect width="190" height="80" rx="5" fill="#180303" stroke="#e84b4b"/>
-<circle cx="22" cy="22" r="5" fill="#ff8a7f"><animate attributeName="opacity"
- values=".2;1;.2" dur="1s" repeatCount="indefinite"/></circle>
-<text x="38" y="27" class="mono" font-size="10" fill="#f5eaea">EVENT STREAM</text>
-<text x="20" y="56" class="mono" font-size="18" fill="#e84b4b">LIVE / ALERTS</text>
-</g>'''
-    if kind == "zenith":
-        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["zenith"])
-        return f'''
-<clipPath id="zenithClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
-<g clip-path="url(#zenithClip)">
-<image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
-<rect x="28" y="82" width="664" height="224" fill="#170000" opacity=".24"/>
-<path d="M34 265 Q210 60 440 120 T686 88" fill="none" stroke="#ff8a7f"
- stroke-width="2" stroke-dasharray="8 10">
-<animate attributeName="stroke-dashoffset" values="0;-72" dur="5s"
- repeatCount="indefinite"/></path>
-</g>
-<g transform="translate(520,224)">
-<circle r="48" fill="#050505" stroke="#e84b4b"/>
-<circle r="36" fill="none" stroke="#ff8a7f" opacity=".5" stroke-dasharray="4 7">
-<animateTransform attributeName="transform" type="rotate" from="0" to="360"
- dur="7s" repeatCount="indefinite"/></circle>
-<text y="5" text-anchor="middle" class="mono" font-size="14" fill="#f5eaea">ROI</text>
-</g>'''
-    if kind == "vision":
-        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["vision"])
-        accuracy = next(item for item in PROFILE["proof"] if item["id"] == "accuracy")["value"]
-        return f'''
-<clipPath id="visionClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
-<g clip-path="url(#visionClip)">
-<image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
-<rect x="28" y="82" width="664" height="224" fill="#050000" opacity=".18"/>
-<path d="M40 104H680M40 158H680M40 212H680M40 266H680" stroke="#e84b4b" opacity=".24"
- stroke-dasharray="4 14"><animate attributeName="stroke-dashoffset" values="0;-72"
- dur="4s" repeatCount="indefinite"/></path>
-<rect x="480" y="102" width="170" height="58" rx="4" fill="#080202" opacity=".84" stroke="#e84b4b"/>
-<text x="500" y="127" class="mono" font-size="10" fill="#8d7777" letter-spacing="1.5">HELD-OUT SIGNAL</text>
-<text x="500" y="148" class="mono" font-size="20" fill="#f5eaea">{esc(accuracy)} / REAL</text>
-</g>'''
-    if kind == "talks":
-        art = asset_data_uri(VISUAL_CONTRACT["project_art"]["talks"])
-        return f'''
-<clipPath id="talksClip"><rect x="28" y="82" width="664" height="224" rx="5"/></clipPath>
-<g clip-path="url(#talksClip)">
-<image href="{art}" x="28" y="82" width="664" height="224" preserveAspectRatio="xMidYMid slice"/>
-<rect x="28" y="82" width="664" height="224" fill="#050000" opacity=".2"/>
-<path d="M54 250 C180 116 284 272 398 148 S548 116 676 196" fill="none"
- stroke="#ff8a7f" stroke-width="2" stroke-dasharray="6 9">
-<animate attributeName="stroke-dashoffset" values="0;-60" dur="4s"
- repeatCount="indefinite"/></path>
-<g fill="#ff8a7f">
-<circle cx="118" cy="142" r="5"><animate attributeName="r" values="3;8;3"
- dur="2s" repeatCount="indefinite"/></circle>
-<circle cx="406" cy="156" r="5"><animate attributeName="r" values="3;8;3"
- dur="2s" begin="-.7s" repeatCount="indefinite"/></circle>
-<circle cx="628" cy="180" r="5"><animate attributeName="r" values="3;8;3"
- dur="2s" begin="-1.3s" repeatCount="indefinite"/></circle>
-</g>
-</g>'''
-    if kind == "next":
-        return '''
-<circle cx="360" cy="190" r="114" fill="#080202" stroke="#310808"/>
-<circle cx="360" cy="190" r="84" fill="none" stroke="#671515" stroke-dasharray="7 12">
-<animateTransform attributeName="transform" type="rotate" from="0 360 190"
- to="360 360 190" dur="12s" repeatCount="indefinite"/></circle>
-<circle cx="360" cy="190" r="54" fill="none" stroke="#e84b4b" opacity=".5"
- stroke-dasharray="3 8"><animateTransform attributeName="transform" type="rotate"
- from="360 360 190" to="0 360 190" dur="7s" repeatCount="indefinite"/></circle>
-<path d="M360 106V274M276 190H444" stroke="#671515" opacity=".65"/>
-<circle cx="360" cy="190" r="12" fill="#e84b4b">
-<animate attributeName="r" values="8;18;8" dur="2.2s" repeatCount="indefinite"/>
-<animate attributeName="opacity" values="1;.25;1" dur="2.2s" repeatCount="indefinite"/>
-</circle>
-<text x="360" y="194" text-anchor="middle" class="mono" font-size="20"
- fill="#fff">+</text>
-<text x="360" y="298" text-anchor="middle" class="mono" font-size="10"
- fill="#c4c4c4" letter-spacing="2">AWAITING THE NEXT HARD PROBLEM</text>'''
-    # feelings
-    waves = []
-    for i in range(5):
-        y = 116 + i * 38
-        waves.append(
-            f'<path d="M52 {y} C130 {y-34} 176 {y+34} 254 {y} S378 {y-28} 448 {y} '
-            f'S560 {y+30} 650 {y}" fill="none" stroke="{"#e84b4b" if i % 2 == 0 else "#671515"}" '
-            f'stroke-width="{3 if i % 2 == 0 else 2}" opacity="{.9-i*.11:.2f}" '
-            f'stroke-dasharray="8 10"><animate attributeName="stroke-dashoffset" '
-            f'values="0;-72" dur="{3.5+i*.6:.1f}s" repeatCount="indefinite"/></path>'
+        animation = f'''
+.{kind}-trace {{ animation: {kind}-trace 5.5s ease-in-out infinite; }}
+.{kind}-pulse {{ animation: {kind}-pulse 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
+.{kind}-packet {{ animation: {kind}-packet 2.8s linear infinite; }}
+@keyframes {kind}-trace {{ 0%, 12% {{ stroke-dashoffset: 440; }} 64%, 100% {{ stroke-dashoffset: 0; }} }}
+@keyframes {kind}-pulse {{ 0%, 100% {{ opacity: .35; transform: scale(.82); }} 50% {{ opacity: 1; transform: scale(1.18); }} }}
+@keyframes {kind}-packet {{ to {{ stroke-dashoffset: -80; }} }}'''
+    elif kind == "zenith":
+        animation = f'''
+.{kind}-sun {{ animation: {kind}-sun 6s ease-in-out infinite; }}
+.{kind}-panels {{ animation: {kind}-panels 3.2s ease-in-out infinite; }}
+.{kind}-flow {{ animation: {kind}-flow 3.4s linear infinite; }}
+@keyframes {kind}-sun {{ 0%, 100% {{ opacity: .22; transform: translateX(-14px); }} 50% {{ opacity: .9; transform: translateX(20px); }} }}
+@keyframes {kind}-panels {{ 0%, 100% {{ opacity: .48; }} 50% {{ opacity: 1; }} }}
+@keyframes {kind}-flow {{ to {{ stroke-dashoffset: -70; }} }}'''
+    elif kind == "vision":
+        animation = f'''
+.{kind}-scan {{ animation: {kind}-scan 4.4s ease-in-out infinite; }}
+.{kind}-confidence {{ animation: {kind}-confidence 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: left center; }}
+@keyframes {kind}-scan {{ 0%, 12% {{ transform: translateY(-52px); opacity: .12; }} 55%, 78% {{ transform: translateY(126px); opacity: .9; }} 100% {{ transform: translateY(126px); opacity: .12; }} }}
+@keyframes {kind}-confidence {{ 0%, 100% {{ transform: scaleX(.66); opacity: .5; }} 52% {{ transform: scaleX(1); opacity: 1; }} }}'''
+    else:
+        animation = f'''
+.{kind}-packet {{ animation: {kind}-packet 3.1s linear infinite; }}
+.{kind}-typing {{ animation: {kind}-typing 1.2s ease-in-out infinite; }}
+@keyframes {kind}-packet {{ to {{ stroke-dashoffset: -90; }} }}
+@keyframes {kind}-typing {{ 0%, 100% {{ opacity: .25; }} 50% {{ opacity: 1; }} }}'''
+    return f'''<style>
+{animation}
+@media (prefers-reduced-motion: reduce) {{
+  .{kind}-motion, .{kind}-motion * {{ animation: none !important; }}
+}}
+</style>'''
+
+
+def _vision_texture_cells(x, y, cols=12, rows=10, size=10):
+    cells = []
+    for row in range(rows):
+        for col in range(cols):
+            level = (math.sin(col * .83 + row * .47) + math.cos(row * .61 - col * .29) + 2) / 4
+            shade = int(40 + level * 170)
+            color = f"#{shade:02x}{min(255, shade + 9):02x}{min(255, shade + 8):02x}"
+            cells.append(
+                f'<rect x="{x + col * size:.1f}" y="{y + row * size:.1f}" width="{size - .8:.1f}" '
+                f'height="{size - .8:.1f}" fill="{color}"/>'
+            )
+    return "".join(cells)
+
+
+def _vision_lbp(cx, cy):
+    marks = []
+    for index in range(8):
+        angle = index * math.tau / 8 - math.pi / 2
+        outer_x = cx + math.cos(angle) * 45
+        outer_y = cy + math.sin(angle) * 45
+        marks.append(
+            f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{outer_x:.1f}" y2="{outer_y:.1f}" '
+            f'stroke="#71858b" stroke-width="1"/><circle cx="{outer_x:.1f}" cy="{outer_y:.1f}" r="4" '
+            f'fill="{"#169cab" if index in (1, 3, 6) else "#d8dfdd"}"/>'
         )
-    return f'''
-{"".join(waves)}
-<circle cx="572" cy="190" r="74" fill="#080202" stroke="#671515"/>
-<circle cx="572" cy="190" r="57" fill="none" stroke="#e84b4b" stroke-width="10"
- stroke-dasharray="232 126" transform="rotate(-90 572 190)"/>
-<text x="572" y="187" text-anchor="middle" class="mono" font-size="10"
- fill="#9b8585">SENTIMENT</text>
-<text x="572" y="211" text-anchor="middle" class="mono" font-size="22"
- fill="#f5eaea">+0.82</text>'''
+    return "".join(marks)
+
+
+def _glcm_matrix(x, y):
+    cells = []
+    values = ((1, 2, 4, 2, 1), (2, 5, 8, 4, 2), (1, 3, 7, 5, 1), (1, 2, 4, 6, 2), (0, 1, 2, 2, 3))
+    for row, values_row in enumerate(values):
+        for col, value in enumerate(values_row):
+            opacity = .18 + value / 12
+            cells.append(
+                f'<rect x="{x + col * 14}" y="{y + row * 14}" width="12" height="12" '
+                f'fill="#169cab" opacity="{opacity:.2f}"/>'
+            )
+    return "".join(cells)
+
+
+def project_visual_svg(kind, cfg):
+    world = WORLD_TOKENS[kind]
+    art = asset_data_uri(VISUAL_CONTRACT["project_art"][kind])
+    accent = world["accent"]
+    accent_soft = world["accent_soft"]
+    canvas = world["canvas"]
+    surface = world["surface"]
+    surface_alt = world["surface_alt"]
+    ink = world["ink"]
+    muted = world["muted"]
+    line = world["line"]
+
+    if kind == "helios":
+        return f'''<g class="helios-motion">
+<image href="{art}" x="320" y="86" width="372" height="290" preserveAspectRatio="xMidYMid slice" opacity=".78"/>
+<rect x="320" y="86" width="372" height="290" fill="{canvas}" opacity=".38"/>
+<rect x="28" y="90" width="274" height="286" rx="6" fill="{surface}" stroke="{line}"/>
+<text x="44" y="112" class="mono" font-size="9" fill="{accent}" letter-spacing="1.7">OPERATOR SURFACE / SYNTHETIC DEMO</text>
+<rect x="44" y="127" width="242" height="61" rx="4" fill="{surface_alt}" stroke="{line}"/>
+<text x="58" y="148" class="mono" font-size="12" fill="{ink}" letter-spacing="1">METER M-104</text>
+<text x="58" y="172" class="mono" font-size="10" fill="{muted}">ZONE E  ·  SCORE <tspan fill="{accent}">0.82</tspan></text>
+<text x="269" y="148" text-anchor="end" class="mono" font-size="8" fill="{accent_soft}" letter-spacing="1">DEMO</text>
+<text x="44" y="211" class="mono" font-size="9" fill="{muted}" letter-spacing="1.5">RESPONSE PATH</text>
+<path d="M52 229H278" stroke="{line}"/>
+<g fill="{surface_alt}" stroke="{accent}" stroke-width="1">
+ <circle cx="62" cy="229" r="5"/><circle cx="134" cy="229" r="5"/><circle cx="206" cy="229" r="5"/><circle cx="278" cy="229" r="5"/>
+</g>
+<path d="M67 229H129M139 229H201M211 229H273" stroke="{accent}" stroke-width="2" stroke-dasharray="4 7" class="helios-packet"/>
+<g class="mono" font-size="8" fill="{muted}">
+ <text x="62" y="249" text-anchor="middle">OPEN</text><text x="134" y="249" text-anchor="middle">ASSIGN</text><text x="206" y="249" text-anchor="middle">VERIFY</text><text x="278" y="249" text-anchor="middle">CLOSE</text>
+</g>
+<text x="44" y="286" class="mono" font-size="9" fill="{muted}" letter-spacing="1.5">EVENT CLASSES</text>
+<g class="mono" font-size="10">
+ <rect x="44" y="299" width="70" height="25" rx="12" fill="{accent}" opacity=".16"/><text x="79" y="316" text-anchor="middle" fill="{accent}">ANOMALY</text>
+ <rect x="121" y="299" width="72" height="25" rx="12" fill="{accent_soft}" opacity=".13"/><text x="157" y="316" text-anchor="middle" fill="{accent_soft}">THRESHOLD</text>
+ <rect x="200" y="299" width="86" height="25" rx="12" fill="{line}" opacity=".5"/><text x="243" y="316" text-anchor="middle" fill="{muted}">WEBSOCKET</text>
+</g>
+<rect x="336" y="101" width="340" height="275" rx="6" fill="{surface}" opacity=".92" stroke="{line}"/>
+<text x="354" y="123" class="mono" font-size="10" fill="{ink}" letter-spacing="1.5">EVENT TOPOLOGY</text>
+<text x="658" y="123" text-anchor="end" class="mono" font-size="8" fill="{accent}" letter-spacing="1">ALERT ROUTING</text>
+<path d="M354 142H658M354 187H658M354 232H658" stroke="{line}" opacity=".65"/>
+<path d="M354 210 L390 194 L426 201 L462 168 L498 182 L534 151 L570 162 L606 139 L646 150" fill="none" stroke="{accent}" stroke-width="2" stroke-linecap="round" stroke-dasharray="440" stroke-dashoffset="440" class="helios-trace"/>
+<circle cx="606" cy="139" r="5" fill="{accent}" class="helios-pulse"/>
+<text x="354" y="259" class="mono" font-size="8" fill="{muted}" letter-spacing="1.3">STREAM / CHANNEL-SPECIFIC EVENTS</text>
+<g stroke="{accent_soft}" stroke-width="1.2" fill="{surface_alt}">
+ <path d="M382 288L436 272L492 296L550 270L616 294" fill="none" opacity=".8"/>
+ <circle cx="382" cy="288" r="7"/><circle cx="436" cy="272" r="7"/><circle cx="492" cy="296" r="7"/><circle cx="550" cy="270" r="7"/><circle cx="616" cy="294" r="7"/>
+</g>
+<text x="382" y="291" text-anchor="middle" class="mono" font-size="7" fill="{ink}">M</text><text x="436" y="275" text-anchor="middle" class="mono" font-size="7" fill="{ink}">A</text><text x="492" y="299" text-anchor="middle" class="mono" font-size="7" fill="{ink}">Z</text><text x="550" y="273" text-anchor="middle" class="mono" font-size="7" fill="{ink}">O</text><text x="616" y="297" text-anchor="middle" class="mono" font-size="7" fill="{ink}">R</text>
+<text x="354" y="347" class="mono" font-size="9" fill="{accent}" letter-spacing="1.3">FASTAPI  ·  DOCKER  ·  WEBSOCKET  ·  ALERT ENGINE</text>
+</g>'''
+
+    if kind == "zenith":
+        panel_cells = []
+        for row in range(2):
+            for col in range(4):
+                x = 58 + col * 29 + row * 4
+                y = 217 + row * 23
+                panel_cells.append(f'<rect x="{x}" y="{y}" width="24" height="18" rx="2" fill="{accent_soft}" opacity=".82"/>')
+        return f'''<g class="zenith-motion">
+<rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
+<image href="{art}" x="28" y="86" width="664" height="290" preserveAspectRatio="xMidYMid slice" opacity=".86"/>
+<rect x="28" y="86" width="664" height="290" fill="{surface}" opacity=".16"/>
+<path d="M58 128 Q150 76 244 126" fill="none" stroke="{world["glow"]}" stroke-width="2" opacity=".45" class="zenith-sun"/>
+<circle cx="58" cy="128" r="7" fill="{world["glow"]}" opacity=".65" class="zenith-sun"/>
+<rect x="44" y="102" width="240" height="83" rx="5" fill="{surface}" opacity=".93" stroke="{line}"/>
+<text x="58" y="123" class="mono" font-size="9" fill="{accent}" letter-spacing="1.6">DAYLIGHT FEASIBILITY</text>
+<text x="58" y="148" class="mono" font-size="15" fill="{ink}" letter-spacing=".8">3D ROOF PLANNING</text>
+<text x="58" y="169" class="mono" font-size="9" fill="{muted}">ARCHITECTURE → PV → DECISION</text>
+<g class="zenith-panels" stroke="{accent}" stroke-width="1">
+ <path d="M48 255L164 198L286 230L172 293Z" fill="{surface_alt}" opacity=".94"/>
+ {"".join(panel_cells)}
+ <path d="M48 255L172 293L286 230" fill="none" stroke="{accent}" opacity=".7"/>
+</g>
+<text x="58" y="318" class="mono" font-size="8" fill="{muted}" letter-spacing="1.3">ROOF PLANE / SAMPLE PLACEMENT GRID</text>
+<rect x="342" y="103" width="334" height="96" rx="5" fill="{surface}" opacity=".94" stroke="{line}"/>
+<text x="360" y="124" class="mono" font-size="9" fill="{accent}" letter-spacing="1.5">MODEL OUTPUT / USER INPUTS</text>
+<text x="360" y="151" class="mono" font-size="15" fill="{ink}">ENERGY → CASH FLOW</text>
+<text x="360" y="176" class="mono" font-size="10" fill="{muted}">IRR  ·  ROI  ·  PAYBACK  ·  SUBSIDY</text>
+<path d="M360 219H658" stroke="{line}"/>
+<g class="mono" font-size="9">
+ <rect x="360" y="232" width="82" height="28" rx="14" fill="{accent_soft}" opacity=".16"/><text x="401" y="250" text-anchor="middle" fill="{accent_soft}">INPUTS</text>
+ <path d="M446 246H484" stroke="{accent_soft}" stroke-width="2" stroke-dasharray="5 6" class="zenith-flow"/>
+ <rect x="490" y="232" width="82" height="28" rx="14" fill="{accent}" opacity=".17"/><text x="531" y="250" text-anchor="middle" fill="{accent}">ENERGY</text>
+ <path d="M576 246H614" stroke="{accent}" stroke-width="2" stroke-dasharray="5 6" class="zenith-flow"/>
+ <rect x="620" y="232" width="38" height="28" rx="14" fill="{ink}" opacity=".1"/><text x="639" y="250" text-anchor="middle" fill="{ink}">₹</text>
+</g>
+<rect x="342" y="282" width="334" height="73" rx="5" fill="{surface}" opacity=".94" stroke="{line}"/>
+<text x="360" y="304" class="mono" font-size="9" fill="{muted}" letter-spacing="1.5">DECISION SUPPORT / NOT A QUOTE</text>
+<text x="360" y="330" class="mono" font-size="12" fill="{ink}">ROOF GEOMETRY  +  SIMULATION  +  FINANCE</text>
+<text x="360" y="348" class="mono" font-size="8" fill="{accent_soft}" letter-spacing="1">REACT  ·  THREE.JS  ·  PYTHON  ·  FASTAPI</text>
+</g>'''
+
+    if kind == "vision":
+        accuracy = next(item for item in PROFILE["proof"] if item["id"] == "accuracy")["value"]
+        feature_bars = []
+        for index, (label, amount) in enumerate((("LBP", .82), ("GLCM", .66), ("EDGE", .48), ("COLOR", .31))):
+            y = 155 + index * 28
+            feature_bars.append(
+                f'<text x="474" y="{y}" class="mono" font-size="8" fill="{muted}">{label}</text>'
+                f'<rect x="516" y="{y-8}" width="88" height="8" rx="4" fill="{surface_alt}"/>'
+                f'<rect x="516" y="{y-8}" width="{88 * amount:.1f}" height="8" rx="4" fill="{accent}" class="vision-confidence"/>'
+            )
+        lbp = _vision_lbp(296, 205)
+        glcm = _glcm_matrix(356, 143)
+        texture = _vision_texture_cells(57, 143)
+        return f'''<g class="vision-motion">
+<rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
+<image href="{art}" x="366" y="86" width="326" height="290" preserveAspectRatio="xMidYMid slice" opacity=".34"/>
+<rect x="28" y="86" width="664" height="290" fill="{surface}" opacity=".68"/>
+<text x="44" y="109" class="mono" font-size="9" fill="{accent}" letter-spacing="1.7">FORENSIC WORKBENCH / LOCAL INFERENCE</text>
+<rect x="44" y="124" width="146" height="204" rx="4" fill="{surface_alt}" stroke="{line}"/>
+<text x="57" y="139" class="mono" font-size="8" fill="{muted}" letter-spacing="1.2">TEXTURE PATCH</text>
+<g>{texture}</g>
+<rect x="57" y="256" width="120" height="55" rx="3" fill="{canvas}" opacity=".5" stroke="{line}"/>
+<path d="M65 300H168M65 300V268" stroke="{muted}" opacity=".7"/>
+<path d="M68 291L91 281L111 289L133 272L163 278" fill="none" stroke="{accent}" stroke-width="2"/>
+<text x="57" y="324" class="mono" font-size="7" fill="{muted}">SAMPLE / ILLUMINANCE NORMALIZED</text>
+<circle cx="296" cy="205" r="58" fill="{surface_alt}" stroke="{line}"/>
+<circle cx="296" cy="205" r="45" fill="none" stroke="{accent_soft}" stroke-dasharray="2 7"/>
+{lbp}
+<circle cx="296" cy="205" r="10" fill="{accent}" opacity=".18"/><circle cx="296" cy="205" r="4" fill="{accent}"/>
+<text x="296" y="285" text-anchor="middle" class="mono" font-size="11" fill="{ink}" letter-spacing="1.5">LBP</text>
+<text x="296" y="301" text-anchor="middle" class="mono" font-size="8" fill="{muted}">LOCAL PATTERN</text>
+<rect x="342" y="124" width="106" height="140" rx="4" fill="{surface_alt}" stroke="{line}"/>
+<text x="356" y="139" class="mono" font-size="8" fill="{muted}" letter-spacing="1">GLCM</text>
+<g>{glcm}</g>
+<text x="356" y="236" class="mono" font-size="8" fill="{muted}">CONTRAST</text><text x="356" y="250" class="mono" font-size="8" fill="{muted}">ENTROPY</text>
+<rect x="462" y="124" width="154" height="140" rx="4" fill="{surface}" opacity=".96" stroke="{line}"/>
+<text x="478" y="140" class="mono" font-size="8" fill="{accent}" letter-spacing="1">FEATURE VECTOR</text>
+{"".join(feature_bars)}
+<rect x="630" y="124" width="46" height="140" rx="4" fill="{canvas}" stroke="{line}"/>
+<text x="653" y="141" text-anchor="middle" class="mono" font-size="7" fill="{muted}">SVM</text>
+<path d="M653 157V231" stroke="{line}" stroke-width="8" stroke-linecap="round"/><path d="M653 157V208" stroke="{accent}" stroke-width="8" stroke-linecap="round" class="vision-confidence"/>
+<text x="653" y="246" text-anchor="middle" class="mono" font-size="8" fill="{ink}">CAL.</text>
+<path d="M44 340H676" stroke="{line}"/>
+<path d="M205 340H640" stroke="{accent}" stroke-width="2" stroke-dasharray="6 10" class="vision-scan"/>
+<text x="44" y="359" class="mono" font-size="9" fill="{muted}" letter-spacing="1.2">INPUT  →  TEXTURE  →  FEATURES  →  CALIBRATED SVM</text>
+<text x="676" y="359" text-anchor="end" class="mono" font-size="8" fill="{accent}">{esc(accuracy)} HELD-OUT TEST ACCURACY</text>
+</g>'''
+
+    return f'''<g class="talks-motion">
+<rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
+<image href="{art}" x="320" y="86" width="372" height="290" preserveAspectRatio="xMidYMid slice" opacity=".54"/>
+<rect x="28" y="86" width="664" height="290" fill="{canvas}" opacity=".44"/>
+<text x="44" y="109" class="mono" font-size="9" fill="{accent}" letter-spacing="1.7">ROOM 01 / ILLUSTRATIVE DEMO STATE</text>
+<rect x="44" y="124" width="184" height="223" rx="5" fill="{surface_alt}" opacity=".95" stroke="{line}"/>
+<text x="60" y="146" class="mono" font-size="11" fill="{ink}" letter-spacing="1">#YOR BUILDERS</text>
+<circle cx="64" cy="174" r="5" fill="{accent}"/><text x="78" y="178" class="mono" font-size="10" fill="{ink}">ALPHA</text><text x="207" y="178" text-anchor="end" class="mono" font-size="8" fill="{accent}">ONLINE</text>
+<circle cx="64" cy="204" r="5" fill="{accent_soft}"/><text x="78" y="208" class="mono" font-size="10" fill="{ink}">BETA</text><text x="207" y="208" text-anchor="end" class="mono" font-size="8" fill="{muted}">AWAY</text>
+<circle cx="64" cy="234" r="5" fill="{accent}"/><text x="78" y="238" class="mono" font-size="10" fill="{ink}">NODE 03</text><text x="207" y="238" text-anchor="end" class="mono" font-size="8" fill="{accent}">ONLINE</text>
+<path d="M60 268H212M60 289H185" stroke="{line}"/><text x="60" y="316" class="mono" font-size="8" fill="{muted}" letter-spacing="1">PRESENCE  ·  AUTH  ·  ROOMS</text>
+<rect x="250" y="124" width="426" height="223" rx="5" fill="{surface}" opacity=".94" stroke="{line}"/>
+<text x="268" y="146" class="mono" font-size="9" fill="{muted}" letter-spacing="1.4">MESSAGE FLOW / SOCKET.IO</text>
+<rect x="268" y="158" width="178" height="43" rx="14" fill="{surface_alt}"/><text x="284" y="184" class="mono" font-size="10" fill="{ink}">ship the hard thing.</text><text x="430" y="193" text-anchor="end" class="mono" font-size="8" fill="{muted}">READ ✓✓</text>
+<rect x="460" y="211" width="198" height="43" rx="14" fill="{accent}" opacity=".16" stroke="{accent}"/><text x="476" y="237" class="mono" font-size="10" fill="{ink}">building it now →</text><text x="642" y="246" text-anchor="end" class="mono" font-size="8" fill="{accent}">SENT ✓</text>
+<text x="268" y="282" class="mono" font-size="8" fill="{muted}" letter-spacing="1.2">BETA IS TYPING</text>
+<g fill="{accent}" class="talks-typing"><circle cx="351" cy="279" r="3"/><circle cx="362" cy="279" r="3"/><circle cx="373" cy="279" r="3"/></g>
+<path d="M268 316H658" stroke="{line}"/><path d="M268 316H658" stroke="{accent}" stroke-width="2" stroke-dasharray="4 12" class="talks-packet"/>
+<circle cx="312" cy="316" r="4" fill="{accent}" class="talks-typing"/><circle cx="444" cy="316" r="4" fill="{accent_soft}" class="talks-typing"/><circle cx="584" cy="316" r="4" fill="{accent}" class="talks-typing"/>
+<text x="268" y="337" class="mono" font-size="8" fill="{muted}">DELIVERY  →  PRESENCE  →  READ STATE</text>
+</g>'''
 
 
 def build_project_card_svg(project, cfg):
-    W, H = 720, 430
-    visual = project_visual_svg(project["kind"], cfg)
-    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg">
+    kind = project["kind"]
+    world = WORLD_TOKENS.get(kind, WORLD_TOKENS["portfolio"])
+    W, H = 720, 500
+    visual = project_visual_svg(kind, cfg)
+    title_id = f"{kind}CardTitle"
+    desc_id = f"{kind}CardDescription"
+    description = (
+        f'{project["title"]}: {world["label"].lower()}. {project["summary"]} '
+        f'Visual treatment is an illustrative interface study; project status is {project.get("status", "published")}.'
+    )
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{title_id} {desc_id}">
+<title id="{title_id}">{esc(project["title"])} — {esc(world["label"].lower())}</title>
+<desc id="{desc_id}">{esc(description)}</desc>
 <defs>
 {experience_font_defs()}
-<linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stop-color="#020202"/><stop offset="68%" stop-color="#080101"/>
-<stop offset="100%" stop-color="#1d0404"/>
+{project_motion_style(kind)}
+<linearGradient id="{kind}Edge" x1="0" y1="0" x2="1" y2="1">
+ <stop offset="0" stop-color="{world["accent"]}"/><stop offset="1" stop-color="{world["accent_soft"]}"/>
 </linearGradient>
-<pattern id="cardGrid" width="24" height="24" patternUnits="userSpaceOnUse">
-<path d="M24 0H0V24" fill="none" stroke="#671515" stroke-width=".45" opacity=".1"/>
+<pattern id="{kind}MicroGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+ <path d="M24 0H0V24" fill="none" stroke="{world["line"]}" stroke-width=".45" opacity=".22"/>
 </pattern>
-<linearGradient id="cardSweep" gradientUnits="userSpaceOnUse" x1="-160" x2="0">
-<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"
- stop-opacity=".1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
-<animate attributeName="x1" values="-160;720" dur="9s" repeatCount="indefinite"/>
-<animate attributeName="x2" values="0;880" dur="9s" repeatCount="indefinite"/>
-</linearGradient>
 </defs>
-<rect x="1" y="1" width="718" height="428" rx="7" fill="url(#cardBg)" stroke="#4b0e0e"/>
-<rect x="1" y="1" width="718" height="428" rx="7" fill="url(#cardGrid)"/>
-<rect x="1" y="1" width="718" height="428" rx="7" fill="url(#cardSweep)"/>
-<rect x="18" y="18" width="5" height="45" rx="2" fill="#e84b4b"/>
-<text x="38" y="37" class="mono" font-size="11" fill="#a99494" letter-spacing="1.6">
-{esc(project["code"])} // {esc(project["domain"])}
-</text>
-<text x="38" y="62" class="mono" font-size="26" fill="#f5eaea" letter-spacing="1.1">
-{esc(project["title"])}
-</text>
-<g>{visual}</g>
-<rect x="28" y="326" width="664" height="1" fill="#310808"/>
-<text x="28" y="359" class="mono" font-size="12" fill="#e84b4b" letter-spacing="1.2">
-{esc(project["stack"])}
-</text>
-<text x="28" y="392" class="mono" font-size="13" fill="#c4c4c4">
-{esc(project["summary"])}
-</text>
-<text x="684" y="404" text-anchor="end" class="mono" font-size="12" fill="#e84b4b">OPEN ↗</text>
+<rect x="1" y="1" width="718" height="498" rx="9" fill="{world["canvas"]}" stroke="{world["line"]}"/>
+<rect x="1" y="1" width="718" height="498" rx="9" fill="url(#{kind}MicroGrid)" opacity=".28"/>
+<rect x="18" y="18" width="5" height="45" rx="2" fill="url(#{kind}Edge)"/>
+<text x="38" y="37" class="mono" font-size="10" fill="{world["muted"]}" letter-spacing="1.5">{esc(project["code"])}  /  {esc(world["label"])}</text>
+<text x="38" y="63" class="mono" font-size="26" fill="{world["ink"]}" letter-spacing="1">{esc(project["title"])}</text>
+<text x="684" y="37" text-anchor="end" class="mono" font-size="9" fill="{world["accent"]}" letter-spacing="1.2">{esc(project.get("status", "SYSTEM").upper())}  ↗</text>
+<path d="M28 76H692" stroke="{world["line"]}"/>
+{visual}
+<path d="M28 397H692" stroke="{world["line"]}"/>
+<text x="28" y="422" class="mono" font-size="11" fill="{world["accent"]}" letter-spacing="1.05">{esc(project["stack"])}</text>
+<text x="28" y="451" class="mono" font-size="12" fill="{world["muted"]}">{esc(project["summary"])}</text>
+<text x="684" y="474" text-anchor="end" class="mono" font-size="11" fill="{world["accent"]}" letter-spacing="1">OPEN  ↗</text>
 </svg>'''
 
 
@@ -2615,6 +2741,8 @@ def canonical_project_card_spec(project):
         "title": project["name"].upper(),
         "stack": " · ".join(project["stack"][:4]).upper(),
         "summary": project["proof"][0].rstrip(".") + ".",
+        "status": project["status"],
+        "period": project["period"],
     }
 
 

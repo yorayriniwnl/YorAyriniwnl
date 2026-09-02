@@ -13,6 +13,68 @@
     "secondaryCrimson": "#b92b2b",
     "shimmer": "#ffffff"
   },
+  "worlds": {
+    "portfolio": {
+      "label": "CINEMATIC PRODUCT ARCHIVE",
+      "canvas": "#050505",
+      "surface": "#0d0a0d",
+      "surface_alt": "#171016",
+      "ink": "#f5eaea",
+      "muted": "#b7a1aa",
+      "accent": "#e84b4b",
+      "accent_soft": "#ff8a7f",
+      "line": "#51202b",
+      "glow": "#671515"
+    },
+    "helios": {
+      "label": "INDUSTRIAL TELEMETRY",
+      "canvas": "#091012",
+      "surface": "#121b1d",
+      "surface_alt": "#1c292a",
+      "ink": "#e8e6d8",
+      "muted": "#91a29d",
+      "accent": "#f0a64a",
+      "accent_soft": "#b9d3c4",
+      "line": "#3e5a54",
+      "glow": "#a56c2e"
+    },
+    "zenith": {
+      "label": "DAYLIGHT SOLAR INTELLIGENCE",
+      "canvas": "#f3f0e6",
+      "surface": "#fffdf7",
+      "surface_alt": "#e5e8e0",
+      "ink": "#132b3a",
+      "muted": "#5f6c72",
+      "accent": "#d78327",
+      "accent_soft": "#0e8a78",
+      "line": "#c3d0cb",
+      "glow": "#f3c65d"
+    },
+    "vision": {
+      "label": "FORENSIC TEXTURE LAB",
+      "canvas": "#e9edeb",
+      "surface": "#fbfcfa",
+      "surface_alt": "#d8dfdd",
+      "ink": "#152326",
+      "muted": "#657477",
+      "accent": "#169cab",
+      "accent_soft": "#71858b",
+      "line": "#aebcba",
+      "glow": "#6ddde5"
+    },
+    "talks": {
+      "label": "REALTIME COMMUNICATION",
+      "canvas": "#071426",
+      "surface": "#0e2540",
+      "surface_alt": "#12395d",
+      "ink": "#e8f7ff",
+      "muted": "#8da8bd",
+      "accent": "#5be8ff",
+      "accent_soft": "#a78bff",
+      "line": "#28577b",
+      "glow": "#257b9a"
+    }
+  },
   "gradient": {
     "showcase": ["#671515", "#8c1616", "#2a0505"],
     "header": ["#000000", "#671515", "#160303"],

@@ -84,18 +84,18 @@ ASSET_REVISIONS = {
     # Supporting assets share the atlas pass; motion gets its own revision so
     # responsive GIF and still fallbacks cannot be mixed by a stale CDN edge.
     **{
-        filename: "atlas-v1"
+        filename: "atlas-v2"
         for filename in ATLAS_ASSETS
     },
-    "systems-reel.gif": "motion-v3",
-    "systems-reel-mobile.gif": "motion-v3",
-    "systems-reel-still.png": "motion-v3",
-    "systems-reel-mobile-still.png": "motion-v3",
-    "hero.svg": "raster-v1",
-    "project-helios.svg": "raster-v1",
-    "project-zenith.svg": "raster-v1",
-    "project-vision.svg": "raster-v1",
-    "project-talks.svg": "raster-v1",
+    "systems-reel.gif": "motion-v4",
+    "systems-reel-mobile.gif": "motion-v4",
+    "systems-reel-still.png": "motion-v4",
+    "systems-reel-mobile-still.png": "motion-v4",
+    "hero.svg": "raster-v2",
+    "project-helios.svg": "raster-v2",
+    "project-zenith.svg": "raster-v2",
+    "project-vision.svg": "raster-v2",
+    "project-talks.svg": "raster-v2",
 }
 
 
@@ -144,7 +144,7 @@ def systems_reel(handle: str) -> list[str]:
         ],
         image(
             "systems-reel.gif",
-            "The systems I build: particle worlds, realtime event streams, texture vision, and connected platforms. Illustrative motion study.",
+            "The worlds I build: a cinematic product archive, industrial telemetry, daylight solar intelligence, forensic texture vision, and realtime communication. Illustrative motion study.",
             handle,
         ),
         "</picture>",

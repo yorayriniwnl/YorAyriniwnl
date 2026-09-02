@@ -46,6 +46,7 @@ class ProfileDataTests(unittest.TestCase):
         tokens = load_design_tokens()
         self.assertEqual(tokens["color"]["crimson"], "#e84b4b")
         self.assertEqual(tokens["color"]["deepCrimson"], "#671515")
+        self.assertEqual(set(tokens["worlds"]), {"portfolio", "helios", "zenith", "vision", "talks"})
         self.assertEqual(
             self.profile["visual_contract"]["palette"]["deep_crimson"],
             tokens["color"]["deepCrimson"],
@@ -80,23 +81,36 @@ class ProfileDataTests(unittest.TestCase):
 
         self.assertEqual(digest, contract["approved_hero_sha256"])
 
-    def test_optimized_visual_contract_is_complete(self):
+    def test_source_delivery_and_github_visual_contract_is_complete(self):
         contract = self.profile["visual_contract"]
         derivatives = [contract["optimized_hero"], *contract["project_art"].values()]
 
         self.assertEqual(set(contract["project_art"]), {"helios", "zenith", "vision", "talks"})
+        self.assertEqual(contract["project_art"], contract["delivery"]["project_art"])
+        self.assertEqual(contract["source"]["hero"], contract["approved_hero"])
         for relative_path in derivatives:
             with self.subTest(asset=relative_path):
                 path = ROOT / relative_path
                 self.assertTrue(path.is_file())
                 self.assertEqual(path.suffix, ".jpg")
 
-        for project_id, relative_path in contract["project_art"].items():
+        for project_id, relative_path in contract["source"]["project_art"].items():
             with self.subTest(project=project_id):
-                self.assertIn("keyart-v5-optimized.jpg", relative_path)
+                self.assertTrue(relative_path.endswith("-v1.png"))
+                self.assertTrue((ROOT / relative_path).is_file())
+        for project_id, relative_path in contract["delivery"]["project_art"].items():
+            with self.subTest(delivery=project_id):
+                self.assertIn("atmosphere-v1-optimized.jpg", relative_path)
+        github_paths = [
+            contract["github_derivative"]["hero"],
+            *contract["github_derivative"]["project_art"].values(),
+        ]
+        self.assertTrue(all(path.startswith("output/") for path in github_paths))
 
-    def test_high_resolution_visual_contract_is_true_4k_ready(self):
+    def test_legacy_upscaled_visual_contract_is_explicitly_not_native_4k(self):
         contract = self.profile["visual_contract"]["high_resolution"]
+        self.assertIn("legacy upscaled archive", contract["status"])
+        self.assertIn("not a native 4K source", contract["status"])
 
         with Image.open(ROOT / contract["hero"]) as hero:
             self.assertEqual(hero.size, (3840, 1777))
