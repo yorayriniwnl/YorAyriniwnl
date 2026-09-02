@@ -72,12 +72,12 @@ class ReadmeTests(unittest.TestCase):
         self.assertIn("systems-reel-still.png", self.readme)
         self.assertIn("systems-reel-mobile-still.png", self.readme)
         self.assertNotIn("kinetic-primer.gif", self.readme)
-        self.assertIn("skills-matrix.svg?rev=atlas-v2", self.readme)
-        self.assertIn("field-notes.svg?rev=atlas-v2", self.readme)
+        self.assertIn("skills-matrix.svg?rev=atlas-v3", self.readme)
+        self.assertIn("field-notes.svg?rev=atlas-v3", self.readme)
         for filename in generate_readme.ATLAS_ASSETS:
-            self.assertIn(f"output/{filename}?rev=atlas-v2", self.readme)
+            self.assertIn(f"output/{filename}?rev=atlas-v3", self.readme)
         for filename in generate_readme.MOTION_ASSETS:
-            self.assertIn(f"output/{filename}?rev=motion-v4", self.readme)
+            self.assertIn(f"output/{filename}?rev=motion-v5", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)
         for filename in generate_readme.PROJECT_VISUALS.values():
             self.assertRegex(
@@ -193,7 +193,7 @@ class ReadmeTests(unittest.TestCase):
         for filename in generate_readme.PROJECT_VISUALS.values():
             if filename == "project-portfolio-v2.svg":
                 continue
-            self.assertIn(f"output/{filename}?rev=raster-v2", self.readme)
+            self.assertIn(f"output/{filename}?rev=raster-v3", self.readme)
 
 
 if __name__ == "__main__":

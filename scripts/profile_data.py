@@ -188,6 +188,14 @@ def _validate_design_tokens(profile: dict[str, Any]) -> None:
             {"label", "canvas", "surface", "surface_alt", "ink", "muted", "accent", "accent_soft", "line", "glow"},
             f"visual world {world_id}",
         )
+        if world["accent"] not in {tokens["color"]["crimson"], tokens["color"]["secondaryCrimson"]}:
+            raise ProfileDataError(
+                f"visual world {world_id} must use a crimson-family accent"
+            )
+        if world["accent_soft"] != tokens["color"]["signal"]:
+            raise ProfileDataError(
+                f"visual world {world_id} must use the shared blush signal"
+            )
 
 
 def _validate_repository_audit() -> None:

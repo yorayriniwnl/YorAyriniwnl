@@ -32,12 +32,12 @@ class AssetRecipe(NamedTuple):
 RECIPES = (
     # These are the derivatives embedded in the self-contained GitHub SVGs.
     # Their 1.5-2x display density keeps the README sharp without making each
-    # generated card carry a multi-megabyte 4K payload.
+    # generated card carry a multi-megabyte photographic payload.
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (2400, 1110), 84),
-    AssetRecipe("project-helios-atmosphere-v1.png", "project-helios-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
-    AssetRecipe("project-zenith-atmosphere-v1.png", "project-zenith-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
-    AssetRecipe("project-vision-atmosphere-v1.png", "project-vision-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
-    AssetRecipe("project-talks-atmosphere-v1.png", "project-talks-atmosphere-v1-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-helios-atmosphere-crimson-v2.png", "project-helios-atmosphere-crimson-v2-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-zenith-atmosphere-crimson-v2.png", "project-zenith-atmosphere-crimson-v2-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-vision-atmosphere-crimson-v2.png", "project-vision-atmosphere-crimson-v2-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-talks-atmosphere-crimson-v2.png", "project-talks-atmosphere-crimson-v2-optimized.jpg", (1800, 1013), 82),
 )
 
 LEGACY_UPSCALED_RECIPES = (

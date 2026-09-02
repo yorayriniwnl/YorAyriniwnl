@@ -20,7 +20,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-from profile_data import load_profile
+from profile_data import load_design_tokens, load_profile
 
 ROOT = SCRIPT_DIR.parent
 OUT_DIR = ROOT / "generated"
@@ -30,7 +30,10 @@ MOBILE_SIZE = (600, 760)
 # respecting GitHub profile transfer budgets on both desktop and mobile.
 FRAME_COUNT = 54
 FRAME_DURATION = 70
-PALETTE = load_profile()["visual_contract"]["palette"]
+PROFILE = load_profile()
+TOKENS = load_design_tokens()
+PALETTE = PROFILE["visual_contract"]["palette"]
+WORLD_TOKENS = TOKENS["worlds"]
 TAU = math.tau
 
 
@@ -49,12 +52,21 @@ def motion_palette(canvas, deep, accent, signal, paper, line):
     return tuple(rgb(value) for value in (canvas, deep, accent, signal, paper, line))
 
 
+def world_motion_palette(kind):
+    world = WORLD_TOKENS[kind]
+    return motion_palette(
+        world["canvas"],
+        world["surface_alt"],
+        world["accent"],
+        world["accent_soft"],
+        world["ink"],
+        world["line"],
+    )
+
+
 MOTION_PALETTES = {
-    "portfolio": motion_palette("#09070a", "#321018", "#e84b4b", "#ff8a7f", "#f5eaea", "#51202b"),
-    "helios": motion_palette("#0a1112", "#203333", "#f0a64a", "#f7c878", "#e8e6d8", "#3e5a54"),
-    "zenith": motion_palette("#edf2ea", "#c7d8cf", "#d78327", "#f3c65d", "#132b3a", "#8ca9a0"),
-    "vision": motion_palette("#eef2f0", "#c2cecc", "#169cab", "#6ddde5", "#152326", "#aebcba"),
-    "talks": motion_palette("#071426", "#183c61", "#5be8ff", "#a78bff", "#e8f7ff", "#28577b"),
+    kind: world_motion_palette(kind)
+    for kind in ("portfolio", "helios", "zenith", "vision", "talks")
 }
 
 
@@ -260,22 +272,23 @@ def build_backdrop(size, phase):
     width, height = size
     frame = Image.new("RGB", size)
     draw = ImageDraw.Draw(frame)
-    top = (4, 9, 16)
-    bottom = (13, 20, 29)
+    base_canvas, base_deep, base_accent, base_signal, base_paper, base_line = MOTION_PALETTES["portfolio"]
+    top = mix(base_canvas, base_deep, .34)
+    bottom = mix(base_deep, base_canvas, .38)
     for y in range(height):
         t = y / max(1, height - 1)
         draw.line((0, y, width, y), fill=mix(top, bottom, t))
     atmosphere = Image.new("RGBA", size, (0, 0, 0, 0))
     atmosphere_draw = ImageDraw.Draw(atmosphere)
-    atmosphere_draw.ellipse((width * .02, height * .15, width * .42, height * 1.1), fill=rgba((240, 166, 74), 32))
-    atmosphere_draw.ellipse((width * .54, -height * .5, width * 1.08, height * .75), fill=rgba((91, 232, 255), 34))
+    atmosphere_draw.ellipse((width * .02, height * .15, width * .42, height * 1.1), fill=rgba(base_accent, 38))
+    atmosphere_draw.ellipse((width * .54, -height * .5, width * 1.08, height * .75), fill=rgba(base_signal, 34))
     atmosphere = atmosphere.filter(ImageFilter.GaussianBlur(max(12, height // 7)))
     frame = Image.alpha_composite(frame.convert("RGBA"), atmosphere).convert("RGB")
     draw = ImageDraw.Draw(frame)
     for y in range(8, height, 8):
-        draw.line((0, y, width, y), fill=(23, 39, 52), width=1)
+        draw.line((0, y, width, y), fill=mix(base_canvas, base_line, .44), width=1)
     scan_y = int(52 + ((phase * .72) % 1) * max(1, height - 62))
-    draw.line((0, scan_y, width, scan_y), fill=(53, 91, 111), width=1)
+    draw.line((0, scan_y, width, scan_y), fill=mix(base_line, base_signal, .52), width=1)
     return frame
 
 
@@ -320,11 +333,13 @@ def build_frame(frame_index, mobile=False, compact=True):
     margin, gap, top = 16, 12, 64
     panel_w = (size[0] - 2 * margin - (columns - 1) * gap) // columns
     panel_h = 210 if mobile else 200
-    draw.text((20, 16), "THE WORLDS I BUILD", font=font(23), fill=(232, 247, 255))
+    base_palette = MOTION_PALETTES["portfolio"]
+    base_canvas, base_deep, base_accent, base_signal, base_paper, base_line = base_palette
+    draw.text((20, 16), "THE WORLDS I BUILD", font=font(23), fill=base_paper)
     if not mobile:
-        draw.text((925, 22), "ILLUSTRATIVE MOTION STUDY", font=font(13), fill=(143, 180, 199))
-    draw.line((20, 49, size[0] - 20, 49), fill=(42, 69, 87), width=1)
-    draw.line((20, 49, 80, 49), fill=(91, 232, 255), width=1)
+        draw.text((925, 22), "ILLUSTRATIVE MOTION STUDY", font=font(13), fill=mix(base_paper, base_line, .5))
+    draw.line((20, 49, size[0] - 20, 49), fill=base_line, width=1)
+    draw.line((20, 49, 80, 49), fill=base_signal, width=1)
 
     for index, (code, label, note, renderer, colors) in enumerate(SCENES):
         left = margin + (index % columns) * (panel_w + gap)
@@ -366,7 +381,8 @@ def build_systems_reel_gif(mobile=False):
     # Keep the reels visually deep without making a profile README pay for a
     # photographic palette. The small, shared palette also prevents shimmer
     # between frames and materially improves GitHub's transfer time.
-    palette = frames[0].quantize(colors=20, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    palette_colors = 8 if not mobile else 6
+    palette = frames[0].quantize(colors=palette_colors, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
     indexed = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
     buffer = BytesIO()
     indexed[0].save(buffer, format="GIF", save_all=True, append_images=indexed[1:],

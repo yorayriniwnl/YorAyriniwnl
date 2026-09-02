@@ -108,7 +108,7 @@ TEXT_ZONE = {"x0": 330, "x1": 1170, "y0": 92, "y1": 228}
 # manifest-build time. Keeping this list explicit makes the privacy/artwork
 # boundary auditable and prevents a future generator change from accidentally
 # touching the approved profile image.
-ATLAS_TREATMENT_REVISION = "atlas-v2"
+ATLAS_TREATMENT_REVISION = "atlas-v3"
 ATLAS_TREATMENT_EXCLUDED = frozenset({
     "hero.svg",
     "project-portfolio-v2.svg",
@@ -2232,7 +2232,7 @@ def _vision_texture_cells(x, y, cols=12, rows=10, size=10):
         for col in range(cols):
             level = (math.sin(col * .83 + row * .47) + math.cos(row * .61 - col * .29) + 2) / 4
             shade = int(40 + level * 170)
-            color = f"#{shade:02x}{min(255, shade + 9):02x}{min(255, shade + 8):02x}"
+            color = f"#{shade:02x}{max(0, shade - 4):02x}{max(0, shade - 5):02x}"
             cells.append(
                 f'<rect x="{x + col * size:.1f}" y="{y + row * size:.1f}" width="{size - .8:.1f}" '
                 f'height="{size - .8:.1f}" fill="{color}"/>'
@@ -2240,7 +2240,7 @@ def _vision_texture_cells(x, y, cols=12, rows=10, size=10):
     return "".join(cells)
 
 
-def _vision_lbp(cx, cy):
+def _vision_lbp(cx, cy, accent, accent_soft, surface_alt):
     marks = []
     for index in range(8):
         angle = index * math.tau / 8 - math.pi / 2
@@ -2248,13 +2248,13 @@ def _vision_lbp(cx, cy):
         outer_y = cy + math.sin(angle) * 45
         marks.append(
             f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{outer_x:.1f}" y2="{outer_y:.1f}" '
-            f'stroke="#71858b" stroke-width="1"/><circle cx="{outer_x:.1f}" cy="{outer_y:.1f}" r="4" '
-            f'fill="{"#169cab" if index in (1, 3, 6) else "#d8dfdd"}"/>'
+            f'stroke="{accent_soft}" stroke-width="1"/><circle cx="{outer_x:.1f}" cy="{outer_y:.1f}" r="4" '
+            f'fill="{accent if index in (1, 3, 6) else surface_alt}"/>'
         )
     return "".join(marks)
 
 
-def _glcm_matrix(x, y):
+def _glcm_matrix(x, y, accent):
     cells = []
     values = ((1, 2, 4, 2, 1), (2, 5, 8, 4, 2), (1, 3, 7, 5, 1), (1, 2, 4, 6, 2), (0, 1, 2, 2, 3))
     for row, values_row in enumerate(values):
@@ -2262,7 +2262,7 @@ def _glcm_matrix(x, y):
             opacity = .18 + value / 12
             cells.append(
                 f'<rect x="{x + col * 14}" y="{y + row * 14}" width="12" height="12" '
-                f'fill="#169cab" opacity="{opacity:.2f}"/>'
+                f'fill="{accent}" opacity="{opacity:.2f}"/>'
             )
     return "".join(cells)
 
@@ -2370,8 +2370,8 @@ def project_visual_svg(kind, cfg):
                 f'<rect x="516" y="{y-8}" width="88" height="8" rx="4" fill="{surface_alt}"/>'
                 f'<rect x="516" y="{y-8}" width="{88 * amount:.1f}" height="8" rx="4" fill="{accent}" class="vision-confidence"/>'
             )
-        lbp = _vision_lbp(296, 205)
-        glcm = _glcm_matrix(356, 143)
+        lbp = _vision_lbp(296, 205, accent, accent_soft, surface_alt)
+        glcm = _glcm_matrix(356, 143, accent)
         texture = _vision_texture_cells(57, 143)
         return f'''<g class="vision-motion">
 <rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>

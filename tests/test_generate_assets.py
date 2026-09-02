@@ -45,11 +45,12 @@ class GenerateAssetsTests(unittest.TestCase):
     def test_flagship_cards_have_distinct_visual_worlds_and_motion_grammar(self):
         manifest = generate_assets.build_asset_manifest()
         expected = {
-            "helios": ("INDUSTRIAL TELEMETRY", "#f0a64a", "EVENT TOPOLOGY", "SYNTHETIC DEMO"),
-            "zenith": ("DAYLIGHT SOLAR INTELLIGENCE", "#d78327", "3D ROOF PLANNING", "IRR"),
-            "vision": ("FORENSIC TEXTURE LAB", "#169cab", "FEATURE VECTOR", "78.5%"),
-            "talks": ("REALTIME COMMUNICATION", "#5be8ff", "MESSAGE FLOW", "PRESENCE"),
+            "helios": ("INDUSTRIAL TELEMETRY", "#e84b4b", "EVENT TOPOLOGY", "SYNTHETIC DEMO"),
+            "zenith": ("DAYLIGHT SOLAR INTELLIGENCE", "#b92b2b", "3D ROOF PLANNING", "IRR"),
+            "vision": ("FORENSIC TEXTURE LAB", "#b92b2b", "FEATURE VECTOR", "78.5%"),
+            "talks": ("REALTIME COMMUNICATION", "#e84b4b", "MESSAGE FLOW", "PRESENCE"),
         }
+        old_world_colors = ("#f0a64a", "#0e8a78", "#169cab", "#5be8ff", "#a78bff")
 
         for kind, markers in expected.items():
             card = manifest[f"project-{kind}.svg"]
@@ -63,6 +64,8 @@ class GenerateAssetsTests(unittest.TestCase):
                     ).split(",", 1)[1],
                     card,
                 )
+                for old_color in old_world_colors:
+                    self.assertNotIn(old_color, card)
 
         self.assertNotEqual(
             manifest["project-helios.svg"].split("<image", 1)[0],
@@ -141,7 +144,7 @@ class GenerateAssetsTests(unittest.TestCase):
             with self.subTest(asset=filename):
                 svg = manifest[filename]
                 self.assertIn('id="atlas-treatment"', svg)
-                self.assertIn('data-visual-treatment="atlas-v2"', svg)
+                self.assertIn('data-visual-treatment="atlas-v3"', svg)
                 self.assertIn('aria-hidden="true"', svg)
                 self.assertIn("prefers-reduced-motion: reduce", svg)
                 self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
