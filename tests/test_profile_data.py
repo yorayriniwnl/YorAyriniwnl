@@ -91,7 +91,7 @@ class ProfileDataTests(unittest.TestCase):
 
         for project_id, relative_path in contract["project_art"].items():
             with self.subTest(project=project_id):
-                self.assertIn("keyart-v4-optimized.jpg", relative_path)
+                self.assertIn("keyart-v5-optimized.jpg", relative_path)
 
 
 if __name__ == "__main__":

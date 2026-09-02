@@ -23,10 +23,10 @@ class AssetRecipe(NamedTuple):
 
 RECIPES = (
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (1600, 900), 86),
-    AssetRecipe("project-helios-keyart-v4.png", "project-helios-keyart-v4-optimized.jpg", (900, 506), 70),
-    AssetRecipe("project-zenith-keyart-v4.png", "project-zenith-keyart-v4-optimized.jpg", (900, 506), 70),
-    AssetRecipe("project-vision-keyart-v4.png", "project-vision-keyart-v4-optimized.jpg", (900, 506), 70),
-    AssetRecipe("project-talks-keyart-v4.png", "project-talks-keyart-v4-optimized.jpg", (900, 506), 70),
+    AssetRecipe("project-helios-keyart-v5.png", "project-helios-keyart-v5-optimized.jpg", (900, 506), 70),
+    AssetRecipe("project-zenith-keyart-v5.png", "project-zenith-keyart-v5-optimized.jpg", (900, 506), 70),
+    AssetRecipe("project-vision-keyart-v5.png", "project-vision-keyart-v5-optimized.jpg", (900, 506), 70),
+    AssetRecipe("project-talks-keyart-v5.png", "project-talks-keyart-v5-optimized.jpg", (900, 506), 70),
 )
 
 
