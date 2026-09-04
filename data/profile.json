@@ -222,8 +222,8 @@
       "summary": "A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis.",
       "visual": {
         "world": "zenith",
-        "source": "assets/project-zenith-cinematic-crimson-v6.png",
-        "delivery": "assets/project-zenith-cinematic-crimson-v6-optimized.jpg",
+        "source": "assets/project-zenith-cinematic-crimson-v7.png",
+        "delivery": "assets/project-zenith-cinematic-crimson-v7-optimized.jpg",
         "evidence": "rooftop planning and energy-flow decision scene for solar sizing, payback, subsidy, and grid analysis; financial and feasibility outputs remain assumption-driven"
       },
       "proof": [
@@ -251,8 +251,8 @@
       "summary": "A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.",
       "visual": {
         "world": "vision",
-        "source": "assets/project-vision-cinematic-crimson-v6.png",
-        "delivery": "assets/project-vision-cinematic-crimson-v6-optimized.jpg",
+        "source": "assets/project-vision-cinematic-crimson-v7.png",
+        "delivery": "assets/project-vision-cinematic-crimson-v7-optimized.jpg",
         "evidence": "image plate to handcrafted texture features to classifier narrative; the visual is illustrative and not based on the profile portrait"
       },
       "proof": [
@@ -339,8 +339,8 @@
       "flagship_art": "assets/project-portfolio-cinematic-crimson-v6.png",
       "project_art": {
         "helios": "assets/project-helios-cinematic-crimson-v6.png",
-        "zenith": "assets/project-zenith-cinematic-crimson-v6.png",
-        "vision": "assets/project-vision-cinematic-crimson-v6.png",
+        "zenith": "assets/project-zenith-cinematic-crimson-v7.png",
+        "vision": "assets/project-vision-cinematic-crimson-v7.png",
         "talks": "assets/project-talks-cinematic-crimson-v6.png",
         "token-usage": "assets/project-token-usage-cinematic-crimson-v6.png"
       },
@@ -355,8 +355,8 @@
       "flagship_art": "assets/project-portfolio-cinematic-crimson-v6-optimized.jpg",
       "project_art": {
         "helios": "assets/project-helios-cinematic-crimson-v6-optimized.jpg",
-        "zenith": "assets/project-zenith-cinematic-crimson-v6-optimized.jpg",
-        "vision": "assets/project-vision-cinematic-crimson-v6-optimized.jpg",
+        "zenith": "assets/project-zenith-cinematic-crimson-v7-optimized.jpg",
+        "vision": "assets/project-vision-cinematic-crimson-v7-optimized.jpg",
         "talks": "assets/project-talks-cinematic-crimson-v6-optimized.jpg",
         "token-usage": "assets/project-token-usage-cinematic-crimson-v6-optimized.jpg"
       },
@@ -389,8 +389,8 @@
     },
     "project_art": {
       "helios": "assets/project-helios-cinematic-crimson-v6-optimized.jpg",
-      "zenith": "assets/project-zenith-cinematic-crimson-v6-optimized.jpg",
-      "vision": "assets/project-vision-cinematic-crimson-v6-optimized.jpg",
+      "zenith": "assets/project-zenith-cinematic-crimson-v7-optimized.jpg",
+      "vision": "assets/project-vision-cinematic-crimson-v7-optimized.jpg",
       "talks": "assets/project-talks-cinematic-crimson-v6-optimized.jpg",
       "token-usage": "assets/project-token-usage-cinematic-crimson-v6-optimized.jpg"
     },

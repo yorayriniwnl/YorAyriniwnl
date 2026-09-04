@@ -34,7 +34,7 @@ RECIPES = (
     # Their 1.5-2x display density keeps the README sharp without making each
     # generated card carry a multi-megabyte photographic payload.
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (2400, 1110), 84),
-    # Detail-first v6 plates are the active art direction for the project
+    # Detail-first cinematic plates are the active art direction for the project
     # covers. Each frame has a product-specific visual pipeline plus semantic
     # micro-scenes for the important features, while preserving one dominant
     # subject and clean thumbnail hierarchy. A 1200px delivery width remains
@@ -42,8 +42,8 @@ RECIPES = (
     # manifest within its payload budget.
     AssetRecipe("project-portfolio-cinematic-crimson-v6.png", "project-portfolio-cinematic-crimson-v6-optimized.jpg", (1200, 675), 76),
     AssetRecipe("project-helios-cinematic-crimson-v6.png", "project-helios-cinematic-crimson-v6-optimized.jpg", (1200, 675), 76),
-    AssetRecipe("project-zenith-cinematic-crimson-v6.png", "project-zenith-cinematic-crimson-v6-optimized.jpg", (1200, 675), 76),
-    AssetRecipe("project-vision-cinematic-crimson-v6.png", "project-vision-cinematic-crimson-v6-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-zenith-cinematic-crimson-v7.png", "project-zenith-cinematic-crimson-v7-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-vision-cinematic-crimson-v7.png", "project-vision-cinematic-crimson-v7-optimized.jpg", (1200, 675), 76),
     AssetRecipe("project-talks-cinematic-crimson-v6.png", "project-talks-cinematic-crimson-v6-optimized.jpg", (1200, 675), 76),
     AssetRecipe("project-token-usage-cinematic-crimson-v6.png", "project-token-usage-cinematic-crimson-v6-optimized.jpg", (1200, 675), 76),
     # Supporting plates are atmospheric layers rather than standalone cards;

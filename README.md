@@ -70,7 +70,7 @@
 </p>
 
 <a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v13" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v14" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-summary-vision.svg?rev=atlas-v6" width="100%" alt="AI vs. Real Image Detector: Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit. Proof: 78.5% held-out test accuracy; Local inference with committed SVM and scaler artifacts; Lighting-invariant preprocessing."/>
@@ -90,7 +90,7 @@
 </p>
 
 <a href="https://zenith-xi-snowy.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=raster-v13" width="100%" alt="Yor Zenith: solar decision support"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=raster-v14" width="100%" alt="Yor Zenith: solar decision support"/>
 </a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-summary-zenith.svg?rev=atlas-v6" width="100%" alt="Yor Zenith: Live, January-December 2025. A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis. Stack: React; TypeScript; Three.js; Python; FastAPI. Proof: Interactive panel-placement simulation; Energy-output modeling across roof configurations; Subsidy, ROI, and payback analysis."/>

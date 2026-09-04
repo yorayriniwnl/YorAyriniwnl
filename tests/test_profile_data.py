@@ -98,13 +98,23 @@ class ProfileDataTests(unittest.TestCase):
                 self.assertTrue(path.is_file())
                 self.assertEqual(path.suffix, ".jpg")
 
+        expected_project_versions = {
+            "helios": "v6",
+            "zenith": "v7",
+            "vision": "v7",
+            "talks": "v6",
+            "token-usage": "v6",
+        }
         for project_id, relative_path in contract["source"]["project_art"].items():
             with self.subTest(project=project_id):
-                self.assertTrue(relative_path.endswith("-cinematic-crimson-v6.png"))
+                self.assertTrue(relative_path.endswith(f"-cinematic-crimson-{expected_project_versions[project_id]}.png"))
                 self.assertTrue((ROOT / relative_path).is_file())
         for project_id, relative_path in contract["delivery"]["project_art"].items():
             with self.subTest(delivery=project_id):
-                self.assertIn("cinematic-crimson-v6-optimized.jpg", relative_path)
+                self.assertIn(
+                    f"cinematic-crimson-{expected_project_versions[project_id]}-optimized.jpg",
+                    relative_path,
+                )
         for key, relative_path in contract["source"]["supporting_art"].items():
             with self.subTest(supporting_source=key):
                 self.assertTrue(relative_path.endswith("-v1.png"))
