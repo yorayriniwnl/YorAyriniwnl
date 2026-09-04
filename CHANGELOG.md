@@ -1,5 +1,20 @@
 # What moved, and why
 
+## Pass 23: detail-to-detail project worlds v6
+
+The six project plates now expose the internal mechanics behind each product,
+not just its atmosphere. The portfolio archive contains six recognizable
+exhibits; Helios shows meter signal, anomaly waveform, threshold, tamper,
+evidence, and recovery stages; Zenith adds panel placement, sun path, house
+flow, payback, subsidy, and grid instruments; Vision renders the split image,
+macro texture plates, feature lattice, and classifier core; Talks separates
+identity, messaging, communities, Stories, live, creator, and shop spaces;
+and Token Usage shows exactly five provider inputs, local measurement, five
+iconographic dashboard instruments, and an isolated optional sync bridge. The
+crimson-first correction keeps the visual language coherent at thumbnail
+scale. The approved portrait remains locked and unchanged; v5 and v4 remain
+available as rollback artwork.
+
 ## Pass 22: context-first project worlds v5
 
 The six project covers now come from the products' actual workflows rather
