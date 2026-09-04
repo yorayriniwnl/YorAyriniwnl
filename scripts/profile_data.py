@@ -113,8 +113,8 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         raise ProfileDataError("approved hero changed; restore the previous profile portrait")
 
     source = contract["source"]
-    _require(source, {"hero", "project_art"}, "source visual contract")
-    _require(contract["delivery"], {"hero", "project_art"}, "delivery visual contract")
+    _require(source, {"hero", "project_art", "supporting_art"}, "source visual contract")
+    _require(contract["delivery"], {"hero", "project_art", "supporting_art"}, "delivery visual contract")
     _require(contract["github_derivative"], {"hero", "project_art"}, "GitHub visual contract")
     if source["hero"] != contract["approved_hero"]:
         raise ProfileDataError("source hero must remain the approved hero")
@@ -131,6 +131,14 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         asset_path = ROOT / relative_path
         if not asset_path.is_file():
             raise ProfileDataError(f"source visual asset is missing: {relative_path}")
+    if set(source["supporting_art"]) != {"identity", "atlas", "channel"}:
+        raise ProfileDataError("source supporting artwork must cover identity, atlas, and channel")
+    if set(contract["delivery"]["supporting_art"]) != {"identity", "atlas", "channel"}:
+        raise ProfileDataError("delivery supporting artwork must cover identity, atlas, and channel")
+    for relative_path in source["supporting_art"].values():
+        asset_path = ROOT / relative_path
+        if asset_path.suffix.lower() != ".png" or not asset_path.is_file():
+            raise ProfileDataError(f"source supporting visual asset is missing: {relative_path}")
 
     derivative_paths = [contract["optimized_hero"], *contract["project_art"].values()]
     if set(contract["project_art"]) != expected_project_art:
@@ -139,6 +147,10 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         asset_path = ROOT / relative_path
         if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():
             raise ProfileDataError(f"optimized visual asset is missing: {relative_path}")
+    for relative_path in contract["delivery"]["supporting_art"].values():
+        asset_path = ROOT / relative_path
+        if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():
+            raise ProfileDataError(f"optimized supporting visual asset is missing: {relative_path}")
 
     if contract["project_art"] != contract["delivery"]["project_art"]:
         raise ProfileDataError("project_art must be the delivery derivative map")

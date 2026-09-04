@@ -87,6 +87,8 @@ class ProfileDataTests(unittest.TestCase):
 
         self.assertEqual(set(contract["project_art"]), {"helios", "zenith", "vision", "talks", "token-usage"})
         self.assertEqual(contract["project_art"], contract["delivery"]["project_art"])
+        self.assertEqual(set(contract["source"]["supporting_art"]), {"identity", "atlas", "channel"})
+        self.assertEqual(set(contract["delivery"]["supporting_art"]), {"identity", "atlas", "channel"})
         self.assertEqual(contract["source"]["hero"], contract["approved_hero"])
         for relative_path in derivatives:
             with self.subTest(asset=relative_path):
@@ -101,6 +103,14 @@ class ProfileDataTests(unittest.TestCase):
         for project_id, relative_path in contract["delivery"]["project_art"].items():
             with self.subTest(delivery=project_id):
                 self.assertIn("concept-crimson-v1-optimized.jpg", relative_path)
+        for key, relative_path in contract["source"]["supporting_art"].items():
+            with self.subTest(supporting_source=key):
+                self.assertTrue(relative_path.endswith("-v1.png"))
+                self.assertTrue((ROOT / relative_path).is_file())
+        for key, relative_path in contract["delivery"]["supporting_art"].items():
+            with self.subTest(supporting_delivery=key):
+                self.assertTrue(relative_path.endswith("-v1-optimized.jpg"))
+                self.assertTrue((ROOT / relative_path).is_file())
         github_paths = [
             contract["github_derivative"]["hero"],
             *contract["github_derivative"]["project_art"].values(),

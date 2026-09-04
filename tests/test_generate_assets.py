@@ -61,6 +61,7 @@ class GenerateAssetsTests(unittest.TestCase):
             with self.subTest(project=kind):
                 self.assertTrue(all(marker in card for marker in markers))
                 self.assertIn(f'class="{kind}-motion"', card)
+                self.assertIn(f'class="{kind}-frame-sweep"', card)
                 self.assertIn("prefers-reduced-motion: reduce", card)
                 self.assertIn(
                     generate_assets.asset_data_uri(
@@ -154,7 +155,8 @@ class GenerateAssetsTests(unittest.TestCase):
             with self.subTest(asset=filename):
                 svg = manifest[filename]
                 self.assertIn('id="atlas-treatment"', svg)
-                self.assertIn('data-visual-treatment="atlas-v4"', svg)
+                self.assertIn('data-visual-treatment="atlas-v5"', svg)
+                self.assertIn('data-atlas-tier="cinematic"', svg)
                 self.assertIn('aria-hidden="true"', svg)
                 self.assertIn("prefers-reduced-motion: reduce", svg)
                 self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
@@ -164,6 +166,22 @@ class GenerateAssetsTests(unittest.TestCase):
                 self.assertNotIn('data-visual-treatment="atlas-v1"', manifest[filename])
 
         self.assertIn(generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT["optimized_hero"]).split(",", 1)[1], manifest["hero.svg"])
+
+    def test_supporting_art_is_embedded_into_major_profile_panels(self):
+        manifest = generate_assets.build_asset_manifest()
+
+        expected = {
+            "identity-console.svg": "identity",
+            "arsenal.svg": "atlas",
+            "finale.svg": "channel",
+        }
+        for filename, key in expected.items():
+            with self.subTest(asset=filename):
+                payload = generate_assets.asset_data_uri(
+                    generate_assets.SUPPORTING_ART[key]
+                ).split(",", 1)[1]
+                self.assertIn(payload, manifest[filename])
+                self.assertIn("preserveAspectRatio=", manifest[filename])
 
     def test_visual_content_panels_are_valid_and_data_complete(self):
         manifest = generate_assets.build_asset_manifest()

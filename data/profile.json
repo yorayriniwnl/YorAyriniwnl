@@ -342,6 +342,11 @@
         "vision": "assets/project-vision-concept-crimson-v1.png",
         "talks": "assets/project-talks-concept-crimson-v1.png",
         "token-usage": "assets/project-token-usage-concept-crimson-v1.png"
+      },
+      "supporting_art": {
+        "identity": "assets/crimson-command-deck-v1.png",
+        "atlas": "assets/crimson-systems-atlas-v1.png",
+        "channel": "assets/crimson-open-channel-v1.png"
       }
     },
     "delivery": {
@@ -352,6 +357,11 @@
         "vision": "assets/project-vision-concept-crimson-v1-optimized.jpg",
         "talks": "assets/project-talks-concept-crimson-v1-optimized.jpg",
         "token-usage": "assets/project-token-usage-concept-crimson-v1-optimized.jpg"
+      },
+      "supporting_art": {
+        "identity": "assets/crimson-command-deck-v1-optimized.jpg",
+        "atlas": "assets/crimson-systems-atlas-v1-optimized.jpg",
+        "channel": "assets/crimson-open-channel-v1-optimized.jpg"
       }
     },
     "github_derivative": {

@@ -91,10 +91,10 @@ class ReadmeTests(unittest.TestCase):
         self.assertIn("systems-reel-still.png", self.readme)
         self.assertIn("systems-reel-mobile-still.png", self.readme)
         self.assertNotIn("kinetic-primer.gif", self.readme)
-        self.assertIn("skills-matrix.svg?rev=atlas-v4", self.readme)
-        self.assertIn("field-notes.svg?rev=atlas-v4", self.readme)
+        self.assertIn("skills-matrix.svg?rev=atlas-v5", self.readme)
+        self.assertIn("field-notes.svg?rev=atlas-v5", self.readme)
         for filename in generate_readme.ATLAS_ASSETS:
-            self.assertIn(f"output/{filename}?rev=atlas-v4", self.readme)
+            self.assertIn(f"output/{filename}?rev=atlas-v5", self.readme)
         for filename in generate_readme.MOTION_ASSETS:
             self.assertIn(f"output/{filename}?rev=motion-v6", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)

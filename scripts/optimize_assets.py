@@ -39,6 +39,13 @@ RECIPES = (
     AssetRecipe("project-vision-concept-crimson-v1.png", "project-vision-concept-crimson-v1-optimized.jpg", (1800, 1013), 82),
     AssetRecipe("project-talks-concept-crimson-v1.png", "project-talks-concept-crimson-v1-optimized.jpg", (1800, 1013), 82),
     AssetRecipe("project-token-usage-concept-crimson-v1.png", "project-token-usage-concept-crimson-v1-optimized.jpg", (1800, 1013), 82),
+    # Supporting plates are atmospheric layers rather than standalone cards;
+    # 840px delivery derivatives match the profile's rendered content width,
+    # preserving sharp detail at README scale while
+    # keeping the self-contained SVG manifest under its payload budget.
+    AssetRecipe("crimson-command-deck-v1.png", "crimson-command-deck-v1-optimized.jpg", (800, 400), 64),
+    AssetRecipe("crimson-systems-atlas-v1.png", "crimson-systems-atlas-v1-optimized.jpg", (800, 533), 62),
+    AssetRecipe("crimson-open-channel-v1.png", "crimson-open-channel-v1-optimized.jpg", (840, 420), 66),
 )
 
 LEGACY_UPSCALED_RECIPES = (

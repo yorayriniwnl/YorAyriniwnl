@@ -31,6 +31,7 @@ TOKENS = load_design_tokens()
 IDENTITY = PROFILE["identity"]
 VISUAL_CONTRACT = PROFILE["visual_contract"]
 WORLD_TOKENS = TOKENS["worlds"]
+SUPPORTING_ART = VISUAL_CONTRACT["delivery"]["supporting_art"]
 PALETTE = {
     "void": TOKENS["color"]["void"],
     "panel": TOKENS["color"]["panel"],
@@ -104,11 +105,11 @@ TEXT_ZONE = {"x0": 330, "x1": 1170, "y0": 92, "y1": 228}
 
 # The hero and flagship project covers have their own art direction and are
 # intentionally left alone. Every other public visual is a supporting
-# interface surface, so it receives the same lightweight atlas treatment at
+# interface surface, so it receives the same cinematic atlas treatment at
 # manifest-build time. Keeping this list explicit makes the privacy/artwork
 # boundary auditable and prevents a future generator change from accidentally
 # touching the approved profile image.
-ATLAS_TREATMENT_REVISION = "atlas-v4"
+ATLAS_TREATMENT_REVISION = "atlas-v5"
 ATLAS_TREATMENT_EXCLUDED = frozenset({
     "hero.svg",
     "project-portfolio-v2.svg",
@@ -140,8 +141,9 @@ def _atlas_overlay(filename, svg):
 
     The base assets own their copy and primary illustration. This overlay is
     deliberately a transparent, pointer-free layer: it adds depth rails,
-    edge brackets, a small orbital instrument, and one slow signal pass while
-    leaving the authored content and screen-reader title/description intact.
+    edge brackets, a small orbital instrument, an instrument sweep, signal
+    ticks, and a second-order radar pulse while leaving authored content and
+    screen-reader title/description intact.
     """
     _, _, width, height = _svg_viewbox(svg)
     digest = hashlib.sha256(filename.encode("utf-8")).hexdigest()
@@ -197,24 +199,40 @@ def _atlas_overlay(filename, svg):
 <stop offset=".5" stop-color="#ff8a7f" stop-opacity=".24"/>
 <stop offset="1" stop-color="#e84b4b" stop-opacity="0"/>
 </linearGradient>
+<linearGradient id="{prefix}Rail" gradientUnits="userSpaceOnUse" x1="0" x2="{width:.1f}">
+<stop offset="0" stop-color="#ff8a7f" stop-opacity="0"/>
+<stop offset=".2" stop-color="#ff8a7f" stop-opacity=".54"/>
+<stop offset=".5" stop-color="#e84b4b" stop-opacity=".18"/>
+<stop offset=".84" stop-color="#ff8a7f" stop-opacity=".54"/>
+<stop offset="1" stop-color="#ff8a7f" stop-opacity="0"/>
+</linearGradient>
 <pattern id="{prefix}Grid" width="{grid}" height="{grid}" patternUnits="userSpaceOnUse">
 <path d="M{grid} 0H0V{grid}" fill="none" stroke="#e84b4b" stroke-width=".45" opacity=".07"/>
 </pattern>
 <style>
 .{prefix}-scan {{ animation: {prefix}-scan {scan_duration:.1f}s linear infinite; animation-delay: {scan_begin:.1f}s; }}
 .{prefix}-orbit {{ transform-box: fill-box; transform-origin: center; animation: {prefix}-orbit {22 + seed % 18}s linear infinite; }}
+.{prefix}-pulse {{ transform-box: fill-box; transform-origin: center; animation: {prefix}-pulse 4.8s ease-out infinite; animation-delay: -{(seed % 48) / 10:.1f}s; }}
+.{prefix}-spark {{ animation: {prefix}-spark 2.6s ease-in-out infinite; animation-delay: -{(seed % 26) / 10:.1f}s; }}
 @keyframes {prefix}-scan {{ from {{ transform: translateX(0); }} to {{ transform: translateX({width + scan_width * 2:.1f}px); }} }}
 @keyframes {prefix}-orbit {{ to {{ transform: rotate(360deg); }} }}
-@media (prefers-reduced-motion: reduce) {{ .{prefix}-scan, .{prefix}-orbit {{ animation: none !important; }} }}
+@keyframes {prefix}-pulse {{ 0% {{ opacity: 0; transform: scale(.72); }} 28% {{ opacity: .6; }} 100% {{ opacity: 0; transform: scale(1.34); }} }}
+@keyframes {prefix}-spark {{ 0%, 100% {{ opacity: .18; }} 50% {{ opacity: .92; }} }}
+@media (prefers-reduced-motion: reduce) {{ .{prefix}-scan, .{prefix}-orbit, .{prefix}-pulse, .{prefix}-spark {{ animation: none !important; }} }}
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="{ATLAS_TREATMENT_REVISION}" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="{ATLAS_TREATMENT_REVISION}" data-atlas-tier="cinematic" aria-hidden="true" pointer-events="none">
 <rect x="{inset:.1f}" y="{inset:.1f}" width="{safe_width:.1f}" height="{safe_height:.1f}" rx="{max(2.0, min(10.0, inset)):.1f}"
  fill="url(#{prefix}Grid)" opacity=".52"/>
 <ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="{radius * 1.8:.1f}" ry="{radius * .9:.1f}"
  fill="url(#{prefix}Glow)" opacity=".42"/>
+<ellipse class="{prefix}-pulse" cx="{cx:.1f}" cy="{cy:.1f}" rx="{radius * .8:.1f}" ry="{orbit_ry * 1.9:.1f}"
+ fill="none" stroke="#ff8a7f" stroke-width="{max(.7, stroke * .8):.2f}" stroke-dasharray="2 9" opacity=".58"/>
 <rect class="{prefix}-scan" x="-{scan_width:.1f}" y="{inset:.1f}" width="{scan_width:.1f}" height="{safe_height:.1f}"
  fill="url(#{prefix}Sweep)" opacity=".45"/>
+<path d="M{inset:.1f} {height - inset * 1.55:.1f}H{width - inset:.1f}" fill="none" stroke="url(#{prefix}Rail)" stroke-width="{max(.7, stroke * .7):.2f}" opacity=".72"/>
+<path d="M{width - inset * 1.55:.1f} {inset:.1f}V{height - inset:.1f}" fill="none" stroke="url(#{prefix}Rail)" stroke-width="{max(.7, stroke * .7):.2f}" opacity=".45"/>
+{''.join(f'<path d="M{width - inset * 1.55 - 3:.1f} {inset + index * max(8, (height - inset * 2) / 5):.1f}h6" stroke="#ff8a7f" stroke-width="{max(.55, stroke * .55):.2f}" opacity=".35"/>' for index in range(6))}
 <path d="M{inset:.1f} {inset + bracket:.1f}V{inset:.1f}H{inset + bracket:.1f}
  M{width - inset - bracket:.1f} {inset:.1f}H{width - inset:.1f}V{inset + bracket:.1f}
  M{inset:.1f} {height - inset - bracket:.1f}V{height - inset:.1f}H{inset + bracket:.1f}
@@ -227,7 +245,7 @@ def _atlas_overlay(filename, svg):
 {''.join(orbital_dots)}
 <circle cx="{cx:.1f}" cy="{cy:.1f}" r="{max(1.8, radius * .08):.1f}" fill="#ff8a7f" opacity=".72"/>
 <polyline points="{trace}" fill="none" stroke="#e84b4b" stroke-width="{max(.7, stroke * .8):.2f}" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="{signal_x + signal_w * .58:.1f}" cy="{signal_y:.1f}" r="{max(1.2, short_edge / 80):.1f}" fill="#ff8a7f" opacity=".64"/>
+<circle class="{prefix}-spark" cx="{signal_x + signal_w * .58:.1f}" cy="{signal_y:.1f}" r="{max(1.2, short_edge / 80):.1f}" fill="#ff8a7f" opacity=".64"/>
 </g>'''
 
 
@@ -1752,6 +1770,8 @@ def build_identity_console_svg(cfg):
 </defs>
 <rect x="1" y="1" width="1498" height="358" rx="7" fill="#030303" stroke="#2d0808"/>
 <rect x="1" y="1" width="1498" height="358" rx="7" fill="url(#consoleGrid)"/>
+<image href="{asset_data_uri(SUPPORTING_ART["identity"])}" x="548" y="18" width="554" height="324" preserveAspectRatio="xMidYMid slice" opacity=".22"/>
+<rect x="548" y="18" width="554" height="324" rx="5" fill="#030303" opacity=".38"/>
 <path d="M560 20V340M1080 20V340" stroke="#310808"/>
 <text x="34" y="48" class="mono" font-size="10" fill="#e84b4b" letter-spacing="3">
 OPERATOR MANIFEST
@@ -2263,6 +2283,10 @@ def project_motion_style(kind):
 .{kind}-typing {{ animation: {kind}-typing 1.2s ease-in-out infinite; }}
 @keyframes {kind}-packet {{ to {{ stroke-dashoffset: -90; }} }}
 @keyframes {kind}-typing {{ 0%, 100% {{ opacity: .25; }} 50% {{ opacity: 1; }} }}'''
+    animation = f'''
+.{kind}-frame-sweep {{ animation: {kind}-frame-sweep 7.5s linear infinite; }}
+@keyframes {kind}-frame-sweep {{ from {{ stroke-dashoffset: 760; opacity: .08; }} 45% {{ opacity: .72; }} to {{ stroke-dashoffset: 0; opacity: .08; }} }}
+''' + animation
     return f'''<style>
 {animation}
 @media (prefers-reduced-motion: reduce) {{
@@ -2543,6 +2567,10 @@ def build_project_card_svg(project, cfg):
 <text x="38" y="63" class="mono" font-size="26" fill="{world["ink"]}" letter-spacing="1">{esc(project["title"])}</text>
 <text x="684" y="37" text-anchor="end" class="mono" font-size="9" fill="{world["accent"]}" letter-spacing="1.2">{esc(project.get("status", "SYSTEM").upper())}  ↗</text>
 <path d="M28 76H692" stroke="{world["line"]}"/>
+<g class="{kind}-motion" aria-hidden="true" pointer-events="none">
+<path d="M28 86H692V376H28Z" fill="none" stroke="{world["accent"]}" stroke-width="1.4" stroke-dasharray="18 742" stroke-dashoffset="760" class="{kind}-frame-sweep" opacity=".42"/>
+<path d="M38 96h42M38 96v30M682 96h-42M682 96v30M38 366h42M38 366v-30M682 366h-42M682 366v-30" fill="none" stroke="{world["accent_soft"]}" stroke-width="1" opacity=".48"/>
+</g>
 {visual}
 <path d="M28 397H692" stroke="{world["line"]}"/>
 <text x="28" y="422" class="mono" font-size="11" fill="{world["accent"]}" letter-spacing="1.05">{esc(project["stack"])}</text>
@@ -2588,6 +2616,8 @@ def build_arsenal_svg(cfg):
 </defs>
 <rect x="1" y="1" width="1498" height="538" rx="7" fill="#020202" stroke="#350909"/>
 <rect x="1" y="1" width="1498" height="538" rx="7" fill="url(#arsenalGrid)"/>
+<image href="{asset_data_uri(SUPPORTING_ART["atlas"])}" x="260" y="20" width="980" height="500" preserveAspectRatio="xMidYMid slice" opacity=".24"/>
+<rect x="260" y="20" width="980" height="500" rx="6" fill="#020202" opacity=".34"/>
 <circle cx="750" cy="270" r="246" fill="url(#arsenalGlow)"/>
 <ellipse cx="750" cy="270" rx="390" ry="210" fill="none" stroke="#310808"/>
 <ellipse cx="750" cy="270" rx="295" ry="158" fill="none" stroke="#671515"
@@ -2645,6 +2675,8 @@ def build_finale_svg(cfg):
 </pattern>
 </defs>
 <rect width="{W}" height="{H}" fill="url(#finalHorizon)"/>
+<image href="{asset_data_uri(SUPPORTING_ART["channel"])}" x="0" y="0" width="{W}" height="{H}" preserveAspectRatio="xMidYMid slice" opacity=".46"/>
+<rect width="{W}" height="{H}" fill="#000" opacity=".24"/>
 {stars}
 <circle cx="750" cy="230" r="176" fill="url(#finalSun)" opacity=".68">
 <animate attributeName="opacity" values=".52;.78;.52" dur="5s" repeatCount="indefinite"/>

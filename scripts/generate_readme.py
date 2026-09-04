@@ -85,7 +85,7 @@ ASSET_REVISIONS = {
     # revision so responsive GIF and still fallbacks cannot be mixed by a stale
     # CDN edge.
     **{
-        filename: "atlas-v4"
+        filename: "atlas-v5"
         for filename in ATLAS_ASSETS
     },
     "systems-reel.gif": "motion-v6",

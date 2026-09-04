@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 16: crimson command deck remaster
+
+The entire profile visual system now carries a stronger authored chassis: a cinematic command-deck plate behind identity, a red systems-atlas landscape behind the technical core, and an open-channel portal behind the collaboration close. Supporting SVGs move to the atlas-v5 treatment with instrument rails, radar pulses, signal ticks, and stoppable reduced-motion fallbacks. Flagship project cards gain a moving perimeter sweep, while the approved portrait and six-project canonical data remain unchanged. Source PNGs stay preserved separately from size-conscious embedded delivery derivatives.
+
 ## Pass 15: six pinned systems aligned
 
 The public profile now mirrors the six pinned repositories shown on GitHub: Yor-Ayrin-iwnl, Yor-Ai-vs-real-image, Yor-Zenith, Yor-Helios, Yor_Token_Usage, and yor-talksv2. Yor_Token_Usage is now a first-class visual card and expandable dossier with a dedicated crimson token-core artwork, while the previous Yor Feelings exception has been removed from the public project roster. The README order, canonical profile data, generated SVG manifest, public resume, and tests are synchronized. The approved portrait hero remains unchanged.
