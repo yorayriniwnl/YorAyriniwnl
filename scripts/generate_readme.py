@@ -99,11 +99,11 @@ ASSET_REVISIONS = {
     "hero.svg": "raster-v2",
     "project-portfolio-v2.svg": "raster-v8",
     "project-portfolio-mobile-v2.svg": "raster-v8",
-    "project-helios.svg": "raster-v13",
+    "project-helios.svg": "raster-v14",
     "project-zenith.svg": "raster-v14",
     "project-vision.svg": "raster-v16",
-    "project-talks.svg": "raster-v13",
-    "project-token-usage.svg": "raster-v13",
+    "project-talks.svg": "raster-v14",
+    "project-token-usage.svg": "raster-v14",
     **{filename: "atlas-v6" for filename in PROJECT_SUMMARIES.values()},
 }
 

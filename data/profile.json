@@ -193,8 +193,8 @@
       "summary": "An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards.",
       "visual": {
         "world": "helios",
-        "source": "assets/project-helios-cinematic-crimson-v6.png",
-        "delivery": "assets/project-helios-cinematic-crimson-v6-optimized.jpg",
+        "source": "assets/project-helios-cinematic-crimson-v7.png",
+        "delivery": "assets/project-helios-cinematic-crimson-v7-optimized.jpg",
         "evidence": "meter-to-triage operator narrative for synthetic telemetry, anomaly scoring, persistence, and live investigation; no production telemetry is implied"
       },
       "proof": [
@@ -282,8 +282,8 @@
       "summary": "A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path.",
       "visual": {
         "world": "talks",
-        "source": "assets/project-talks-cinematic-crimson-v6.png",
-        "delivery": "assets/project-talks-cinematic-crimson-v6-optimized.jpg",
+        "source": "assets/project-talks-cinematic-crimson-v7.png",
+        "delivery": "assets/project-talks-cinematic-crimson-v7-optimized.jpg",
         "evidence": "identity, conversation, community, live, and creator spaces connected through a social product prototype; no fabricated user or traffic metrics"
       },
       "proof": [
@@ -313,8 +313,8 @@
       "summary": "A local-first Manifest V3 Chrome extension for estimating AI token usage across ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional sync.",
       "visual": {
         "world": "talks",
-        "source": "assets/project-token-usage-cinematic-crimson-v6.png",
-        "delivery": "assets/project-token-usage-cinematic-crimson-v6-optimized.jpg",
+        "source": "assets/project-token-usage-cinematic-crimson-v7.png",
+        "delivery": "assets/project-token-usage-cinematic-crimson-v7-optimized.jpg",
         "evidence": "five-provider local measurement vault with dashboard views and a detached optional sync bridge; no provider-authoritative billing totals are implied"
       },
       "proof": [
@@ -338,11 +338,11 @@
       "hero": "assets/hero-keyart-v2.png",
       "flagship_art": "assets/project-portfolio-cinematic-crimson-v6.png",
       "project_art": {
-        "helios": "assets/project-helios-cinematic-crimson-v6.png",
+        "helios": "assets/project-helios-cinematic-crimson-v7.png",
         "zenith": "assets/project-zenith-cinematic-crimson-v7.png",
         "vision": "assets/project-vision-cinematic-crimson-v9.png",
-        "talks": "assets/project-talks-cinematic-crimson-v6.png",
-        "token-usage": "assets/project-token-usage-cinematic-crimson-v6.png"
+        "talks": "assets/project-talks-cinematic-crimson-v7.png",
+        "token-usage": "assets/project-token-usage-cinematic-crimson-v7.png"
       },
       "supporting_art": {
         "identity": "assets/crimson-command-deck-v1.png",
@@ -354,11 +354,11 @@
       "hero": "assets/hero-keyart-v2-optimized.jpg",
       "flagship_art": "assets/project-portfolio-cinematic-crimson-v6-optimized.jpg",
       "project_art": {
-        "helios": "assets/project-helios-cinematic-crimson-v6-optimized.jpg",
+        "helios": "assets/project-helios-cinematic-crimson-v7-optimized.jpg",
         "zenith": "assets/project-zenith-cinematic-crimson-v7-optimized.jpg",
         "vision": "assets/project-vision-cinematic-crimson-v9-optimized.jpg",
-        "talks": "assets/project-talks-cinematic-crimson-v6-optimized.jpg",
-        "token-usage": "assets/project-token-usage-cinematic-crimson-v6-optimized.jpg"
+        "talks": "assets/project-talks-cinematic-crimson-v7-optimized.jpg",
+        "token-usage": "assets/project-token-usage-cinematic-crimson-v7-optimized.jpg"
       },
       "supporting_art": {
         "identity": "assets/crimson-command-deck-v1-optimized.jpg",
@@ -388,11 +388,11 @@
       }
     },
     "project_art": {
-      "helios": "assets/project-helios-cinematic-crimson-v6-optimized.jpg",
+      "helios": "assets/project-helios-cinematic-crimson-v7-optimized.jpg",
       "zenith": "assets/project-zenith-cinematic-crimson-v7-optimized.jpg",
       "vision": "assets/project-vision-cinematic-crimson-v9-optimized.jpg",
-      "talks": "assets/project-talks-cinematic-crimson-v6-optimized.jpg",
-      "token-usage": "assets/project-token-usage-cinematic-crimson-v6-optimized.jpg"
+      "talks": "assets/project-talks-cinematic-crimson-v7-optimized.jpg",
+      "token-usage": "assets/project-token-usage-cinematic-crimson-v7-optimized.jpg"
     },
     "palette": {
       "void": "#000000",
