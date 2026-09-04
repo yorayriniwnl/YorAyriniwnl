@@ -99,11 +99,11 @@ class ProfileDataTests(unittest.TestCase):
                 self.assertEqual(path.suffix, ".jpg")
 
         expected_project_versions = {
-            "helios": "v7",
+            "helios": "v8",
             "zenith": "v7",
             "vision": "v9",
             "talks": "v7",
-            "token-usage": "v7",
+            "token-usage": "v8",
         }
         for project_id, relative_path in contract["source"]["project_art"].items():
             with self.subTest(project=project_id):

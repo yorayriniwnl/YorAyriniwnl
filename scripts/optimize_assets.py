@@ -41,11 +41,11 @@ RECIPES = (
     # crisp in GitHub's responsive cards while keeping the self-contained SVG
     # manifest within its payload budget.
     AssetRecipe("project-portfolio-cinematic-crimson-v6.png", "project-portfolio-cinematic-crimson-v6-optimized.jpg", (1200, 675), 76),
-    AssetRecipe("project-helios-cinematic-crimson-v7.png", "project-helios-cinematic-crimson-v7-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-helios-cinematic-crimson-v8.png", "project-helios-cinematic-crimson-v8-optimized.jpg", (1200, 675), 76),
     AssetRecipe("project-zenith-cinematic-crimson-v7.png", "project-zenith-cinematic-crimson-v7-optimized.jpg", (1200, 675), 76),
     AssetRecipe("project-vision-cinematic-crimson-v9.png", "project-vision-cinematic-crimson-v9-optimized.jpg", (1200, 675), 76),
     AssetRecipe("project-talks-cinematic-crimson-v7.png", "project-talks-cinematic-crimson-v7-optimized.jpg", (1200, 675), 76),
-    AssetRecipe("project-token-usage-cinematic-crimson-v7.png", "project-token-usage-cinematic-crimson-v7-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-token-usage-cinematic-crimson-v8.png", "project-token-usage-cinematic-crimson-v8-optimized.jpg", (1200, 675), 76),
     # Supporting plates are atmospheric layers rather than standalone cards;
     # 840px delivery derivatives match the profile's rendered content width,
     # preserving sharp detail at README scale while

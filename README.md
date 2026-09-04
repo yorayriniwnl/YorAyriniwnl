@@ -110,7 +110,7 @@
 </p>
 
 <a href="https://github.com/yorayriniwnl/Yor-Helios">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v14" width="100%" alt="Yor Helios: realtime energy intelligence"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v15" width="100%" alt="Yor Helios: realtime energy intelligence"/>
 </a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-summary-helios.svg?rev=atlas-v6" width="100%" alt="Yor Helios: In development, January 2026-Present. An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards. Stack: Python; FastAPI; TypeScript; Docker; WebSocket. Proof: Bidirectional realtime alert streaming; Continuous anomaly and threshold engine; One-command Docker Compose environment."/>
@@ -129,7 +129,7 @@
 </p>
 
 <a href="https://github.com/yorayriniwnl/Yor_Token_Usage">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-token-usage.svg?rev=raster-v14" width="100%" alt="Yor_Token_Usage: multi-ai usage cockpit"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-token-usage.svg?rev=raster-v15" width="100%" alt="Yor_Token_Usage: multi-ai usage cockpit"/>
 </a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-summary-token-usage.svg?rev=atlas-v6" width="100%" alt="Yor_Token_Usage: Experimental, 2026. A local-first Manifest V3 Chrome extension for estimating AI token usage across ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional sync. Stack: JavaScript; Manifest V3; Chrome Extensions; Local-first storage. Proof: Local-first usage capture across five AI surfaces; Dashboards and exports for usage inspection; Optional sync with explicit privacy and clear-data controls."/>
