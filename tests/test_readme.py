@@ -62,13 +62,16 @@ class ReadmeTests(unittest.TestCase):
         )
         self.assertNotIn("Yor Feelings", self.readme)
 
-    def test_project_details_are_structured_below_clean_covers(self):
+    def test_project_details_are_themed_below_clean_covers(self):
         without_comments = re.sub(r"<!--.*?-->", "", self.readme, flags=re.DOTALL)
         visible_text = re.sub(r"<[^>]+>", "", without_comments).strip()
 
-        self.assertIn("SYS-01 // PERSONAL DEVELOPER PORTFOLIO", visible_text)
-        self.assertIn("SYS-06 // YOR TALKS V2", visible_text)
-        self.assertGreater(len(re.findall(r"<table align=\"center\">", self.readme)), 5)
+        self.assertNotIn("SYS-01 // PERSONAL DEVELOPER PORTFOLIO", visible_text)
+        self.assertNotIn("SYS-06 // YOR TALKS V2", visible_text)
+        self.assertNotIn('<table align="center">', self.readme)
+        self.assertEqual(self.readme.count("project-summary-"), len(generate_readme.PROJECT_SUMMARIES))
+        for project_id in generate_readme.PROJECT_SUMMARIES:
+            self.assertIn(f"output/project-summary-{project_id}.svg?rev=atlas-v6", self.readme)
         self.assertNotIn("<h1", self.readme)
         self.assertNotRegex(self.readme, r"(?m)^#{1,6}\s")
         self.assertNotRegex(self.readme, r"(?m)^\s*[-*+]\s+")
@@ -194,6 +197,12 @@ class ReadmeTests(unittest.TestCase):
             "project-dossier-vision.svg",
             "project-dossier-talks.svg",
             "project-dossier-token-usage.svg",
+            "project-summary-portfolio.svg",
+            "project-summary-helios.svg",
+            "project-summary-zenith.svg",
+            "project-summary-vision.svg",
+            "project-summary-talks.svg",
+            "project-summary-token-usage.svg",
             "project-portfolio-v2.svg",
             "project-portfolio-mobile-v2.svg",
             "project-helios.svg",

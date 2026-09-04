@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 19: themed project readouts
+
+The visible metadata below each clean cover is now rendered as a crimson system readout instead of a browser-native HTML table. Each plate keeps the project title, state, mission, stack, and proof in the same typography, rails, grids, glyphs, and reduced-motion-safe signal language as the rest of the profile. The covers, portrait, dossiers, and visual link controls remain intact.
+
 ## Pass 18: cinematic project plates v2
 
 The six clean project covers now use distinct high-detail crimson worlds with a flagship data-ribbon composition and restrained project-specific motion overlays. The approved portrait remains locked, project metadata stays below each image, and delivery derivatives are generated from the new v2 PNG sources at 1440×810 while legacy v1 derivatives leave the active optimization path.

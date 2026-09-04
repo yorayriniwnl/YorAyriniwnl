@@ -127,6 +127,12 @@ class GenerateAssetsTests(unittest.TestCase):
             "project-dossier-vision.svg",
             "project-dossier-talks.svg",
             "project-dossier-token-usage.svg",
+            "project-summary-portfolio.svg",
+            "project-summary-helios.svg",
+            "project-summary-zenith.svg",
+            "project-summary-vision.svg",
+            "project-summary-talks.svg",
+            "project-summary-token-usage.svg",
             "arsenal.svg",
             "finale.svg",
             "nav-portfolio.svg",
@@ -159,7 +165,7 @@ class GenerateAssetsTests(unittest.TestCase):
         manifest = generate_assets.build_asset_manifest()
 
         treated = set(manifest) - generate_assets.ATLAS_TREATMENT_EXCLUDED
-        self.assertEqual(len(treated), 42)
+        self.assertEqual(len(treated), 48)
         for filename in treated:
             with self.subTest(asset=filename):
                 svg = manifest[filename]
@@ -207,6 +213,13 @@ class GenerateAssetsTests(unittest.TestCase):
                 root = ET.fromstring(manifest[filename])
                 self.assertTrue(root.tag.endswith("svg"))
                 self.assertIn("<title>", manifest[filename])
+
+        for project in profile["projects"]:
+            summary = manifest[f'project-summary-{project["id"]}.svg']
+            self.assertIn('data-visual-layer="project-summary"', summary)
+            self.assertIn("prefers-reduced-motion: reduce", summary)
+            self.assertIn(project["name"].upper(), summary)
+            self.assertIn(project["status"].upper(), summary)
 
         for proof in profile["proof"]:
             card = manifest[f'proof-{proof["id"]}.svg']

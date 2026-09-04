@@ -1601,6 +1601,95 @@ def build_project_dossier_svg(project, cfg):
 </svg>'''
 
 
+def build_project_summary_svg(project, cfg):
+    """Render the visible project metadata as a themed system readout.
+
+    GitHub's README renderer does not inherit a page-level stylesheet, so
+    ordinary HTML tables become visually disconnected from the crimson atlas.
+    This compact plate keeps the cover clean while making the metadata part of
+    the same authored visual language.
+    """
+    kind = project["id"]
+    world_key = "talks" if kind == "token-usage" else kind
+    world = WORLD_TOKENS.get(world_key, WORLD_TOKENS["portfolio"])
+    W, H = 720, 260
+    code = f'SYS-{project["order"]:02d}'
+    title_id = f"{kind}SummaryTitle"
+    desc_id = f"{kind}SummaryDescription"
+    summary_lines = wrap_lines(project["summary"], 86)[:3]
+    summary_svg = "".join(
+        f'<tspan x="90" dy="{0 if index == 0 else 17}">{esc(line)}</tspan>'
+        for index, line in enumerate(summary_lines)
+    )
+    stack_lines = wrap_lines(" · ".join(project["stack"]).upper(), 47)[:2]
+    stack_svg = "".join(
+        f'<tspan x="30" dy="{0 if index == 0 else 15}">{esc(line)}</tspan>'
+        for index, line in enumerate(stack_lines)
+    )
+    proof_lines = wrap_lines(" · ".join(project["proof"]), 43)[:3]
+    proof_svg = "".join(
+        f'<tspan x="390" dy="{0 if index == 0 else 15}">{esc(line)}</tspan>'
+        for index, line in enumerate(proof_lines)
+    )
+    glyph_kind = {
+        "portfolio": "product",
+        "vision": "vision",
+        "zenith": "target",
+        "helios": "realtime",
+        "token-usage": "layers",
+        "talks": "realtime",
+    }.get(kind, "mission")
+    summary_glyph = kinetic_glyph_svg(glyph_kind, 20, 84, .58, project["order"] * .17)
+    status = esc(project["status"].upper())
+    period = esc(project["period"].upper())
+    return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{title_id} {desc_id}" data-visual-layer="project-summary">
+<title id="{title_id}">{esc(code)} — {esc(project["name"])}</title>
+<desc id="{desc_id}">{esc(project["summary"])} Stack: {esc("; ".join(project["stack"]))}. Proof: {esc("; ".join(project["proof"]))}.</desc>
+<defs>
+{mono_font_defs()}
+<linearGradient id="{kind}SummaryBg" x1="0%" x2="100%">
+ <stop offset="0" stop-color="{world["canvas"]}"/><stop offset=".63" stop-color="{world["surface"]}"/><stop offset="1" stop-color="{world["glow"]}" stop-opacity=".55"/>
+</linearGradient>
+<linearGradient id="{kind}SummaryRail" x1="0%" x2="100%">
+ <stop offset="0" stop-color="{world["accent"]}" stop-opacity="0"/><stop offset=".22" stop-color="{world["accent"]}" stop-opacity=".78"/><stop offset=".52" stop-color="{world["accent_soft"]}" stop-opacity=".2"/><stop offset=".82" stop-color="{world["accent"]}" stop-opacity=".78"/><stop offset="1" stop-color="{world["accent"]}" stop-opacity="0"/>
+</linearGradient>
+<pattern id="{kind}SummaryGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+ <path d="M24 0H0V24" fill="none" stroke="{world["accent_soft"]}" stroke-width=".45" opacity=".09"/>
+</pattern>
+<style>
+ .{kind}-summary-sweep {{ animation: {kind}-summary-sweep 8s linear infinite; }}
+ .{kind}-summary-pulse {{ animation: {kind}-summary-pulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
+ @keyframes {kind}-summary-sweep {{ from {{ transform: translateX(-180px); }} to {{ transform: translateX(900px); }} }}
+ @keyframes {kind}-summary-pulse {{ 0%, 100% {{ opacity: .28; transform: scale(.72); }} 50% {{ opacity: .92; transform: scale(1.18); }} }}
+ @media (prefers-reduced-motion: reduce) {{ .{kind}-summary-sweep, .{kind}-summary-pulse {{ animation: none !important; }} }}
+</style>
+</defs>
+<rect x="1" y="1" width="718" height="258" rx="8" fill="url(#{kind}SummaryBg)" stroke="{world["line"]}"/>
+<rect x="1" y="1" width="718" height="258" rx="8" fill="url(#{kind}SummaryGrid)"/>
+<rect class="{kind}-summary-sweep" x="-180" y="1" width="180" height="258" fill="url(#{kind}SummaryRail)" opacity=".22"/>
+<rect x="1" y="1" width="6" height="258" rx="2" fill="{world["accent"]}"/>
+<path d="M22 20V10H32M688 10h10v10M22 240v10h10M688 250h10v-10" fill="none" stroke="{world["accent_soft"]}" stroke-width="1" opacity=".7"/>
+<text x="38" y="29" class="mono" font-size="9" fill="{world["accent"]}" letter-spacing="2.1">{esc(code)} // {esc(project["codename"].upper())}</text>
+<rect x="548" y="14" width="140" height="23" rx="11.5" fill="{world["accent"]}" opacity=".14" stroke="{world["accent"]}"/>
+<text x="618" y="29" text-anchor="middle" class="mono" font-size="8" fill="{world["ink"]}" letter-spacing="1.1">{status}</text>
+<text x="688" y="54" text-anchor="end" class="mono" font-size="8" fill="{world["muted"]}" letter-spacing="1.1">{period}</text>
+<text x="38" y="68" class="mono" font-size="22" fill="{world["ink"]}" letter-spacing=".7">{esc(project["name"].upper())}</text>
+<path d="M22 80H698" stroke="{world["line"]}"/>
+{summary_glyph}
+<text x="90" y="101" class="mono" font-size="8" fill="{world["accent"]}" letter-spacing="1.8">MISSION / SYSTEM INTENT</text>
+<text x="90" y="121" class="mono" font-size="12" fill="{world["ink"]}">{summary_svg}</text>
+<path d="M22 158H698" stroke="{world["line"]}"/>
+<text x="30" y="178" class="mono" font-size="8" fill="{world["accent"]}" letter-spacing="1.8">STACK / LOADOUT</text>
+<text x="390" y="178" class="mono" font-size="8" fill="{world["accent"]}" letter-spacing="1.8">PROOF / SIGNAL</text>
+<text x="30" y="197" class="mono" font-size="9" fill="{world["muted"]}">{stack_svg}</text>
+<text x="390" y="197" class="mono" font-size="9" fill="{world["muted"]}">{proof_svg}</text>
+<circle class="{kind}-summary-pulse" cx="682" cy="231" r="4" fill="{world["accent_soft"]}"/>
+<path d="M30 239H350M390 239H650" stroke="url(#{kind}SummaryRail)"/>
+<text x="30" y="249" class="mono" font-size="7" fill="{world["muted"]}" letter-spacing="1.1">DETAILS BELOW / DOSSIER AVAILABLE</text>
+<text x="688" y="249" text-anchor="end" class="mono" font-size="7" fill="{world["accent_soft"]}" letter-spacing="1.1">OPEN SIGNAL ↗</text>
+</svg>'''
+
+
 def build_field_notes_svg(cfg):
     """Render verified experience and education as a two-record trajectory."""
     W, H = 720, 500
@@ -2983,6 +3072,9 @@ def build_asset_manifest():
         )
 
     for project in PROFILE["projects"]:
+        manifest[f'project-summary-{project["id"]}.svg'] = build_project_summary_svg(
+            project, CONFIG
+        )
         manifest[f'project-dossier-{project["id"]}.svg'] = build_project_dossier_svg(
             project, CONFIG
         )

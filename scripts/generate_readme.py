@@ -28,6 +28,10 @@ PROJECT_VISUALS = {
     "token-usage": "project-token-usage.svg",
     "talks": "project-talks.svg",
 }
+PROJECT_SUMMARIES = {
+    project_id: f"project-summary-{project_id}.svg"
+    for project_id in ("portfolio", "vision", "zenith", "helios", "token-usage", "talks")
+}
 ATLAS_ASSETS = (
     "identity-console.svg",
     "signal-strip.svg",
@@ -100,6 +104,7 @@ ASSET_REVISIONS = {
     "project-vision.svg": "raster-v9",
     "project-talks.svg": "raster-v9",
     "project-token-usage.svg": "raster-v9",
+    **{filename: "atlas-v6" for filename in PROJECT_SUMMARIES.values()},
 }
 
 
@@ -133,26 +138,15 @@ def linked_button(href: str, filename: str, alt: str, handle: str) -> str:
     return f'<a href="{href}">{image(filename, alt, handle, "350")}</a>'
 
 
-def project_details_panel(project: dict) -> list[str]:
-    """Keep cover art clean while placing the authored project context below it."""
-    code = f'SYS-{project["order"]:02d}'
-    name = html.escape(project["name"].upper())
-    status = html.escape(project["status"].upper())
-    period = html.escape(project["period"].upper())
-    summary = html.escape(project["summary"])
-    stack = html.escape(" · ".join(project["stack"]).upper())
-    proof = html.escape(" · ".join(project["proof"]))
-    return [
-        '<table align="center">',
-        '<tr><td align="center">',
-        f'<strong>{code} // {name}</strong><br/>',
-        f'<sub>{status} · {period}</sub><br/><br/>',
-        f'{summary}<br/><br/>',
-        f'<sub>STACK · {stack}</sub><br/>',
-        f'<sub>PROOF · {proof}</sub>',
-        '</td></tr>',
-        '</table>',
-    ]
+def project_details_panel(project: dict, handle: str) -> list[str]:
+    """Keep cover art clean while rendering metadata inside the crimson atlas."""
+    filename = PROJECT_SUMMARIES[project["id"]]
+    alt = (
+        f'{project["name"]}: {project["status"]}, {project["period"]}. '
+        f'{project["summary"]} Stack: {"; ".join(project["stack"])}. '
+        f'Proof: {"; ".join(project["proof"])}.'
+    )
+    return [image(filename, alt, handle)]
 
 
 def systems_reel(handle: str) -> list[str]:
@@ -225,7 +219,7 @@ def project_block(project: dict, handle: str) -> list[str]:
     lines = [
         *cover,
         "",
-        *project_details_panel(project),
+        *project_details_panel(project, handle),
         "",
         "<details>",
         (
