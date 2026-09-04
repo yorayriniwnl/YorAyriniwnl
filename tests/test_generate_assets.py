@@ -35,21 +35,18 @@ class GenerateAssetsTests(unittest.TestCase):
 
         self.assertTrue(ET.fromstring(nav).tag.endswith("svg"))
         self.assertTrue(ET.fromstring(card).tag.endswith("svg"))
-        self.assertIn("AI VS. REAL IMAGE DETECTOR", card)
-        self.assertIn("78.5% HELD-OUT TEST ACCURACY", card.upper())
-        self.assertIn("LBP", card)
-        self.assertIn("GLCM", card)
-        self.assertIn("FORENSIC WORKBENCH", card)
-        self.assertIn("data:image/jpeg;base64,", card)
+        self.assertIn('class="vision-frame-sweep"', card)
+        self.assertIn('data:image/jpeg;base64,', card)
+        self.assertNotIn("<text", card)
 
     def test_flagship_cards_have_distinct_visual_worlds_and_motion_grammar(self):
         manifest = generate_assets.build_asset_manifest()
         expected = {
-            "helios": ("INDUSTRIAL TELEMETRY", "#ff1f2d", "EVENT TOPOLOGY", "SYNTHETIC DEMO"),
-            "zenith": ("DAYLIGHT SOLAR INTELLIGENCE", "#d30b24", "3D ROOF PLANNING", "IRR"),
-            "vision": ("FORENSIC TEXTURE LAB", "#d30b24", "FEATURE VECTOR", "78.5%"),
-            "token-usage": ("LOCAL-FIRST EXTENSION", "#ff1f2d", "PROVIDER SIGNAL BUS", "MANIFEST V3"),
-            "talks": ("REALTIME COMMUNICATION", "#ff1f2d", "MESSAGE FLOW", "PRESENCE"),
+            "helios": "helios",
+            "zenith": "zenith",
+            "vision": "vision",
+            "token-usage": "token-usage",
+            "talks": "talks",
         }
         old_world_colors = (
             "#f0a64a", "#0e8a78", "#169cab", "#5be8ff", "#a78bff",
@@ -59,9 +56,11 @@ class GenerateAssetsTests(unittest.TestCase):
         for kind, markers in expected.items():
             card = manifest[f"project-{kind}.svg"]
             with self.subTest(project=kind):
-                self.assertTrue(all(marker in card for marker in markers))
+                self.assertIn(markers, card)
                 self.assertIn(f'class="{kind}-motion"', card)
                 self.assertIn(f'class="{kind}-frame-sweep"', card)
+                self.assertIn(f'class="{kind}-ambient-orbit"', card)
+                self.assertIn(f'class="{kind}-ambient-pulse"', card)
                 self.assertIn("prefers-reduced-motion: reduce", card)
                 self.assertIn(
                     generate_assets.asset_data_uri(
@@ -69,7 +68,8 @@ class GenerateAssetsTests(unittest.TestCase):
                     ).split(",", 1)[1],
                     card,
                 )
-                self.assertRegex(card, r'<image[^>]+opacity="\.(?:7[0-9]|8[0-9]|9[0-9])"')
+                self.assertRegex(card, r'<image[^>]+preserveAspectRatio="xMidYMid slice"')
+                self.assertNotIn("<text", card)
                 for old_color in old_world_colors:
                     self.assertNotIn(old_color, card)
 
@@ -79,8 +79,8 @@ class GenerateAssetsTests(unittest.TestCase):
                     self.assertNotIn(old_color, svg)
 
         self.assertNotEqual(
-            manifest["project-helios.svg"].split("<image", 1)[0],
-            manifest["project-talks.svg"].split("<image", 1)[0],
+            generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT["project_art"]["helios"]),
+            generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT["project_art"]["talks"]),
         )
 
     def test_manifest_contains_only_public_readme_assets(self):

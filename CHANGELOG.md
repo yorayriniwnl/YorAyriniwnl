@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 17: clean covers, context below
+
+The six selected-system covers are now clean art-first visuals with no overlaid title, status, stack, or summary copy. Each project's title, status, period, summary, stack, and proof now sits in a readable details panel directly below its cover, followed by the native deep dossier disclosure and shiny live/source controls. Project cover cache revisions moved to `raster-v8`, flagship cover revisions to `raster-v3`, and the approved portrait plus canonical project data remain unchanged.
+
 ## Pass 16: crimson command deck remaster
 
 The entire profile visual system now carries a stronger authored chassis: a cinematic command-deck plate behind identity, a red systems-atlas landscape behind the technical core, and an open-channel portal behind the collaboration close. Supporting SVGs move to the atlas-v5 treatment with instrument rails, radar pulses, signal ticks, and stoppable reduced-motion fallbacks. Flagship project cards gain a moving perimeter sweep, while the approved portrait and six-project canonical data remain unchanged. Source PNGs stay preserved separately from size-conscious embedded delivery derivatives.

@@ -2149,65 +2149,58 @@ def sculpture_svg():
 
 
 def build_featured_project_svg(cfg, mobile=False):
-    """An editorial flagship cover; the surrounding HTML owns the real links."""
-    W, H = (720, 840) if mobile else (1500, 660)
+    """Render the flagship artwork as a clean cover; HTML owns all details."""
+    W, H = (720, 400) if mobile else (1500, 520)
     project = next(item for item in PROFILE["projects"] if item["id"] == "portfolio")
-    cx, cy, scale = (360, 454, 1.05) if mobile else (1090, 300, 1.42)
-    left = 36 if mobile else 64
-    title_y = 150 if mobile else 222
-    title_size = 72 if mobile else 106
-    second_y = 238 if mobile else 334
-    second_size = 96 if mobile else 138
-    footer_y = 663 if mobile else 530
-    proof_svg = []
-    for i, proof in enumerate(project["proof"]):
-        x = left if mobile else 64 + i * 478
-        y = 703 + i * 36 if mobile else 589
-        proof_svg.append(
-            f'<circle cx="{x + 4}" cy="{y - 7}" r="3" fill="#ff8a7f"/>'
-            f'<text x="{x + 21}" y="{y}" class="mono" font-size="{19 if mobile else 17}" fill="#e0c8cb">{esc(proof)}</text>'
-        )
-    subtitle = "" if mobile else f'''
-<text x="66" y="390" class="mono" font-size="17" fill="#ba939b" letter-spacing="1.4">GPU INTERFACES. ENGINEERED TO SHIP.</text>
-<path d="M66 422H514" stroke="#63242d"/>
-<text x="66" y="469" class="mono" font-size="16" fill="#f5eaea" letter-spacing="1.5">ENTER THE PORTFOLIO <tspan fill="#ff8a7f">↗</tspan></text>
-'''
+    cx, cy, scale = (360, 200, .72) if mobile else (1085, 252, 1.1)
+    art_left = 0
+    art_top = 0
+    art_width = W
+    art_height = H
+    left = 24 if mobile else 64
+    right = W - left
+    orbit_width = 210 if mobile else 330
+    orbit_height = 48 if mobile else 76
+    proof_copy = " ".join(project["proof"])
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">
 <title id="title">The product universe — {esc(project["name"])}</title>
-<desc id="desc">{esc(project["summary"])} {esc("; ".join(project["proof"]))}. The light sculpture is illustrative artwork.</desc>
+<desc id="desc">Clean illustrative artwork for {esc(project["name"])}. {esc(project["summary"])} {esc(proof_copy)}</desc>
 <defs>
-{experience_font_defs()}
 <radialGradient id="ambient"><stop stop-color="#7b1528" stop-opacity=".48"/><stop offset="1" stop-color="#080508" stop-opacity="0"/></radialGradient>
 <linearGradient id="edge"><stop stop-color="#ff8a7f"/><stop offset=".4" stop-color="#57222c"/><stop offset="1" stop-color="#190c11"/></linearGradient>
 <pattern id="dust" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#ad5865" opacity=".15"/></pattern>
+<linearGradient id="coverScrim" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#020202" stop-opacity=".56"/><stop offset=".48" stop-color="#020202" stop-opacity=".08"/><stop offset="1" stop-color="#020202" stop-opacity=".28"/></linearGradient>
 <clipPath id="coverClip"><rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="10"/></clipPath>
 <style>
 .sculpture-float {{animation:levitate 14s ease-in-out infinite;transform-origin:0 0}}
 .orbit-trace {{animation:trace 18s linear infinite;stroke-dasharray:18 520}}
+.cover-sweep {{animation:cover-sweep 8s linear infinite;stroke-dasharray:22 700}}
+.cover-pulse {{animation:cover-pulse 2.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}}
 @keyframes levitate {{0%,100%{{transform:translateY(0) rotate(-5deg)}}50%{{transform:translateY(-14px) rotate(5deg)}}}}
 @keyframes trace {{to{{stroke-dashoffset:-1076}}}}
-@media (prefers-reduced-motion:reduce) {{.sculpture-float,.orbit-trace{{animation:none}}}}
+@keyframes cover-sweep {{from{{stroke-dashoffset:760;opacity:.08}}45%{{opacity:.72}}to{{stroke-dashoffset:0;opacity:.08}}}}
+@keyframes cover-pulse {{0%,100%{{opacity:.25;transform:scale(.82)}}50%{{opacity:.9;transform:scale(1.16)}}}}
+@media (prefers-reduced-motion:reduce) {{.sculpture-float,.orbit-trace,.cover-sweep,.cover-pulse{{animation:none}}}}
 </style>
 </defs>
 <g clip-path="url(#coverClip)">
 <rect width="{W}" height="{H}" fill="#060507"/>
+<rect x="{art_left}" y="{art_top}" width="{art_width}" height="{art_height}" fill="#060507"/>
 <rect width="{W}" height="{H}" fill="url(#dust)"/>
 <ellipse cx="{cx}" cy="{cy}" rx="{345 * scale}" ry="{250 * scale}" fill="url(#ambient)"/>
-<path d="M{left} 1H{W - left}" stroke="url(#edge)" stroke-width="3"/>
-<text x="{left}" y="52" class="mono" font-size="{17 if mobile else 15}" fill="#ff8a7f" letter-spacing="2.4">FLAGSHIP / SYS-01</text>
-<text x="{W - left}" y="52" class="mono" font-size="15" fill="#cda4ab" text-anchor="end" letter-spacing="2">{esc(project["status"].upper())} ↗</text>
+<rect width="{W}" height="{H}" fill="url(#coverScrim)"/>
 <g transform="translate({cx} {cy}) scale({scale})">
-<ellipse cy="132" rx="242" ry="46" fill="none" stroke="#471822" opacity=".75"/>
-<ellipse cy="132" rx="242" ry="46" fill="none" stroke="#e84b4b" stroke-width="1.4" class="orbit-trace"/>
+<ellipse cy="132" rx="{orbit_width}" ry="{orbit_height}" fill="none" stroke="#471822" opacity=".75"/>
+<ellipse cy="132" rx="{orbit_width}" ry="{orbit_height}" fill="none" stroke="#e84b4b" stroke-width="1.4" class="orbit-trace"/>
 <g class="sculpture-float">{sculpture_svg()}</g>
 <path d="M-285 0h14M271 0h14M0 -206v14M0 192v14" stroke="#a55e6b" opacity=".55"/>
 </g>
-<text x="{left}" y="{title_y}" class="serif" font-size="{title_size}" fill="#f5eaea">The product</text>
-<text x="{left - 2}" y="{second_y}" class="serif" font-size="{second_size}" fill="#f5eaea">universe.</text>
-{subtitle}
-<path d="M{left} {footer_y}H{W - left}" stroke="#51202b"/>
-{"".join(proof_svg)}
-<text x="{left}" y="{H - 22}" class="mono" font-size="{13 if mobile else 12}" fill="#9c7680" letter-spacing="1.5">{esc(project["name"].upper())}</text>
+<g aria-hidden="true">
+<path d="M{left} 18H{right}V{H - 18}H{left}Z" fill="none" stroke="#ff1f2d" stroke-width="1.2" stroke-dasharray="20 740" class="cover-sweep" opacity=".42"/>
+<path d="M{left} 18h58M{left} 18v44M{right} 18h-58M{right} 18v44M{left} {H - 18}h58M{left} {H - 18}v-44M{right} {H - 18}h-58M{right} {H - 18}v-44" fill="none" stroke="#ff6670" stroke-width="1" opacity=".58"/>
+<circle cx="{right - 28}" cy="{H - 34}" r="4" fill="#ff1f2d" class="cover-pulse"/>
+<path d="M{left + 12} {H - 38}H{right - 52}" stroke="#8f0014" stroke-width="2" stroke-dasharray="3 16" class="cover-sweep" opacity=".82"/>
+</g>
 </g>
 <rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="10" fill="none" stroke="#52212b"/>
 </svg>'''
@@ -2285,7 +2278,11 @@ def project_motion_style(kind):
 @keyframes {kind}-typing {{ 0%, 100% {{ opacity: .25; }} 50% {{ opacity: 1; }} }}'''
     animation = f'''
 .{kind}-frame-sweep {{ animation: {kind}-frame-sweep 7.5s linear infinite; }}
+.{kind}-ambient-orbit {{ animation: {kind}-ambient-orbit 12s linear infinite; transform-box: fill-box; transform-origin: center; }}
+.{kind}-ambient-pulse {{ animation: {kind}-ambient-pulse 2.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
 @keyframes {kind}-frame-sweep {{ from {{ stroke-dashoffset: 760; opacity: .08; }} 45% {{ opacity: .72; }} to {{ stroke-dashoffset: 0; opacity: .08; }} }}
+@keyframes {kind}-ambient-orbit {{ from {{ transform: rotate(0deg); opacity: .24; }} 50% {{ opacity: .62; }} to {{ transform: rotate(360deg); opacity: .24; }} }}
+@keyframes {kind}-ambient-pulse {{ 0%, 100% {{ opacity: .24; transform: scale(.8); }} 50% {{ opacity: .9; transform: scale(1.2); }} }}
 ''' + animation
     return f'''<style>
 {animation}
@@ -2339,7 +2336,9 @@ def _glcm_matrix(x, y, accent):
 def project_visual_svg(kind, cfg):
     world_key = "talks" if kind == "token-usage" else kind
     world = WORLD_TOKENS[world_key]
-    art = asset_data_uri(VISUAL_CONTRACT["project_art"][kind])
+    art = asset_data_uri(
+        VISUAL_CONTRACT["project_art"].get(kind, VISUAL_CONTRACT["project_art"]["talks"])
+    )
     accent = world["accent"]
     accent_soft = world["accent_soft"]
     canvas = world["canvas"]
@@ -2535,47 +2534,51 @@ def project_visual_svg(kind, cfg):
 
 
 def build_project_card_svg(project, cfg):
+    """Render a clean, art-first project cover; HTML owns the project details."""
     kind = project["kind"]
     world_key = "talks" if kind == "token-usage" else kind
     world = WORLD_TOKENS.get(world_key, WORLD_TOKENS["portfolio"])
     world_label = "LOCAL-FIRST EXTENSION" if kind == "token-usage" else world["label"]
-    W, H = 720, 500
-    visual = project_visual_svg(kind, cfg)
+    W, H = 720, 360
+    art = asset_data_uri(
+        VISUAL_CONTRACT["project_art"].get(kind, VISUAL_CONTRACT["project_art"]["talks"])
+    )
     title_id = f"{kind}CardTitle"
     desc_id = f"{kind}CardDescription"
     description = (
-        f'{project["title"]}: {world_label.lower()}. {project["summary"]} '
-        f'Visual treatment is an illustrative interface study; project status is {project.get("status", "published")}.'
+        f'{project["title"]}: {world_label.lower()}. Clean illustrative artwork; '
+        f'project details are provided below the cover. Status: {project.get("status", "published")}. '
+        f'{project["summary"]}'
     )
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{title_id} {desc_id}">
 <title id="{title_id}">{esc(project["title"])} — {esc(world_label.lower())}</title>
 <desc id="{desc_id}">{esc(description)}</desc>
 <defs>
-{experience_font_defs()}
 {project_motion_style(kind)}
-<linearGradient id="{kind}Edge" x1="0" y1="0" x2="1" y2="1">
- <stop offset="0" stop-color="{world["accent"]}"/><stop offset="1" stop-color="{world["accent_soft"]}"/>
+<linearGradient id="{kind}Scrim" x1="0" y1="0" x2="1" y2="1">
+ <stop offset="0" stop-color="#000" stop-opacity=".08"/><stop offset=".56" stop-color="#000" stop-opacity=".02"/>
+ <stop offset="1" stop-color="#000" stop-opacity=".38"/>
 </linearGradient>
-<pattern id="{kind}MicroGrid" width="24" height="24" patternUnits="userSpaceOnUse">
- <path d="M24 0H0V24" fill="none" stroke="{world["line"]}" stroke-width=".45" opacity=".22"/>
+<radialGradient id="{kind}Glow" cx="82%" cy="22%" r="76%">
+ <stop offset="0" stop-color="{world["accent"]}" stop-opacity=".18"/><stop offset="1" stop-color="{world["accent"]}" stop-opacity="0"/>
+</radialGradient>
+<pattern id="{kind}MicroGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+ <path d="M28 0H0V28" fill="none" stroke="{world["accent_soft"]}" stroke-width=".45" opacity=".09"/>
 </pattern>
 </defs>
-<rect x="1" y="1" width="718" height="498" rx="9" fill="{world["canvas"]}" stroke="{world["line"]}"/>
-<rect x="1" y="1" width="718" height="498" rx="9" fill="url(#{kind}MicroGrid)" opacity=".28"/>
-<rect x="18" y="18" width="5" height="45" rx="2" fill="url(#{kind}Edge)"/>
-<text x="38" y="37" class="mono" font-size="10" fill="{world["muted"]}" letter-spacing="1.5">{esc(project["code"])}  /  {esc(world_label)}</text>
-<text x="38" y="63" class="mono" font-size="26" fill="{world["ink"]}" letter-spacing="1">{esc(project["title"])}</text>
-<text x="684" y="37" text-anchor="end" class="mono" font-size="9" fill="{world["accent"]}" letter-spacing="1.2">{esc(project.get("status", "SYSTEM").upper())}  ↗</text>
-<path d="M28 76H692" stroke="{world["line"]}"/>
+<rect x="1" y="1" width="718" height="358" rx="9" fill="{world["canvas"]}" stroke="{world["line"]}"/>
+<image href="{art}" x="2" y="2" width="716" height="356" preserveAspectRatio="xMidYMid slice"/>
+<rect x="2" y="2" width="716" height="356" fill="url(#{kind}Scrim)"/>
+<rect x="2" y="2" width="716" height="356" fill="url(#{kind}Glow)"/>
+<rect x="2" y="2" width="716" height="356" fill="url(#{kind}MicroGrid)"/>
 <g class="{kind}-motion" aria-hidden="true" pointer-events="none">
-<path d="M28 86H692V376H28Z" fill="none" stroke="{world["accent"]}" stroke-width="1.4" stroke-dasharray="18 742" stroke-dashoffset="760" class="{kind}-frame-sweep" opacity=".42"/>
-<path d="M38 96h42M38 96v30M682 96h-42M682 96v30M38 366h42M38 366v-30M682 366h-42M682 366v-30" fill="none" stroke="{world["accent_soft"]}" stroke-width="1" opacity=".48"/>
+<path d="M28 18H692V342H28Z" fill="none" stroke="{world["accent"]}" stroke-width="1.4" stroke-dasharray="18 742" stroke-dashoffset="760" class="{kind}-frame-sweep" opacity=".46"/>
+<path d="M38 28h58M38 28v42M682 28h-58M682 28v42M38 332h58M38 332v-42M682 332h-58M682 332v-42" fill="none" stroke="{world["accent_soft"]}" stroke-width="1" opacity=".56"/>
+<ellipse cx="590" cy="86" rx="92" ry="28" fill="none" stroke="{world["accent_soft"]}" stroke-width="1" stroke-dasharray="3 12" opacity=".42" class="{kind}-ambient-orbit"/>
+<circle cx="590" cy="86" r="4" fill="{world["accent"]}" class="{kind}-ambient-pulse"/>
+<path d="M42 310H242" stroke="{world["accent"]}" stroke-width="1.5" stroke-dasharray="3 12" opacity=".48" class="{kind}-frame-sweep"/>
 </g>
-{visual}
-<path d="M28 397H692" stroke="{world["line"]}"/>
-<text x="28" y="422" class="mono" font-size="11" fill="{world["accent"]}" letter-spacing="1.05">{esc(project["stack"])}</text>
-<text x="28" y="451" class="mono" font-size="12" fill="{world["muted"]}">{esc(project["summary"])}</text>
-<text x="684" y="474" text-anchor="end" class="mono" font-size="11" fill="{world["accent"]}" letter-spacing="1">OPEN  ↗</text>
+<rect x="1" y="1" width="718" height="358" rx="9" fill="none" stroke="{world["accent"]}" stroke-opacity=".34"/>
 </svg>'''
 
 

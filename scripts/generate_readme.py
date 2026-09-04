@@ -93,11 +93,13 @@ ASSET_REVISIONS = {
     "systems-reel-still.png": "motion-v6",
     "systems-reel-mobile-still.png": "motion-v6",
     "hero.svg": "raster-v2",
-    "project-helios.svg": "raster-v6",
-    "project-zenith.svg": "raster-v6",
-    "project-vision.svg": "raster-v6",
-    "project-talks.svg": "raster-v6",
-    "project-token-usage.svg": "raster-v7",
+    "project-portfolio-v2.svg": "raster-v3",
+    "project-portfolio-mobile-v2.svg": "raster-v3",
+    "project-helios.svg": "raster-v8",
+    "project-zenith.svg": "raster-v8",
+    "project-vision.svg": "raster-v8",
+    "project-talks.svg": "raster-v8",
+    "project-token-usage.svg": "raster-v8",
 }
 
 
@@ -129,6 +131,28 @@ def linked_image(href: str, filename: str, alt: str, handle: str, width: str = "
 def linked_button(href: str, filename: str, alt: str, handle: str) -> str:
     """Render a compact animated SVG control instead of a plain text link."""
     return f'<a href="{href}">{image(filename, alt, handle, "350")}</a>'
+
+
+def project_details_panel(project: dict) -> list[str]:
+    """Keep cover art clean while placing the authored project context below it."""
+    code = f'SYS-{project["order"]:02d}'
+    name = html.escape(project["name"].upper())
+    status = html.escape(project["status"].upper())
+    period = html.escape(project["period"].upper())
+    summary = html.escape(project["summary"])
+    stack = html.escape(" · ".join(project["stack"]).upper())
+    proof = html.escape(" · ".join(project["proof"]))
+    return [
+        '<table align="center">',
+        '<tr><td align="center">',
+        f'<strong>{code} // {name}</strong><br/>',
+        f'<sub>{status} · {period}</sub><br/><br/>',
+        f'{summary}<br/><br/>',
+        f'<sub>STACK · {stack}</sub><br/>',
+        f'<sub>PROOF · {proof}</sub>',
+        '</td></tr>',
+        '</table>',
+    ]
 
 
 def systems_reel(handle: str) -> list[str]:
@@ -200,6 +224,8 @@ def project_block(project: dict, handle: str) -> list[str]:
     dossier_label = f'Expand {project["name"]} mission, proof, and stack'
     lines = [
         *cover,
+        "",
+        *project_details_panel(project),
         "",
         "<details>",
         (

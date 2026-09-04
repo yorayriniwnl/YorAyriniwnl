@@ -62,11 +62,13 @@ class ReadmeTests(unittest.TestCase):
         )
         self.assertNotIn("Yor Feelings", self.readme)
 
-    def test_every_visible_authored_block_is_visual(self):
+    def test_project_details_are_structured_below_clean_covers(self):
         without_comments = re.sub(r"<!--.*?-->", "", self.readme, flags=re.DOTALL)
         visible_text = re.sub(r"<[^>]+>", "", without_comments).strip()
 
-        self.assertEqual(visible_text, "")
+        self.assertIn("SYS-01 // PERSONAL DEVELOPER PORTFOLIO", visible_text)
+        self.assertIn("SYS-06 // YOR TALKS V2", visible_text)
+        self.assertGreater(len(re.findall(r"<table align=\"center\">", self.readme)), 5)
         self.assertNotIn("<h1", self.readme)
         self.assertNotRegex(self.readme, r"(?m)^#{1,6}\s")
         self.assertNotRegex(self.readme, r"(?m)^\s*[-*+]\s+")
@@ -103,6 +105,17 @@ class ReadmeTests(unittest.TestCase):
                 self.readme,
                 rf'output/{re.escape(filename)}(?:\?rev=[^" ]+)?" width="100%"',
             )
+
+        for filename, revision in (
+            ("project-portfolio-v2.svg", "raster-v3"),
+            ("project-portfolio-mobile-v2.svg", "raster-v3"),
+            ("project-helios.svg", "raster-v8"),
+            ("project-zenith.svg", "raster-v8"),
+            ("project-vision.svg", "raster-v8"),
+            ("project-token-usage.svg", "raster-v8"),
+            ("project-talks.svg", "raster-v8"),
+        ):
+            self.assertIn(f"output/{filename}?rev={revision}", self.readme)
 
     def test_every_authored_hyperlink_is_a_visual_control(self):
         markdown_links = re.findall(r"(?<!!)\[[^\]]+\]\([^)]+\)", self.readme)
@@ -209,9 +222,7 @@ class ReadmeTests(unittest.TestCase):
 
     def test_project_art_urls_are_cache_versioned(self):
         for filename in generate_readme.PROJECT_VISUALS.values():
-            if filename == "project-portfolio-v2.svg":
-                continue
-            revision = "raster-v7" if filename == "project-token-usage.svg" else "raster-v6"
+            revision = generate_readme.ASSET_REVISIONS[filename]
             self.assertIn(f"output/{filename}?rev={revision}", self.readme)
 
 

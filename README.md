@@ -48,10 +48,20 @@
 
 <a href="https://www.yorayriniwnl.in">
 <picture>
-<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-mobile-v2.svg"/>
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-v2.svg" width="100%" alt="Personal Developer Portfolio: the product universe"/>
+<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-mobile-v2.svg?rev=raster-v3"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-v2.svg?rev=raster-v3" width="100%" alt="Personal Developer Portfolio: the product universe"/>
 </picture>
 </a>
+
+<table align="center">
+<tr><td align="center">
+<strong>SYS-01 // PERSONAL DEVELOPER PORTFOLIO</strong><br/>
+<sub>LIVE · MARCH-APRIL 2026</sub><br/><br/>
+A focused portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface.<br/><br/>
+<sub>STACK · NEXT.JS 16 · TYPESCRIPT · THREE.JS · REACT THREE FIBER · FRAMER MOTION · VITEST</sub><br/>
+<sub>PROOF · 4,000 GPU-driven particles · 24 tests across five Vitest suites · Automated GitHub content synchronization</sub>
+</td></tr>
+</table>
 
 <details>
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v5" width="240" alt="Expand Personal Developer Portfolio mission, proof, and stack"/></picture></summary>
@@ -68,8 +78,18 @@
 </p>
 
 <a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v6" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v8" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
+
+<table align="center">
+<tr><td align="center">
+<strong>SYS-02 // AI VS. REAL IMAGE DETECTOR</strong><br/>
+<sub>LIVE · DECEMBER 2025-APRIL 2026</sub><br/><br/>
+A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.<br/><br/>
+<sub>STACK · PYTHON · OPENCV · SCIKIT-LEARN · LBP · GLCM · SVM · STREAMLIT</sub><br/>
+<sub>PROOF · 78.5% held-out test accuracy · Local inference with committed SVM and scaler artifacts · Lighting-invariant preprocessing</sub>
+</td></tr>
+</table>
 
 <details>
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v5" width="240" alt="Expand AI vs. Real Image Detector mission, proof, and stack"/></picture></summary>
@@ -86,8 +106,18 @@
 </p>
 
 <a href="https://zenith-xi-snowy.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=raster-v6" width="100%" alt="Yor Zenith: solar decision support"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=raster-v8" width="100%" alt="Yor Zenith: solar decision support"/>
 </a>
+
+<table align="center">
+<tr><td align="center">
+<strong>SYS-03 // YOR ZENITH</strong><br/>
+<sub>LIVE · JANUARY-DECEMBER 2025</sub><br/><br/>
+A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis.<br/><br/>
+<sub>STACK · REACT · TYPESCRIPT · THREE.JS · PYTHON · FASTAPI</sub><br/>
+<sub>PROOF · Interactive panel-placement simulation · Energy-output modeling across roof configurations · Subsidy, ROI, and payback analysis</sub>
+</td></tr>
+</table>
 
 <details>
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v5" width="240" alt="Expand Yor Zenith mission, proof, and stack"/></picture></summary>
@@ -104,8 +134,18 @@
 </p>
 
 <a href="https://github.com/yorayriniwnl/Yor-Helios">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v6" width="100%" alt="Yor Helios: realtime energy intelligence"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v8" width="100%" alt="Yor Helios: realtime energy intelligence"/>
 </a>
+
+<table align="center">
+<tr><td align="center">
+<strong>SYS-04 // YOR HELIOS</strong><br/>
+<sub>IN DEVELOPMENT · JANUARY 2026-PRESENT</sub><br/><br/>
+An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards.<br/><br/>
+<sub>STACK · PYTHON · FASTAPI · TYPESCRIPT · DOCKER · WEBSOCKET</sub><br/>
+<sub>PROOF · Bidirectional realtime alert streaming · Continuous anomaly and threshold engine · One-command Docker Compose environment</sub>
+</td></tr>
+</table>
 
 <details>
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v5" width="240" alt="Expand Yor Helios mission, proof, and stack"/></picture></summary>
@@ -121,8 +161,18 @@
 </p>
 
 <a href="https://github.com/yorayriniwnl/Yor_Token_Usage">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-token-usage.svg?rev=raster-v7" width="100%" alt="Yor_Token_Usage: multi-ai usage cockpit"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-token-usage.svg?rev=raster-v8" width="100%" alt="Yor_Token_Usage: multi-ai usage cockpit"/>
 </a>
+
+<table align="center">
+<tr><td align="center">
+<strong>SYS-05 // YOR_TOKEN_USAGE</strong><br/>
+<sub>EXPERIMENTAL · 2026</sub><br/><br/>
+A local-first Manifest V3 Chrome extension for estimating AI token usage across ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional sync.<br/><br/>
+<sub>STACK · JAVASCRIPT · MANIFEST V3 · CHROME EXTENSIONS · LOCAL-FIRST STORAGE</sub><br/>
+<sub>PROOF · Local-first usage capture across five AI surfaces · Dashboards and exports for usage inspection · Optional sync with explicit privacy and clear-data controls</sub>
+</td></tr>
+</table>
 
 <details>
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v5" width="240" alt="Expand Yor_Token_Usage mission, proof, and stack"/></picture></summary>
@@ -138,8 +188,18 @@
 </p>
 
 <a href="https://yor-talks.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg?rev=raster-v6" width="100%" alt="Yor Talks V2: realtime communication"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg?rev=raster-v8" width="100%" alt="Yor Talks V2: realtime communication"/>
 </a>
+
+<table align="center">
+<tr><td align="center">
+<strong>SYS-06 // YOR TALKS V2</strong><br/>
+<sub>DEMO · APRIL 2026</sub><br/><br/>
+A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path.<br/><br/>
+<sub>STACK · REACT · VITE · TYPESCRIPT · EXPRESS · SOCKET.IO · POSTGRES · DRIZZLE</sub><br/>
+<sub>PROOF · Low-latency bidirectional messaging · Authentication, conversation, and message APIs · Responsive reusable interface system</sub>
+</td></tr>
+</table>
 
 <details>
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v5" width="240" alt="Expand Yor Talks V2 mission, proof, and stack"/></picture></summary>
