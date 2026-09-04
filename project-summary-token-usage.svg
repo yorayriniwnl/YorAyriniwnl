@@ -7,7 +7,7 @@
  <stop offset="0" stop-color="#070001"/><stop offset=".63" stop-color="#140106"/><stop offset="1" stop-color="#8f0014" stop-opacity=".55"/>
 </linearGradient>
 <linearGradient id="token-usageSummaryRail" x1="0%" x2="100%">
- <stop offset="0" stop-color="#ff1f2d" stop-opacity="0"/><stop offset=".22" stop-color="#ff1f2d" stop-opacity=".78"/><stop offset=".52" stop-color="#ff6670" stop-opacity=".2"/><stop offset=".82" stop-color="#ff1f2d" stop-opacity=".78"/><stop offset="1" stop-color="#ff1f2d" stop-opacity="0"/>
+ <stop offset="0" stop-color="#d30b24" stop-opacity="0"/><stop offset=".22" stop-color="#d30b24" stop-opacity=".78"/><stop offset=".52" stop-color="#ff6670" stop-opacity=".2"/><stop offset=".82" stop-color="#d30b24" stop-opacity=".78"/><stop offset="1" stop-color="#d30b24" stop-opacity="0"/>
 </linearGradient>
 <pattern id="token-usageSummaryGrid" width="24" height="24" patternUnits="userSpaceOnUse">
  <path d="M24 0H0V24" fill="none" stroke="#ff6670" stroke-width=".45" opacity=".09"/>
@@ -23,10 +23,10 @@
 <rect x="1" y="1" width="718" height="258" rx="8" fill="url(#token-usageSummaryBg)" stroke="#7a1a29"/>
 <rect x="1" y="1" width="718" height="258" rx="8" fill="url(#token-usageSummaryGrid)"/>
 <rect class="token-usage-summary-sweep" x="-180" y="1" width="180" height="258" fill="url(#token-usageSummaryRail)" opacity=".22"/>
-<rect x="1" y="1" width="6" height="258" rx="2" fill="#ff1f2d"/>
+<rect x="1" y="1" width="6" height="258" rx="2" fill="#d30b24"/>
 <path d="M22 20V10H32M688 10h10v10M22 240v10h10M688 250h10v-10" fill="none" stroke="#ff6670" stroke-width="1" opacity=".7"/>
-<text x="38" y="29" class="mono" font-size="9" fill="#ff1f2d" letter-spacing="2.1">SYS-05 // MULTI-AI USAGE COCKPIT</text>
-<rect x="548" y="14" width="140" height="23" rx="11.5" fill="#ff1f2d" opacity=".14" stroke="#ff1f2d"/>
+<text x="38" y="29" class="mono" font-size="9" fill="#d30b24" letter-spacing="2.1">SYS-05 // MULTI-AI USAGE COCKPIT</text>
+<rect x="548" y="14" width="140" height="23" rx="11.5" fill="#d30b24" opacity=".14" stroke="#d30b24"/>
 <text x="618" y="29" text-anchor="middle" class="mono" font-size="8" fill="#fff5f5" letter-spacing="1.1">EXPERIMENTAL</text>
 <text x="688" y="54" text-anchor="end" class="mono" font-size="8" fill="#d2a1a7" letter-spacing="1.1">2026</text>
 <text x="38" y="68" class="mono" font-size="22" fill="#fff5f5" letter-spacing=".7">YOR_TOKEN_USAGE</text>
@@ -46,11 +46,11 @@
  stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" values=".35;1;.35"
  dur="2.4s" begin="-0.85s" repeatCount="indefinite"/></path>
 </g>
-<text x="90" y="101" class="mono" font-size="8" fill="#ff1f2d" letter-spacing="1.8">MISSION / SYSTEM INTENT</text>
+<text x="90" y="101" class="mono" font-size="8" fill="#d30b24" letter-spacing="1.8">MISSION / SYSTEM INTENT</text>
 <text x="90" y="121" class="mono" font-size="12" fill="#fff5f5"><tspan x="90" dy="0">A local-first Manifest V3 Chrome extension for estimating AI token usage across</tspan><tspan x="90" dy="17">ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional</tspan><tspan x="90" dy="17">sync.</tspan></text>
 <path d="M22 158H698" stroke="#7a1a29"/>
-<text x="30" y="178" class="mono" font-size="8" fill="#ff1f2d" letter-spacing="1.8">STACK / LOADOUT</text>
-<text x="390" y="178" class="mono" font-size="8" fill="#ff1f2d" letter-spacing="1.8">PROOF / SIGNAL</text>
+<text x="30" y="178" class="mono" font-size="8" fill="#d30b24" letter-spacing="1.8">STACK / LOADOUT</text>
+<text x="390" y="178" class="mono" font-size="8" fill="#d30b24" letter-spacing="1.8">PROOF / SIGNAL</text>
 <text x="30" y="197" class="mono" font-size="9" fill="#d2a1a7"><tspan x="30" dy="0">JAVASCRIPT · MANIFEST V3 · CHROME EXTENSIONS ·</tspan><tspan x="30" dy="15">LOCAL-FIRST STORAGE</tspan></text>
 <text x="390" y="197" class="mono" font-size="9" fill="#d2a1a7"><tspan x="390" dy="0">Local-first usage capture across five AI</tspan><tspan x="390" dy="15">surfaces · Dashboards and exports for usage</tspan><tspan x="390" dy="15">inspection · Optional sync with explicit</tspan></text>
 <circle class="token-usage-summary-pulse" cx="682" cy="231" r="4" fill="#ff6670"/>
