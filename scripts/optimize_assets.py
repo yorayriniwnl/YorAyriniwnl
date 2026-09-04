@@ -34,16 +34,17 @@ RECIPES = (
     # Their 1.5-2x display density keeps the README sharp without making each
     # generated card carry a multi-megabyte photographic payload.
     AssetRecipe("hero-keyart-v2.png", "hero-keyart-v2-optimized.jpg", (2400, 1110), 84),
-    # Cinematic v2 plates are the active art direction for the clean project
-    # covers. Keep a 1440px delivery width so intricate generated details
-    # survive GitHub's responsive rendering and SVG embedding without letting
-    # the self-contained manifest become needlessly heavy.
-    AssetRecipe("project-portfolio-cinematic-crimson-v2.png", "project-portfolio-cinematic-crimson-v2-optimized.jpg", (1440, 810), 82),
-    AssetRecipe("project-helios-cinematic-crimson-v2.png", "project-helios-cinematic-crimson-v2-optimized.jpg", (1440, 810), 82),
-    AssetRecipe("project-zenith-cinematic-crimson-v2.png", "project-zenith-cinematic-crimson-v2-optimized.jpg", (1440, 810), 82),
-    AssetRecipe("project-vision-cinematic-crimson-v2.png", "project-vision-cinematic-crimson-v2-optimized.jpg", (1440, 810), 82),
-    AssetRecipe("project-talks-cinematic-crimson-v2.png", "project-talks-cinematic-crimson-v2-optimized.jpg", (1440, 810), 82),
-    AssetRecipe("project-token-usage-cinematic-crimson-v2.png", "project-token-usage-cinematic-crimson-v2-optimized.jpg", (1440, 810), 82),
+    # Cinematic v3 plates are the active art direction for the clean project
+    # covers. Their subjects now own most of the frame and carry dense edge-
+    # to-edge environmental detail. A 1200px delivery width remains crisp in
+    # GitHub's responsive cards while keeping the self-contained SVG manifest
+    # within its payload budget.
+    AssetRecipe("project-portfolio-cinematic-crimson-v3.png", "project-portfolio-cinematic-crimson-v3-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-helios-cinematic-crimson-v3.png", "project-helios-cinematic-crimson-v3-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-zenith-cinematic-crimson-v3.png", "project-zenith-cinematic-crimson-v3-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-vision-cinematic-crimson-v3.png", "project-vision-cinematic-crimson-v3-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-talks-cinematic-crimson-v3.png", "project-talks-cinematic-crimson-v3-optimized.jpg", (1200, 675), 76),
+    AssetRecipe("project-token-usage-cinematic-crimson-v3.png", "project-token-usage-cinematic-crimson-v3-optimized.jpg", (1200, 675), 76),
     # Supporting plates are atmospheric layers rather than standalone cards;
     # 840px delivery derivatives match the profile's rendered content width,
     # preserving sharp detail at README scale while

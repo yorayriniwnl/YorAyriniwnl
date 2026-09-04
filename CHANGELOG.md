@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 20: full-frame project worlds v3
+
+The six project covers now use a denser cinematic art pass built around one rule: the subject owns the frame and the environment carries detail all the way to the edges. The portfolio is a continuous data storm, Helios a storm-lit energy reactor, Zenith a packed solar digital twin, Vision a close half-real/half-synthetic forensic face, Talks a communications megacity, and Token Usage a multi-stream prism cockpit. The approved portrait remains locked and unchanged; only the six project source/delivery pairs and their cache revisions moved.
+
 ## Pass 19: themed project readouts
 
 The visible metadata below each clean cover is now rendered as a crimson system readout instead of a browser-native HTML table. Each plate keeps the project title, state, mission, stack, and proof in the same typography, rails, grids, glyphs, and reduced-motion-safe signal language as the rest of the profile. The covers, portrait, dossiers, and visual link controls remain intact.
