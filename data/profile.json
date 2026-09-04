@@ -163,8 +163,8 @@
       "summary": "A focused portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface.",
       "visual": {
         "world": "portfolio",
-        "source": "assets/project-portfolio-cinematic-crimson-v3.png",
-        "delivery": "assets/project-portfolio-cinematic-crimson-v3-optimized.jpg",
+        "source": "assets/project-portfolio-cinematic-crimson-v4.png",
+        "delivery": "assets/project-portfolio-cinematic-crimson-v4-optimized.jpg",
         "evidence": "cinematic folded data-ribbon key art; the approved profile portrait remains separate and unchanged"
       },
       "proof": [
@@ -193,8 +193,8 @@
       "summary": "An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards.",
       "visual": {
         "world": "helios",
-        "source": "assets/project-helios-cinematic-crimson-v3.png",
-        "delivery": "assets/project-helios-cinematic-crimson-v3-optimized.jpg",
+        "source": "assets/project-helios-cinematic-crimson-v4.png",
+        "delivery": "assets/project-helios-cinematic-crimson-v4-optimized.jpg",
         "evidence": "cinematic molten energy-heart above a storm-soaked grid; no production telemetry is implied"
       },
       "proof": [
@@ -222,8 +222,8 @@
       "summary": "A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis.",
       "visual": {
         "world": "zenith",
-        "source": "assets/project-zenith-cinematic-crimson-v3.png",
-        "delivery": "assets/project-zenith-cinematic-crimson-v3-optimized.jpg",
+        "source": "assets/project-zenith-cinematic-crimson-v4.png",
+        "delivery": "assets/project-zenith-cinematic-crimson-v4-optimized.jpg",
         "evidence": "cinematic solar digital-twin rooftop with irradiance geometry; financial and feasibility outputs remain assumption-driven"
       },
       "proof": [
@@ -251,8 +251,8 @@
       "summary": "A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.",
       "visual": {
         "world": "vision",
-        "source": "assets/project-vision-cinematic-crimson-v3.png",
-        "delivery": "assets/project-vision-cinematic-crimson-v3-optimized.jpg",
+        "source": "assets/project-vision-cinematic-crimson-v4.png",
+        "delivery": "assets/project-vision-cinematic-crimson-v4-optimized.jpg",
         "evidence": "cinematic half-real, half-synthetic face study with scarlet calibration optics; not based on the profile portrait"
       },
       "proof": [
@@ -282,8 +282,8 @@
       "summary": "A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path.",
       "visual": {
         "world": "talks",
-        "source": "assets/project-talks-cinematic-crimson-v3.png",
-        "delivery": "assets/project-talks-cinematic-crimson-v3-optimized.jpg",
+        "source": "assets/project-talks-cinematic-crimson-v4.png",
+        "delivery": "assets/project-talks-cinematic-crimson-v4-optimized.jpg",
         "evidence": "cinematic glass-city communication network with live signal threads; no fabricated user or traffic metrics"
       },
       "proof": [
@@ -313,8 +313,8 @@
       "summary": "A local-first Manifest V3 Chrome extension for estimating AI token usage across ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional sync.",
       "visual": {
         "world": "talks",
-        "source": "assets/project-token-usage-cinematic-crimson-v3.png",
-        "delivery": "assets/project-token-usage-cinematic-crimson-v3-optimized.jpg",
+        "source": "assets/project-token-usage-cinematic-crimson-v4.png",
+        "delivery": "assets/project-token-usage-cinematic-crimson-v4-optimized.jpg",
         "evidence": "cinematic multi-stream token prism for a local-first usage cockpit; no provider telemetry or fabricated usage totals"
       },
       "proof": [
@@ -336,13 +336,13 @@
     "optimized_hero": "assets/hero-keyart-v2-optimized.jpg",
     "source": {
       "hero": "assets/hero-keyart-v2.png",
-      "flagship_art": "assets/project-portfolio-cinematic-crimson-v3.png",
+      "flagship_art": "assets/project-portfolio-cinematic-crimson-v4.png",
       "project_art": {
-        "helios": "assets/project-helios-cinematic-crimson-v3.png",
-        "zenith": "assets/project-zenith-cinematic-crimson-v3.png",
-        "vision": "assets/project-vision-cinematic-crimson-v3.png",
-        "talks": "assets/project-talks-cinematic-crimson-v3.png",
-        "token-usage": "assets/project-token-usage-cinematic-crimson-v3.png"
+        "helios": "assets/project-helios-cinematic-crimson-v4.png",
+        "zenith": "assets/project-zenith-cinematic-crimson-v4.png",
+        "vision": "assets/project-vision-cinematic-crimson-v4.png",
+        "talks": "assets/project-talks-cinematic-crimson-v4.png",
+        "token-usage": "assets/project-token-usage-cinematic-crimson-v4.png"
       },
       "supporting_art": {
         "identity": "assets/crimson-command-deck-v1.png",
@@ -352,13 +352,13 @@
     },
     "delivery": {
       "hero": "assets/hero-keyart-v2-optimized.jpg",
-      "flagship_art": "assets/project-portfolio-cinematic-crimson-v3-optimized.jpg",
+      "flagship_art": "assets/project-portfolio-cinematic-crimson-v4-optimized.jpg",
       "project_art": {
-        "helios": "assets/project-helios-cinematic-crimson-v3-optimized.jpg",
-        "zenith": "assets/project-zenith-cinematic-crimson-v3-optimized.jpg",
-        "vision": "assets/project-vision-cinematic-crimson-v3-optimized.jpg",
-        "talks": "assets/project-talks-cinematic-crimson-v3-optimized.jpg",
-        "token-usage": "assets/project-token-usage-cinematic-crimson-v3-optimized.jpg"
+        "helios": "assets/project-helios-cinematic-crimson-v4-optimized.jpg",
+        "zenith": "assets/project-zenith-cinematic-crimson-v4-optimized.jpg",
+        "vision": "assets/project-vision-cinematic-crimson-v4-optimized.jpg",
+        "talks": "assets/project-talks-cinematic-crimson-v4-optimized.jpg",
+        "token-usage": "assets/project-token-usage-cinematic-crimson-v4-optimized.jpg"
       },
       "supporting_art": {
         "identity": "assets/crimson-command-deck-v1-optimized.jpg",
@@ -388,11 +388,11 @@
       }
     },
     "project_art": {
-      "helios": "assets/project-helios-cinematic-crimson-v3-optimized.jpg",
-      "zenith": "assets/project-zenith-cinematic-crimson-v3-optimized.jpg",
-      "vision": "assets/project-vision-cinematic-crimson-v3-optimized.jpg",
-      "talks": "assets/project-talks-cinematic-crimson-v3-optimized.jpg",
-      "token-usage": "assets/project-token-usage-cinematic-crimson-v3-optimized.jpg"
+      "helios": "assets/project-helios-cinematic-crimson-v4-optimized.jpg",
+      "zenith": "assets/project-zenith-cinematic-crimson-v4-optimized.jpg",
+      "vision": "assets/project-vision-cinematic-crimson-v4-optimized.jpg",
+      "talks": "assets/project-talks-cinematic-crimson-v4-optimized.jpg",
+      "token-usage": "assets/project-token-usage-cinematic-crimson-v4-optimized.jpg"
     },
     "palette": {
       "void": "#000000",

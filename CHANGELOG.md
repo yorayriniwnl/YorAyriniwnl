@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 21: hierarchy-first project worlds v4
+
+The six project covers now use a hierarchy-first art direction after the dense v3 pass became visually noisy. Each scene has one dominant subject, a controlled midground, organized depth planes, and deliberately limited accents while preserving the black/crimson identity: the infinity data ribbon, forensic split face, caged reactor, solar rooftop, token prism, and communications nexus. The approved portrait remains locked and unchanged.
+
 ## Pass 20: full-frame project worlds v3
 
 The six project covers now use a denser cinematic art pass built around one rule: the subject owns the frame and the environment carries detail all the way to the edges. The portfolio is a continuous data storm, Helios a storm-lit energy reactor, Zenith a packed solar digital twin, Vision a close half-real/half-synthetic forensic face, Talks a communications megacity, and Token Usage a multi-stream prism cockpit. The approved portrait remains locked and unchanged; only the six project source/delivery pairs and their cache revisions moved.
