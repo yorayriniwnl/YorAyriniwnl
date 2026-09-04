@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 15: six pinned systems aligned
+
+The public profile now mirrors the six pinned repositories shown on GitHub: Yor-Ayrin-iwnl, Yor-Ai-vs-real-image, Yor-Zenith, Yor-Helios, Yor_Token_Usage, and yor-talksv2. Yor_Token_Usage is now a first-class visual card and expandable dossier with a dedicated crimson token-core artwork, while the previous Yor Feelings exception has been removed from the public project roster. The README order, canonical profile data, generated SVG manifest, public resume, and tests are synchronized. The approved portrait hero remains unchanged.
+
 ## Pass 14: concept key art
 
 The project visuals now use authored cinematic metaphors instead of generic red environment wallpapers: Helios is an energy heart, Zenith is an eclipse-shaped solar instrument, Vision is a half-real/half-synthetic face under calibration optics, and Talks is a human signal bridge. Each image now owns the full card field beneath translucent product telemetry, so the concept survives the thumbnail and mobile render. The approved portrait hero remains unchanged. New source and delivery names keep this visual reset explicit and cache-versioned.

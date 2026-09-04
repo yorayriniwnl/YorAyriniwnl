@@ -19,12 +19,13 @@ from profile_data import load_profile
 ROOT = SCRIPT_DIR.parent
 README_PATH = ROOT / "README.md"
 PROFILE_REPOSITORY = "Yorayriniwnl"
-SELECTED_PROJECT_IDS = ("portfolio", "helios", "zenith", "vision", "talks")
+SELECTED_PROJECT_IDS = ("portfolio", "vision", "zenith", "helios", "token-usage", "talks")
 PROJECT_VISUALS = {
     "portfolio": "project-portfolio-v2.svg",
     "helios": "project-helios.svg",
     "zenith": "project-zenith.svg",
     "vision": "project-vision.svg",
+    "token-usage": "project-token-usage.svg",
     "talks": "project-talks.svg",
 }
 ATLAS_ASSETS = (
@@ -54,7 +55,6 @@ ATLAS_ASSETS = (
     "nav-linkedin.svg",
     "nav-live.svg",
     "nav-source.svg",
-    "nav-experiment.svg",
     "nav-email.svg",
     "nav-github.svg",
     "nav-devpost.svg",
@@ -70,7 +70,7 @@ ATLAS_ASSETS = (
     "project-dossier-zenith.svg",
     "project-dossier-vision.svg",
     "project-dossier-talks.svg",
-    "project-dossier-feelings.svg",
+    "project-dossier-token-usage.svg",
 )
 MOTION_ASSETS = (
     "systems-reel.gif",
@@ -97,6 +97,7 @@ ASSET_REVISIONS = {
     "project-zenith.svg": "raster-v6",
     "project-vision.svg": "raster-v6",
     "project-talks.svg": "raster-v6",
+    "project-token-usage.svg": "raster-v7",
 }
 
 
@@ -318,7 +319,7 @@ def render_readme(profile: dict | None = None) -> str:
         "",
         image(
             "section-projects.svg",
-            "Section 01: selected systems. Five end-to-end builds with public proof and verified data.",
+            "Section 01: selected systems. Six public builds with visual proof and verified data.",
             handle,
         ),
         "",
@@ -327,36 +328,8 @@ def render_readme(profile: dict | None = None) -> str:
     for project_id in SELECTED_PROJECT_IDS:
         lines.extend(project_block(projects[project_id], handle))
 
-    feelings = projects["feelings"]
-    feelings_alt = (
-        f'LAB-01: {feelings["name"]}. {feelings["status"]}, {feelings["period"]}. '
-        f'{feelings["summary"]} Proof: {"; ".join(feelings["proof"])}. '
-        f'Stack: {"; ".join(feelings["stack"])}.'
-    )
     lines.extend(
         [
-            *linked_image(
-                feelings["live"],
-                "project-dossier-feelings.svg",
-                feelings_alt,
-                handle,
-            ),
-            "",
-            '<p align="center">',
-            linked_button(
-                feelings["live"],
-                "nav-experiment.svg",
-                f'Launch {feelings["name"]} live experiment',
-                handle,
-            ),
-            linked_button(
-                feelings["repo"],
-                "nav-source.svg",
-                f'Inspect {feelings["name"]} source repository',
-                handle,
-            ),
-            "</p>",
-            "",
             '<a id="field-notes"></a>',
             "",
             image(

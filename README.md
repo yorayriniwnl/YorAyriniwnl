@@ -44,7 +44,7 @@
 
 <a id="selected-systems"></a>
 
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects.svg?rev=atlas-v4" width="100%" alt="Section 01: selected systems. Five end-to-end builds with public proof and verified data."/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects.svg?rev=atlas-v4" width="100%" alt="Section 01: selected systems. Six public builds with visual proof and verified data."/>
 
 <a href="https://www.yorayriniwnl.in">
 <picture>
@@ -67,21 +67,22 @@
 <a href="https://github.com/yorayriniwnl/Yor-Ayrin-iwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect Personal Developer Portfolio source repository"/></a>
 </p>
 
-<a href="https://github.com/yorayriniwnl/Yor-Helios">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v6" width="100%" alt="Yor Helios: realtime energy intelligence"/>
+<a href="https://yor-ai-vs-real-image.vercel.app">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v6" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
 
 <details>
-<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v4" width="240" alt="Expand Yor Helios mission, proof, and stack"/></picture></summary>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v4" width="240" alt="Expand AI vs. Real Image Detector mission, proof, and stack"/></picture></summary>
 
-<a href="https://github.com/yorayriniwnl/Yor-Helios">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-helios.svg?rev=atlas-v4" width="100%" alt="SYS-02: Yor Helios. In development, January 2026-Present. An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards. Proof: Bidirectional realtime alert streaming; Continuous anomaly and threshold engine; One-command Docker Compose environment. Stack: Python; FastAPI; TypeScript; Docker; WebSocket."/>
+<a href="https://yor-ai-vs-real-image.vercel.app">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision.svg?rev=atlas-v4" width="100%" alt="SYS-02: AI vs. Real Image Detector. Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Proof: 78.5% held-out test accuracy; Local inference with committed SVM and scaler artifacts; Lighting-invariant preprocessing. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit."/>
 </a>
 
 </details>
 
 <p align="center">
-<a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect Yor Helios source repository"/></a>
+<a href="https://yor-ai-vs-real-image.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=atlas-v4" width="350" alt="Launch AI vs. Real Image Detector live system"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Ai-vs-real-image"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect AI vs. Real Image Detector source repository"/></a>
 </p>
 
 <a href="https://zenith-xi-snowy.vercel.app">
@@ -102,22 +103,38 @@
 <a href="https://github.com/yorayriniwnl/Yor-Zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect Yor Zenith source repository"/></a>
 </p>
 
-<a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v6" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
+<a href="https://github.com/yorayriniwnl/Yor-Helios">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v6" width="100%" alt="Yor Helios: realtime energy intelligence"/>
 </a>
 
 <details>
-<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v4" width="240" alt="Expand AI vs. Real Image Detector mission, proof, and stack"/></picture></summary>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v4" width="240" alt="Expand Yor Helios mission, proof, and stack"/></picture></summary>
 
-<a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision.svg?rev=atlas-v4" width="100%" alt="SYS-04: AI vs. Real Image Detector. Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Proof: 78.5% held-out test accuracy; Local inference with committed SVM and scaler artifacts; Lighting-invariant preprocessing. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit."/>
+<a href="https://github.com/yorayriniwnl/Yor-Helios">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-helios.svg?rev=atlas-v4" width="100%" alt="SYS-04: Yor Helios. In development, January 2026-Present. An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards. Proof: Bidirectional realtime alert streaming; Continuous anomaly and threshold engine; One-command Docker Compose environment. Stack: Python; FastAPI; TypeScript; Docker; WebSocket."/>
 </a>
 
 </details>
 
 <p align="center">
-<a href="https://yor-ai-vs-real-image.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=atlas-v4" width="350" alt="Launch AI vs. Real Image Detector live system"/></a>
-<a href="https://github.com/yorayriniwnl/Yor-Ai-vs-real-image"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect AI vs. Real Image Detector source repository"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect Yor Helios source repository"/></a>
+</p>
+
+<a href="https://github.com/yorayriniwnl/Yor_Token_Usage">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-token-usage.svg?rev=raster-v7" width="100%" alt="Yor_Token_Usage: multi-ai usage cockpit"/>
+</a>
+
+<details>
+<summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v4" width="240" alt="Expand Yor_Token_Usage mission, proof, and stack"/></picture></summary>
+
+<a href="https://github.com/yorayriniwnl/Yor_Token_Usage">
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-token-usage.svg?rev=atlas-v4" width="100%" alt="SYS-05: Yor_Token_Usage. Experimental, 2026. A local-first Manifest V3 Chrome extension for estimating AI token usage across ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional sync. Proof: Local-first usage capture across five AI surfaces; Dashboards and exports for usage inspection; Optional sync with explicit privacy and clear-data controls. Stack: JavaScript; Manifest V3; Chrome Extensions; Local-first storage."/>
+</a>
+
+</details>
+
+<p align="center">
+<a href="https://github.com/yorayriniwnl/Yor_Token_Usage"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect Yor_Token_Usage source repository"/></a>
 </p>
 
 <a href="https://yor-talks.vercel.app">
@@ -128,7 +145,7 @@
 <summary><picture><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/dossier-toggle.svg?rev=atlas-v4" width="240" alt="Expand Yor Talks V2 mission, proof, and stack"/></picture></summary>
 
 <a href="https://yor-talks.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks.svg?rev=atlas-v4" width="100%" alt="SYS-05: Yor Talks V2. Demo, April 2026. A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path. Proof: Low-latency bidirectional messaging; Authentication, conversation, and message APIs; Responsive reusable interface system. Stack: React; Vite; TypeScript; Express; Socket.IO; Postgres; Drizzle."/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks.svg?rev=atlas-v4" width="100%" alt="SYS-06: Yor Talks V2. Demo, April 2026. A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path. Proof: Low-latency bidirectional messaging; Authentication, conversation, and message APIs; Responsive reusable interface system. Stack: React; Vite; TypeScript; Express; Socket.IO; Postgres; Drizzle."/>
 </a>
 
 </details>
@@ -136,15 +153,6 @@
 <p align="center">
 <a href="https://yor-talks.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=atlas-v4" width="350" alt="Launch Yor Talks V2 live system"/></a>
 <a href="https://github.com/yorayriniwnl/yor-talksv2"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect Yor Talks V2 source repository"/></a>
-</p>
-
-<a href="https://yor-feelings.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-feelings.svg?rev=atlas-v4" width="100%" alt="LAB-01: Yor Feelings. Experimental, 2026. An expressive web experience translating sentiment and mood signals into responsive interface state. Proof: Mood-responsive visual state; Experimental interaction design. Stack: Next.js; TypeScript."/>
-</a>
-
-<p align="center">
-<a href="https://yor-feelings.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-experiment.svg?rev=atlas-v4" width="350" alt="Launch Yor Feelings live experiment"/></a>
-<a href="https://github.com/yorayriniwnl/Yor-Feelings"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=atlas-v4" width="350" alt="Inspect Yor Feelings source repository"/></a>
 </p>
 
 <a id="field-notes"></a>

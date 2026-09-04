@@ -43,6 +43,25 @@ class ReadmeTests(unittest.TestCase):
             for proof in project["proof"]:
                 self.assertIn(proof, self.readme)
 
+    def test_selected_projects_match_the_pinned_profile_set(self):
+        projects = {project["id"]: project for project in self.profile["projects"]}
+        self.assertEqual(
+            generate_readme.SELECTED_PROJECT_IDS,
+            ("portfolio", "vision", "zenith", "helios", "token-usage", "talks"),
+        )
+        self.assertEqual(
+            [projects[project_id]["repo"].rsplit("/", 1)[-1] for project_id in generate_readme.SELECTED_PROJECT_IDS],
+            [
+                "Yor-Ayrin-iwnl",
+                "Yor-Ai-vs-real-image",
+                "Yor-Zenith",
+                "Yor-Helios",
+                "Yor_Token_Usage",
+                "yor-talksv2",
+            ],
+        )
+        self.assertNotIn("Yor Feelings", self.readme)
+
     def test_every_visible_authored_block_is_visual(self):
         without_comments = re.sub(r"<!--.*?-->", "", self.readme, flags=re.DOTALL)
         visible_text = re.sub(r"<[^>]+>", "", without_comments).strip()
@@ -95,7 +114,6 @@ class ReadmeTests(unittest.TestCase):
         for filename in (
             "nav-live.svg",
             "nav-source.svg",
-            "nav-experiment.svg",
             "nav-email.svg",
             "nav-github.svg",
             "nav-devpost.svg",
@@ -150,7 +168,6 @@ class ReadmeTests(unittest.TestCase):
             "nav-linkedin.svg",
             "nav-live.svg",
             "nav-source.svg",
-            "nav-experiment.svg",
             "nav-email.svg",
             "nav-github.svg",
             "nav-devpost.svg",
@@ -163,12 +180,13 @@ class ReadmeTests(unittest.TestCase):
             "project-dossier-zenith.svg",
             "project-dossier-vision.svg",
             "project-dossier-talks.svg",
-            "project-dossier-feelings.svg",
+            "project-dossier-token-usage.svg",
             "project-portfolio-v2.svg",
             "project-portfolio-mobile-v2.svg",
             "project-helios.svg",
             "project-zenith.svg",
             "project-vision.svg",
+            "project-token-usage.svg",
             "project-talks.svg",
             "section-arsenal.svg",
             "arsenal.svg",
@@ -193,7 +211,8 @@ class ReadmeTests(unittest.TestCase):
         for filename in generate_readme.PROJECT_VISUALS.values():
             if filename == "project-portfolio-v2.svg":
                 continue
-            self.assertIn(f"output/{filename}?rev=raster-v6", self.readme)
+            revision = "raster-v7" if filename == "project-token-usage.svg" else "raster-v6"
+            self.assertIn(f"output/{filename}?rev={revision}", self.readme)
 
 
 if __name__ == "__main__":

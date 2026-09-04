@@ -116,6 +116,7 @@ ATLAS_TREATMENT_EXCLUDED = frozenset({
     "project-helios.svg",
     "project-zenith.svg",
     "project-vision.svg",
+    "project-token-usage.svg",
     "project-talks.svg",
 })
 
@@ -1518,7 +1519,7 @@ def build_proof_card_svg(item, index, cfg):
 def build_project_dossier_svg(project, cfg):
     """Render all project copy as one cinematic, data-complete dossier."""
     W, H = 720, 380
-    code = "LAB-01" if project["id"] == "feelings" else f'SYS-{project["order"]:02d}'
+    code = f'SYS-{project["order"]:02d}'
     summary_lines = wrap_lines(project["summary"], 72)[:3]
     summary_svg = "".join(
         f'<tspan x="30" dy="{0 if index == 0 else 23}">{esc(line)}</tspan>'
@@ -2248,6 +2249,14 @@ def project_motion_style(kind):
 .{kind}-confidence {{ animation: {kind}-confidence 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: left center; }}
 @keyframes {kind}-scan {{ 0%, 12% {{ transform: translateY(-52px); opacity: .12; }} 55%, 78% {{ transform: translateY(126px); opacity: .9; }} 100% {{ transform: translateY(126px); opacity: .12; }} }}
 @keyframes {kind}-confidence {{ 0%, 100% {{ transform: scaleX(.66); opacity: .5; }} 52% {{ transform: scaleX(1); opacity: 1; }} }}'''
+    elif kind == "token-usage":
+        animation = f'''
+.{kind}-signal {{ animation: {kind}-signal 3.8s linear infinite; }}
+.{kind}-core {{ animation: {kind}-core 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
+.{kind}-packet {{ animation: {kind}-packet 2.4s linear infinite; }}
+@keyframes {kind}-signal {{ to {{ stroke-dashoffset: -96; }} }}
+@keyframes {kind}-core {{ 0%, 100% {{ opacity: .45; transform: scale(.88); }} 50% {{ opacity: 1; transform: scale(1.12); }} }}
+@keyframes {kind}-packet {{ to {{ stroke-dashoffset: -84; }} }}'''
     else:
         animation = f'''
 .{kind}-packet {{ animation: {kind}-packet 3.1s linear infinite; }}
@@ -2304,7 +2313,8 @@ def _glcm_matrix(x, y, accent):
 
 
 def project_visual_svg(kind, cfg):
-    world = WORLD_TOKENS[kind]
+    world_key = "talks" if kind == "token-usage" else kind
+    world = WORLD_TOKENS[world_key]
     art = asset_data_uri(VISUAL_CONTRACT["project_art"][kind])
     accent = world["accent"]
     accent_soft = world["accent_soft"]
@@ -2444,6 +2454,39 @@ def project_visual_svg(kind, cfg):
 <text x="676" y="359" text-anchor="end" class="mono" font-size="8" fill="{accent}">{esc(accuracy)} HELD-OUT TEST ACCURACY</text>
 </g>'''
 
+    if kind == "token-usage":
+        providers = "CHATGPT  ·  CLAUDE  ·  GEMINI  ·  PERPLEXITY  ·  GROK"
+        return f'''<g class="token-usage-motion">
+<rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
+<image href="{art}" x="28" y="86" width="664" height="290" preserveAspectRatio="xMidYMid slice" opacity=".78"/>
+<rect x="28" y="86" width="664" height="290" fill="{canvas}" opacity=".34"/>
+<text x="44" y="109" class="mono" font-size="9" fill="{accent}" letter-spacing="1.7">LOCAL-FIRST EXTENSION / MANIFEST V3</text>
+<rect x="44" y="124" width="260" height="223" rx="5" fill="{surface_alt}" opacity=".76" stroke="{line}"/>
+<text x="60" y="146" class="mono" font-size="10" fill="{muted}" letter-spacing="1.35">MULTI-AI USAGE COCKPIT</text>
+<text x="60" y="176" class="mono" font-size="17" fill="{ink}" letter-spacing=".5">CAPTURE → NORMALIZE</text>
+<text x="60" y="199" class="mono" font-size="9" fill="{accent_soft}">ONE LOCAL SIGNAL / FIVE PROVIDERS</text>
+<path d="M64 232H284" stroke="{line}"/>
+<g fill="{surface}" stroke="{accent}" stroke-width="1.2">
+ <circle cx="72" cy="232" r="6"/><circle cx="126" cy="232" r="6"/><circle cx="180" cy="232" r="6"/><circle cx="234" cy="232" r="6"/><circle cx="284" cy="232" r="6"/>
+</g>
+<path d="M78 232H120M132 232H174M186 232H228M240 232H278" stroke="{accent}" stroke-width="2" stroke-dasharray="4 8" class="token-usage-packet"/>
+<g class="mono" font-size="8" fill="{muted}">
+ <text x="72" y="252" text-anchor="middle">READ</text><text x="126" y="252" text-anchor="middle">MAP</text><text x="180" y="252" text-anchor="middle">COUNT</text><text x="234" y="252" text-anchor="middle">QUOTA</text><text x="284" y="252" text-anchor="middle">EXPORT</text>
+</g>
+<text x="60" y="287" class="mono" font-size="8" fill="{muted}" letter-spacing="1.2">PRIVACY BY DEFAULT</text>
+<text x="60" y="309" class="mono" font-size="9" fill="{ink}">OPTIONAL SYNC  ·  CLEAR DATA  ·  LOCAL STATE</text>
+<rect x="324" y="124" width="352" height="223" rx="5" fill="{surface}" opacity=".58" stroke="{line}"/>
+<text x="342" y="146" class="mono" font-size="9" fill="{accent}" letter-spacing="1.4">PROVIDER SIGNAL BUS</text>
+<text x="658" y="146" text-anchor="end" class="mono" font-size="8" fill="{accent_soft}">EXPERIMENTAL</text>
+<path d="M342 162H658" stroke="{line}"/>
+<text x="342" y="184" class="mono" font-size="9" fill="{muted}">{providers}</text>
+<path d="M360 222 C414 184 468 260 522 220 S600 192 650 230" fill="none" stroke="{accent}" stroke-width="2" stroke-dasharray="7 9" class="token-usage-signal"/>
+<circle cx="522" cy="220" r="9" fill="{accent}" opacity=".2" class="token-usage-core"/><circle cx="522" cy="220" r="3.5" fill="{ink}" class="token-usage-core"/>
+<text x="342" y="278" class="mono" font-size="8" fill="{muted}" letter-spacing="1.1">DASHBOARD / QUEUE / QUOTA / SYNC</text>
+<path d="M342 298H658" stroke="{line}"/>
+<text x="342" y="320" class="mono" font-size="9" fill="{accent_soft}">LOCAL OBSERVABILITY FOR AI WORKFLOWS</text>
+</g>'''
+
     return f'''<g class="talks-motion">
 <rect x="28" y="86" width="664" height="290" rx="6" fill="{surface}" stroke="{line}"/>
 <image href="{art}" x="28" y="86" width="664" height="290" preserveAspectRatio="xMidYMid slice" opacity=".82"/>
@@ -2469,17 +2512,19 @@ def project_visual_svg(kind, cfg):
 
 def build_project_card_svg(project, cfg):
     kind = project["kind"]
-    world = WORLD_TOKENS.get(kind, WORLD_TOKENS["portfolio"])
+    world_key = "talks" if kind == "token-usage" else kind
+    world = WORLD_TOKENS.get(world_key, WORLD_TOKENS["portfolio"])
+    world_label = "LOCAL-FIRST EXTENSION" if kind == "token-usage" else world["label"]
     W, H = 720, 500
     visual = project_visual_svg(kind, cfg)
     title_id = f"{kind}CardTitle"
     desc_id = f"{kind}CardDescription"
     description = (
-        f'{project["title"]}: {world["label"].lower()}. {project["summary"]} '
+        f'{project["title"]}: {world_label.lower()}. {project["summary"]} '
         f'Visual treatment is an illustrative interface study; project status is {project.get("status", "published")}.'
     )
     return f'''<svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{title_id} {desc_id}">
-<title id="{title_id}">{esc(project["title"])} — {esc(world["label"].lower())}</title>
+<title id="{title_id}">{esc(project["title"])} — {esc(world_label.lower())}</title>
 <desc id="{desc_id}">{esc(description)}</desc>
 <defs>
 {experience_font_defs()}
@@ -2494,7 +2539,7 @@ def build_project_card_svg(project, cfg):
 <rect x="1" y="1" width="718" height="498" rx="9" fill="{world["canvas"]}" stroke="{world["line"]}"/>
 <rect x="1" y="1" width="718" height="498" rx="9" fill="url(#{kind}MicroGrid)" opacity=".28"/>
 <rect x="18" y="18" width="5" height="45" rx="2" fill="url(#{kind}Edge)"/>
-<text x="38" y="37" class="mono" font-size="10" fill="{world["muted"]}" letter-spacing="1.5">{esc(project["code"])}  /  {esc(world["label"])}</text>
+<text x="38" y="37" class="mono" font-size="10" fill="{world["muted"]}" letter-spacing="1.5">{esc(project["code"])}  /  {esc(world_label)}</text>
 <text x="38" y="63" class="mono" font-size="26" fill="{world["ink"]}" letter-spacing="1">{esc(project["title"])}</text>
 <text x="684" y="37" text-anchor="end" class="mono" font-size="9" fill="{world["accent"]}" letter-spacing="1.2">{esc(project.get("status", "SYSTEM").upper())}  ↗</text>
 <path d="M28 76H692" stroke="{world["line"]}"/>
@@ -2668,7 +2713,7 @@ def generate_legacy_asset_set():
 
     panel_headers = [
         ("panel-profile", "SYSTEM PROFILE", "STATUS // BUILDING"),
-        ("panel-showcase", "PROJECT SHOWCASE", "05 SYSTEMS // 01 ACTIVE BUILD"),
+        ("panel-showcase", "PROJECT SHOWCASE", "06 SYSTEMS // 01 ACTIVE BUILD"),
         ("panel-loadout", "TECHNICAL LOADOUT", "PRODUCT // SYSTEMS // INFRA"),
         ("panel-record", "SYSTEM RECORD", "PUBLIC BUILD LOG"),
     ]
@@ -2749,10 +2794,10 @@ def generate_legacy_asset_set():
             "summary": "Bidirectional rooms, delivery, auth, and presence.",
         },
         {
-            "filename": "project-feelings", "kind": "feelings", "code": "SYS-06",
-            "domain": "SENTIMENT", "title": "YOR FEELINGS",
-            "stack": "TYPESCRIPT · NEXT.JS · PRISMA · NLP",
-            "summary": "Mood intelligence translated into responsive interface state.",
+            "filename": "project-token-usage", "kind": "token-usage", "code": "SYS-05",
+            "domain": "MULTI-AI USAGE", "title": "YOR TOKEN USAGE",
+            "stack": "JAVASCRIPT · MANIFEST V3 · CHROME EXTENSIONS",
+            "summary": "Local-first usage capture, dashboards, exports, and optional sync.",
         },
         {
             "filename": "project-next", "kind": "next", "code": "SYS-07",
@@ -2820,7 +2865,6 @@ def build_asset_manifest():
         ("nav-linkedin.svg", "LINKEDIN", "OPEN PROFESSIONAL LINK", "◇"),
         ("nav-live.svg", "LIVE SYSTEM", "LAUNCH DEPLOYMENT", "◈"),
         ("nav-source.svg", "SOURCE", "INSPECT REPOSITORY", "⌁"),
-        ("nav-experiment.svg", "LIVE LAB", "OPEN EXPERIMENT", "◉"),
         ("nav-email.svg", "EMAIL", "TRANSMIT MESSAGE", "◇"),
         ("nav-github.svg", "GITHUB", "OPEN BUILD RECORD", "⌁"),
         ("nav-devpost.svg", "DEVPOST", "VIEW PROTOTYPES", "◈"),
@@ -2832,7 +2876,7 @@ def build_asset_manifest():
         )
 
     section_specs = (
-        ("section-projects.svg", "01", "SELECTED / SYSTEMS", "FIVE BUILDS · PUBLIC PROOF · VERIFIED DATA"),
+        ("section-projects.svg", "01", "SELECTED / SYSTEMS", "SIX SYSTEMS · PUBLIC PROOF · VERIFIED DATA"),
         ("section-field.svg", "02", "FIELD / NOTES", "EXPERIENCE · EDUCATION · TRAJECTORY"),
         ("section-arsenal.svg", "03", "TECHNICAL / RANGE", "PRODUCT · BACKEND · APPLIED ML"),
         ("section-record.svg", "04", "LIVE / TELEMETRY", "TOTAL VIEWS · 365-DAY STREAM · PUBLIC SIGNALS"),
@@ -2843,7 +2887,7 @@ def build_asset_manifest():
         manifest[filename] = build_section_header_svg(index, title, subtitle, CONFIG)
 
     projects = {project["id"]: project for project in PROFILE["projects"]}
-    for project_id in ("helios", "zenith", "vision", "talks"):
+    for project_id in ("vision", "zenith", "helios", "token-usage", "talks"):
         manifest[f"project-{project_id}.svg"] = build_project_card_svg(
             canonical_project_card_spec(projects[project_id]), CONFIG
         )

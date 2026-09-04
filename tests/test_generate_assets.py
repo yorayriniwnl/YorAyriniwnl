@@ -48,6 +48,7 @@ class GenerateAssetsTests(unittest.TestCase):
             "helios": ("INDUSTRIAL TELEMETRY", "#ff1f2d", "EVENT TOPOLOGY", "SYNTHETIC DEMO"),
             "zenith": ("DAYLIGHT SOLAR INTELLIGENCE", "#d30b24", "3D ROOF PLANNING", "IRR"),
             "vision": ("FORENSIC TEXTURE LAB", "#d30b24", "FEATURE VECTOR", "78.5%"),
+            "token-usage": ("LOCAL-FIRST EXTENSION", "#ff1f2d", "PROVIDER SIGNAL BUS", "MANIFEST V3"),
             "talks": ("REALTIME COMMUNICATION", "#ff1f2d", "MESSAGE FLOW", "PRESENCE"),
         }
         old_world_colors = (
@@ -108,13 +109,14 @@ class GenerateAssetsTests(unittest.TestCase):
             "project-helios.svg",
             "project-zenith.svg",
             "project-vision.svg",
+            "project-token-usage.svg",
             "project-talks.svg",
             "project-dossier-portfolio.svg",
             "project-dossier-helios.svg",
             "project-dossier-zenith.svg",
             "project-dossier-vision.svg",
             "project-dossier-talks.svg",
-            "project-dossier-feelings.svg",
+            "project-dossier-token-usage.svg",
             "arsenal.svg",
             "finale.svg",
             "nav-portfolio.svg",
@@ -123,7 +125,6 @@ class GenerateAssetsTests(unittest.TestCase):
             "nav-linkedin.svg",
             "nav-live.svg",
             "nav-source.svg",
-            "nav-experiment.svg",
             "nav-email.svg",
             "nav-github.svg",
             "nav-devpost.svg",
@@ -148,7 +149,7 @@ class GenerateAssetsTests(unittest.TestCase):
         manifest = generate_assets.build_asset_manifest()
 
         treated = set(manifest) - generate_assets.ATLAS_TREATMENT_EXCLUDED
-        self.assertEqual(len(treated), 43)
+        self.assertEqual(len(treated), 42)
         for filename in treated:
             with self.subTest(asset=filename):
                 svg = manifest[filename]
@@ -173,7 +174,7 @@ class GenerateAssetsTests(unittest.TestCase):
             "field-notes.svg",
             "skills-matrix.svg",
             "project-dossier-portfolio.svg",
-            "project-dossier-feelings.svg",
+            "project-dossier-token-usage.svg",
         ):
             with self.subTest(asset=filename):
                 root = ET.fromstring(manifest[filename])

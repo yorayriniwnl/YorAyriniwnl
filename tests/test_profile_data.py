@@ -85,7 +85,7 @@ class ProfileDataTests(unittest.TestCase):
         contract = self.profile["visual_contract"]
         derivatives = [contract["optimized_hero"], *contract["project_art"].values()]
 
-        self.assertEqual(set(contract["project_art"]), {"helios", "zenith", "vision", "talks"})
+        self.assertEqual(set(contract["project_art"]), {"helios", "zenith", "vision", "talks", "token-usage"})
         self.assertEqual(contract["project_art"], contract["delivery"]["project_art"])
         self.assertEqual(contract["source"]["hero"], contract["approved_hero"])
         for relative_path in derivatives:
@@ -118,7 +118,10 @@ class ProfileDataTests(unittest.TestCase):
         for project_id, relative_path in contract["project_art"].items():
             with self.subTest(project=project_id), Image.open(ROOT / relative_path) as image:
                 self.assertEqual(image.size, (3840, 2160))
-                self.assertIn("keyart-v5-4k.jpg", relative_path)
+                if project_id == "token-usage":
+                    self.assertIn("concept-crimson-v1-4k.jpg", relative_path)
+                else:
+                    self.assertIn("keyart-v5-4k.jpg", relative_path)
 
 
 if __name__ == "__main__":

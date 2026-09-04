@@ -16,7 +16,7 @@ DEFAULT_DATA_PATH = ROOT / "data" / "profile.json"
 DEFAULT_TOKENS_PATH = ROOT / "design" / "yor-tokens.json"
 DEFAULT_AUDIT_PATH = ROOT / "data" / "repo-audit.json"
 PHONE_PATTERN = re.compile(r"(?:\+?91[\s.-]?)?[6-9]\d{4}[\s.-]?\d{5}")
-REQUIRED_PROJECT_IDS = {"portfolio", "helios", "zenith", "vision", "talks", "feelings"}
+REQUIRED_PROJECT_IDS = {"portfolio", "vision", "zenith", "helios", "token-usage", "talks"}
 STALE_PUBLIC_CLAIMS = {
     "yorayriniwnl@gmail.com",
     "deep learning",
@@ -120,11 +120,12 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         raise ProfileDataError("source hero must remain the approved hero")
     if contract["delivery"]["hero"] != contract["optimized_hero"]:
         raise ProfileDataError("delivery hero must match optimized_hero")
-    if set(source["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+    expected_project_art = {"helios", "zenith", "vision", "talks", "token-usage"}
+    if set(source["project_art"]) != expected_project_art:
         raise ProfileDataError("source project artwork must match the selected visual project set")
-    if set(contract["delivery"]["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+    if set(contract["delivery"]["project_art"]) != expected_project_art:
         raise ProfileDataError("delivery project artwork must match the selected visual project set")
-    if set(contract["github_derivative"]["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+    if set(contract["github_derivative"]["project_art"]) != expected_project_art:
         raise ProfileDataError("GitHub project derivatives must match the selected visual project set")
     for relative_path in (source["hero"], *source["project_art"].values()):
         asset_path = ROOT / relative_path
@@ -132,7 +133,7 @@ def _validate_hero(profile: dict[str, Any]) -> None:
             raise ProfileDataError(f"source visual asset is missing: {relative_path}")
 
     derivative_paths = [contract["optimized_hero"], *contract["project_art"].values()]
-    if set(contract["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+    if set(contract["project_art"]) != expected_project_art:
         raise ProfileDataError("project artwork must match the selected visual project set")
     for relative_path in derivative_paths:
         asset_path = ROOT / relative_path
@@ -151,7 +152,7 @@ def _validate_hero(profile: dict[str, Any]) -> None:
 
     high_resolution = contract["high_resolution"]
     _require(high_resolution, {"hero", "project_art"}, "high-resolution visual contract")
-    if set(high_resolution["project_art"]) != {"helios", "zenith", "vision", "talks"}:
+    if set(high_resolution["project_art"]) != expected_project_art:
         raise ProfileDataError("high-resolution project artwork must match the selected visual project set")
     for relative_path in (high_resolution["hero"], *high_resolution["project_art"].values()):
         asset_path = ROOT / relative_path

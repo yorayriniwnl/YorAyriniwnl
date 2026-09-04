@@ -179,7 +179,7 @@ def build_resume(raw_output: Path) -> None:
     y_left = draw_wrapped(pdf, experience["summary"], left_x, y_left, left_width, regular, 8.1, 10.8, max_lines=3) - 9
 
     y_left = draw_section_title(pdf, "Selected Systems", left_x, y_left, left_width, bold)
-    project_ids = ["portfolio", "helios", "zenith", "vision", "talks"]
+    project_ids = ["portfolio", "vision", "zenith", "helios", "token-usage", "talks"]
     project_lookup = {project["id"]: project for project in profile["projects"]}
     vision_accuracy = next(
         proof for proof in project_lookup["vision"]["proof"] if "%" in proof
@@ -189,6 +189,7 @@ def build_resume(raw_output: Path) -> None:
         "helios": "FastAPI + WebSocket telemetry / targeted anomaly alerts / Docker Compose",
         "zenith": "3D roof planning / energy simulation / subsidy, ROI, and payback analysis",
         "vision": f"LBP + GLCM texture features / calibrated SVM / {vision_accuracy}",
+        "token-usage": "Manifest V3 multi-AI usage cockpit / local-first capture / dashboards, exports, optional sync",
         "talks": "Realtime messaging / auth and conversation APIs / typed responsive UI",
     }
     for project_id in project_ids:

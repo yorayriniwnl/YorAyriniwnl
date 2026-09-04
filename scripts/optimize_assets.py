@@ -38,6 +38,7 @@ RECIPES = (
     AssetRecipe("project-zenith-concept-crimson-v1.png", "project-zenith-concept-crimson-v1-optimized.jpg", (1800, 1013), 82),
     AssetRecipe("project-vision-concept-crimson-v1.png", "project-vision-concept-crimson-v1-optimized.jpg", (1800, 1013), 82),
     AssetRecipe("project-talks-concept-crimson-v1.png", "project-talks-concept-crimson-v1-optimized.jpg", (1800, 1013), 82),
+    AssetRecipe("project-token-usage-concept-crimson-v1.png", "project-token-usage-concept-crimson-v1-optimized.jpg", (1800, 1013), 82),
 )
 
 LEGACY_UPSCALED_RECIPES = (
@@ -48,6 +49,7 @@ LEGACY_UPSCALED_RECIPES = (
     AssetRecipe("project-zenith-keyart-v5.png", "project-zenith-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
     AssetRecipe("project-vision-keyart-v5.png", "project-vision-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
     AssetRecipe("project-talks-keyart-v5.png", "project-talks-keyart-v5-4k.jpg", (3840, 2160), 88, 118),
+    AssetRecipe("project-token-usage-concept-crimson-v1.png", "project-token-usage-concept-crimson-v1-4k.jpg", (3840, 2160), 88, 118),
 )
 # Backwards-compatible name for older local checks. New code should use the
 # honest archive terminology above.
