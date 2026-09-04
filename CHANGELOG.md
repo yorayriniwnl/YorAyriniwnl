@@ -1,5 +1,15 @@
 # What moved, and why
 
+## Pass 25: readable cinematic atlas v8
+
+The top systems reel now uses a 3×2 desktop composition instead of compressing
+six worlds into a single narrow strip. The larger scene windows make the
+portfolio particle field, Helios telemetry, Zenith solar model, Vision texture
+scan, Talks network, and five-provider Token Usage cockpit legible at profile
+width. Desktop keeps a nine-color GIF palette and mobile keeps an eight-color
+palette so the red signal remains vivid without crossing the transfer budget.
+The portrait and six flagship project covers remain unchanged.
+
 ## Pass 24: one red signal across the whole atlas
 
 The top motion study now represents all six selected systems, including the

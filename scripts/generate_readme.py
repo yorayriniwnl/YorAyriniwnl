@@ -92,10 +92,10 @@ ASSET_REVISIONS = {
         filename: "atlas-v5"
         for filename in ATLAS_ASSETS
     },
-    "systems-reel.gif": "motion-v7",
-    "systems-reel-mobile.gif": "motion-v7",
-    "systems-reel-still.png": "motion-v7",
-    "systems-reel-mobile-still.png": "motion-v7",
+    "systems-reel.gif": "motion-v8",
+    "systems-reel-mobile.gif": "motion-v8",
+    "systems-reel-still.png": "motion-v8",
+    "systems-reel-mobile-still.png": "motion-v8",
     "hero.svg": "raster-v2",
     "project-portfolio-v2.svg": "raster-v8",
     "project-portfolio-mobile-v2.svg": "raster-v8",

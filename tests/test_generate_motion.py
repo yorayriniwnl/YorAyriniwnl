@@ -14,7 +14,7 @@ spec.loader.exec_module(generate_motion)
 
 class GenerateMotionTests(unittest.TestCase):
     def test_responsive_reels_are_compact_and_genuinely_animated(self):
-        for mobile, size in ((False, (1200, 280)), (True, (600, 760))):
+        for mobile, size in ((False, (1200, 480)), (True, (600, 760))):
             with self.subTest(mobile=mobile):
                 payload = generate_motion.build_systems_reel_gif(mobile)
                 self.assertLess(len(payload), 500_000)
@@ -32,7 +32,7 @@ class GenerateMotionTests(unittest.TestCase):
 
     def test_reel_names_all_six_visual_worlds(self):
         source = generate_motion.build_frame(0, mobile=False)
-        self.assertEqual(source.size, (1200, 280))
+        self.assertEqual(source.size, (1200, 480))
         labels = [scene[1] for scene in generate_motion.SCENES]
         for label in ("PORTFOLIO", "HELIOS", "ZENITH", "VISION", "TALKS", "TOKEN USAGE"):
             self.assertIn(label, labels)

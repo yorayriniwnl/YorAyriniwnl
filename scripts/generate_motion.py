@@ -24,7 +24,7 @@ from profile_data import load_design_tokens, load_profile
 
 ROOT = SCRIPT_DIR.parent
 OUT_DIR = ROOT / "generated"
-WIDTH, HEIGHT = 1200, 280
+WIDTH, HEIGHT = 1200, 480
 MOBILE_SIZE = (600, 760)
 # A near-four-second loop at 70 ms/frame keeps the motion fluid while
 # respecting GitHub profile transfer budgets on both desktop and mobile.
@@ -385,10 +385,10 @@ def build_frame(frame_index, mobile=False, compact=True):
     size = MOBILE_SIZE if mobile else (WIDTH, HEIGHT)
     frame = build_backdrop(size, phase)
     draw = ImageDraw.Draw(frame)
-    columns = 2 if mobile else 6
-    margin, gap, top = 16, 12 if mobile else 8, 64
+    columns = 2 if mobile else 3
+    margin, gap, top = 16, 12, 64
     panel_w = (size[0] - 2 * margin - (columns - 1) * gap) // columns
-    panel_h = 210 if mobile else 192
+    panel_h = 210 if mobile else 200
     base_palette = MOTION_PALETTES["portfolio"]
     base_canvas, base_deep, base_accent, base_signal, base_paper, base_line = base_palette
     draw.text((20, 16), "YOR // SYSTEMS ATLAS", font=font(23), fill=base_paper)
@@ -416,7 +416,7 @@ def build_frame(frame_index, mobile=False, compact=True):
             (left + right) / 2,
             y + (113 if mobile else 104),
             phase,
-            (left + 2, y + 44, right - 2, bottom - 34),
+            (left + 2, y + 38, right - 2, bottom - 26),
             colors,
         )
         draw = ImageDraw.Draw(frame)
@@ -438,7 +438,7 @@ def build_systems_reel_gif(mobile=False):
     # Keep the reels visually deep without making a profile README pay for a
     # photographic palette. The small, shared palette also prevents shimmer
     # between frames and materially improves GitHub's transfer time.
-    palette_colors = 8 if not mobile else 6
+    palette_colors = 9 if not mobile else 8
     palette = frames[0].quantize(colors=palette_colors, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
     indexed = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
     buffer = BytesIO()
