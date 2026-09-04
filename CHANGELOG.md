@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 18: cinematic project plates v2
+
+The six clean project covers now use distinct high-detail crimson worlds with a flagship data-ribbon composition and restrained project-specific motion overlays. The approved portrait remains locked, project metadata stays below each image, and delivery derivatives are generated from the new v2 PNG sources at 1440×810 while legacy v1 derivatives leave the active optimization path.
+
 ## Pass 17: clean covers, context below
 
 The six selected-system covers are now clean art-first visuals with no overlaid title, status, stack, or summary copy. Each project's title, status, period, summary, stack, and proof now sits in a readable details panel directly below its cover, followed by the native deep dossier disclosure and shiny live/source controls. Project cover cache revisions moved to `raster-v8`, flagship cover revisions to `raster-v3`, and the approved portrait plus canonical project data remain unchanged.

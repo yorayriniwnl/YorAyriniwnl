@@ -163,9 +163,9 @@
       "summary": "A focused portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface.",
       "visual": {
         "world": "portfolio",
-        "source": "assets/hero-keyart-v2.png",
-        "delivery": "assets/hero-keyart-v2-optimized.jpg",
-        "evidence": "approved cinematic identity artwork"
+        "source": "assets/project-portfolio-cinematic-crimson-v2.png",
+        "delivery": "assets/project-portfolio-cinematic-crimson-v2-optimized.jpg",
+        "evidence": "cinematic folded data-ribbon key art; the approved profile portrait remains separate and unchanged"
       },
       "proof": [
         "4,000 GPU-driven particles",
@@ -193,9 +193,9 @@
       "summary": "An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards.",
       "visual": {
         "world": "helios",
-        "source": "assets/project-helios-concept-crimson-v1.png",
-        "delivery": "assets/project-helios-concept-crimson-v1-optimized.jpg",
-        "evidence": "code-authored synthetic operator preview; no production telemetry; cinematic energy-heart key art with a tactile red industrial language"
+        "source": "assets/project-helios-cinematic-crimson-v2.png",
+        "delivery": "assets/project-helios-cinematic-crimson-v2-optimized.jpg",
+        "evidence": "cinematic molten energy-heart above a storm-soaked grid; no production telemetry is implied"
       },
       "proof": [
         "Bidirectional realtime alert streaming",
@@ -222,9 +222,9 @@
       "summary": "A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis.",
       "visual": {
         "world": "zenith",
-        "source": "assets/project-zenith-concept-crimson-v1.png",
-        "delivery": "assets/project-zenith-concept-crimson-v1-optimized.jpg",
-        "evidence": "cinematic solar decision instrument with an eclipse-shaped panel array; financial and feasibility outputs remain assumption-driven"
+        "source": "assets/project-zenith-cinematic-crimson-v2.png",
+        "delivery": "assets/project-zenith-cinematic-crimson-v2-optimized.jpg",
+        "evidence": "cinematic solar digital-twin rooftop with irradiance geometry; financial and feasibility outputs remain assumption-driven"
       },
       "proof": [
         "Interactive panel-placement simulation",
@@ -251,9 +251,9 @@
       "summary": "A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.",
       "visual": {
         "world": "vision",
-        "source": "assets/project-vision-concept-crimson-v1.png",
-        "delivery": "assets/project-vision-concept-crimson-v1-optimized.jpg",
-        "evidence": "cinematic half-real, half-synthetic face study with scarlet calibration optics; metric and pipeline are grounded in the project record"
+        "source": "assets/project-vision-cinematic-crimson-v2.png",
+        "delivery": "assets/project-vision-cinematic-crimson-v2-optimized.jpg",
+        "evidence": "cinematic half-real, half-synthetic face study with scarlet calibration optics; not based on the profile portrait"
       },
       "proof": [
         "78.5% held-out test accuracy",
@@ -282,9 +282,9 @@
       "summary": "A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path.",
       "visual": {
         "world": "talks",
-        "source": "assets/project-talks-concept-crimson-v1.png",
-        "delivery": "assets/project-talks-concept-crimson-v1-optimized.jpg",
-        "evidence": "cinematic human-to-human signal bridge with scarlet fiber optics; no fabricated user or traffic metrics"
+        "source": "assets/project-talks-cinematic-crimson-v2.png",
+        "delivery": "assets/project-talks-cinematic-crimson-v2-optimized.jpg",
+        "evidence": "cinematic glass-city communication network with live signal threads; no fabricated user or traffic metrics"
       },
       "proof": [
         "Low-latency bidirectional messaging",
@@ -313,9 +313,9 @@
       "summary": "A local-first Manifest V3 Chrome extension for estimating AI token usage across ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional sync.",
       "visual": {
         "world": "talks",
-        "source": "assets/project-token-usage-concept-crimson-v1.png",
-        "delivery": "assets/project-token-usage-concept-crimson-v1-optimized.jpg",
-        "evidence": "cinematic crimson token-core study for a local-first multi-AI usage cockpit; no provider telemetry or fabricated usage totals"
+        "source": "assets/project-token-usage-cinematic-crimson-v2.png",
+        "delivery": "assets/project-token-usage-cinematic-crimson-v2-optimized.jpg",
+        "evidence": "cinematic multi-stream token prism for a local-first usage cockpit; no provider telemetry or fabricated usage totals"
       },
       "proof": [
         "Local-first usage capture across five AI surfaces",
@@ -336,12 +336,13 @@
     "optimized_hero": "assets/hero-keyart-v2-optimized.jpg",
     "source": {
       "hero": "assets/hero-keyart-v2.png",
+      "flagship_art": "assets/project-portfolio-cinematic-crimson-v2.png",
       "project_art": {
-        "helios": "assets/project-helios-concept-crimson-v1.png",
-        "zenith": "assets/project-zenith-concept-crimson-v1.png",
-        "vision": "assets/project-vision-concept-crimson-v1.png",
-        "talks": "assets/project-talks-concept-crimson-v1.png",
-        "token-usage": "assets/project-token-usage-concept-crimson-v1.png"
+        "helios": "assets/project-helios-cinematic-crimson-v2.png",
+        "zenith": "assets/project-zenith-cinematic-crimson-v2.png",
+        "vision": "assets/project-vision-cinematic-crimson-v2.png",
+        "talks": "assets/project-talks-cinematic-crimson-v2.png",
+        "token-usage": "assets/project-token-usage-cinematic-crimson-v2.png"
       },
       "supporting_art": {
         "identity": "assets/crimson-command-deck-v1.png",
@@ -351,12 +352,13 @@
     },
     "delivery": {
       "hero": "assets/hero-keyart-v2-optimized.jpg",
+      "flagship_art": "assets/project-portfolio-cinematic-crimson-v2-optimized.jpg",
       "project_art": {
-        "helios": "assets/project-helios-concept-crimson-v1-optimized.jpg",
-        "zenith": "assets/project-zenith-concept-crimson-v1-optimized.jpg",
-        "vision": "assets/project-vision-concept-crimson-v1-optimized.jpg",
-        "talks": "assets/project-talks-concept-crimson-v1-optimized.jpg",
-        "token-usage": "assets/project-token-usage-concept-crimson-v1-optimized.jpg"
+        "helios": "assets/project-helios-cinematic-crimson-v2-optimized.jpg",
+        "zenith": "assets/project-zenith-cinematic-crimson-v2-optimized.jpg",
+        "vision": "assets/project-vision-cinematic-crimson-v2-optimized.jpg",
+        "talks": "assets/project-talks-cinematic-crimson-v2-optimized.jpg",
+        "token-usage": "assets/project-token-usage-cinematic-crimson-v2-optimized.jpg"
       },
       "supporting_art": {
         "identity": "assets/crimson-command-deck-v1-optimized.jpg",
@@ -386,11 +388,11 @@
       }
     },
     "project_art": {
-      "helios": "assets/project-helios-concept-crimson-v1-optimized.jpg",
-      "zenith": "assets/project-zenith-concept-crimson-v1-optimized.jpg",
-      "vision": "assets/project-vision-concept-crimson-v1-optimized.jpg",
-      "talks": "assets/project-talks-concept-crimson-v1-optimized.jpg",
-      "token-usage": "assets/project-token-usage-concept-crimson-v1-optimized.jpg"
+      "helios": "assets/project-helios-cinematic-crimson-v2-optimized.jpg",
+      "zenith": "assets/project-zenith-cinematic-crimson-v2-optimized.jpg",
+      "vision": "assets/project-vision-cinematic-crimson-v2-optimized.jpg",
+      "talks": "assets/project-talks-cinematic-crimson-v2-optimized.jpg",
+      "token-usage": "assets/project-token-usage-cinematic-crimson-v2-optimized.jpg"
     },
     "palette": {
       "void": "#000000",

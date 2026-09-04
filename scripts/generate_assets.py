@@ -32,6 +32,7 @@ IDENTITY = PROFILE["identity"]
 VISUAL_CONTRACT = PROFILE["visual_contract"]
 WORLD_TOKENS = TOKENS["worlds"]
 SUPPORTING_ART = VISUAL_CONTRACT["delivery"]["supporting_art"]
+FLAGSHIP_ART = VISUAL_CONTRACT["delivery"]["flagship_art"]
 PALETTE = {
     "void": TOKENS["color"]["void"],
     "panel": TOKENS["color"]["panel"],
@@ -2172,27 +2173,25 @@ def build_featured_project_svg(cfg, mobile=False):
 <linearGradient id="coverScrim" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#020202" stop-opacity=".56"/><stop offset=".48" stop-color="#020202" stop-opacity=".08"/><stop offset="1" stop-color="#020202" stop-opacity=".28"/></linearGradient>
 <clipPath id="coverClip"><rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="10"/></clipPath>
 <style>
-.sculpture-float {{animation:levitate 14s ease-in-out infinite;transform-origin:0 0}}
 .orbit-trace {{animation:trace 18s linear infinite;stroke-dasharray:18 520}}
 .cover-sweep {{animation:cover-sweep 8s linear infinite;stroke-dasharray:22 700}}
 .cover-pulse {{animation:cover-pulse 2.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}}
-@keyframes levitate {{0%,100%{{transform:translateY(0) rotate(-5deg)}}50%{{transform:translateY(-14px) rotate(5deg)}}}}
 @keyframes trace {{to{{stroke-dashoffset:-1076}}}}
 @keyframes cover-sweep {{from{{stroke-dashoffset:760;opacity:.08}}45%{{opacity:.72}}to{{stroke-dashoffset:0;opacity:.08}}}}
 @keyframes cover-pulse {{0%,100%{{opacity:.25;transform:scale(.82)}}50%{{opacity:.9;transform:scale(1.16)}}}}
-@media (prefers-reduced-motion:reduce) {{.sculpture-float,.orbit-trace,.cover-sweep,.cover-pulse{{animation:none}}}}
+@media (prefers-reduced-motion:reduce) {{.orbit-trace,.cover-sweep,.cover-pulse{{animation:none}}}}
 </style>
 </defs>
 <g clip-path="url(#coverClip)">
 <rect width="{W}" height="{H}" fill="#060507"/>
-<rect x="{art_left}" y="{art_top}" width="{art_width}" height="{art_height}" fill="#060507"/>
-<rect width="{W}" height="{H}" fill="url(#dust)"/>
+<image href="{asset_data_uri(FLAGSHIP_ART)}" x="{art_left}" y="{art_top}" width="{art_width}" height="{art_height}" preserveAspectRatio="xMidYMid slice"/>
+<rect width="{W}" height="{H}" fill="url(#dust)" opacity=".32"/>
 <ellipse cx="{cx}" cy="{cy}" rx="{345 * scale}" ry="{250 * scale}" fill="url(#ambient)"/>
 <rect width="{W}" height="{H}" fill="url(#coverScrim)"/>
 <g transform="translate({cx} {cy}) scale({scale})">
 <ellipse cy="132" rx="{orbit_width}" ry="{orbit_height}" fill="none" stroke="#471822" opacity=".75"/>
 <ellipse cy="132" rx="{orbit_width}" ry="{orbit_height}" fill="none" stroke="#e84b4b" stroke-width="1.4" class="orbit-trace"/>
-<g class="sculpture-float">{sculpture_svg()}</g>
+<ellipse cy="132" rx="{orbit_width * .72}" ry="{orbit_height * .45}" fill="none" stroke="#ff8a7f" stroke-width=".8" stroke-dasharray="2 14" opacity=".52"/>
 <path d="M-285 0h14M271 0h14M0 -206v14M0 192v14" stroke="#a55e6b" opacity=".55"/>
 </g>
 <g aria-hidden="true">
@@ -2245,6 +2244,8 @@ def project_motion_style(kind):
 .{kind}-trace {{ animation: {kind}-trace 5.5s ease-in-out infinite; }}
 .{kind}-pulse {{ animation: {kind}-pulse 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
 .{kind}-packet {{ animation: {kind}-packet 2.8s linear infinite; }}
+.{kind}-energy-arc {{ animation: {kind}-energy-arc 6s linear infinite; }}
+.{kind}-energy-core {{ animation: {kind}-energy-core 2.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
 @keyframes {kind}-trace {{ 0%, 12% {{ stroke-dashoffset: 440; }} 64%, 100% {{ stroke-dashoffset: 0; }} }}
 @keyframes {kind}-pulse {{ 0%, 100% {{ opacity: .35; transform: scale(.82); }} 50% {{ opacity: 1; transform: scale(1.18); }} }}
 @keyframes {kind}-packet {{ to {{ stroke-dashoffset: -80; }} }}'''
@@ -2253,29 +2254,41 @@ def project_motion_style(kind):
 .{kind}-sun {{ animation: {kind}-sun 6s ease-in-out infinite; }}
 .{kind}-panels {{ animation: {kind}-panels 3.2s ease-in-out infinite; }}
 .{kind}-flow {{ animation: {kind}-flow 3.4s linear infinite; }}
+.{kind}-ray {{ animation: {kind}-ray 5s ease-in-out infinite; transform-box: fill-box; transform-origin: 590px 86px; }}
 @keyframes {kind}-sun {{ 0%, 100% {{ opacity: .22; transform: translateX(-14px); }} 50% {{ opacity: .9; transform: translateX(20px); }} }}
 @keyframes {kind}-panels {{ 0%, 100% {{ opacity: .48; }} 50% {{ opacity: 1; }} }}
-@keyframes {kind}-flow {{ to {{ stroke-dashoffset: -70; }} }}'''
+@keyframes {kind}-flow {{ to {{ stroke-dashoffset: -70; }} }}
+@keyframes {kind}-ray {{ 0%, 100% {{ opacity: .18; transform: scaleY(.76); }} 50% {{ opacity: .82; transform: scaleY(1.05); }} }}'''
     elif kind == "vision":
         animation = f'''
 .{kind}-scan {{ animation: {kind}-scan 4.4s ease-in-out infinite; }}
 .{kind}-confidence {{ animation: {kind}-confidence 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: left center; }}
+.{kind}-reticle {{ animation: {kind}-reticle 8s linear infinite; transform-box: fill-box; transform-origin: center; }}
 @keyframes {kind}-scan {{ 0%, 12% {{ transform: translateY(-52px); opacity: .12; }} 55%, 78% {{ transform: translateY(126px); opacity: .9; }} 100% {{ transform: translateY(126px); opacity: .12; }} }}
-@keyframes {kind}-confidence {{ 0%, 100% {{ transform: scaleX(.66); opacity: .5; }} 52% {{ transform: scaleX(1); opacity: 1; }} }}'''
+@keyframes {kind}-confidence {{ 0%, 100% {{ transform: scaleX(.66); opacity: .5; }} 52% {{ transform: scaleX(1); opacity: 1; }} }}
+@keyframes {kind}-reticle {{ from {{ transform: rotate(0deg); opacity: .35; }} 50% {{ opacity: .82; }} to {{ transform: rotate(360deg); opacity: .35; }} }}'''
     elif kind == "token-usage":
         animation = f'''
 .{kind}-signal {{ animation: {kind}-signal 3.8s linear infinite; }}
 .{kind}-core {{ animation: {kind}-core 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
 .{kind}-packet {{ animation: {kind}-packet 2.4s linear infinite; }}
+.{kind}-lane {{ animation: {kind}-lane 3.2s linear infinite; }}
+.{kind}-prism {{ animation: {kind}-prism 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
 @keyframes {kind}-signal {{ to {{ stroke-dashoffset: -96; }} }}
 @keyframes {kind}-core {{ 0%, 100% {{ opacity: .45; transform: scale(.88); }} 50% {{ opacity: 1; transform: scale(1.12); }} }}
-@keyframes {kind}-packet {{ to {{ stroke-dashoffset: -84; }} }}'''
+@keyframes {kind}-packet {{ to {{ stroke-dashoffset: -84; }} }}
+@keyframes {kind}-lane {{ to {{ stroke-dashoffset: -120; }} }}
+@keyframes {kind}-prism {{ 0%, 100% {{ opacity: .35; transform: scale(.92); }} 50% {{ opacity: .9; transform: scale(1.06); }} }}'''
     else:
         animation = f'''
 .{kind}-packet {{ animation: {kind}-packet 3.1s linear infinite; }}
 .{kind}-typing {{ animation: {kind}-typing 1.2s ease-in-out infinite; }}
+.{kind}-network-trace {{ animation: {kind}-network-trace 6s linear infinite; }}
+.{kind}-network-pulse {{ animation: {kind}-network-pulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }}
 @keyframes {kind}-packet {{ to {{ stroke-dashoffset: -90; }} }}
-@keyframes {kind}-typing {{ 0%, 100% {{ opacity: .25; }} 50% {{ opacity: 1; }} }}'''
+@keyframes {kind}-typing {{ 0%, 100% {{ opacity: .25; }} 50% {{ opacity: 1; }} }}
+@keyframes {kind}-network-trace {{ to {{ stroke-dashoffset: -160; }} }}
+@keyframes {kind}-network-pulse {{ 0%, 100% {{ opacity: .28; transform: scale(.78); }} 50% {{ opacity: .9; transform: scale(1.22); }} }}'''
     animation = f'''
 .{kind}-frame-sweep {{ animation: {kind}-frame-sweep 7.5s linear infinite; }}
 .{kind}-ambient-orbit {{ animation: {kind}-ambient-orbit 12s linear infinite; transform-box: fill-box; transform-origin: center; }}
@@ -2331,6 +2344,47 @@ def _glcm_matrix(x, y, accent):
                 f'fill="{accent}" opacity="{opacity:.2f}"/>'
             )
     return "".join(cells)
+
+
+def clean_project_overlay_svg(kind, world):
+    """Add a restrained signature overlay so each clean cover has its own motion grammar."""
+    accent = world["accent"]
+    soft = world["accent_soft"]
+    if kind == "helios":
+        return f'''<g aria-hidden="true" opacity=".78">
+<path d="M70 292 C170 224 236 270 318 204 S472 126 644 76" fill="none" stroke="{soft}" stroke-width="1.3" stroke-dasharray="12 22" class="{kind}-energy-arc"/>
+<path d="M84 316 C190 250 262 302 350 226 S492 158 656 112" fill="none" stroke="{accent}" stroke-width=".7" stroke-dasharray="2 18" class="{kind}-energy-arc"/>
+<circle cx="644" cy="76" r="10" fill="none" stroke="{accent}" opacity=".35"/><circle cx="644" cy="76" r="4" fill="{accent}" class="{kind}-energy-core"/>
+</g>'''
+    if kind == "zenith":
+        rays = "".join(
+            f'<path d="M590 86 L{x} {y}" stroke="{soft}" stroke-width=".9" stroke-dasharray="3 14" class="{kind}-ray"/>'
+            for x, y in ((414, 318), (482, 342), (562, 348), (644, 326), (692, 286))
+        )
+        return f'''<g aria-hidden="true" opacity=".72">
+<circle cx="590" cy="86" r="34" fill="none" stroke="{accent}" stroke-width="1" stroke-dasharray="2 10" class="{kind}-ray"/>
+{rays}<path d="M414 318H692M446 296H670" stroke="{soft}" stroke-width=".6" opacity=".44"/>
+</g>'''
+    if kind == "vision":
+        return f'''<g aria-hidden="true" opacity=".78">
+<g class="{kind}-reticle"><circle cx="552" cy="168" r="47" fill="none" stroke="{soft}" stroke-width=".8" stroke-dasharray="2 9"/><circle cx="552" cy="168" r="28" fill="none" stroke="{accent}" stroke-width="1"/><path d="M552 112V224M496 168H608" stroke="{soft}" stroke-width=".6"/></g>
+<path d="M330 120H676" stroke="{accent}" stroke-width="1.2" stroke-dasharray="6 18" class="{kind}-scan"/>
+<path d="M410 276H650" stroke="{soft}" stroke-width=".7" stroke-dasharray="2 12"/>
+</g>'''
+    if kind == "token-usage":
+        streams = "".join(
+            f'<path d="M72 {y} C190 {y-30} 302 {y+26} 548 180" fill="none" stroke="{accent if index % 2 else soft}" stroke-width="{1.1 if index == 2 else .7}" stroke-dasharray="7 18" class="{kind}-lane"/>'
+            for index, y in enumerate((92, 144, 204, 264, 312))
+        )
+        return f'''<g aria-hidden="true" opacity=".74">
+{streams}<polygon points="548,154 575,169 575,199 548,214 521,199 521,169" fill="none" stroke="{accent}" stroke-width="1.2" class="{kind}-prism"/>
+<circle cx="548" cy="184" r="8" fill="{accent}" opacity=".24" class="{kind}-prism"/><circle cx="548" cy="184" r="2.5" fill="{soft}"/>
+</g>'''
+    return f'''<g aria-hidden="true" opacity=".78">
+<path d="M88 286 C174 246 238 150 344 188 S472 292 552 206 S612 126 680 96" fill="none" stroke="{soft}" stroke-width="1" stroke-dasharray="4 16" class="{kind}-network-trace"/>
+<path d="M110 112 L264 264 L424 112 L612 292 M194 322 L360 168 L590 318" fill="none" stroke="{accent}" stroke-width=".65" stroke-dasharray="2 12" class="{kind}-network-trace"/>
+<g fill="{accent}"><circle cx="110" cy="112" r="4" class="{kind}-network-pulse"/><circle cx="264" cy="264" r="3.5" class="{kind}-network-pulse"/><circle cx="424" cy="112" r="3.5" class="{kind}-network-pulse"/><circle cx="612" cy="292" r="4" class="{kind}-network-pulse"/></g>
+</g>'''
 
 
 def project_visual_svg(kind, cfg):
@@ -2577,6 +2631,7 @@ def build_project_card_svg(project, cfg):
 <ellipse cx="590" cy="86" rx="92" ry="28" fill="none" stroke="{world["accent_soft"]}" stroke-width="1" stroke-dasharray="3 12" opacity=".42" class="{kind}-ambient-orbit"/>
 <circle cx="590" cy="86" r="4" fill="{world["accent"]}" class="{kind}-ambient-pulse"/>
 <path d="M42 310H242" stroke="{world["accent"]}" stroke-width="1.5" stroke-dasharray="3 12" opacity=".48" class="{kind}-frame-sweep"/>
+{clean_project_overlay_svg(kind, world)}
 </g>
 <rect x="1" y="1" width="718" height="358" rx="9" fill="none" stroke="{world["accent"]}" stroke-opacity=".34"/>
 </svg>'''

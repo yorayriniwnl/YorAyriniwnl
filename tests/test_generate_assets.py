@@ -37,6 +37,7 @@ class GenerateAssetsTests(unittest.TestCase):
         self.assertTrue(ET.fromstring(card).tag.endswith("svg"))
         self.assertIn('class="vision-frame-sweep"', card)
         self.assertIn('data:image/jpeg;base64,', card)
+        self.assertIn('class="vision-reticle"', card)
         self.assertNotIn("<text", card)
 
     def test_flagship_cards_have_distinct_visual_worlds_and_motion_grammar(self):
@@ -61,6 +62,14 @@ class GenerateAssetsTests(unittest.TestCase):
                 self.assertIn(f'class="{kind}-frame-sweep"', card)
                 self.assertIn(f'class="{kind}-ambient-orbit"', card)
                 self.assertIn(f'class="{kind}-ambient-pulse"', card)
+                signature = {
+                    "helios": "helios-energy-arc",
+                    "zenith": "zenith-ray",
+                    "vision": "vision-reticle",
+                    "token-usage": "token-usage-lane",
+                    "talks": "talks-network-trace",
+                }[kind]
+                self.assertIn(f'class="{signature}"', card)
                 self.assertIn("prefers-reduced-motion: reduce", card)
                 self.assertIn(
                     generate_assets.asset_data_uri(
@@ -219,6 +228,10 @@ class GenerateAssetsTests(unittest.TestCase):
             self.assertEqual(root.get("role"), "img")
             self.assertIn("prefers-reduced-motion:reduce", svg)
             self.assertIn("illustrative artwork", svg)
+            self.assertIn(
+                generate_assets.asset_data_uri(generate_assets.FLAGSHIP_ART).split(",", 1)[1],
+                svg,
+            )
             self.assertNotIn("<script", svg)
             self.assertNotIn("<foreignObject", svg)
             for proof in generate_assets.PROFILE["projects"][0]["proof"]:

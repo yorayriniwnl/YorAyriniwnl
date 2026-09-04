@@ -113,8 +113,8 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         raise ProfileDataError("approved hero changed; restore the previous profile portrait")
 
     source = contract["source"]
-    _require(source, {"hero", "project_art", "supporting_art"}, "source visual contract")
-    _require(contract["delivery"], {"hero", "project_art", "supporting_art"}, "delivery visual contract")
+    _require(source, {"hero", "flagship_art", "project_art", "supporting_art"}, "source visual contract")
+    _require(contract["delivery"], {"hero", "flagship_art", "project_art", "supporting_art"}, "delivery visual contract")
     _require(contract["github_derivative"], {"hero", "project_art"}, "GitHub visual contract")
     if source["hero"] != contract["approved_hero"]:
         raise ProfileDataError("source hero must remain the approved hero")
@@ -127,10 +127,12 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         raise ProfileDataError("delivery project artwork must match the selected visual project set")
     if set(contract["github_derivative"]["project_art"]) != expected_project_art:
         raise ProfileDataError("GitHub project derivatives must match the selected visual project set")
-    for relative_path in (source["hero"], *source["project_art"].values()):
+    for relative_path in (source["hero"], source["flagship_art"], *source["project_art"].values()):
         asset_path = ROOT / relative_path
         if not asset_path.is_file():
             raise ProfileDataError(f"source visual asset is missing: {relative_path}")
+    if Path(source["flagship_art"]).suffix.lower() != ".png":
+        raise ProfileDataError("source flagship artwork must be a PNG")
     if set(source["supporting_art"]) != {"identity", "atlas", "channel"}:
         raise ProfileDataError("source supporting artwork must cover identity, atlas, and channel")
     if set(contract["delivery"]["supporting_art"]) != {"identity", "atlas", "channel"}:
@@ -140,13 +142,15 @@ def _validate_hero(profile: dict[str, Any]) -> None:
         if asset_path.suffix.lower() != ".png" or not asset_path.is_file():
             raise ProfileDataError(f"source supporting visual asset is missing: {relative_path}")
 
-    derivative_paths = [contract["optimized_hero"], *contract["project_art"].values()]
+    derivative_paths = [contract["optimized_hero"], contract["delivery"]["flagship_art"], *contract["project_art"].values()]
     if set(contract["project_art"]) != expected_project_art:
         raise ProfileDataError("project artwork must match the selected visual project set")
     for relative_path in derivative_paths:
         asset_path = ROOT / relative_path
         if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():
             raise ProfileDataError(f"optimized visual asset is missing: {relative_path}")
+    if Path(contract["delivery"]["flagship_art"]).suffix.lower() not in {".jpg", ".jpeg"}:
+        raise ProfileDataError("delivery flagship artwork must be a JPEG")
     for relative_path in contract["delivery"]["supporting_art"].values():
         asset_path = ROOT / relative_path
         if asset_path.suffix.lower() not in {".jpg", ".jpeg"} or not asset_path.is_file():

@@ -48,8 +48,8 @@
 
 <a href="https://www.yorayriniwnl.in">
 <picture>
-<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-mobile-v2.svg?rev=raster-v3"/>
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-v2.svg?rev=raster-v3" width="100%" alt="Personal Developer Portfolio: the product universe"/>
+<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-mobile-v2.svg?rev=raster-v4"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-portfolio-v2.svg?rev=raster-v4" width="100%" alt="Personal Developer Portfolio: the product universe"/>
 </picture>
 </a>
 
@@ -78,7 +78,7 @@ A focused portfolio with a lazy-loaded case-study architecture and a GPU-acceler
 </p>
 
 <a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v8" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v9" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
 
 <table align="center">
@@ -106,7 +106,7 @@ A probability-aware image classifier built from handcrafted texture features and
 </p>
 
 <a href="https://zenith-xi-snowy.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=raster-v8" width="100%" alt="Yor Zenith: solar decision support"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-zenith.svg?rev=raster-v9" width="100%" alt="Yor Zenith: solar decision support"/>
 </a>
 
 <table align="center">
@@ -134,7 +134,7 @@ A full-stack solar feasibility platform combining 3D roof planning, energy-outpu
 </p>
 
 <a href="https://github.com/yorayriniwnl/Yor-Helios">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v8" width="100%" alt="Yor Helios: realtime energy intelligence"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-helios.svg?rev=raster-v9" width="100%" alt="Yor Helios: realtime energy intelligence"/>
 </a>
 
 <table align="center">
@@ -161,7 +161,7 @@ An energy-monitoring platform streaming anomaly and threshold events into channe
 </p>
 
 <a href="https://github.com/yorayriniwnl/Yor_Token_Usage">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-token-usage.svg?rev=raster-v8" width="100%" alt="Yor_Token_Usage: multi-ai usage cockpit"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-token-usage.svg?rev=raster-v9" width="100%" alt="Yor_Token_Usage: multi-ai usage cockpit"/>
 </a>
 
 <table align="center">
@@ -188,7 +188,7 @@ A local-first Manifest V3 Chrome extension for estimating AI token usage across 
 </p>
 
 <a href="https://yor-talks.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg?rev=raster-v8" width="100%" alt="Yor Talks V2: realtime communication"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-talks.svg?rev=raster-v9" width="100%" alt="Yor Talks V2: realtime communication"/>
 </a>
 
 <table align="center">
