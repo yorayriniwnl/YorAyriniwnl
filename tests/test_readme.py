@@ -110,13 +110,13 @@ class ReadmeTests(unittest.TestCase):
             )
 
         for filename, revision in (
-            ("project-portfolio-v2.svg", "raster-v6"),
-            ("project-portfolio-mobile-v2.svg", "raster-v6"),
-            ("project-helios.svg", "raster-v11"),
-            ("project-zenith.svg", "raster-v11"),
-            ("project-vision.svg", "raster-v11"),
-            ("project-token-usage.svg", "raster-v11"),
-            ("project-talks.svg", "raster-v11"),
+            ("project-portfolio-v2.svg", "raster-v7"),
+            ("project-portfolio-mobile-v2.svg", "raster-v7"),
+            ("project-helios.svg", "raster-v12"),
+            ("project-zenith.svg", "raster-v12"),
+            ("project-vision.svg", "raster-v12"),
+            ("project-token-usage.svg", "raster-v12"),
+            ("project-talks.svg", "raster-v12"),
         ):
             self.assertIn(f"output/{filename}?rev={revision}", self.readme)
 

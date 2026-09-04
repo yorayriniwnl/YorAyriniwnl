@@ -1,5 +1,18 @@
 # What moved, and why
 
+## Pass 22: context-first project worlds v5
+
+The six project covers now come from the products' actual workflows rather
+than sharing one cinematic treatment. The portfolio is a curated exhibition
+of the systems; Helios traces a meter anomaly into operator triage; Zenith
+turns rooftop sunlight into a planning decision; Vision shows an image plate
+becoming texture features and a classifier output; Talks connects identity,
+conversation, communities, live rooms, and creator spaces; and Token Usage
+places five-provider local measurement inside a visible vault with optional
+sync kept separate. The source art is richer, the card delivery remains
+1200×675 for GitHub, and the approved portrait remains locked and unchanged.
+v4 is retained as the immediate rollback set.
+
 ## Pass 21: hierarchy-first project worlds v4
 
 The six project covers now use a hierarchy-first art direction after the dense v3 pass became visually noisy. Each scene has one dominant subject, a controlled midground, organized depth planes, and deliberately limited accents while preserving the black/crimson identity: the infinity data ribbon, forensic split face, caged reactor, solar rooftop, token prism, and communications nexus. The approved portrait remains locked and unchanged.

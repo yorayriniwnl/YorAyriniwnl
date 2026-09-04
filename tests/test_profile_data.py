@@ -90,8 +90,8 @@ class ProfileDataTests(unittest.TestCase):
         self.assertEqual(set(contract["source"]["supporting_art"]), {"identity", "atlas", "channel"})
         self.assertEqual(set(contract["delivery"]["supporting_art"]), {"identity", "atlas", "channel"})
         self.assertEqual(contract["source"]["hero"], contract["approved_hero"])
-        self.assertTrue(contract["source"]["flagship_art"].endswith("cinematic-crimson-v4.png"))
-        self.assertTrue(contract["delivery"]["flagship_art"].endswith("cinematic-crimson-v4-optimized.jpg"))
+        self.assertTrue(contract["source"]["flagship_art"].endswith("cinematic-crimson-v5.png"))
+        self.assertTrue(contract["delivery"]["flagship_art"].endswith("cinematic-crimson-v5-optimized.jpg"))
         for relative_path in derivatives:
             with self.subTest(asset=relative_path):
                 path = ROOT / relative_path
@@ -100,11 +100,11 @@ class ProfileDataTests(unittest.TestCase):
 
         for project_id, relative_path in contract["source"]["project_art"].items():
             with self.subTest(project=project_id):
-                self.assertTrue(relative_path.endswith("-cinematic-crimson-v4.png"))
+                self.assertTrue(relative_path.endswith("-cinematic-crimson-v5.png"))
                 self.assertTrue((ROOT / relative_path).is_file())
         for project_id, relative_path in contract["delivery"]["project_art"].items():
             with self.subTest(delivery=project_id):
-                self.assertIn("cinematic-crimson-v4-optimized.jpg", relative_path)
+                self.assertIn("cinematic-crimson-v5-optimized.jpg", relative_path)
         for key, relative_path in contract["source"]["supporting_art"].items():
             with self.subTest(supporting_source=key):
                 self.assertTrue(relative_path.endswith("-v1.png"))
