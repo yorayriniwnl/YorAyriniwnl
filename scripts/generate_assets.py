@@ -1610,7 +1610,7 @@ def build_project_summary_svg(project, cfg):
     the same authored visual language.
     """
     kind = project["id"]
-    world_key = "talks" if kind == "token-usage" else kind
+    world_key = "token-usage" if kind == "token-usage" else kind
     world = WORLD_TOKENS.get(world_key, WORLD_TOKENS["portfolio"])
     W, H = 720, 260
     code = f'SYS-{project["order"]:02d}'
@@ -2477,7 +2477,7 @@ def clean_project_overlay_svg(kind, world):
 
 
 def project_visual_svg(kind, cfg):
-    world_key = "talks" if kind == "token-usage" else kind
+    world_key = "token-usage" if kind == "token-usage" else kind
     world = WORLD_TOKENS[world_key]
     art = asset_data_uri(
         VISUAL_CONTRACT["project_art"].get(kind, VISUAL_CONTRACT["project_art"]["talks"])
@@ -2679,7 +2679,7 @@ def project_visual_svg(kind, cfg):
 def build_project_card_svg(project, cfg):
     """Render a clean, art-first project cover; HTML owns the project details."""
     kind = project["kind"]
-    world_key = "talks" if kind == "token-usage" else kind
+    world_key = "token-usage" if kind == "token-usage" else kind
     world = WORLD_TOKENS.get(world_key, WORLD_TOKENS["portfolio"])
     world_label = "LOCAL-FIRST EXTENSION" if kind == "token-usage" else world["label"]
     W, H = 720, 360

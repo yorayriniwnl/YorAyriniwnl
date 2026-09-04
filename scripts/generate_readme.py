@@ -92,10 +92,10 @@ ASSET_REVISIONS = {
         filename: "atlas-v5"
         for filename in ATLAS_ASSETS
     },
-    "systems-reel.gif": "motion-v6",
-    "systems-reel-mobile.gif": "motion-v6",
-    "systems-reel-still.png": "motion-v6",
-    "systems-reel-mobile-still.png": "motion-v6",
+    "systems-reel.gif": "motion-v7",
+    "systems-reel-mobile.gif": "motion-v7",
+    "systems-reel-still.png": "motion-v7",
+    "systems-reel-mobile-still.png": "motion-v7",
     "hero.svg": "raster-v2",
     "project-portfolio-v2.svg": "raster-v8",
     "project-portfolio-mobile-v2.svg": "raster-v8",
@@ -164,7 +164,7 @@ def systems_reel(handle: str) -> list[str]:
         ],
         image(
             "systems-reel.gif",
-            "The worlds I build: a cinematic product archive, industrial telemetry, daylight solar intelligence, forensic texture vision, and realtime communication. Illustrative motion study.",
+            "YOR systems atlas: six red-coded worlds spanning a cinematic product archive, industrial telemetry, solar intelligence, forensic vision, realtime communication, and local-first AI usage. Illustrative motion study.",
             handle,
         ),
         "</picture>",

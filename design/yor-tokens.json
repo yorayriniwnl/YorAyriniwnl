@@ -73,6 +73,18 @@
       "accent_soft": "#ff6670",
       "line": "#7a1a29",
       "glow": "#8f0014"
+    },
+    "token-usage": {
+      "label": "LOCAL AI USAGE COCKPIT",
+      "canvas": "#070001",
+      "surface": "#140106",
+      "surface_alt": "#2b0710",
+      "ink": "#fff5f5",
+      "muted": "#d2a1a7",
+      "accent": "#d30b24",
+      "accent_soft": "#ff6670",
+      "line": "#7a1a29",
+      "glow": "#8f0014"
     }
   },
   "gradient": {

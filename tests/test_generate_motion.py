@@ -30,12 +30,26 @@ class GenerateMotionTests(unittest.TestCase):
                     middle = image.convert("RGB")
                     self.assertIsNotNone(ImageChops.difference(first, middle).getbbox())
 
-    def test_reel_names_all_five_visual_worlds(self):
+    def test_reel_names_all_six_visual_worlds(self):
         source = generate_motion.build_frame(0, mobile=False)
         self.assertEqual(source.size, (1200, 280))
         labels = [scene[1] for scene in generate_motion.SCENES]
-        for label in ("PORTFOLIO", "HELIOS", "ZENITH", "VISION", "TALKS"):
+        for label in ("PORTFOLIO", "HELIOS", "ZENITH", "VISION", "TALKS", "TOKEN USAGE"):
             self.assertIn(label, labels)
+
+    def test_every_motion_world_stays_inside_the_crimson_contract(self):
+        crimson_family = {
+            generate_motion.rgb(generate_motion.PALETTE["crimson"]),
+            generate_motion.rgb(generate_motion.PALETTE["deep_crimson"]),
+            generate_motion.rgb(generate_motion.TOKENS["color"]["secondaryCrimson"]),
+        }
+        self.assertEqual(len(generate_motion.SCENES), 6)
+        for code, label, _note, _renderer, colors in generate_motion.SCENES:
+            with self.subTest(world=f"{code} {label}"):
+                self.assertIn(colors[2], crimson_family)
+                self.assertIn(colors[3], {generate_motion.SIGNAL, generate_motion.rgb(generate_motion.TOKENS["color"]["signal"])})
+                self.assertLessEqual(max(colors[0]), 10)
+                self.assertLessEqual(max(colors[1]), 60)
 
     def test_posters_are_first_frames_and_motion_is_periodic(self):
         for mobile in (False, True):

@@ -101,7 +101,7 @@ class ReadmeTests(unittest.TestCase):
         for filename in generate_readme.ATLAS_ASSETS:
             self.assertIn(f"output/{filename}?rev=atlas-v5", self.readme)
         for filename in generate_readme.MOTION_ASSETS:
-            self.assertIn(f"output/{filename}?rev=motion-v6", self.readme)
+            self.assertIn(f"output/{filename}?rev=motion-v7", self.readme)
         self.assertNotIn("github-readme-activity-graph", self.readme)
         for filename in generate_readme.PROJECT_VISUALS.values():
             self.assertRegex(

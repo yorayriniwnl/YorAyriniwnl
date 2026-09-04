@@ -1,5 +1,14 @@
 # What moved, and why
 
+## Pass 24: one red signal across the whole atlas
+
+The top motion study now represents all six selected systems, including the
+local-first Token Usage cockpit and its five-provider flow. Desktop and mobile
+posters share one responsive scene renderer, with the same black/crimson/rose
+palette and product-specific glyph language as the project covers. Token Usage
+also has its own named visual-world token instead of borrowing Talks' identity.
+The portrait remains locked and unchanged.
+
 ## Pass 23: detail-to-detail project worlds v6
 
 The six project plates now expose the internal mechanics behind each product,

@@ -196,9 +196,9 @@ def _validate_design_tokens(profile: dict[str, Any]) -> None:
     missing = sorted(required_sections - tokens.keys())
     if missing:
         raise ProfileDataError(f"design token contract is missing: {', '.join(missing)}")
-    required_worlds = {"portfolio", "helios", "zenith", "vision", "talks"}
+    required_worlds = {"portfolio", "helios", "zenith", "vision", "talks", "token-usage"}
     if set(tokens["worlds"]) != required_worlds:
-        raise ProfileDataError("design token worlds must match the five visual systems")
+        raise ProfileDataError("design token worlds must match the six visual systems")
     for world_id, world in tokens["worlds"].items():
         _require(
             world,

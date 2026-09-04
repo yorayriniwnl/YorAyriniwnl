@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a five-world systems reel and reduced-motion posters.
+"""Render a six-world systems reel and reduced-motion posters.
 
 The imagery is an illustrative motion study, not simulated live telemetry.
 Each scene has its own visual world so motion explains the product domain
@@ -66,7 +66,7 @@ def world_motion_palette(kind):
 
 MOTION_PALETTES = {
     kind: world_motion_palette(kind)
-    for kind in ("portfolio", "helios", "zenith", "vision", "talks")
+    for kind in ("portfolio", "helios", "zenith", "vision", "talks", "token-usage")
 }
 
 
@@ -259,12 +259,54 @@ def draw_network(draw, glow, cx, cy, phase, colors=None):
     glow_point(glow, cx, cy + 4, 5, signal, 165)
 
 
+def draw_token_usage(draw, glow, cx, cy, phase, colors=None):
+    """Show the local-first five-provider usage cockpit as a moving glyph."""
+    _, deep, accent, signal, paper, line = colors or MOTION_PALETTES["token-usage"]
+    providers = ("GPT", "CLD", "GEM", "PPL", "GRK")
+    provider_positions = []
+    for index, label in enumerate(providers):
+        angle = -math.pi * .84 + index * (math.pi * 1.68 / 4)
+        x = cx + math.cos(angle) * 86
+        y = cy + math.sin(angle) * 42
+        provider_positions.append((x, y))
+        draw.line((x, y, cx, cy), fill=line, width=1)
+        draw.rounded_rectangle((x - 18, y - 10, x + 18, y + 10), radius=4,
+                               fill=deep, outline=accent, width=1)
+        draw.text((x, y - 5), label, font=font(9), fill=paper, anchor="ma")
+        bars = 1 + ((index + int(phase * 5)) % 4)
+        for bar in range(4):
+            bar_color = signal if bar < bars else line
+            draw.line((x - 11 + bar * 7, y + 15, x - 11 + bar * 7, y + 15 - (4 + bar * 2)),
+                      fill=bar_color, width=2)
+        pulse = (phase * 1.2 + index / 5) % 1
+        px = x + (cx - x) * pulse
+        py = y + (cy - y) * pulse
+        point(draw, px, py, 2.5 if pulse > .82 else 1.2, signal)
+        if pulse > .82:
+            glow_point(glow, px, py, 3, signal, 145)
+
+    # Local vault: one calm center that receives all five provider lanes.
+    vault = [(cx, cy - 16), (cx + 19, cy - 5), (cx + 14, cy + 18),
+             (cx, cy + 29), (cx - 14, cy + 18), (cx - 19, cy - 5)]
+    draw.polygon(vault, fill=mix(deep, accent, .45), outline=signal)
+    draw.ellipse((cx - 8, cy - 8, cx + 8, cy + 8), fill=deep, outline=paper, width=1)
+    point(draw, cx, cy, 3.5, signal)
+    glow_point(glow, cx, cy, 4.5, signal, 180)
+    draw.line((cx - 33, cy + 45, cx + 33, cy + 45), fill=line, width=1)
+    for index in range(5):
+        height = 9 + ((index * 7 + int(phase * 20)) % 17)
+        x = cx - 28 + index * 14
+        draw.rectangle((x, cy + 67 - height, x + 7, cy + 67), fill=deep, outline=accent)
+        draw.rectangle((x + 2, cy + 67 - height + 3, x + 5, cy + 67 - 2), fill=signal)
+
+
 SCENES = (
     ("01", "PORTFOLIO", "GPU / PARTICLES", draw_particles, MOTION_PALETTES["portfolio"]),
     ("02", "HELIOS", "ALERT / TOPOLOGY", draw_streams, MOTION_PALETTES["helios"]),
     ("03", "ZENITH", "ROOF / ENERGY", draw_solar, MOTION_PALETTES["zenith"]),
     ("04", "VISION", "LBP / GLCM", draw_vision, MOTION_PALETTES["vision"]),
     ("05", "TALKS", "PRESENCE / PACKETS", draw_network, MOTION_PALETTES["talks"]),
+    ("06", "TOKEN USAGE", "5 PROVIDERS / LOCAL", draw_token_usage, MOTION_PALETTES["token-usage"]),
 )
 
 
@@ -300,13 +342,27 @@ def _clip_layer(layer, clip_box):
 
 
 def render_scene(frame, renderer, cx, cy, phase, clip_box, colors):
-    scene = Image.new("RGBA", frame.size, (0, 0, 0, 0))
-    glow = Image.new("RGBA", frame.size, (0, 0, 0, 0))
-    renderer(ImageDraw.Draw(scene), ImageDraw.Draw(glow), cx, cy, phase, colors)
+    """Render a detailed scene once, then fit it cleanly into its panel."""
+    source_size = (270, 210)
+    scene = Image.new("RGBA", source_size, (0, 0, 0, 0))
+    glow = Image.new("RGBA", source_size, (0, 0, 0, 0))
+    renderer(ImageDraw.Draw(scene), ImageDraw.Draw(glow), source_size[0] / 2, source_size[1] / 2, phase, colors)
     glow = glow.filter(ImageFilter.GaussianBlur(6))
-    frame = Image.alpha_composite(frame.convert("RGBA"), _clip_layer(glow, clip_box))
-    frame = Image.alpha_composite(frame, _clip_layer(scene, clip_box))
-    return frame.convert("RGB")
+    composed = Image.alpha_composite(glow, scene)
+    target_w = max(1, int(clip_box[2] - clip_box[0] - 8))
+    target_h = max(1, int(clip_box[3] - clip_box[1] - 8))
+    scale = min(target_w / source_size[0], target_h / source_size[1])
+    resized = composed.resize(
+        (max(1, int(source_size[0] * scale)), max(1, int(source_size[1] * scale))),
+        Image.Resampling.LANCZOS,
+    )
+    position = (
+        int(clip_box[0] + (clip_box[2] - clip_box[0] - resized.width) / 2),
+        int(clip_box[1] + (clip_box[3] - clip_box[1] - resized.height) / 2),
+    )
+    output = frame.convert("RGBA")
+    output.alpha_composite(resized, dest=position)
+    return output.convert("RGB")
 
 
 def draw_panel_hud(draw, left, top, right, bottom, index, phase, colors):
@@ -329,15 +385,15 @@ def build_frame(frame_index, mobile=False, compact=True):
     size = MOBILE_SIZE if mobile else (WIDTH, HEIGHT)
     frame = build_backdrop(size, phase)
     draw = ImageDraw.Draw(frame)
-    columns = 2 if mobile else 5
-    margin, gap, top = 16, 12, 64
+    columns = 2 if mobile else 6
+    margin, gap, top = 16, 12 if mobile else 8, 64
     panel_w = (size[0] - 2 * margin - (columns - 1) * gap) // columns
-    panel_h = 210 if mobile else 200
+    panel_h = 210 if mobile else 192
     base_palette = MOTION_PALETTES["portfolio"]
     base_canvas, base_deep, base_accent, base_signal, base_paper, base_line = base_palette
-    draw.text((20, 16), "THE WORLDS I BUILD", font=font(23), fill=base_paper)
+    draw.text((20, 16), "YOR // SYSTEMS ATLAS", font=font(23), fill=base_paper)
     if not mobile:
-        draw.text((925, 22), "ILLUSTRATIVE MOTION STUDY", font=font(13), fill=mix(base_paper, base_line, .5))
+        draw.text((930, 22), "06 WORLDS / ONE RED SIGNAL", font=font(13), fill=mix(base_paper, base_line, .5))
     draw.line((20, 49, size[0] - 20, 49), fill=base_line, width=1)
     draw.line((20, 49, 80, 49), fill=base_signal, width=1)
 
@@ -349,7 +405,8 @@ def build_frame(frame_index, mobile=False, compact=True):
         draw.rounded_rectangle((left, y, right, bottom), radius=7, fill=canvas, outline=line, width=1)
         draw.rounded_rectangle((left + 5, y + 5, right - 5, bottom - 5), radius=5, outline=mix(line, paper, .18), width=1)
         draw.line((left + 13, y + 5, right - 13, y + 5), fill=accent, width=1)
-        draw.text((left + 14, y + 13), label, font=font(20 if not mobile else 21), fill=paper)
+        label_size = 12 if len(label) > 9 else (15 if len(label) > 7 else (20 if not mobile else 21))
+        draw.text((left + 14, y + 13), label, font=font(label_size), fill=paper)
         draw.text((right - 32, y + 18), code, font=font(12), fill=accent)
         draw.line((left + 14, bottom - 32, right - 14, bottom - 32), fill=line, width=1)
         draw_panel_hud(draw, left, y, right, bottom, index, phase, colors)
@@ -359,7 +416,7 @@ def build_frame(frame_index, mobile=False, compact=True):
             (left + right) / 2,
             y + (113 if mobile else 104),
             phase,
-            (left + 2, y + 2, right - 2, bottom - 2),
+            (left + 2, y + 44, right - 2, bottom - 34),
             colors,
         )
         draw = ImageDraw.Draw(frame)

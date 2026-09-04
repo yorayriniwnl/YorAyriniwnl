@@ -46,7 +46,7 @@ class ProfileDataTests(unittest.TestCase):
         tokens = load_design_tokens()
         self.assertEqual(tokens["color"]["crimson"], "#ff1f2d")
         self.assertEqual(tokens["color"]["deepCrimson"], "#8f0014")
-        self.assertEqual(set(tokens["worlds"]), {"portfolio", "helios", "zenith", "vision", "talks"})
+        self.assertEqual(set(tokens["worlds"]), {"portfolio", "helios", "zenith", "vision", "talks", "token-usage"})
         self.assertEqual(
             self.profile["visual_contract"]["palette"]["deep_crimson"],
             tokens["color"]["deepCrimson"],
