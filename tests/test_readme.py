@@ -112,7 +112,7 @@ class ReadmeTests(unittest.TestCase):
             ("project-portfolio-mobile-v2.svg", "raster-v8"),
             ("project-helios.svg", "raster-v13"),
             ("project-zenith.svg", "raster-v14"),
-            ("project-vision.svg", "raster-v15"),
+            ("project-vision.svg", "raster-v16"),
             ("project-token-usage.svg", "raster-v13"),
             ("project-talks.svg", "raster-v13"),
         ):

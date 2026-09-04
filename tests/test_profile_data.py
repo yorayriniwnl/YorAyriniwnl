@@ -101,7 +101,7 @@ class ProfileDataTests(unittest.TestCase):
         expected_project_versions = {
             "helios": "v6",
             "zenith": "v7",
-            "vision": "v8",
+            "vision": "v9",
             "talks": "v6",
             "token-usage": "v6",
         }

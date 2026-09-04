@@ -251,8 +251,8 @@
       "summary": "A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine.",
       "visual": {
         "world": "vision",
-        "source": "assets/project-vision-cinematic-crimson-v8.png",
-        "delivery": "assets/project-vision-cinematic-crimson-v8-optimized.jpg",
+        "source": "assets/project-vision-cinematic-crimson-v9.png",
+        "delivery": "assets/project-vision-cinematic-crimson-v9-optimized.jpg",
         "evidence": "image plate to handcrafted texture features to classifier narrative; the visual is illustrative and not based on the profile portrait"
       },
       "proof": [
@@ -340,7 +340,7 @@
       "project_art": {
         "helios": "assets/project-helios-cinematic-crimson-v6.png",
         "zenith": "assets/project-zenith-cinematic-crimson-v7.png",
-        "vision": "assets/project-vision-cinematic-crimson-v8.png",
+        "vision": "assets/project-vision-cinematic-crimson-v9.png",
         "talks": "assets/project-talks-cinematic-crimson-v6.png",
         "token-usage": "assets/project-token-usage-cinematic-crimson-v6.png"
       },
@@ -356,7 +356,7 @@
       "project_art": {
         "helios": "assets/project-helios-cinematic-crimson-v6-optimized.jpg",
         "zenith": "assets/project-zenith-cinematic-crimson-v7-optimized.jpg",
-        "vision": "assets/project-vision-cinematic-crimson-v8-optimized.jpg",
+        "vision": "assets/project-vision-cinematic-crimson-v9-optimized.jpg",
         "talks": "assets/project-talks-cinematic-crimson-v6-optimized.jpg",
         "token-usage": "assets/project-token-usage-cinematic-crimson-v6-optimized.jpg"
       },
@@ -390,7 +390,7 @@
     "project_art": {
       "helios": "assets/project-helios-cinematic-crimson-v6-optimized.jpg",
       "zenith": "assets/project-zenith-cinematic-crimson-v7-optimized.jpg",
-      "vision": "assets/project-vision-cinematic-crimson-v8-optimized.jpg",
+      "vision": "assets/project-vision-cinematic-crimson-v9-optimized.jpg",
       "talks": "assets/project-talks-cinematic-crimson-v6-optimized.jpg",
       "token-usage": "assets/project-token-usage-cinematic-crimson-v6-optimized.jpg"
     },

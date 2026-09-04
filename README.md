@@ -70,7 +70,7 @@
 </p>
 
 <a href="https://yor-ai-vs-real-image.vercel.app">
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v15" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-vision.svg?rev=raster-v16" width="100%" alt="AI vs. Real Image Detector: texture forensics"/>
 </a>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-summary-vision.svg?rev=atlas-v6" width="100%" alt="AI vs. Real Image Detector: Live, December 2025-April 2026. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit. Proof: 78.5% held-out test accuracy; Local inference with committed SVM and scaler artifacts; Lighting-invariant preprocessing."/>
