@@ -77,10 +77,10 @@ ATLAS_ASSETS = (
     "project-dossier-token-usage.svg",
 )
 MOTION_ASSETS = (
-    "systems-reel.gif",
-    "systems-reel-mobile.gif",
-    "systems-reel-still.png",
-    "systems-reel-mobile-still.png",
+    "systems-reel-v8.gif",
+    "systems-reel-mobile-v8.gif",
+    "systems-reel-v8-still.png",
+    "systems-reel-mobile-v8-still.png",
 )
 
 ASSET_REVISIONS = {
@@ -92,10 +92,10 @@ ASSET_REVISIONS = {
         filename: "atlas-v5"
         for filename in ATLAS_ASSETS
     },
-    "systems-reel.gif": "motion-v8",
-    "systems-reel-mobile.gif": "motion-v8",
-    "systems-reel-still.png": "motion-v8",
-    "systems-reel-mobile-still.png": "motion-v8",
+    "systems-reel-v8.gif": "motion-v8",
+    "systems-reel-mobile-v8.gif": "motion-v8",
+    "systems-reel-v8-still.png": "motion-v8",
+    "systems-reel-mobile-v8-still.png": "motion-v8",
     "hero.svg": "raster-v2",
     "project-portfolio-v2.svg": "raster-v8",
     "project-portfolio-mobile-v2.svg": "raster-v8",
@@ -152,9 +152,9 @@ def project_details_panel(project: dict, handle: str) -> list[str]:
 def systems_reel(handle: str) -> list[str]:
     """Use native picture selection for mobile and reduced-motion visitors."""
     variants = (
-        ("(max-width: 600px) and (prefers-reduced-motion: reduce)", "systems-reel-mobile-still.png"),
-        ("(prefers-reduced-motion: reduce)", "systems-reel-still.png"),
-        ("(max-width: 600px)", "systems-reel-mobile.gif"),
+        ("(max-width: 600px) and (prefers-reduced-motion: reduce)", "systems-reel-mobile-v8-still.png"),
+        ("(prefers-reduced-motion: reduce)", "systems-reel-v8-still.png"),
+        ("(max-width: 600px)", "systems-reel-mobile-v8.gif"),
     )
     return [
         "<picture>",
@@ -163,7 +163,7 @@ def systems_reel(handle: str) -> list[str]:
             for media, filename in variants
         ],
         image(
-            "systems-reel.gif",
+            "systems-reel-v8.gif",
             "YOR systems atlas: six red-coded worlds spanning a cinematic product archive, industrial telemetry, solar intelligence, forensic vision, realtime communication, and local-first AI usage. Illustrative motion study.",
             handle,
         ),

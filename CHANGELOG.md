@@ -8,7 +8,9 @@ portfolio particle field, Helios telemetry, Zenith solar model, Vision texture
 scan, Talks network, and five-provider Token Usage cockpit legible at profile
 width. Desktop keeps a nine-color GIF palette and mobile keeps an eight-color
 palette so the red signal remains vivid without crossing the transfer budget.
-The portrait and six flagship project covers remain unchanged.
+The v8 files use unique published names so GitHub's raw-image cache cannot
+silently serve the previous six-up desktop reel. The portrait and six flagship
+project covers remain unchanged.
 
 ## Pass 24: one red signal across the whole atlas
 

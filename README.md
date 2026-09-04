@@ -14,10 +14,10 @@
 </p>
 
 <picture>
-<source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-mobile-still.png?rev=motion-v8"/>
-<source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-still.png?rev=motion-v8"/>
-<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-mobile.gif?rev=motion-v8"/>
-<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel.gif?rev=motion-v8" width="100%" alt="YOR systems atlas: six red-coded worlds spanning a cinematic product archive, industrial telemetry, solar intelligence, forensic vision, realtime communication, and local-first AI usage. Illustrative motion study."/>
+<source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-mobile-v8-still.png?rev=motion-v8"/>
+<source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-v8-still.png?rev=motion-v8"/>
+<source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-mobile-v8.gif?rev=motion-v8"/>
+<img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/systems-reel-v8.gif?rev=motion-v8" width="100%" alt="YOR systems atlas: six red-coded worlds spanning a cinematic product archive, industrial telemetry, solar intelligence, forensic vision, realtime communication, and local-first AI usage. Illustrative motion study."/>
 </picture>
 
 <img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg?rev=atlas-v5" width="100%" alt="Ayush Roy. Full-Stack Developer and Applied ML Builder. I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world. Open to software engineering internships. B.Tech 2027. Bhubaneswar, Odisha, India."/>

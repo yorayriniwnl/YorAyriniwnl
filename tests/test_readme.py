@@ -91,10 +91,8 @@ class ReadmeTests(unittest.TestCase):
         self.assertNotIn('width="49%"', self.readme)
         self.assertIn("https://komarev.com/ghpvc/?", self.readme)
         self.assertIn("label=TOTAL+PROFILE+VIEWS", self.readme)
-        self.assertIn("systems-reel.gif", self.readme)
-        self.assertIn("systems-reel-mobile.gif", self.readme)
-        self.assertIn("systems-reel-still.png", self.readme)
-        self.assertIn("systems-reel-mobile-still.png", self.readme)
+        for filename in generate_readme.MOTION_ASSETS:
+            self.assertIn(filename, self.readme)
         self.assertNotIn("kinetic-primer.gif", self.readme)
         self.assertIn("skills-matrix.svg?rev=atlas-v5", self.readme)
         self.assertIn("field-notes.svg?rev=atlas-v5", self.readme)
@@ -164,10 +162,10 @@ class ReadmeTests(unittest.TestCase):
         referenced = set(re.findall(r"/output/([a-z0-9-]+\.(?:svg|gif|png))", self.readme))
         expected = {
             "hero.svg",
-            "systems-reel.gif",
-            "systems-reel-mobile.gif",
-            "systems-reel-still.png",
-            "systems-reel-mobile-still.png",
+            "systems-reel-v8.gif",
+            "systems-reel-mobile-v8.gif",
+            "systems-reel-v8-still.png",
+            "systems-reel-mobile-v8-still.png",
             "jump-projects.svg",
             "jump-experience.svg",
             "jump-activity.svg",

@@ -450,7 +450,7 @@ def build_systems_reel_gif(mobile=False):
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    for mobile, stem in ((False, "systems-reel"), (True, "systems-reel-mobile")):
+    for mobile, stem in ((False, "systems-reel-v8"), (True, "systems-reel-mobile-v8")):
         path = OUT_DIR / f"{stem}.gif"
         payload = build_systems_reel_gif(mobile)
         path.write_bytes(payload)
