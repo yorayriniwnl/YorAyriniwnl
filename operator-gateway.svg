@@ -72,24 +72,40 @@
 <stop offset=".5" stop-color="#ff6670" stop-opacity=".24"/>
 <stop offset="1" stop-color="#ff1f2d" stop-opacity="0"/>
 </linearGradient>
+<linearGradient id="atlascc8e2a2e99Rail" gradientUnits="userSpaceOnUse" x1="0" x2="1500.0">
+<stop offset="0" stop-color="#ff6670" stop-opacity="0"/>
+<stop offset=".2" stop-color="#ff6670" stop-opacity=".54"/>
+<stop offset=".5" stop-color="#ff1f2d" stop-opacity=".18"/>
+<stop offset=".84" stop-color="#ff6670" stop-opacity=".54"/>
+<stop offset="1" stop-color="#ff6670" stop-opacity="0"/>
+</linearGradient>
 <pattern id="atlascc8e2a2e99Grid" width="28" height="28" patternUnits="userSpaceOnUse">
 <path d="M28 0H0V28" fill="none" stroke="#ff1f2d" stroke-width=".45" opacity=".07"/>
 </pattern>
 <style>
 .atlascc8e2a2e99-scan { animation: atlascc8e2a2e99-scan 11.1s linear infinite; animation-delay: -5.1s; }
 .atlascc8e2a2e99-orbit { transform-box: fill-box; transform-origin: center; animation: atlascc8e2a2e99-orbit 29s linear infinite; }
+.atlascc8e2a2e99-pulse { transform-box: fill-box; transform-origin: center; animation: atlascc8e2a2e99-pulse 4.8s ease-out infinite; animation-delay: -0.7s; }
+.atlascc8e2a2e99-spark { animation: atlascc8e2a2e99-spark 2.6s ease-in-out infinite; animation-delay: -1.7s; }
 @keyframes atlascc8e2a2e99-scan { from { transform: translateX(0); } to { transform: translateX(1676.0px); } }
 @keyframes atlascc8e2a2e99-orbit { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .atlascc8e2a2e99-scan, .atlascc8e2a2e99-orbit { animation: none !important; } }
+@keyframes atlascc8e2a2e99-pulse { 0% { opacity: 0; transform: scale(.72); } 28% { opacity: .6; } 100% { opacity: 0; transform: scale(1.34); } }
+@keyframes atlascc8e2a2e99-spark { 0%, 100% { opacity: .18; } 50% { opacity: .92; } }
+@media (prefers-reduced-motion: reduce) { .atlascc8e2a2e99-scan, .atlascc8e2a2e99-orbit, .atlascc8e2a2e99-pulse, .atlascc8e2a2e99-spark { animation: none !important; } }
 </style>
 </defs>
-<g id="atlas-treatment" data-visual-treatment="atlas-v4" aria-hidden="true" pointer-events="none">
+<g id="atlas-treatment" data-visual-treatment="atlas-v5" data-atlas-tier="cinematic" aria-hidden="true" pointer-events="none">
 <rect x="14.7" y="14.7" width="1470.6" height="166.6" rx="10.0"
  fill="url(#atlascc8e2a2e99Grid)" opacity=".52"/>
 <ellipse cx="1428.2" cy="68.8" rx="77.6" ry="38.8"
  fill="url(#atlascc8e2a2e99Glow)" opacity=".42"/>
+<ellipse class="atlascc8e2a2e99-pulse" cx="1428.2" cy="68.8" rx="34.5" ry="29.5"
+ fill="none" stroke="#ff6670" stroke-width="0.71" stroke-dasharray="2 9" opacity=".58"/>
 <rect class="atlascc8e2a2e99-scan" x="-88.0" y="14.7" width="88.0" height="166.6"
  fill="url(#atlascc8e2a2e99Sweep)" opacity=".45"/>
+<path d="M14.7 173.2H1485.3" fill="none" stroke="url(#atlascc8e2a2e99Rail)" stroke-width="0.70" opacity=".72"/>
+<path d="M1477.2 14.7V181.3" fill="none" stroke="url(#atlascc8e2a2e99Rail)" stroke-width="0.70" opacity=".45"/>
+<path d="M1474.2 14.7h6" stroke="#ff6670" stroke-width="0.55" opacity=".35"/><path d="M1474.2 48.0h6" stroke="#ff6670" stroke-width="0.55" opacity=".35"/><path d="M1474.2 81.3h6" stroke="#ff6670" stroke-width="0.55" opacity=".35"/><path d="M1474.2 114.7h6" stroke="#ff6670" stroke-width="0.55" opacity=".35"/><path d="M1474.2 148.0h6" stroke="#ff6670" stroke-width="0.55" opacity=".35"/><path d="M1474.2 181.3h6" stroke="#ff6670" stroke-width="0.55" opacity=".35"/>
 <path d="M14.7 44.7V14.7H44.7
  M1455.3 14.7H1485.3V44.7
  M14.7 151.3V181.3H44.7
@@ -102,5 +118,5 @@
 <circle cx="1390.5" cy="76.3" r="3.2" fill="#ff6670" opacity="0.36"/><circle cx="1428.9" cy="53.3" r="3.2" fill="#ff6670" opacity="0.48"/><circle cx="1465.1" cy="76.8" r="3.2" fill="#ff6670" opacity="0.60"/>
 <circle cx="1428.2" cy="68.8" r="3.4" fill="#ff6670" opacity=".72"/>
 <polyline points="65.7,180.2 266.8,184.1 467.9,189.3 669.0,185.4 870.0,189.3 1071.1,186.7 1272.2,188.0 1473.3,185.4" fill="none" stroke="#ff1f2d" stroke-width="0.71" opacity=".36" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="882.1" cy="185.4" r="2.5" fill="#ff6670" opacity=".64"/>
+<circle class="atlascc8e2a2e99-spark" cx="882.1" cy="185.4" r="2.5" fill="#ff6670" opacity=".64"/>
 </g></svg>
