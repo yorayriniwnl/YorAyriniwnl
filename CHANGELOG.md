@@ -1,5 +1,9 @@
 # What moved, and why
 
+## Pass 14: concept key art
+
+The project visuals now use authored cinematic metaphors instead of generic red environment wallpapers: Helios is an energy heart, Zenith is an eclipse-shaped solar instrument, Vision is a half-real/half-synthetic face under calibration optics, and Talks is a human signal bridge. Each image now owns the full card field beneath translucent product telemetry, so the concept survives the thumbnail and mobile render. The approved portrait hero remains unchanged. New source and delivery names keep this visual reset explicit and cache-versioned.
+
 ## Pass 13: detail remaster
 
 The four project worlds now use a second image-generation remaster with denser material detail, stronger foreground/midground/background depth, clearer focal subjects, and higher-fidelity red lighting: an industrial telemetry room, a rooftop solar array, a forensic imaging bench, and a realtime communication studio. The approved portrait hero remains unchanged. The source and delivery contracts are versioned independently so GitHub's raw CDN cannot keep serving the previous artwork.
