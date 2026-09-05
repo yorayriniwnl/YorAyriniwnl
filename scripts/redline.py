@@ -127,7 +127,7 @@ def page(title, width, height, body, desc="", layer="surface"):
 <path d="M18 .5H{width-18}" stroke="url(#rim)"/><path class="edge-flow" d="M18 .5H{width-18}" stroke="{RED}" opacity=".75"/></g></svg>'''
 
 
-def button(label, subtitle, kind, width=200):
+def button(label, subtitle, kind, width=180):
     b = glyph(kind, 15, 19, 22) + text(label, 48, 25, 14, PAPER, "mono")
     b += text(subtitle, 48, 43, 11, MUTED)
     return page(label, width, 62, b, subtitle, "control")

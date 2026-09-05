@@ -37,10 +37,12 @@ ASSET_REVISIONS = {
     "project-vision.svg": "raster-v16", "project-talks.svg": "raster-v14", "project-token-usage.svg": "raster-v15",
     **{name: "motion-v8" for name in MOTION_ASSETS},
 }
+# Compact control geometry changed after checking GitHub's narrower mobile column.
+CONTROL_REVISION = "redline-v2"
 
 
 def raw_asset_url(handle, filename):
-    revision = ASSET_REVISIONS.get(filename, REVISION)
+    revision = ASSET_REVISIONS.get(filename, CONTROL_REVISION if filename.startswith(("jump-", "nav-", "project-index-")) else REVISION)
     return f'https://raw.githubusercontent.com/{handle}/{PROFILE_REPOSITORY}/output/{filename}?rev={revision}'
 
 
@@ -63,7 +65,10 @@ def linked_image(href, filename, alt, handle, width="100%"):
 
 
 def linked_button(href, filename, alt, handle):
-    return linked_image(href, filename, alt, handle, "160")[0]
+    # GitHub prefixes authored IDs during sanitization; target the rendered ID.
+    if href.startswith('#') and not href.startswith('#user-content-'):
+        href = '#user-content-' + href[1:]
+    return linked_image(href, filename, alt, handle, "145")[0]
 
 
 def buttons(items, handle):

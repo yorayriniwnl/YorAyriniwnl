@@ -39,7 +39,7 @@ class ReadmeTests(unittest.TestCase):
         self.assertTrue(all('<img ' in link for link in links))
         targets=set(re.findall(r'<a href="#([^"]+)"',self.readme))
         anchors=re.findall(r'<a id="([^"]+)"',self.readme)
-        self.assertEqual(targets,set(anchors))
+        self.assertEqual(targets,{'user-content-'+anchor for anchor in anchors})
         self.assertEqual(len(anchors),len(set(anchors)))
 
     def test_every_referenced_visual_is_generated_or_independently_published(self):
@@ -61,7 +61,7 @@ class ReadmeTests(unittest.TestCase):
     def test_images_have_accessible_copy_and_mobile_safe_widths(self):
         tags=re.findall(r'<img\b[^>]*?/>',self.readme)
         self.assertTrue(all(re.search(r'alt="[^"]+"',tag) for tag in tags))
-        self.assertTrue(all(width in {'100%','95%','350','160'} for width in re.findall(r'width="([^"]+)"',self.readme)))
+        self.assertTrue(all(width in {'100%','95%','350','145'} for width in re.findall(r'width="([^"]+)"',self.readme)))
         self.assertNotIn('<table',self.readme)
         visible=re.sub(r'<[^>]+>','',re.sub(r'<!--.*?-->','',self.readme,flags=re.S)).strip()
         self.assertEqual(visible,'')

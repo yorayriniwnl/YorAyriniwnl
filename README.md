@@ -5,19 +5,19 @@
 <a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg?rev=raster-v2" width="100%" alt="Ayush Roy, full-stack developer and applied ML builder"/></a>
 
 <p align="center">
-<a href="#selected-systems"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-projects.svg?rev=redline-v1" width="160" alt="Jump to selected projects"/></a>
-<a href="#field-notes"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-experience.svg?rev=redline-v1" width="160" alt="Jump to experience and education"/></a>
-<a href="#public-record"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-activity.svg?rev=redline-v1" width="160" alt="Jump to GitHub activity and profile views"/></a>
-<a href="#open-channel"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-contact.svg?rev=redline-v1" width="160" alt="Jump to contact and collaboration"/></a>
+<a href="#user-content-selected-systems"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-projects.svg?rev=redline-v2" width="145" alt="Jump to selected projects"/></a>
+<a href="#user-content-field-notes"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-experience.svg?rev=redline-v2" width="145" alt="Jump to experience and education"/></a>
+<a href="#user-content-public-record"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-activity.svg?rev=redline-v2" width="145" alt="Jump to GitHub activity and profile views"/></a>
+<a href="#user-content-open-channel"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-contact.svg?rev=redline-v2" width="145" alt="Jump to contact and collaboration"/></a>
 </p>
 
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg?rev=redline-v1" width="100%" alt="I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world. Open to software engineering internships. Bhubaneswar, Odisha, India."/></picture>
 
 <p align="center">
-<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg?rev=redline-v1" width="160" alt="Open Ayush Roy portfolio"/></a>
-<a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg?rev=redline-v1" width="160" alt="View Ayush Roy public resume"/></a>
-<a href="https://www.linkedin.com/in/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-linkedin.svg?rev=redline-v1" width="160" alt="Connect on LinkedIn"/></a>
-<a href="mailto:ayushroy.dev@gmail.com"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-email.svg?rev=redline-v1" width="160" alt="Email Ayush Roy"/></a>
+<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg?rev=redline-v2" width="145" alt="Open Ayush Roy portfolio"/></a>
+<a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg?rev=redline-v2" width="145" alt="View Ayush Roy public resume"/></a>
+<a href="https://www.linkedin.com/in/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-linkedin.svg?rev=redline-v2" width="145" alt="Connect on LinkedIn"/></a>
+<a href="mailto:ayushroy.dev@gmail.com"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-email.svg?rev=redline-v2" width="145" alt="Email Ayush Roy"/></a>
 </p>
 
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/signal-strip-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/signal-strip.svg?rev=redline-v1" width="100%" alt="Product, realtime systems, computer vision, and 3D interfaces"/></picture>
@@ -37,12 +37,12 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-projects.svg?rev=redline-v1" width="100%" alt="Section 01: six selected projects"/></picture>
 
 <p align="center">
-<a href="#project-portfolio"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-portfolio.svg?rev=redline-v1" width="160" alt="Jump to PORTFOLIO"/></a>
-<a href="#project-vision"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-vision.svg?rev=redline-v1" width="160" alt="Jump to AI VS. REAL"/></a>
-<a href="#project-zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-zenith.svg?rev=redline-v1" width="160" alt="Jump to ZENITH"/></a>
-<a href="#project-helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-helios.svg?rev=redline-v1" width="160" alt="Jump to HELIOS"/></a>
-<a href="#project-token-usage"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-token-usage.svg?rev=redline-v1" width="160" alt="Jump to TOKEN USAGE"/></a>
-<a href="#project-talks"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-talks.svg?rev=redline-v1" width="160" alt="Jump to TALKS V2"/></a>
+<a href="#user-content-project-portfolio"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-portfolio.svg?rev=redline-v2" width="145" alt="Jump to PORTFOLIO"/></a>
+<a href="#user-content-project-vision"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-vision.svg?rev=redline-v2" width="145" alt="Jump to AI VS. REAL"/></a>
+<a href="#user-content-project-zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-zenith.svg?rev=redline-v2" width="145" alt="Jump to ZENITH"/></a>
+<a href="#user-content-project-helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-helios.svg?rev=redline-v2" width="145" alt="Jump to HELIOS"/></a>
+<a href="#user-content-project-token-usage"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-token-usage.svg?rev=redline-v2" width="145" alt="Jump to TOKEN USAGE"/></a>
+<a href="#user-content-project-talks"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-index-talks.svg?rev=redline-v2" width="145" alt="Jump to TALKS V2"/></a>
 </p>
 
 <a id="project-portfolio"></a>
@@ -57,8 +57,8 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-portfolio-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-portfolio.svg?rev=redline-v1" width="100%" alt="Personal Developer Portfolio: Live. A focused portfolio with a lazy-loaded case-study architecture and a GPU-accelerated 4,000-point interface. Proof: 4,000 GPU-driven particles; 24 tests across five Vitest suites; Automated GitHub content synchronization. Stack: Next.js 16; TypeScript; Three.js; React Three Fiber; Framer Motion; Vitest."/></picture>
 
 <p align="center">
-<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v1" width="160" alt="Open Personal Developer Portfolio project"/></a>
-<a href="https://github.com/yorayriniwnl/Yor-Ayrin-iwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v1" width="160" alt="Inspect Personal Developer Portfolio source repository"/></a>
+<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v2" width="145" alt="Open Personal Developer Portfolio project"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Ayrin-iwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v2" width="145" alt="Inspect Personal Developer Portfolio source repository"/></a>
 </p>
 
 </details>
@@ -75,8 +75,8 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-vision.svg?rev=redline-v1" width="100%" alt="AI vs. Real Image Detector: Live. A probability-aware image classifier built from handcrafted texture features and a calibrated support vector machine. Proof: 78.5% held-out test accuracy; Local inference with committed SVM and scaler artifacts; Lighting-invariant preprocessing. Stack: Python; OpenCV; Scikit-Learn; LBP; GLCM; SVM; Streamlit."/></picture>
 
 <p align="center">
-<a href="https://yor-ai-vs-real-image.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v1" width="160" alt="Open AI vs. Real Image Detector project"/></a>
-<a href="https://github.com/yorayriniwnl/Yor-Ai-vs-real-image"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v1" width="160" alt="Inspect AI vs. Real Image Detector source repository"/></a>
+<a href="https://yor-ai-vs-real-image.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v2" width="145" alt="Open AI vs. Real Image Detector project"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Ai-vs-real-image"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v2" width="145" alt="Inspect AI vs. Real Image Detector source repository"/></a>
 </p>
 
 </details>
@@ -93,8 +93,8 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-zenith-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-zenith.svg?rev=redline-v1" width="100%" alt="Yor Zenith: Live. A full-stack solar feasibility platform combining 3D roof planning, energy-output simulation, and financial analysis. Proof: Interactive panel-placement simulation; Energy-output modeling across roof configurations; Subsidy, ROI, and payback analysis. Stack: React; TypeScript; Three.js; Python; FastAPI."/></picture>
 
 <p align="center">
-<a href="https://zenith-xi-snowy.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v1" width="160" alt="Open Yor Zenith project"/></a>
-<a href="https://github.com/yorayriniwnl/Yor-Zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v1" width="160" alt="Inspect Yor Zenith source repository"/></a>
+<a href="https://zenith-xi-snowy.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v2" width="145" alt="Open Yor Zenith project"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Zenith"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v2" width="145" alt="Inspect Yor Zenith source repository"/></a>
 </p>
 
 </details>
@@ -111,7 +111,7 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-helios-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-helios.svg?rev=redline-v1" width="100%" alt="Yor Helios: In development. An energy-monitoring platform streaming anomaly and threshold events into channel-specific operator dashboards. Proof: Bidirectional realtime alert streaming; Continuous anomaly and threshold engine; One-command Docker Compose environment. Stack: Python; FastAPI; TypeScript; Docker; WebSocket."/></picture>
 
 <p align="center">
-<a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v1" width="160" alt="Inspect Yor Helios source repository"/></a>
+<a href="https://github.com/yorayriniwnl/Yor-Helios"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v2" width="145" alt="Inspect Yor Helios source repository"/></a>
 </p>
 
 </details>
@@ -128,7 +128,7 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-token-usage-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-token-usage.svg?rev=redline-v1" width="100%" alt="Yor_Token_Usage: Experimental. A local-first Manifest V3 Chrome extension for estimating AI token usage across ChatGPT, Claude, Gemini, Perplexity, and Grok, with dashboards, exports, and optional sync. Proof: Local-first usage capture across five AI surfaces; Dashboards and exports for usage inspection; Optional sync with explicit privacy and clear-data controls. Stack: JavaScript; Manifest V3; Chrome Extensions; Local-first storage."/></picture>
 
 <p align="center">
-<a href="https://github.com/yorayriniwnl/Yor_Token_Usage"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v1" width="160" alt="Inspect Yor_Token_Usage source repository"/></a>
+<a href="https://github.com/yorayriniwnl/Yor_Token_Usage"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v2" width="145" alt="Inspect Yor_Token_Usage source repository"/></a>
 </p>
 
 </details>
@@ -145,8 +145,8 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/project-dossier-talks.svg?rev=redline-v1" width="100%" alt="Yor Talks V2: Demo. A full-stack communication demo with realtime messaging, typed interface components, and a documented public-beta path. Proof: Low-latency bidirectional messaging; Authentication, conversation, and message APIs; Responsive reusable interface system. Stack: React; Vite; TypeScript; Express; Socket.IO; Postgres; Drizzle."/></picture>
 
 <p align="center">
-<a href="https://yor-talks.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v1" width="160" alt="Open Yor Talks V2 project"/></a>
-<a href="https://github.com/yorayriniwnl/yor-talksv2"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v1" width="160" alt="Inspect Yor Talks V2 source repository"/></a>
+<a href="https://yor-talks.vercel.app"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-live.svg?rev=redline-v2" width="145" alt="Open Yor Talks V2 project"/></a>
+<a href="https://github.com/yorayriniwnl/yor-talksv2"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-source.svg?rev=redline-v2" width="145" alt="Inspect Yor Talks V2 source repository"/></a>
 </p>
 
 </details>
@@ -158,7 +158,7 @@
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/field-notes-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/field-notes.svg?rev=redline-v1" width="100%" alt="Telecom &amp; Data Network Intern at Bharat Sanchar Nigam Limited (BSNL), June 2026. Completed an RGMTTC-certified four-week program in telecom, data-network systems, and infrastructure. B.Tech in Computer Science and Communication Engineering at KIIT Deemed University, 2023-2027 (Expected). Coursework: Data Structures &amp; Algorithms; Operating Systems; Database Management Systems; Computer Networks; Object-Oriented Programming."/></picture>
 
 <p align="center">
-<a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg?rev=redline-v1" width="160" alt="View the public resume"/></a>
+<a href="https://github.com/yorayriniwnl/Yorayriniwnl/blob/main/output/pdf/Ayush_Roy_Resume_Public.pdf"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-resume.svg?rev=redline-v2" width="145" alt="View the public resume"/></a>
 </p>
 
 <picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-arsenal-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-arsenal.svg?rev=redline-v1" width="100%" alt="Section 03: technical range"/></picture>
@@ -208,10 +208,10 @@
 <a href="mailto:ayushroy.dev@gmail.com"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/finale-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/finale.svg?rev=redline-v1" width="100%" alt="Start a conversation with Ayush Roy"/></picture></a>
 
 <p align="center">
-<a href="mailto:ayushroy.dev@gmail.com"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-email.svg?rev=redline-v1" width="160" alt="Email Ayush Roy"/></a>
-<a href="https://www.linkedin.com/in/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-linkedin.svg?rev=redline-v1" width="160" alt="Connect on LinkedIn"/></a>
-<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg?rev=redline-v1" width="160" alt="Open the portfolio"/></a>
-<a href="https://github.com/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-github.svg?rev=redline-v1" width="160" alt="Follow on GitHub"/></a>
-<a href="https://devpost.com/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-devpost.svg?rev=redline-v1" width="160" alt="Explore Devpost prototypes"/></a>
-<a href="https://steamcommunity.com/id/yorayriniwnl/"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-steam.svg?rev=redline-v1" width="160" alt="Open Steam profile"/></a>
+<a href="mailto:ayushroy.dev@gmail.com"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-email.svg?rev=redline-v2" width="145" alt="Email Ayush Roy"/></a>
+<a href="https://www.linkedin.com/in/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-linkedin.svg?rev=redline-v2" width="145" alt="Connect on LinkedIn"/></a>
+<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg?rev=redline-v2" width="145" alt="Open the portfolio"/></a>
+<a href="https://github.com/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-github.svg?rev=redline-v2" width="145" alt="Follow on GitHub"/></a>
+<a href="https://devpost.com/yorayriniwnl"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-devpost.svg?rev=redline-v2" width="145" alt="Explore Devpost prototypes"/></a>
+<a href="https://steamcommunity.com/id/yorayriniwnl/"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-steam.svg?rev=redline-v2" width="145" alt="Open Steam profile"/></a>
 </p>

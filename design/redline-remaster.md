@@ -8,6 +8,8 @@ Black and saturated crimson, editorial serif headings, restrained interface glyp
 
 Project summaries introduce the idea. Their native disclosures contain the full evidence, stack, and source links. Six visual selectors jump directly to the projects. The existing six-world motion reel is inside the field manual, with mobile and reduced-motion posters.
 
+GitHub sanitizes authored anchor IDs with a `user-content-` prefix. Shortcut URLs target that rendered ID; browser checks verify the destination's viewport position, not just the URL hash. Compact 145px controls fit two columns in GitHub's mobile README content area.
+
 ## Artwork provenance
 
 Mode: built-in image-generation tool; new generation, not a portrait edit.
@@ -31,4 +33,3 @@ Public stats show their successful fetch time. The contribution card names its e
 Publish source to main and the generated SVGs to a detached worktree based on origin/output. Preserve the existing motion files and the public resume. Independently verify both remote SHAs and the actual GitHub README render.
 
 At this remaster, GitHub Actions reported an account billing lock. Assets and fresh public snapshots are published directly; scheduled refreshes require that GitHub account issue to be resolved.
-
