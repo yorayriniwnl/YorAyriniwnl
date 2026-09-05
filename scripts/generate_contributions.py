@@ -148,7 +148,7 @@ def week_layout(days: list[dict]) -> tuple[dict[dt.date, tuple[int, int]], int]:
     return positions, max_week + 1
 
 
-def build_contribution_stream_svg(days: list[dict], username: str = USERNAME) -> str:
+def build_legacy_contribution_stream_svg(days: list[dict], username: str = USERNAME) -> str:
     days = sorted(days, key=lambda item: item["date"])
     if not days:
         raise ValueError("contribution stream requires at least one day")
@@ -284,6 +284,11 @@ def build_contribution_stream_svg(days: list[dict], username: str = USERNAME) ->
 </svg>'''
 
 
+def build_contribution_stream_svg(days: list[dict], username: str = USERNAME, mobile=False, sample=False) -> str:
+    from redline import calendar
+    return calendar(days, contribution_metrics(days), mobile, sample)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sample", action="store_true", help="render deterministic sample data")
@@ -293,11 +298,12 @@ def main() -> int:
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError) as error:
         print(f"[contributions] generation failed: {error}", file=sys.stderr)
         return 1
-    svg = build_contribution_stream_svg(days)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    output = OUT_DIR / "contribution-stream.svg"
-    output.write_text(svg, encoding="utf-8")
-    print(f"wrote {output} ({output.stat().st_size / 1024:.1f} KB)")
+    for mobile in (False, True):
+        svg = build_contribution_stream_svg(days, mobile=mobile, sample=args.sample)
+        output = OUT_DIR / ("contribution-stream-mobile.svg" if mobile else "contribution-stream.svg")
+        output.write_text(svg, encoding="utf-8")
+        print(f"wrote {output} ({output.stat().st_size / 1024:.1f} KB)")
     return 0
 
 

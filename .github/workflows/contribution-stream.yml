@@ -8,8 +8,10 @@ on:
     branches: [main]
     paths:
       - "scripts/generate_contributions.py"
+      - "scripts/redline.py"
+      - "design/yor-tokens.json"
       - "scripts/profile_data.py"
-      - "scripts/fonts/dm-mono-500.woff2"
+      - "scripts/fonts/**"
       - "data/profile.json"
       - ".github/workflows/contribution-stream.yml"
 
@@ -46,7 +48,7 @@ jobs:
           path: output
 
       - name: Publish contribution stream
-        run: cp main/generated/contribution-stream.svg output/
+        run: cp main/generated/contribution-stream*.svg output/
 
       - name: Commit if changed
         uses: stefanzweifel/git-auto-commit-action@v5

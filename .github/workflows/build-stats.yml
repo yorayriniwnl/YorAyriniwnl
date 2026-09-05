@@ -9,6 +9,9 @@ on:
     paths:
       - "data/profile.json"
       - "scripts/generate_stats.py"
+      - "scripts/redline.py"
+      - "design/yor-tokens.json"
+      - "scripts/fonts/**"
       - "scripts/profile_data.py"
       - ".github/workflows/build-stats.yml"
 
@@ -38,11 +41,6 @@ jobs:
       - name: Fetch live data + render stat cards
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Optional: a classic PAT with the `read:user` scope, added under
-          # Settings -> Secrets and variables -> Actions -> New repository
-          # secret, named STATS_TOKEN. Without it, the middle card renders
-          # a system-status panel instead of exposing configuration text.
-          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
         run: python main/scripts/generate_stats.py
 
       - name: Checkout output (generated artifacts)
@@ -52,7 +50,7 @@ jobs:
           path: output
 
       - name: Copy generated card into output branch
-        run: cp main/generated/stats.svg output/
+        run: cp main/generated/stats*.svg output/
 
       - name: Commit if changed
         uses: stefanzweifel/git-auto-commit-action@v5

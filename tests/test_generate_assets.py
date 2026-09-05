@@ -3,299 +3,93 @@ import unittest
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-
-SCRIPT = Path(__file__).parents[1] / "scripts" / "generate_assets.py"
-spec = importlib.util.spec_from_file_location("generate_assets", SCRIPT)
+SCRIPT = Path(__file__).parents[1] / 'scripts' / 'generate_assets.py'
+spec = importlib.util.spec_from_file_location('generate_assets', SCRIPT)
 generate_assets = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(generate_assets)
+SVG = '{http://www.w3.org/2000/svg}'
 
 
 class GenerateAssetsTests(unittest.TestCase):
-    def test_cinematic_hero_is_self_contained_valid_svg(self):
-        svg = generate_assets.build_cinematic_hero_svg(generate_assets.CONFIG)
+    @classmethod
+    def setUpClass(cls):
+        cls.assets = generate_assets.build_asset_manifest()
 
-        root = ET.fromstring(svg)
-        self.assertTrue(root.tag.endswith("svg"))
-        self.assertIn("data:image/jpeg;base64,", svg)
-        self.assertIn("AYR // OPERATOR ONLINE", svg)
-        self.assertIn("FULL-STACK DEVELOPER", svg)
-        self.assertIn('values="1492;1516;1492"', svg)
-
-    def test_navigation_and_canonical_project_card_render_valid_svg(self):
-        nav = generate_assets.build_nav_button_svg(
-            "RÉSUMÉ", "VIEW PUBLIC RECORD", "▤", generate_assets.CONFIG, 42
-        )
-        project = next(
-            item for item in generate_assets.PROFILE["projects"] if item["id"] == "vision"
-        )
-        card = generate_assets.build_project_card_svg(
-            generate_assets.canonical_project_card_spec(project),
-            generate_assets.CONFIG,
-        )
-
-        self.assertTrue(ET.fromstring(nav).tag.endswith("svg"))
-        self.assertTrue(ET.fromstring(card).tag.endswith("svg"))
-        self.assertIn('class="vision-frame-sweep"', card)
-        self.assertIn('data:image/jpeg;base64,', card)
-        self.assertIn('class="vision-reticle"', card)
-        self.assertNotIn("<text", card)
-
-    def test_flagship_cards_have_distinct_visual_worlds_and_motion_grammar(self):
-        manifest = generate_assets.build_asset_manifest()
-        expected = {
-            "helios": "helios",
-            "zenith": "zenith",
-            "vision": "vision",
-            "token-usage": "token-usage",
-            "talks": "talks",
-        }
-        old_world_colors = (
-            "#f0a64a", "#0e8a78", "#169cab", "#5be8ff", "#a78bff",
-            "#e84b4b", "#b92b2b", "#ff8a7f", "#671515",
-        )
-
-        for kind, markers in expected.items():
-            card = manifest[f"project-{kind}.svg"]
-            with self.subTest(project=kind):
-                self.assertIn(markers, card)
-                self.assertIn(f'class="{kind}-motion"', card)
-                self.assertIn(f'class="{kind}-frame-sweep"', card)
-                self.assertIn(f'class="{kind}-ambient-orbit"', card)
-                self.assertIn(f'class="{kind}-ambient-pulse"', card)
-                signature = {
-                    "helios": "helios-energy-arc",
-                    "zenith": "zenith-ray",
-                    "vision": "vision-reticle",
-                    "token-usage": "token-usage-lane",
-                    "talks": "talks-network-trace",
-                }[kind]
-                self.assertIn(f'class="{signature}"', card)
-                self.assertIn("prefers-reduced-motion: reduce", card)
-                self.assertIn(
-                    generate_assets.asset_data_uri(
-                        generate_assets.VISUAL_CONTRACT["project_art"][kind]
-                    ).split(",", 1)[1],
-                    card,
-                )
-                self.assertRegex(card, r'<image[^>]+preserveAspectRatio="xMidYMid slice"')
-                self.assertNotIn("<text", card)
-                for old_color in old_world_colors:
-                    self.assertNotIn(old_color, card)
-
-        for filename, svg in manifest.items():
-            with self.subTest(asset=filename, palette="legacy"):
-                for old_color in old_world_colors:
-                    self.assertNotIn(old_color, svg)
-
-        self.assertNotEqual(
-            generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT["project_art"]["helios"]),
-            generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT["project_art"]["talks"]),
-        )
-
-    def test_manifest_contains_only_public_readme_assets(self):
-        manifest = generate_assets.build_asset_manifest()
-        expected = {
-            "hero.svg",
-            "identity-console.svg",
-            "signal-strip.svg",
-            "field-notes.svg",
-            "skills-matrix.svg",
-            "proof-apps.svg",
-            "proof-tests.svg",
-            "proof-accuracy.svg",
-            "proof-prototypes.svg",
-            "operator-gateway.svg",
-            "achievement-rack.svg",
-            "protocol-engineer.svg",
-            "protocol-product.svg",
-            "protocol-human.svg",
-            "project-portfolio-v2.svg",
-            "project-portfolio-mobile-v2.svg",
-            "dossier-toggle.svg",
-            "jump-projects.svg",
-            "jump-experience.svg",
-            "jump-activity.svg",
-            "jump-contact.svg",
-            "project-helios.svg",
-            "project-zenith.svg",
-            "project-vision.svg",
-            "project-token-usage.svg",
-            "project-talks.svg",
-            "project-dossier-portfolio.svg",
-            "project-dossier-helios.svg",
-            "project-dossier-zenith.svg",
-            "project-dossier-vision.svg",
-            "project-dossier-talks.svg",
-            "project-dossier-token-usage.svg",
-            "project-summary-portfolio.svg",
-            "project-summary-helios.svg",
-            "project-summary-zenith.svg",
-            "project-summary-vision.svg",
-            "project-summary-talks.svg",
-            "project-summary-token-usage.svg",
-            "arsenal.svg",
-            "finale.svg",
-            "nav-portfolio.svg",
-            "nav-projects.svg",
-            "nav-resume.svg",
-            "nav-linkedin.svg",
-            "nav-live.svg",
-            "nav-source.svg",
-            "nav-email.svg",
-            "nav-github.svg",
-            "nav-devpost.svg",
-            "nav-steam.svg",
-            "section-projects.svg",
-            "section-field.svg",
-            "section-arsenal.svg",
-            "section-record.svg",
-            "section-operator.svg",
-            "section-channel.svg",
-        }
-
-        self.assertEqual(set(manifest), expected)
-        # The flagship cards now embed retina-density raster derivatives. The
-        # standalone 4K masters stay outside the SVG payload, but the larger
-        # display derivatives still need a realistic aggregate budget.
-        self.assertLess(sum(len(svg.encode("utf-8")) for svg in manifest.values()), 4_600_000)
-        self.assertNotIn("project-next.svg", manifest)
-        self.assertNotIn("+18.4%", "".join(manifest.values()))
-
-    def test_supporting_assets_receive_atlas_treatment_but_flagship_art_stays_locked(self):
-        manifest = generate_assets.build_asset_manifest()
-
-        treated = set(manifest) - generate_assets.ATLAS_TREATMENT_EXCLUDED
-        self.assertEqual(len(treated), 48)
-        for filename in treated:
-            with self.subTest(asset=filename):
-                svg = manifest[filename]
-                self.assertIn('id="atlas-treatment"', svg)
-                self.assertIn('data-visual-treatment="atlas-v5"', svg)
-                self.assertIn('data-atlas-tier="cinematic"', svg)
-                self.assertIn('aria-hidden="true"', svg)
-                self.assertIn("prefers-reduced-motion: reduce", svg)
-                self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
-
-        for filename in generate_assets.ATLAS_TREATMENT_EXCLUDED:
-            with self.subTest(asset=filename):
-                self.assertNotIn('data-visual-treatment="atlas-v1"', manifest[filename])
-
-        self.assertIn(generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT["optimized_hero"]).split(",", 1)[1], manifest["hero.svg"])
-
-    def test_supporting_art_is_embedded_into_major_profile_panels(self):
-        manifest = generate_assets.build_asset_manifest()
-
-        expected = {
-            "identity-console.svg": "identity",
-            "arsenal.svg": "atlas",
-            "finale.svg": "channel",
-        }
-        for filename, key in expected.items():
-            with self.subTest(asset=filename):
-                payload = generate_assets.asset_data_uri(
-                    generate_assets.SUPPORTING_ART[key]
-                ).split(",", 1)[1]
-                self.assertIn(payload, manifest[filename])
-                self.assertIn("preserveAspectRatio=", manifest[filename])
-
-    def test_visual_content_panels_are_valid_and_data_complete(self):
-        manifest = generate_assets.build_asset_manifest()
-        profile = generate_assets.PROFILE
-
-        for filename in (
-            "identity-console.svg",
-            "field-notes.svg",
-            "skills-matrix.svg",
-            "project-dossier-portfolio.svg",
-            "project-dossier-token-usage.svg",
-        ):
-            with self.subTest(asset=filename):
-                root = ET.fromstring(manifest[filename])
-                self.assertTrue(root.tag.endswith("svg"))
-                self.assertIn("<title>", manifest[filename])
-
-        for project in profile["projects"]:
-            summary = manifest[f'project-summary-{project["id"]}.svg']
-            self.assertIn('data-visual-layer="project-summary"', summary)
-            self.assertIn("prefers-reduced-motion: reduce", summary)
-            self.assertIn(project["name"].upper(), summary)
-            self.assertIn(project["status"].upper(), summary)
-
-        for proof in profile["proof"]:
-            card = manifest[f'proof-{proof["id"]}.svg']
-            self.assertIn(proof["value"], card)
-            self.assertIn(proof["label"], card)
-            self.assertIn(proof["detail"].upper().split()[0], card)
-
-        for project in profile["projects"]:
-            dossier = manifest[f'project-dossier-{project["id"]}.svg']
-            self.assertIn(project["name"].upper(), dossier)
-            self.assertIn(project["status"].upper(), dossier)
-            for proof in project["proof"]:
-                self.assertIn(proof, dossier)
-
-    def test_new_showcase_is_accessible_and_respects_reduced_motion(self):
-        for mobile in (False, True):
-            svg = generate_assets.build_featured_project_svg(generate_assets.CONFIG, mobile)
-            root = ET.fromstring(svg)
-            self.assertEqual(root.get("role"), "img")
-            self.assertIn("prefers-reduced-motion:reduce", svg)
-            self.assertIn("illustrative artwork", svg)
-            self.assertIn(
-                generate_assets.asset_data_uri(generate_assets.FLAGSHIP_ART).split(",", 1)[1],
-                svg,
-            )
-            self.assertNotIn("<script", svg)
-            self.assertNotIn("<foreignObject", svg)
-            for proof in generate_assets.PROFILE["projects"][0]["proof"]:
-                self.assertIn(proof, svg)
-
-        for index, label in enumerate(("PROJECTS", "EXPERIENCE", "ACTIVITY", "CONTACT")):
-            svg = generate_assets.build_jump_button_svg(label, index)
-            self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
-            self.assertIn("prefers-reduced-motion:reduce", svg)
-
-    def test_dense_copy_is_preceded_by_contextual_kinetic_glyphs(self):
-        manifest = generate_assets.build_asset_manifest()
-
-        for kind in ("gpu", "realtime", "vision", "telecom"):
-            self.assertIn(f'data-kinetic-glyph="{kind}"', manifest["identity-console.svg"])
-
-        for proof in generate_assets.PROFILE["proof"]:
-            self.assertIn(
-                f'data-kinetic-glyph="{proof["id"]}"',
-                manifest[f'proof-{proof["id"]}.svg'],
-            )
-
-        dossier = manifest["project-dossier-portfolio.svg"]
-        for kind in ("mission", "proof", "stack"):
-            self.assertIn(f'data-kinetic-glyph="{kind}"', dossier)
-
-        for kind in ("telecom", "education"):
-            self.assertIn(f'data-kinetic-glyph="{kind}"', manifest["field-notes.svg"])
-
-        for kind in ("product", "backend", "ml", "platform", "expanding"):
-            self.assertIn(f'data-kinetic-glyph="{kind}"', manifest["skills-matrix.svg"])
-
-    def test_operator_mode_assets_are_valid_and_complete(self):
-        assets = {
-            "gateway": generate_assets.build_operator_gateway_svg(generate_assets.CONFIG),
-            "rack": generate_assets.build_achievement_rack_svg(generate_assets.CONFIG),
-            "trace": generate_assets.build_protocol_engineer_svg(generate_assets.CONFIG),
-            "forge": generate_assets.build_protocol_product_svg(generate_assets.CONFIG),
-            "archive": generate_assets.build_protocol_human_svg(generate_assets.CONFIG),
-        }
-
-        for name, svg in assets.items():
+    def test_all_surfaces_are_valid_accessible_self_contained_svg(self):
+        for name,svg in self.assets.items():
             with self.subTest(asset=name):
-                self.assertTrue(ET.fromstring(svg).tag.endswith("svg"))
+                root=ET.fromstring(svg)
+                self.assertEqual(root.tag,SVG+'svg')
+                if name == 'hero.svg':
+                    # Its externally supplied README alt remains authoritative;
+                    # the approved hero markup is deliberately preserved.
+                    continue
+                self.assertIsNotNone(root.find(SVG+'title'))
+                self.assertIsNotNone(root.find(SVG+'desc'))
+                self.assertEqual(root.get('role'),'img')
+                self.assertNotIn('<script',svg)
+                self.assertNotIn('<foreignObject',svg)
+                for image in root.iter(SVG+'image'):
+                    self.assertTrue(image.get('href','').startswith('data:image/'))
 
-        self.assertIn("INITIATE OPERATOR MODE", assets["gateway"])
-        self.assertIn("ACHIEVEMENTS UNLOCKED", assets["rack"])
-        self.assertIn("Architecture starts at the constraint", assets["trace"])
-        self.assertIn("Make the difficult", assets["forge"])
-        self.assertIn("GRIND. BUILD. REPEAT.", assets["archive"])
+    def test_approved_hero_and_project_art_are_preserved(self):
+        expected={'hero.svg': generate_assets.build_cinematic_hero_svg(generate_assets.CONFIG),
+                  'project-portfolio-v2.svg':generate_assets.build_featured_project_svg(generate_assets.CONFIG),
+                  'project-portfolio-mobile-v2.svg':generate_assets.build_featured_project_svg(generate_assets.CONFIG,True)}
+        for project in generate_assets.PROFILE['projects']:
+            if project['id'] != 'portfolio':
+                expected[f'project-{project["id"]}.svg']=generate_assets.build_project_card_svg(generate_assets.canonical_project_card_spec(project),generate_assets.CONFIG)
+        for name,svg in expected.items():
+            self.assertEqual(self.assets[name],generate_assets.apply_red_theme(svg),name)
+            self.assertIn('data:image/jpeg;base64,',svg)
+
+    def test_covers_are_clean_and_each_uses_its_own_art(self):
+        for kind in ('helios','zenith','vision','talks','token-usage'):
+            svg=self.assets[f'project-{kind}.svg']
+            self.assertNotIn('<text',svg)
+            self.assertIn(generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT['project_art'][kind]).split(',',1)[1],svg)
+            self.assertIn('prefers-reduced-motion: reduce',svg)
+
+    def test_mobile_panels_are_composed_at_readable_natural_width(self):
+        variants=[name for name in self.assets if name.endswith('-mobile.svg')]
+        self.assertGreaterEqual(len(variants),25)
+        for name in variants:
+            with self.subTest(asset=name):
+                root=ET.fromstring(self.assets[name])
+                self.assertEqual(root.get('width'),'360')
+                self.assertIn('prefers-reduced-motion: reduce',self.assets[name])
+        for project in generate_assets.PROFILE['projects']:
+            for suffix in ('','-mobile'):
+                root=ET.fromstring(self.assets[f'project-summary-{project["id"]}{suffix}.svg'])
+                self.assertLess(int(root.get('height')),280)
+
+    def test_details_preserve_project_evidence_and_status(self):
+        for project in generate_assets.PROFILE['projects']:
+            for suffix in ('','-mobile'):
+                root=ET.fromstring(self.assets[f'project-dossier-{project["id"]}{suffix}.svg'])
+                content=' '.join(' '.join(root.itertext()).split())
+                self.assertIn(project['name'].upper(),content)
+                self.assertIn(project['status'].upper(),content)
+                for fact in project['proof']:
+                    self.assertIn(fact,content)
+                for technology in project['stack']:
+                    self.assertIn(technology,content)
+
+    def test_studio_and_supporting_art_survive_the_compositor(self):
+        for name,key in {'identity-console':'identity','arsenal':'atlas','finale':'channel'}.items():
+            for suffix in ('','-mobile'):
+                svg=self.assets[f'{name}{suffix}.svg']
+                self.assertIn(generate_assets.asset_data_uri(generate_assets.SUPPORTING_ART[key]),svg)
+
+    def test_palette_and_per_viewport_payload_budget(self):
+        for svg in self.assets.values():
+            for color in ('#5be8ff','#a78bff','#169cab','#f0a64a'):
+                self.assertNotIn(color,svg)
+        # Mobile and desktop art are alternatives; don't count both as one load.
+        desktop=sum(len(svg.encode()) for name,svg in self.assets.items() if '-mobile' not in name)
+        self.assertLess(desktop,3_900_000)
+        self.assertLess(sum(len(svg.encode()) for svg in self.assets.values()),5_800_000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

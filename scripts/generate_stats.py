@@ -1,27 +1,13 @@
 #!/usr/bin/env python3
 """
-Fetches live GitHub data for CONFIG["username"] and renders 3 stat cards
-in the same visual language as hero.svg. Meant to run inside GitHub
-Actions (.github/workflows/build-stats.yml) on a daily cron:
+Fetch public repositories, stars, followers and language totals, then render
+desktop and mobile snapshots with an explicit UTC timestamp. GITHUB_TOKEN
+uses the existing GitHub session or the workflow token for authenticated REST
+requests. The independent contribution generator owns the daily calendar.
 
-  - GITHUB_TOKEN (automatic, no setup needed) covers the REST calls —
-    profile, repo list, per-repo languages. All public data; the token
-    only raises the rate limit from 60/hr to 5000/hr, no special scope
-    required.
-  - STATS_TOKEN (a classic Personal Access Token with the `read:user`
-    scope, added as a repo secret) enables the GraphQL contribution
-    calendar. Without it, the middle card becomes a deliberate system
-    status panel, so the public profile never exposes setup instructions.
-
-Local usage:
-    python3 scripts/generate_stats.py --sample     # design iteration,
-                                                     # no network calls
-    GITHUB_TOKEN=... STATS_TOKEN=... python3 scripts/generate_stats.py
-                                                     # real run
-
-The renderer has deterministic sample coverage, while live runs print the
-exact data fetched before writing the SVG so refresh failures stay visible
-in Actions logs.
+Run with --sample for a clearly labeled design preview, without network calls.
+Incomplete language fetches fail before replacing either published snapshot.
+Legacy panel helpers remain available for older preview scripts.
 """
 import argparse
 import base64
@@ -126,8 +112,7 @@ def fetch_languages(non_fork_repos, token):
         try:
             langs = gh_rest(f"/repos/{USERNAME}/{r['name']}/languages", token)
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
-            print(f"[stats] languages fetch failed for {r['name']}: {e}", file=sys.stderr)
-            continue
+            raise RuntimeError(f"Language snapshot incomplete for {r['name']}; keeping published data") from e
         for lang, n in langs.items():
             totals[lang] = totals.get(lang, 0) + n
     ranked = sorted(totals.items(), key=lambda kv: -kv[1])
@@ -353,8 +338,6 @@ def main():
     ap.add_argument("--sample", action="store_true", help="render with placeholder data, no network calls")
     args = ap.parse_args()
 
-    dmmono_b64 = b64_font("dm-mono-500.woff2")
-    cormorant_b64 = b64_font("cormorant-garamond-600.woff2")
     os.makedirs(OUT_DIR, exist_ok=True)
 
     if args.sample:
@@ -362,16 +345,16 @@ def main():
         print("[stats] --sample mode: rendering with placeholder data, no network calls made")
     else:
         token = os.environ.get("GITHUB_TOKEN")
-        stats_token = os.environ.get("STATS_TOKEN")
         overview, non_fork = fetch_overview(token)
         ranked_langs = fetch_languages(non_fork, token)
-        streak = fetch_streak(stats_token)
 
-    svg = build_stats_combined_svg(overview, ranked_langs, streak, dmmono_b64, cormorant_b64)
-    path = os.path.join(OUT_DIR, "stats.svg")
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(svg)
-    print(f"wrote {path} ({len(svg)/1024:.1f} KB)")
+    from redline import record
+    updated_at = datetime.datetime.now(datetime.timezone.utc).strftime("%d %b %Y / %H:%M UTC")
+    for mobile in (False, True):
+        svg = record(overview, language_percentages(ranked_langs), updated_at, mobile)
+        path = Path(OUT_DIR) / ("stats-mobile.svg" if mobile else "stats.svg")
+        path.write_text(svg, encoding="utf-8")
+        print(f"wrote {path} ({len(svg)/1024:.1f} KB)")
 
 
 if __name__ == "__main__":

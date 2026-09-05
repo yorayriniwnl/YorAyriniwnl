@@ -33,10 +33,16 @@ class GenerateContributionsTests(unittest.TestCase):
         root = ET.fromstring(svg)
         self.assertTrue(root.tag.endswith("svg"))
         self.assertEqual(len(days), 365)
-        self.assertIn("CONTRIBUTION SIGNAL // 365-DAY ACTIVITY", svg)
-        self.assertIn("AUTO-REFRESH // 24H", svg)
+        self.assertIn("365 DAYS / CONTRIBUTIONS", svg)
+        self.assertNotIn("AUTO-REFRESH // 24H", svg)
+        self.assertIn("prefers-reduced-motion: reduce", svg)
         self.assertIn("stroke-dashoffset", svg)
         self.assertIn("data-date=", svg)
+        for mobile in (False, True):
+            root=ET.fromstring(generate_contributions.build_contribution_stream_svg(days,mobile=mobile))
+            cells=[el for el in root.iter() if el.get('data-date')]
+            self.assertEqual(len(cells),365)
+            self.assertEqual(sum(int(cell.get('data-count')) for cell in cells),sum(day['count'] for day in days))
 
     def test_metrics_use_exact_daily_counts(self):
         days = [

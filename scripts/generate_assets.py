@@ -3006,7 +3006,7 @@ def canonical_project_card_spec(project):
     }
 
 
-def build_asset_manifest():
+def build_atlas_asset_manifest():
     """Build only assets used by the public README."""
     manifest = {
         "hero.svg": build_cinematic_hero_svg(CONFIG),
@@ -3082,11 +3082,26 @@ def build_asset_manifest():
     return apply_atlas_treatment(manifest)
 
 
+def build_asset_manifest():
+    from redline import build_surfaces
+
+    manifest = build_surfaces(PROFILE)
+    manifest["hero.svg"] = build_cinematic_hero_svg(CONFIG)
+    manifest["project-portfolio-v2.svg"] = build_featured_project_svg(CONFIG)
+    manifest["project-portfolio-mobile-v2.svg"] = build_featured_project_svg(CONFIG, mobile=True)
+    for project in PROFILE["projects"]:
+        if project["id"] != "portfolio":
+            manifest[f'project-{project["id"]}.svg'] = build_project_card_svg(
+                canonical_project_card_spec(project), CONFIG
+            )
+    return {name: apply_red_theme(svg) for name, svg in manifest.items()}
+
+
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest = build_asset_manifest()
     expected = set(manifest)
-    preserved = {"stats.svg", "contribution-stream.svg"}
+    preserved = {"stats.svg", "stats-mobile.svg", "contribution-stream.svg", "contribution-stream-mobile.svg"}
 
     for stale_path in OUT_DIR.glob("*.svg"):
         if stale_path.name not in expected | preserved:

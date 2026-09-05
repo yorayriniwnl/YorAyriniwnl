@@ -345,7 +345,7 @@
         "token-usage": "assets/project-token-usage-cinematic-crimson-v8.png"
       },
       "supporting_art": {
-        "identity": "assets/crimson-command-deck-v1.png",
+        "identity": "assets/crimson-studio-v1.png",
         "atlas": "assets/crimson-systems-atlas-v1.png",
         "channel": "assets/crimson-open-channel-v1.png"
       }
@@ -361,7 +361,7 @@
         "token-usage": "assets/project-token-usage-cinematic-crimson-v8-optimized.jpg"
       },
       "supporting_art": {
-        "identity": "assets/crimson-command-deck-v1-optimized.jpg",
+        "identity": "assets/crimson-studio-v1-optimized.jpg",
         "atlas": "assets/crimson-systems-atlas-v1-optimized.jpg",
         "channel": "assets/crimson-open-channel-v1-optimized.jpg"
       }

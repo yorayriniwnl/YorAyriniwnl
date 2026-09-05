@@ -50,7 +50,7 @@ RECIPES = (
     # 840px delivery derivatives match the profile's rendered content width,
     # preserving sharp detail at README scale while
     # keeping the self-contained SVG manifest under its payload budget.
-    AssetRecipe("crimson-command-deck-v1.png", "crimson-command-deck-v1-optimized.jpg", (800, 400), 64),
+    AssetRecipe("crimson-studio-v1.png", "crimson-studio-v1-optimized.jpg", (1200, 675), 80),
     AssetRecipe("crimson-systems-atlas-v1.png", "crimson-systems-atlas-v1-optimized.jpg", (800, 533), 62),
     AssetRecipe("crimson-open-channel-v1.png", "crimson-open-channel-v1-optimized.jpg", (840, 420), 66),
 )

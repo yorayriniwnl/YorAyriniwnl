@@ -7,6 +7,8 @@ on:
       - "README.md"
       - "data/profile.json"
       - "scripts/generate_assets.py"
+      - "scripts/redline.py"
+      - "design/yor-tokens.json"
       - "scripts/generate_motion.py"
       - "scripts/generate_readme.py"
       - "scripts/optimize_assets.py"
@@ -85,7 +87,9 @@ jobs:
         run: |
           find output -maxdepth 1 -type f -name '*.svg' \
             ! -name 'stats.svg' \
+            ! -name 'stats-mobile.svg' \
             ! -name 'contribution-stream.svg' \
+            ! -name 'contribution-stream-mobile.svg' \
             -delete
           cp main/generated/*.svg output/
           cp main/generated/systems-reel*.gif output/

@@ -28,7 +28,9 @@ class WorkflowTests(unittest.TestCase):
 
         for filename in (
             "stats.svg",
+            "stats-mobile.svg",
             "contribution-stream.svg",
+            "contribution-stream-mobile.svg",
         ):
             self.assertIn(f"! -name '{filename}'", workflow)
         self.assertNotIn("github-contribution-grid-snake", workflow)
@@ -45,7 +47,7 @@ class WorkflowTests(unittest.TestCase):
         workflow = (WORKFLOWS / "contribution-stream.yml").read_text(encoding="utf-8")
 
         self.assertIn("python main/scripts/generate_contributions.py", workflow)
-        self.assertIn("contribution-stream.svg", workflow)
+        self.assertIn("contribution-stream*.svg", workflow)
         self.assertNotIn("Platane/snk", workflow)
 
 
