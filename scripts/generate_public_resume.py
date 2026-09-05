@@ -20,12 +20,13 @@ DEFAULT_OUTPUT = ROOT / "output" / "pdf" / "Ayush_Roy_Resume_Public.pdf"
 TMP_DIR = ROOT / "tmp" / "pdfs"
 
 TOKENS = load_design_tokens()
-INK = HexColor(TOKENS["worlds"]["portfolio"]["ink"])
-MUTED = HexColor(TOKENS["worlds"]["portfolio"]["muted"])
-CRIMSON = HexColor(TOKENS["color"]["crimson"])
+# A white-paper document needs its own contrast mapping, not dark-UI ink.
+INK = HexColor("#21171b")
+MUTED = HexColor("#65515a")
+CRIMSON = HexColor(TOKENS["color"]["deepCrimson"])
 DEEP_CRIMSON = HexColor(TOKENS["color"]["deepCrimson"])
-PALE = HexColor(TOKENS["worlds"]["portfolio"]["surface_alt"])
-HAIRLINE = HexColor(TOKENS["worlds"]["portfolio"]["line"])
+PALE = HexColor("#fff1f3")
+HAIRLINE = HexColor("#d9c8ce")
 WHITE = HexColor("#ffffff")
 
 
@@ -126,7 +127,7 @@ def build_resume(raw_output: Path) -> None:
 
     raw_output.parent.mkdir(parents=True, exist_ok=True)
     pdf = canvas.Canvas(str(raw_output), pagesize=LETTER, pageCompression=1)
-    pdf.setTitle("Ayush Roy - Full-Stack Developer Resume")
+    pdf.setTitle(f'{profile["identity"]["name"]} - {profile["identity"]["role"]} Resume')
     pdf.setAuthor("Ayush Roy")
     pdf.setSubject("Public software engineering resume")
 
@@ -135,13 +136,13 @@ def build_resume(raw_output: Path) -> None:
     pdf.drawString(margin, height - 52, profile["identity"]["name"].upper())
     pdf.setFillColor(CRIMSON)
     pdf.setFont(bold, 10)
-    pdf.drawString(margin, height - 70, "FULL-STACK DEVELOPER  /  APPLIED ML BUILDER")
+    pdf.drawString(margin, height - 70, f'{profile["identity"]["role"].upper()}  /  {profile["identity"]["specialty"].upper()}')
 
     header_right_x = 357
     pdf.setFillColor(MUTED)
     pdf.setFont(regular, 7.4)
     pdf.drawRightString(width - margin, height - 47, profile["identity"]["location"])
-    pdf.drawRightString(width - margin, height - 59, "Open to SWE internships / remote")
+    pdf.drawRightString(width - margin, height - 59, profile["availability"]["status"] + (" / remote" if profile["availability"]["remote"] else ""))
     draw_link(pdf, "ayushroy.dev@gmail.com", "mailto:ayushroy.dev@gmail.com", header_right_x, height - 73, regular, 7.1)
     draw_link(pdf, "yorayriniwnl.in", profile["contact"]["portfolio"], 470, height - 73, regular, 7.1)
 
@@ -283,19 +284,20 @@ def build_resume(raw_output: Path) -> None:
     pdf.line(margin, 29, width - margin, 29)
     pdf.setFillColor(MUTED)
     pdf.setFont(regular, 6.3)
-    pdf.drawString(margin, 18, "PUBLIC RESUME / UPDATED AUGUST 2026")
+    pdf.drawString(margin, 18, "PUBLIC RESUME / UPDATED SEPTEMBER 2026")
     pdf.drawRightString(width - margin, 18, "BUILDING SOFTWARE FOR THE PHYSICAL WORLD")
     pdf.showPage()
     pdf.save()
 
 
 def sanitize_metadata(raw_path: Path, output_path: Path) -> None:
+    profile = load_profile()
     reader = PdfReader(raw_path)
     writer = PdfWriter()
     writer.clone_document_from_reader(reader)
     writer.add_metadata(
         {
-            "/Title": "Ayush Roy - Full-Stack Developer Resume",
+            "/Title": f'{profile["identity"]["name"]} - {profile["identity"]["role"]} Resume',
             "/Author": "Ayush Roy",
             "/Subject": "Public software engineering resume",
             "/Keywords": "full-stack, software engineering, applied machine learning",
@@ -314,12 +316,13 @@ def validate_resume(output_path: Path) -> None:
         raise RuntimeError("public resume must remain exactly one page")
 
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    forbidden = ("+91", "89189", "yorayriniwnl@gmail.com", "deep learning", "CNN")
+    forbidden = ("+91", "89189", "yorayriniwnl@gmail.com", "deep learning", "CNN", "open to SWE internships", "open to software engineering internships", "CGPA")
     leaked = [term for term in forbidden if term.lower() in text.lower()]
     if leaked:
         raise RuntimeError(f"private or stale resume content found: {', '.join(leaked)}")
 
-    required = ("ayushroy.dev@gmail.com", "LBP", "GLCM", "SVM", "78.5%", "BSNL")
+    profile = load_profile()
+    required = ("ayushroy.dev@gmail.com", "LBP", "GLCM", "SVM", "78.5%", "BSNL", profile["identity"]["role"].upper(), profile["availability"]["status"])
     missing = [term for term in required if term not in text]
     if missing:
         raise RuntimeError(f"required resume evidence is missing: {', '.join(missing)}")

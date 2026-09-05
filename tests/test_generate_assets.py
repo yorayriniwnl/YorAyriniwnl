@@ -50,6 +50,18 @@ class GenerateAssetsTests(unittest.TestCase):
             self.assertIn(generate_assets.asset_data_uri(generate_assets.VISUAL_CONTRACT['project_art'][kind]).split(',',1)[1],svg)
             self.assertIn('prefers-reduced-motion: reduce',svg)
 
+    def test_current_role_and_job_availability_reach_public_surfaces(self):
+        role = generate_assets.PROFILE['identity']['role'].upper()
+        availability = generate_assets.PROFILE['availability']['status'].upper()
+        self.assertIn(role, self.assets['hero.svg'])
+        for suffix in ('', '-mobile'):
+            self.assertIn('CURRENT / ' + role, self.assets[f'identity-console{suffix}.svg'])
+            self.assertIn(availability, self.assets[f'identity-console{suffix}.svg'])
+            self.assertIn('JOBS / COLLABORATION', self.assets[f'section-channel{suffix}.svg'])
+        for name, svg in self.assets.items():
+            self.assertNotIn('open to internships', svg.lower(), name)
+            self.assertNotIn('open to software engineering internships', svg.lower(), name)
+
     def test_mobile_panels_are_composed_at_readable_natural_width(self):
         variants=[name for name in self.assets if name.endswith('-mobile.svg')]
         self.assertGreaterEqual(len(variants),25)

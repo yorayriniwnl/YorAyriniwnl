@@ -1,0 +1,2 @@
+# PDFs are binary artifacts; never apply text line-ending normalization.
+*.pdf binary

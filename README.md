@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg?rev=raster-v2" width="100%" alt="Ayush Roy, full-stack developer and applied ML builder"/></a>
+<a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/hero.svg?rev=career-v1" width="100%" alt="Ayush Roy, Associate Engineer and Applied ML Builder"/></a>
 
 <p align="center">
 <a href="#user-content-selected-systems"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-projects.svg?rev=redline-v2" width="145" alt="Jump to selected projects"/></a>
@@ -11,7 +11,7 @@
 <a href="#user-content-open-channel"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/jump-contact.svg?rev=redline-v2" width="145" alt="Jump to contact and collaboration"/></a>
 </p>
 
-<picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg?rev=redline-v1" width="100%" alt="I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world. Open to software engineering internships. Bhubaneswar, Odisha, India."/></picture>
+<picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console-mobile.svg?rev=career-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/identity-console.svg?rev=career-v1" width="100%" alt="Currently Associate Engineer. I build ambitious product systems where polished interfaces meet realtime backends, applied machine learning, and the physical world. Open to jobs. Bhubaneswar, Odisha, India."/></picture>
 
 <p align="center">
 <a href="https://www.yorayriniwnl.in"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-portfolio.svg?rev=redline-v2" width="145" alt="Open Ayush Roy portfolio"/></a>
@@ -203,9 +203,9 @@
 
 <a id="open-channel"></a>
 
-<picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-channel-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-channel.svg?rev=redline-v1" width="100%" alt="Section 06: internships and collaboration"/></picture>
+<picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-channel-mobile.svg?rev=career-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/section-channel.svg?rev=career-v1" width="100%" alt="Section 06: jobs and collaboration"/></picture>
 
-<a href="mailto:ayushroy.dev@gmail.com"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/finale-mobile.svg?rev=redline-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/finale.svg?rev=redline-v1" width="100%" alt="Start a conversation with Ayush Roy"/></picture></a>
+<a href="mailto:ayushroy.dev@gmail.com"><picture><source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/finale-mobile.svg?rev=career-v1"/><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/finale.svg?rev=career-v1" width="100%" alt="Start a conversation with Ayush Roy"/></picture></a>
 
 <p align="center">
 <a href="mailto:ayushroy.dev@gmail.com"><img src="https://raw.githubusercontent.com/yorayriniwnl/Yorayriniwnl/output/nav-email.svg?rev=redline-v2" width="145" alt="Email Ayush Roy"/></a>

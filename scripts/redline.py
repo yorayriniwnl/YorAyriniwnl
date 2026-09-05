@@ -48,7 +48,7 @@ SECTIONS = (
     ("arsenal", "03", "Tools of the trade.", "PRODUCT / BACKEND / APPLIED ML"),
     ("record", "04", "The build record.", "PUBLIC ACTIVITY / PROFILE VIEWS"),
     ("operator", "05", "Behind the work.", "PROCESS / PRINCIPLES / HUMAN"),
-    ("channel", "06", "Let's build something.", "INTERNSHIPS / COLLABORATION"),
+    ("channel", "06", "Let's build something.", "JOBS / COLLABORATION"),
 )
 
 
@@ -143,19 +143,20 @@ def section(index, title, subtitle, mobile=False):
 
 
 def identity(profile, mobile=False):
-    w, h = (360, 410) if mobile else (720, 282)
+    w, h = (360, 434) if mobile else (720, 302)
     art = raster(profile["visual_contract"]["delivery"]["supporting_art"]["identity"])
     photo = f'<image href="{art}" x="{0 if mobile else 270}" y="0" width="{w if mobile else 450}" height="{170 if mobile else h}" preserveAspectRatio="xMidYMid slice"/>'
-    b = photo + ('' if mobile else f'<rect width="720" height="282" fill="url(#shade)"/>')
+    b = photo + ('' if mobile else f'<rect width="720" height="{h}" fill="url(#shade)"/>')
     y = 196 if mobile else 33
     b += text("YOR / AYUSH ROY", 24, y, 12, RED, "mono")
     b += text("Interfaces with intent.", 24, y+40, 31 if mobile else 39, PAPER, "serif")
     b += text("Systems with depth.", 24, y+77, 31 if mobile else 39, PAPER, "serif")
-    body, _ = lines("Full-stack development, realtime systems, and applied machine learning.", 24, y+110, 310 if mobile else 350, 16)
+    b += text("CURRENT / " + profile["identity"]["role"].upper(), 24, y+107, 11, RED, "mono")
+    body, _ = lines("Full-stack products, realtime systems, and applied ML.", 24, y+134, 310 if mobile else 350, 16)
     b += body + rule(24, h-52, w-48)
     b += text("INDIA / REMOTE", 24, h-29, 11, MUTED, "mono")
-    b += text("OPEN TO INTERNSHIPS", w-24, h-29, 10.5, PAPER, "mono", text_anchor="end")
-    return page("Ayush Roy — full-stack developer and applied ML builder", w, h, b,
+    b += text(profile["availability"]["status"].upper(), w-24, h-29, 10.5, PAPER, "mono", text_anchor="end")
+    return page(f'Ayush Roy — {profile["identity"]["role"]} and applied ML builder', w, h, b,
                 profile["identity"]["positioning"] + " " + profile["availability"]["status"] + ". Illustrative developer studio.")
 
 

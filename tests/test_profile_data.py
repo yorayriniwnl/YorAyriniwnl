@@ -66,6 +66,10 @@ class ProfileDataTests(unittest.TestCase):
         self.assertNotIn("cgpa", serialized)
         self.assertNotIn("7.00/10", serialized)
 
+    def test_current_role_and_availability_match_user_update(self):
+        self.assertEqual(self.profile['identity']['role'], 'Associate Engineer')
+        self.assertEqual(self.profile['availability']['status'], 'Open to jobs')
+
     def test_applied_ml_claim_matches_resume_evidence(self):
         vision = next(project for project in self.profile["projects"] if project["id"] == "vision")
         evidence = " ".join([vision["summary"], *vision["proof"], *vision["stack"]]).lower()

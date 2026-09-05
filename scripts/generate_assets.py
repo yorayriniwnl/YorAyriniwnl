@@ -1355,7 +1355,7 @@ AYR // OPERATOR ONLINE
 <text x="1426" y="43" text-anchor="end" class="mono" font-size="10" fill="#8d7777"
  letter-spacing="2">INDIA · UTC+05:30 · BUILD 2026</text>
 <text x="72" y="154" class="mono" font-size="12" fill="#e84b4b" letter-spacing="4">
-FULL-STACK DEVELOPER / ML BUILDER
+{esc(cfg["role"])}
 </text>
 <text x="68" y="270" class="serif" font-size="116" fill="#e84b4b" opacity=".55"
  filter="url(#heroGlow)">AYUSH</text>
